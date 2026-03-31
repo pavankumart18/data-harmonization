@@ -1,0 +1,4 @@
+source,rows,missing_key_fields_pct,duplicate_candidate_pct
+supplier_feed_us_antibodies.csv,12,18,17
+supplier_feed_eu_reagents.csv,10,26,22
+acquisition_catalog_nordic.csv,8,21,25

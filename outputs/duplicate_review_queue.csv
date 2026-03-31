@@ -1,0 +1,4 @@
+candidate_group,record_a,record_b,reason,status
+MG-001,BA-100245,EL-7782,"same target clone pack, language variation",review merge
+MG-002,BA-100245,BA-100246,same target clone but different conjugate,do not merge
+MG-003,CN-TNF-ELISA-96,CN-TNF-ELISA-96-DX,"same target pack, regulatory mismatch",review regulatory split

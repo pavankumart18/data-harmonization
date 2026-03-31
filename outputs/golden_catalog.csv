@@ -1,0 +1,45 @@
+match_group_id,canonical_product_name,product_type,target_normalized,application_normalized,host_species_normalized,conjugate_normalized,pack_size_value,pack_size_unit,supplier_count,supplier_product_refs,quality_score,review_status,enrichment_provenance
+MG-1001,Anti-CD20 Antibody PE,Unclassified,CD20,Flow Cytometry,Human,,100.0,ul,2,EL-7783,100.0,Auto Cleared,
+MG-1001,Anti CD20 (Human) Flow Cytometry,Unclassified,CD20,Flow Cytometry,nan,,100.0,ul,2,EL-7782,100.0,Auto Cleared,
+MG-1001,CD20 Antibody PE,Antibody,CD20,Flow Cytometry,Human,,100.0,ul,2,BA-100246,100.0,Auto Cleared,extracted from datasheet
+MG-1001,Anti-CD20 Antibody FITC,Unclassified,CD20,Flow Cytometry,Human,,0.1,ml,2,NB-44321,100.0,Needs Review,
+MG-1003,Anti-CD3 FITC Antibody,Unclassified,CD3,Flow Cytometry,Human,,0.1,ml,1,EL-CD3-FITC,100.0,Auto Cleared,
+MG-1003,CD3 Antibody FITC,Antibody,CD3,Flow Cytometry,Human,,0.1,ml,1,IP-CD3-FITC-100,100.0,Auto Cleared,extracted from datasheet
+MG-1004,CD3 Antibody Unconjugated,Antibody,CD3,nan,Human,,100.0,ul,1,IP-CD3-NA-100,100.0,Auto Cleared,extracted from datasheet
+MG-1006,Anti-GAPDH Antibody,Unclassified,GAPDH,Western Blot,"Human, Maus",,100.0,ul,1,BG-GAPDH-100,100.0,Auto Cleared,
+MG-1006,GAPDH Rabbit pAb,Antibody,GAPDH,Western Blot,Human;Mouse,,100.0,ul,1,LV-GAPDH-RB-100,100.0,Auto Cleared,extracted from datasheet
+MG-1009,IL-6 ELISA Kit,Unclassified,IL6,ELISA,Human,,96.0,tests,1,NA-IL6-96,100.0,Auto Cleared,
+MG-1009,IL6 ELISA Kit,Unclassified,IL6,ELISA,Human,,96.0,wells,1,NA-IL6-96,100.0,Auto Cleared,
+MG-1010,TNF alpha ELISA Kit,Unclassified,TNF-alpha,ELISA,Human,,96.0,wells,2,NA-TNF-96,100.0,Auto Cleared,
+MG-1010,TNF alpha ELISA kit,ELISA Kit,TNF-alpha,ELISA,Human,,96.0,tests,2,CN-TNF-ELISA-96,100.0,Auto Cleared,extracted from datasheet
+MG-1010,TNF alpha ELISA diagnostic,ELISA Kit,TNF-alpha,ELISA,Human,,96.0,tests,2,CN-TNF-ELISA-96-DX,100.0,Auto Cleared,extracted from datasheet
+MG-1013,Anti-CD20 Antibody,Unclassified,nan,Flow Cytometry,Human,,100.0,ul,1,EL-7782,100.0,Auto Cleared,
+MG-1014,BCA Protein Assay,Protein Assay,nan,Protein Quantification,nan,,500.0,tests,1,LV-BCA-500,100.0,Auto Cleared,extracted from datasheet
+MG-1015,BCA Protein Assay Kit,Unclassified,nan,Proteinbestimmung,nan,,500.0,tests,1,BG-BCA-500,100.0,Auto Cleared,
+MG-1018,IL6 ELISA-kit,Unclassified,,ELISA,nan,,96.0,wells,1,NB-51010,80.0,Needs Review,
+MG-1018,TNF alfa ELISA kit,Unclassified,,ELISA,nan,,96.0,wells,1,NB-51020,80.0,Needs Review,
+MG-1019,CD20 antikropp FITC,Unclassified,,Flow Cytometry,Mus,,0.1,ml,2,NB-44321,80.0,Needs Review,
+MG-1019,CD20 antikropp PE,Unclassified,,Flow Cytometry,Mus,,100.0,ul,2,NB-44322,80.0,Needs Review,
+MG-1019,CD3 antikropp FITC,Unclassified,,Flow Cytometry,Mus,,100.0,ul,2,NB-30010,80.0,Needs Review,
+MG-1020,BCA protein assay kit,Unclassified,,Protein kvantificering,nan,,500.0,tests,1,ND-8002,80.0,Auto Cleared,
+MG-1022,GAPDH antistof,Unclassified,,Western blot,Kanin,,100.0,ul,1,ND-7001,80.0,Needs Review,
+MG-1000,Anti-CD20 Monoclonal Antibody,Antibody,CD20,Flow Cytometry,Mouse,FITC,,,1,BA-100245,60.0,Auto Cleared,extracted from datasheet
+MG-1000,Anti-CD20 Monoclonal Antibody,Antibody,CD20,Flow Cytometry,Mouse,PE,,,1,BA-100246,60.0,Auto Cleared,extracted from datasheet
+MG-1000,Anti CD20 mAb,Antibody,CD20,Flow Cytometry,Mouse,FITC,,,1,BA 100245 XL,60.0,Auto Cleared,extracted from datasheet
+MG-1001,CD20 Antibody Human FC,Unclassified,CD20,Flow Cytometry,Human,,,,2,BA100245,60.0,Auto Cleared,
+MG-1002,"Anti-CD3 antibody, clone UCHT1",Antibody,CD3,Flow Cytometry,Mouse,FITC,,,2,IP-CD3-FITC-100,60.0,Auto Cleared,extracted from datasheet
+MG-1002,"Anti-CD3 antibody, clone UCHT1",Antibody,CD3,Flow Cytometry,Mouse,No conjugate,,,2,IP-CD3-NA-100,60.0,Auto Cleared,extracted from datasheet
+MG-1005,GAPDH Rabbit Polyclonal Antibody,Antibody,GAPDH,WB,Rabbit,nan,,,2,LV-GAPDH-RB-100,60.0,Auto Cleared,extracted from datasheet
+MG-1007,Recombinant Human IL-2,Unclassified,IL-2,Cell culture,Human,,,,1,NA-IL2-10UG,60.0,Auto Cleared,
+MG-1008,Recombinant Human IL-2 Protein,Protein Assay,IL2,Cell Culture,nan,nan,,,1,CN-IL2-REC-10UG,60.0,Auto Cleared,extracted from datasheet
+MG-1008,Recombinant IL-2 Protein,Protein Assay,IL2,Cell Culture,Human,,,,1,CN-IL2-REC-10UG,60.0,Auto Cleared,extracted from datasheet
+MG-1010,TNF-alpha ELISA Kit,ELISA Kit,TNF-alpha,ELISA,nan,HRP,,,2,CN-TNF-ELISA-96,60.0,Auto Cleared,extracted from datasheet
+MG-1011,TNF alpha ELISA Kit,ELISA Kit,TNFα,ELISA,nan,HRP,,,1,CN-TNF-ELISA-96-DX,60.0,Auto Cleared,extracted from datasheet
+MG-1012,"Human PBMC, Cryopreserved",Unclassified,nan,Cell Assay,nan,nan,,,1,BA-PBMC-001,60.0,Auto Cleared,
+MG-1012,Human PBMC Cryopreserved,Unclassified,nan,Cell Assay,Human,,,,1,EL-PBMC-10,60.0,Auto Cleared,
+MG-1012,Human PBMC cryopreserved,Unclassified,nan,Cell Assay,Human,,,,1,BA-PBMC-001,60.0,Auto Cleared,
+MG-1014,BCA Protein Assay Kit,Protein Assay,nan,Protein Quantification,nan,nan,,,1,LV-BCA-500,60.0,Auto Cleared,extracted from datasheet
+MG-1016,HeLa Cell Lysate,Unclassified,nan,WB,nan,nan,,,2,CN-HELA-LYSATE,60.0,Needs Review,
+MG-1016,HeLa Cell Lysate,Unclassified,nan,WB,Human,,,,2,EL-HELA-LYS,60.0,Auto Cleared,
+MG-1017,HeLa Cell Lysate,Unclassified,nan,Western Blot,Human,,,,1,CN-HELA-LYSATE,60.0,Needs Review,
+MG-1021,HeLa celllysat,Unclassified,,WB,nan,,,,1,NB-9901,40.0,Auto Cleared,

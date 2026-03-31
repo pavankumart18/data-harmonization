@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Data Harmonization Tower — Ingest, profile, canonicalize, self-heal, and explore golden records from disparate life sciences data sources." />
+  <title>Data Harmonization Tower</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='24' height='24' rx='4' fill='%236366f1'/%3E%3Cellipse cx='12' cy='8' rx='7' ry='2.5' stroke='white'/%3E%3Cpath d='M5 8V16A7 2.5 0 0 0 19 16V8' stroke='white'/%3E%3Cpath d='M5 12A7 2.5 0 0 0 19 12' stroke='white'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+              <path d="M3 12A9 3 0 0 0 21 12"/>
+            </svg>
+          </div>
+          <span class="brand-name">Data Harmonization Tower</span>
+        </div>
+        <nav id="header-nav" class="header-nav"></nav>
+      </div>
+    </header>
+
+    <!-- Pipeline Progress -->
+    <div style="max-width:84rem;margin:0 auto;padding:1rem 1.5rem 0;position:relative;z-index:1" id="pipeline"></div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="app-main"></main>
+  </div>
+
+  <script src="icons.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

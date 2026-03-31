@@ -1,0 +1,10 @@
+source,rows,cols,missing_ratio,duplicate_candidate_ratio,unit_inconsistency_index,language_variation_index,quality_score
+supplier_feed_eu_reagents,10,15,0.033,0.0,4,3,76.5
+supplier_feed_us_antibodies,12,18,0.102,0.0,4,0,79.4
+acquisition_catalog_nordic,8,15,0.042,0.0,3,3,80.1
+internal_master_catalog_legacy::products,14,21,0.058,0.0,4,0,81.4
+customer_search_logs,10,9,0.044,0.0,0,3,92.0
+internal_master_catalog_legacy::taxonomy_map,6,5,0.0,0.0,0,2,96.0
+pricing_and_inventory_snapshot,12,11,0.0,0.0,0,1,98.0
+supplier_datasheets,12,13,0.0,0.0,0,0,100.0
+internal_master_catalog_legacy::supplier_links,8,6,0.0,0.0,0,0,100.0
