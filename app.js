@@ -1564,7 +1564,9 @@ function startSampleLoad() {
       state.uploadProgress = 100;
       state.uploadDone = true;
       clearInterval(_uploadInterval); _uploadInterval = null;
-      renderAll(); return;
+      renderAll();
+      setTimeout(() => navigateTo('raw'), 600);
+      return;
     }
     state.uploadStageIndex = idx;
     state.uploadProgress = stages[idx].pct;
