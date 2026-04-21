@@ -339,6 +339,60 @@ main.app-main { flex: 1; max-width: 84rem; width: 100%; margin: 0 auto; padding:
   box-shadow: 0 0 12px rgba(99,102,241,0.45);
 }
 
+.storyline-card {
+  margin-bottom: 1.5rem;
+  background: linear-gradient(180deg, rgba(31,42,64,0.92) 0%, rgba(17,24,39,0.98) 100%);
+  border-color: rgba(99,102,241,0.18);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.22);
+}
+
+.storyline-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+}
+
+.storyline-step {
+  position: relative;
+  min-height: 100%;
+  padding: 1rem 1rem 1rem 1.125rem;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.storyline-step::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, var(--accent), rgba(129,140,248,0.35));
+}
+
+.storyline-step-label {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+.storyline-step p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .storyline-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 /* ── Pipeline Progress (Step Indicators) ──────────────── */
 .pipeline-progress {
   display: flex; align-items: center; gap: 0; margin-bottom: 2.5rem;
@@ -1185,6 +1239,7 @@ tbody td.td-error { color: var(--red); }
 
 /* ── SVG Icons ────────────────────────────────────────── */
 svg.icon { width: 1rem; height: 1rem; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; flex-shrink: 0; }
+svg.icon-xs { width: 0.625rem; height: 0.625rem; }
 svg.icon-sm { width: 0.75rem; height: 0.75rem; }
 svg.icon-lg { width: 1.25rem; height: 1.25rem; }
 svg.icon-xl { width: 1.5rem; height: 1.5rem; }
@@ -1229,6 +1284,7 @@ svg.icon-2xl { width: 2rem; height: 2rem; }
 /* ── Raw Data Table Scrollable ────────────────────────── */
 .raw-table-scroll {
   max-height: 400px;
+  overflow-x: auto;
   overflow-y: auto;
   border-radius: var(--radius);
   border: 1px solid var(--border);
@@ -1657,3 +1713,264 @@ body.demo-active .app-container { padding-bottom: 80px; }
   text-align: right;
   font-style: italic;
 }
+
+/* ── Spinner ──────────────────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Landing Page ─────────────────────────────────────────── */
+.dataset-tile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.dataset-tile:hover {
+  border-color: rgba(255,255,255,0.14);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dataset-tile:active {
+  transform: translateY(-1px);
+}
+
+/* ── Upload progress stage list ───────────────────────────── */
+.upload-stage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.upload-stage-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+}
+
+/* ── Transition screen ────────────────────────────────────── */
+.transition-msg-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 300px;
+}
+
+.transition-msg-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  opacity: 0;
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* ── Mapping field expand panel ───────────────────────────── */
+.mapping-expand-panel {
+  padding: 0.875rem 1.25rem;
+  background: rgba(99,102,241,0.04);
+  border-top: 1px solid var(--border-subtle);
+  animation: fadeInUp 0.2s ease-out;
+}
+
+.mapping-expand-section-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.375rem;
+}
+
+.mapping-expand-value {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.875rem;
+}
+
+/* ── Exception queue accept button ───────────────────────── */
+.exception-accept-btn {
+  margin-top: 0.5rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.6875rem;
+}
+
+/* ── CRM ARR chart bar ────────────────────────────────────── */
+.arr-bar-track {
+  flex: 1;
+  height: 18px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.arr-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--emerald), #34d399);
+  border-radius: 3px;
+  transition: width 0.8s ease-out;
+}
+
+/* ── Source variant tags (lineage) ────────────────────────── */
+.variant-tag-messy {
+  color: var(--red);
+  border-color: rgba(239,68,68,0.2);
+  background: rgba(239,68,68,0.05);
+}
+
+/* ── Dataset badge in nav ─────────────────────────────────── */
+.nav-dataset-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: opacity 0.15s;
+}
+
+.nav-dataset-badge:hover { opacity: 0.8; }
+
+/* ── Modal ─────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+  z-index: 5000; display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  animation: fadeIn 0.2s ease;
+}
+.modal-panel {
+  background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: var(--radius-lg);
+  max-width: 56rem; width: 100%; max-height: 90vh; overflow-y: auto;
+  animation: fadeInUp 0.25s ease;
+}
+.modal-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ── AI Analysis Panel ──────────────────────────────────── */
+.ai-panel {
+  background: rgba(99,102,241,0.04); border: 1px solid rgba(99,102,241,0.15);
+  border-radius: var(--radius); padding: 1rem 1.25rem; margin-bottom: 1.5rem;
+}
+.ai-panel-header {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-accent); margin-bottom: 0.75rem;
+}
+.ai-insight {
+  background: rgba(99,102,241,0.06); border: 1px solid rgba(99,102,241,0.12);
+  border-radius: var(--radius-sm); padding: 0.75rem 1rem; margin-bottom: 0.5rem;
+  font-size: 0.8125rem; color: var(--text-secondary); line-height: 1.55;
+}
+.ai-insight strong { color: var(--text-accent); }
+
+/* ── Rules Engine ───────────────────────────────────────── */
+.rules-section { margin-top: 1.5rem; }
+
+/* ── Proof modal ────────────────────────────────────────── */
+.proof-modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 5000;
+  display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── Slow transitions for realistic feel ────────────────── */
+.page-transition { transition: opacity 0.5s ease, transform 0.5s ease; }
+.source-file-card { transition: all 0.35s ease; }
+.issue-chip { transition: all 0.25s ease; }
+.btn { transition: all 0.25s ease; }
+tr { transition: background 0.2s ease; }
+.lineage-item { transition: all 0.3s ease; }
+.canonical-item { transition: all 0.3s ease; }
+.tab-btn { transition: all 0.25s ease; }
+.pipeline-step { transition: all 0.35s ease; }
+.nav-link { transition: all 0.25s ease; }
+.stat-tile { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+.stat-tile:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+
+/* ── Loading steps ──────────────────────────────────────── */
+.loading-step {
+  display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 0;
+  border-bottom: 1px solid var(--border-subtle); font-size: 0.8125rem;
+}
+.loading-step-bar {
+  flex: 1; height: 4px; background: rgba(255,255,255,0.06);
+  border-radius: 9999px; overflow: hidden; margin-left: 0.5rem;
+}
+.loading-step-fill {
+  height: 100%; border-radius: 9999px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Enhanced page transitions ───────────────────────────── */
+.page.active { animation: pageSlideIn 0.4s ease-out; }
+@keyframes pageSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Golden stats grid ───────────────────────────────────── */
+.golden-stats-bar {
+  display: flex; align-items: center; gap: 0.75rem; padding: 0.375rem 0;
+}
+.golden-stats-bar-track {
+  flex: 1; height: 12px; background: rgba(255,255,255,0.04);
+  border-radius: 3px; overflow: hidden;
+}
+.golden-stats-bar-fill {
+  height: 100%; border-radius: 3px;
+  transition: width 0.9s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Issue chip clickable ────────────────────────────────── */
+.issue-chip-clickable {
+  cursor: pointer; user-select: none;
+}
+.issue-chip-clickable:hover {
+  border-color: rgba(99,102,241,0.4); background: rgba(99,102,241,0.06);
+}
+
+/* ── Send to rules button ────────────────────────────────── */
+.btn-send-rules {
+  background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25);
+  color: var(--amber); border-radius: var(--radius-sm); padding: 0.25rem 0.625rem;
+  font-size: 0.6875rem; cursor: pointer; font-family: var(--font-sans);
+  transition: all 0.2s ease;
+}
+.btn-send-rules:hover {
+  background: rgba(245,158,11,0.18); border-color: rgba(245,158,11,0.4);
+}
+
+/* ── Data section headers ────────────────────────────────── */
+.data-section-header {
+  font-size: 0.875rem; font-weight: 700; color: var(--text-secondary);
+  margin: 1.5rem 0 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+}
+
+/* ── Source network graph ────────────────────────────────── */
+@keyframes dashFlow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -18; }
+}
+
+/* ── CRM search split pane ───────────────────────────────── */
+#crm-search-input:focus {
+  border-color: var(--emerald);
+  box-shadow: 0 0 0 3px rgba(16,185,129,0.15);
+  outline: none;
+}
+
+/* ── Transition step circles ─────────────────────────────── */
+#ts-steps > div { transition: opacity 0.25s ease, background 0.3s ease; }

@@ -1,0 +1,343 @@
+usage_record_id,product_org_id,product_org_name,product_name,product_family,usage_month,active_teachers,active_students,weekly_sessions,usage_health_score,implementation_status,school_scope,teacher_external_match_key,source,true_golden_customer_id
+PU-20001,ORG-20001,Houston Literacy Pilot,Imagine Learning PD,Professional Learning,2025-11-01,94,671,4467,69,Sandbox,District-wide,none,ProductTelemetry,GC0001
+PU-20002,ORG-20002,Houston Literacy Pilot,Imagine Learning PD,Professional Learning,2025-10-01,27,4197,15648,96,Live,District-wide,none,ProductTelemetry,GC0001
+PU-20003,ORG-20003,Houston Literacy Pilot,Twig Science,Science,2025-12-01,168,4578,7398,87,Live,Single School,email,ProductTelemetry,GC0001
+PU-20004,ORG-20004,HOUSTON MATH PROGRAM,Imagine Learning PD,Professional Learning,2025-10-01,146,5367,1945,72,Pilot,Single School,email,ProductTelemetry,GC0001
+PU-20005,ORG-20005,HOUSTON MATH PROGRAM,Imagine Learning PD,Professional Learning,2025-12-01,19,2301,18729,60,Sandbox,District-wide,none,ProductTelemetry,GC0001
+PU-20006,ORG-20006,Houston Math Program,Twig Science,Science,2025-11-01,58,5461,14874,67,Training,Single School,none,ProductTelemetry,GC0001
+PU-20007,ORG-20007,Houston Math Program,Twig Science,Science,2025-10-01,62,4708,16704,80,Live,Single School,none,ProductTelemetry,GC0001
+PU-20008,ORG-20008,Houston Credit Recovery,Twig Science,Science,2025-12-01,21,5068,2144,95,Pilot,Single School,email,ProductTelemetry,GC0001
+PU-20009,ORG-20009,Houston Credit Recovery,Twig Science,Science,2025-10-01,66,4967,5936,51,Live,Single School,name_school,ProductTelemetry,GC0001
+PU-20010,ORG-20010,HOUSTON CREDIT RECOVERY,Imagine Learning PD,Professional Learning,2025-11-01,149,3213,13415,76,Sandbox,Selected Schools,email,ProductTelemetry,GC0001
+PU-20011,ORG-20011,Riverview Credit Recovery,Imagine Math,Supplemental Math,2025-11-01,61,2917,21268,38,Live,Selected Schools,email,ProductTelemetry,GC0002
+PU-20012,ORG-20012,Riverview Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,18,3096,3189,49,Live,Single School,email,ProductTelemetry,GC0002
+PU-20013,ORG-20013,RIVERVIEW CREDIT RECOVERY,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,81,266,18674,75,Live,District-wide,email,ProductTelemetry,GC0002
+PU-20014,ORG-20014,Riverview Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,149,1489,14500,50,Training,District-wide,name_school,ProductTelemetry,GC0002
+PU-20015,ORG-20015,Riverview Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,140,1025,10272,65,Live,Selected Schools,none,ProductTelemetry,GC0002
+PU-20016,ORG-20016,Riverview Math Program,Courseware,Core Courseware,2025-12-01,28,4116,6389,47,Training,Selected Schools,name_school,ProductTelemetry,GC0002
+PU-20017,ORG-20017,Riverview Literacy Pilot,Imagine Math,Supplemental Math,2025-11-01,39,2001,16141,52,Pilot,District-wide,name_school,ProductTelemetry,GC0002
+PU-20018,ORG-20018,Riverview Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,171,4882,3296,94,Live,Single School,none,ProductTelemetry,GC0002
+PU-20019,ORG-20019,Oak Valley Math Program,Imagine Learning PD,Professional Learning,2025-11-01,112,3351,14318,76,Live,Selected Schools,email,ProductTelemetry,GC0003
+PU-20020,ORG-20020,Oak Valley Credit Recovery,Twig Science,Science,2025-12-01,76,491,17346,33,Live,District-wide,name_school,ProductTelemetry,GC0003
+PU-20021,ORG-20021,Oak Valley Credit Recovery,Twig Science,Science,2025-11-01,149,4486,5740,68,Sandbox,District-wide,none,ProductTelemetry,GC0003
+PU-20022,ORG-20022,Oak Valley Credit Recovery,Imagine Learning PD,Professional Learning,2025-10-01,101,1582,11586,96,Live,Single School,name_school,ProductTelemetry,GC0003
+PU-20023,ORG-20023,Pine Hills ISD,Imagine Learning PD,Professional Learning,2025-10-01,149,5286,20147,29,Live,Selected Schools,email,ProductTelemetry,GC0004
+PU-20024,ORG-20024,Pine Hills ISD,Imagine Learning PD,Professional Learning,2025-12-01,32,2419,215,58,Sandbox,Selected Schools,email,ProductTelemetry,GC0004
+PU-20025,ORG-20025,Pine Hills ISD,Twig Science,Science,2025-10-01,105,406,5169,46,Training,District-wide,none,ProductTelemetry,GC0004
+PU-20026,ORG-20026,Pine Hills ISD,Twig Science,Science,2025-11-01,111,4713,20579,67,Live,Single School,none,ProductTelemetry,GC0004
+PU-20027,ORG-20027,Pine Hills Literacy Pilot,Courseware,Core Courseware,2025-11-01,99,2318,6269,90,Live,Single School,email,ProductTelemetry,GC0004
+PU-20028,ORG-20028,PINE_HILLS_LITERACY_PILOT,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,60,617,20952,42,Live,District-wide,name_school,ProductTelemetry,GC0004
+PU-20029,ORG-20029,PINE_HILLS_LITERACY_PILOT,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,86,1411,8464,78,Live,Single School,name_school,ProductTelemetry,GC0004
+PU-20030,ORG-20030,Pine Hills Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,54,748,18238,91,Live,District-wide,none,ProductTelemetry,GC0004
+PU-20031,ORG-20031,Pine Hills Math Program,Twig Science,Science,2025-11-01,31,1913,1306,77,Live,District-wide,none,ProductTelemetry,GC0004
+PU-20032,ORG-20032,Maple Grove Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,148,156,5064,71,Live,District-wide,name_school,ProductTelemetry,GC0005
+PU-20033,ORG-20033,Maple Grove Literacy Pilot,StudySync,Core ELA,2025-10-01,42,2430,16627,36,Live,District-wide,none,ProductTelemetry,GC0005
+PU-20034,ORG-20034,MAPLE_GROVE_LITERACY_PILOT,StudySync,Core ELA,2025-12-01,115,247,14495,36,Live,Single School,none,ProductTelemetry,GC0005
+PU-20035,ORG-20035,Maple Grove Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,107,4283,17567,30,Training,Single School,email,ProductTelemetry,GC0005
+PU-20036,ORG-20036,Maple Grove Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,85,3074,1319,46,Live,Single School,email,ProductTelemetry,GC0005
+PU-20037,ORG-20037,Maple Grove Math Program,StudySync,Core ELA,2025-11-01,102,4684,3980,56,Sandbox,District-wide,none,ProductTelemetry,GC0005
+PU-20038,ORG-20038,Maple Grove ISD,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,160,3208,14794,58,Sandbox,Selected Schools,none,ProductTelemetry,GC0005
+PU-20039,ORG-20039,Maple Grove ISD,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,165,3767,15760,47,Pilot,Single School,name_school,ProductTelemetry,GC0005
+PU-20040,ORG-20040,Cedar Ridge Literacy Pilot,Courseware,Core Courseware,2025-11-01,39,388,15131,80,Sandbox,Single School,email,ProductTelemetry,GC0006
+PU-20041,ORG-20041,Cedar Ridge Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,109,3813,14881,84,Pilot,Selected Schools,name_school,ProductTelemetry,GC0006
+PU-20042,ORG-20042,CEDAR_RIDGE_CREDIT_RECOVERY,Courseware,Core Courseware,2025-11-01,55,2055,7169,52,Training,District-wide,none,ProductTelemetry,GC0006
+PU-20043,ORG-20043,Cedar Ridge Credit Recovery,Courseware,Core Courseware,2025-12-01,161,3017,15243,80,Live,Single School,name_school,ProductTelemetry,GC0006
+PU-20044,ORG-20044,Springfield School District,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,43,5443,12652,94,Pilot,District-wide,name_school,ProductTelemetry,GC0007
+PU-20045,ORG-20045,Springfield School District,StudySync,Core ELA,2025-12-01,148,1451,9016,47,Sandbox,Selected Schools,none,ProductTelemetry,GC0007
+PU-20046,ORG-20046,Springfield Math Program,StudySync,Core ELA,2025-11-01,36,4026,10421,95,Sandbox,Single School,email,ProductTelemetry,GC0007
+PU-20047,ORG-20047,Springfield Math Program,StudySync,Core ELA,2025-12-01,19,742,763,29,Live,Selected Schools,email,ProductTelemetry,GC0007
+PU-20048,ORG-20048,Springfield Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,19,3013,20482,68,Training,Selected Schools,name_school,ProductTelemetry,GC0007
+PU-20049,ORG-20049,Springfield Credit Recovery,StudySync,Core ELA,2025-12-01,28,4642,5296,47,Live,Selected Schools,email,ProductTelemetry,GC0007
+PU-20050,ORG-20050,Springfield Credit Recovery,StudySync,Core ELA,2025-10-01,161,3396,5246,88,Sandbox,Selected Schools,none,ProductTelemetry,GC0007
+PU-20051,ORG-20051,Lakeview School District,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,95,3652,19225,51,Pilot,District-wide,name_school,ProductTelemetry,GC0008
+PU-20052,ORG-20052,Lakeview School District,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,148,2856,11193,38,Live,District-wide,email,ProductTelemetry,GC0008
+PU-20053,ORG-20053,Lakeview School District,Imagine Math,Supplemental Math,2025-12-01,103,1264,3696,53,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0008
+PU-20054,ORG-20054,Lakeview Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,96,2110,6352,93,Live,Single School,email,ProductTelemetry,GC0008
+PU-20055,ORG-20055,Lakeview Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,45,466,21339,58,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0008
+PU-20056,ORG-20056,Lakeview Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,171,3792,21667,38,Live,Single School,email,ProductTelemetry,GC0008
+PU-20057,ORG-20057,LAKEVIEW_MATH_PROGRAM,Imagine Math,Supplemental Math,2025-12-01,7,2519,12533,53,Pilot,Selected Schools,name_school,ProductTelemetry,GC0008
+PU-20058,ORG-20058,Northfield Math Program,Courseware,Core Courseware,2025-12-01,128,2347,8798,38,Pilot,Single School,email,ProductTelemetry,GC0009
+PU-20059,ORG-20059,Northfield Math Program,Courseware,Core Courseware,2025-11-01,84,4208,3779,30,Live,District-wide,email,ProductTelemetry,GC0009
+PU-20060,ORG-20060,Northfield Math Program,Imagine Learning PD,Professional Learning,2025-10-01,42,4725,7824,39,Live,District-wide,none,ProductTelemetry,GC0009
+PU-20061,ORG-20061,Northfield Credit Recovery,Courseware,Core Courseware,2025-10-01,120,5209,10902,41,Training,District-wide,email,ProductTelemetry,GC0009
+PU-20062,ORG-20062,Northfield Literacy Pilot,Imagine Learning PD,Professional Learning,2025-10-01,3,3586,7697,54,Live,Single School,email,ProductTelemetry,GC0009
+PU-20063,ORG-20063,Westbrook Credit Recovery,Twig Science,Science,2025-12-01,132,91,2666,50,Live,Selected Schools,email,ProductTelemetry,GC0010
+PU-20064,ORG-20064,Westbrook Credit Recovery,Twig Science,Science,2025-10-01,150,1591,4123,37,Live,District-wide,name_school,ProductTelemetry,GC0010
+PU-20065,ORG-20065,Westbrook Math Program,Courseware,Core Courseware,2025-12-01,132,5287,9412,55,Pilot,Selected Schools,name_school,ProductTelemetry,GC0010
+PU-20066,ORG-20066,Westbrook Math Program,Courseware,Core Courseware,2025-11-01,138,97,21517,60,Live,District-wide,email,ProductTelemetry,GC0010
+PU-20067,ORG-20067,Westbrook Literacy Pilot,Courseware,Core Courseware,2025-11-01,113,694,14672,29,Sandbox,Single School,email,ProductTelemetry,GC0010
+PU-20068,ORG-20068,Westbrook Literacy Pilot,Courseware,Core Courseware,2025-10-01,95,5000,2218,61,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0010
+PU-20069,ORG-20069,Easton Math Program,Imagine Learning PD,Professional Learning,2025-10-01,107,3848,15187,69,Pilot,Selected Schools,name_school,ProductTelemetry,GC0011
+PU-20070,ORG-20070,Easton Credit Recovery,Imagine Learning PD,Professional Learning,2025-11-01,84,3164,20775,47,Pilot,Selected Schools,email,ProductTelemetry,GC0011
+PU-20071,ORG-20071,Easton Credit Recovery,Imagine Learning PD,Professional Learning,2025-10-01,172,1455,5009,51,Live,District-wide,email,ProductTelemetry,GC0011
+PU-20072,ORG-20072,Easton Credit Recovery,Courseware,Core Courseware,2025-11-01,53,217,16356,78,Live,Selected Schools,none,ProductTelemetry,GC0011
+PU-20073,ORG-20073,Easton Credit Recovery,Courseware,Core Courseware,2025-10-01,51,4025,19944,91,Pilot,Selected Schools,email,ProductTelemetry,GC0011
+PU-20074,ORG-20074,Easton Literacy Pilot,Courseware,Core Courseware,2025-10-01,125,5019,9540,46,Live,Single School,name_school,ProductTelemetry,GC0011
+PU-20075,ORG-20075,Easton Literacy Pilot,Courseware,Core Courseware,2025-12-01,109,4058,484,67,Sandbox,District-wide,name_school,ProductTelemetry,GC0011
+PU-20076,ORG-20076,Easton Literacy Pilot,Imagine Learning PD,Professional Learning,2025-12-01,156,1100,17415,64,Live,Single School,name_school,ProductTelemetry,GC0011
+PU-20077,ORG-20077,Easton Literacy Pilot,Imagine Learning PD,Professional Learning,2025-11-01,35,3067,18584,88,Live,District-wide,name_school,ProductTelemetry,GC0011
+PU-20078,ORG-20078,Fairview Credit Recovery,Twig Science,Science,2025-12-01,85,5222,18812,57,Sandbox,Single School,none,ProductTelemetry,GC0012
+PU-20079,ORG-20079,Fairview Credit Recovery,Twig Science,Science,2025-10-01,66,4042,18518,88,Live,Selected Schools,none,ProductTelemetry,GC0012
+PU-20080,ORG-20080,Fairview Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,162,2674,2724,95,Pilot,Selected Schools,none,ProductTelemetry,GC0012
+PU-20081,ORG-20081,Fairview Literacy Pilot,StudySync,Core ELA,2025-10-01,96,523,15583,59,Live,Single School,email,ProductTelemetry,GC0012
+PU-20082,ORG-20082,Fairview Literacy Pilot,StudySync,Core ELA,2025-11-01,161,3993,18471,46,Live,Selected Schools,name_school,ProductTelemetry,GC0012
+PU-20083,ORG-20083,Fairview Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,168,1581,19641,43,Live,Single School,email,ProductTelemetry,GC0012
+PU-20084,ORG-20084,Fairview Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,52,4328,16579,64,Live,Selected Schools,name_school,ProductTelemetry,GC0012
+PU-20085,ORG-20085,Fairview Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,10,5378,21162,81,Live,Selected Schools,name_school,ProductTelemetry,GC0012
+PU-20086,ORG-20086,Fairview Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,40,3699,20569,76,Training,District-wide,none,ProductTelemetry,GC0012
+PU-20087,ORG-20087,BROOKSIDE MATH PROGRAM,Courseware,Core Courseware,2025-10-01,144,3948,12145,46,Live,Single School,name_school,ProductTelemetry,GC0013
+PU-20088,ORG-20088,Brookside Math Program,Courseware,Core Courseware,2025-12-01,163,3597,21238,69,Pilot,District-wide,name_school,ProductTelemetry,GC0013
+PU-20089,ORG-20089,Brookside Math Program,Imagine Learning PD,Professional Learning,2025-12-01,147,4697,1350,93,Live,Single School,none,ProductTelemetry,GC0013
+PU-20090,ORG-20090,Brookside ISD,Imagine Math,Supplemental Math,2025-10-01,136,1378,7760,39,Live,Selected Schools,name_school,ProductTelemetry,GC0013
+PU-20091,ORG-20091,Brookside Credit Recovery,Imagine Math,Supplemental Math,2025-10-01,18,4338,13703,78,Sandbox,District-wide,none,ProductTelemetry,GC0013
+PU-20092,ORG-20092,Brookside Credit Recovery,Imagine Math,Supplemental Math,2025-11-01,56,3714,5272,42,Live,District-wide,email,ProductTelemetry,GC0013
+PU-20093,ORG-20093,Greenwood ISD,Twig Science,Science,2025-10-01,62,1290,4571,92,Live,Selected Schools,name_school,ProductTelemetry,GC0014
+PU-20094,ORG-20094,Greenwood Math Program,Imagine Learning PD,Professional Learning,2025-10-01,13,1679,19382,32,Live,District-wide,none,ProductTelemetry,GC0014
+PU-20095,ORG-20095,Greenwood Math Program,Imagine Learning PD,Professional Learning,2025-11-01,92,700,19117,75,Training,District-wide,name_school,ProductTelemetry,GC0014
+PU-20096,ORG-20096,Greenwood Math Program,Twig Science,Science,2025-10-01,163,5141,9281,62,Training,Selected Schools,none,ProductTelemetry,GC0014
+PU-20097,ORG-20097,Hillcrest Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,169,4232,13353,54,Live,District-wide,email,ProductTelemetry,GC0015
+PU-20098,ORG-20098,Hillcrest Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,30,1724,6618,66,Sandbox,Single School,email,ProductTelemetry,GC0015
+PU-20099,ORG-20099,HILLCREST_CREDIT_RECOVERY,Imagine Learning PD,Professional Learning,2025-11-01,61,4683,8328,55,Training,District-wide,name_school,ProductTelemetry,GC0015
+PU-20100,ORG-20100,Hillcrest Credit Recovery,Imagine Learning PD,Professional Learning,2025-12-01,88,1730,16430,77,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0015
+PU-20101,ORG-20101,Hillcrest Literacy Pilot,Courseware,Core Courseware,2025-11-01,173,2075,2605,41,Live,District-wide,none,ProductTelemetry,GC0015
+PU-20102,ORG-20102,Hillcrest Literacy Pilot,Courseware,Core Courseware,2025-12-01,73,40,10003,84,Pilot,Single School,none,ProductTelemetry,GC0015
+PU-20103,ORG-20103,Hillcrest Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,168,1602,13926,75,Live,Selected Schools,name_school,ProductTelemetry,GC0015
+PU-20104,ORG-20104,Hillcrest Math Program,Imagine Learning PD,Professional Learning,2025-10-01,70,3783,6766,43,Sandbox,Single School,none,ProductTelemetry,GC0015
+PU-20105,ORG-20105,Sunnydale ISD,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,125,558,5083,55,Live,Selected Schools,none,ProductTelemetry,GC0016
+PU-20106,ORG-20106,Sunnydale ISD,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,12,4114,14231,87,Pilot,District-wide,email,ProductTelemetry,GC0016
+PU-20107,ORG-20107,Sunnydale Literacy Pilot,StudySync,Core ELA,2025-12-01,54,2229,859,62,Live,District-wide,none,ProductTelemetry,GC0016
+PU-20108,ORG-20108,Sunnydale Literacy Pilot,StudySync,Core ELA,2025-11-01,3,5366,1505,83,Training,Single School,name_school,ProductTelemetry,GC0016
+PU-20109,ORG-20109,Redwood Math Program,Imagine Math,Supplemental Math,2025-12-01,141,1233,10569,72,Pilot,District-wide,none,ProductTelemetry,GC0017
+PU-20110,ORG-20110,Redwood Math Program,Imagine Math,Supplemental Math,2025-11-01,122,2886,9642,46,Sandbox,Selected Schools,none,ProductTelemetry,GC0017
+PU-20111,ORG-20111,REDWOOD MATH PROGRAM,Imagine Learning PD,Professional Learning,2025-11-01,38,2766,11812,87,Pilot,Single School,none,ProductTelemetry,GC0017
+PU-20112,ORG-20112,Redwood Math Program,Imagine Learning PD,Professional Learning,2025-12-01,90,4188,20542,46,Training,Selected Schools,none,ProductTelemetry,GC0017
+PU-20113,ORG-20113,Redwood School District,Imagine Learning PD,Professional Learning,2025-12-01,110,956,16489,33,Training,District-wide,none,ProductTelemetry,GC0017
+PU-20114,ORG-20114,Redwood Credit Recovery,Imagine Math,Supplemental Math,2025-12-01,88,4047,3891,69,Sandbox,Selected Schools,none,ProductTelemetry,GC0017
+PU-20115,ORG-20115,Silver Lake Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,132,923,16286,46,Live,Single School,name_school,ProductTelemetry,GC0018
+PU-20116,ORG-20116,Silver Lake Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,106,2521,6916,40,Live,District-wide,email,ProductTelemetry,GC0018
+PU-20117,ORG-20117,SILVER_LAKE_MATH_PROGRAM,StudySync,Core ELA,2025-10-01,21,589,8364,85,Live,Selected Schools,name_school,ProductTelemetry,GC0018
+PU-20118,ORG-20118,Silver Lake ISD,Twig Science,Science,2025-11-01,112,5112,19382,89,Sandbox,Single School,none,ProductTelemetry,GC0018
+PU-20119,ORG-20119,SILVER LAKE ISD,Twig Science,Science,2025-12-01,11,4135,10533,72,Live,Selected Schools,none,ProductTelemetry,GC0018
+PU-20120,ORG-20120,Silver Lake ISD,StudySync,Core ELA,2025-11-01,153,5120,11563,90,Live,Selected Schools,email,ProductTelemetry,GC0018
+PU-20121,ORG-20121,Silver Lake ISD,StudySync,Core ELA,2025-10-01,25,3930,8322,39,Live,District-wide,none,ProductTelemetry,GC0018
+PU-20122,ORG-20122,Meadow Park Credit Recovery,StudySync,Core ELA,2025-12-01,108,817,397,44,Training,Single School,email,ProductTelemetry,GC0019
+PU-20123,ORG-20123,Meadow Park Credit Recovery,StudySync,Core ELA,2025-11-01,116,606,16511,51,Pilot,Selected Schools,none,ProductTelemetry,GC0019
+PU-20124,ORG-20124,Meadow Park Math Program,Imagine Learning PD,Professional Learning,2025-12-01,47,3740,9673,48,Live,Selected Schools,none,ProductTelemetry,GC0019
+PU-20125,ORG-20125,Meadow Park Math Program,Imagine Math,Supplemental Math,2025-11-01,22,1671,15858,90,Live,District-wide,name_school,ProductTelemetry,GC0019
+PU-20126,ORG-20126,Meadow Park Math Program,Imagine Math,Supplemental Math,2025-10-01,170,1486,12404,33,Live,District-wide,email,ProductTelemetry,GC0019
+PU-20127,ORG-20127,Meadow Park Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,36,4997,18500,31,Pilot,Selected Schools,name_school,ProductTelemetry,GC0019
+PU-20128,ORG-20128,Meadow Park Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,113,208,17268,75,Sandbox,Single School,email,ProductTelemetry,GC0019
+PU-20129,ORG-20129,Meadow Park Literacy Pilot,Imagine Learning PD,Professional Learning,2025-11-01,145,3499,2253,36,Live,Selected Schools,none,ProductTelemetry,GC0019
+PU-20130,ORG-20130,Meadow Park Literacy Pilot,Imagine Learning PD,Professional Learning,2025-10-01,105,4194,8030,45,Live,District-wide,email,ProductTelemetry,GC0019
+PU-20131,ORG-20131,CANYON CREEK LITERACY PILOT,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,32,4624,1362,57,Live,District-wide,name_school,ProductTelemetry,GC0020
+PU-20132,ORG-20132,Canyon Creek Literacy Pilot,Twig Science,Science,2025-12-01,5,3086,2025,93,Live,District-wide,none,ProductTelemetry,GC0020
+PU-20133,ORG-20133,Canyon Creek Math Program,Twig Science,Science,2025-11-01,125,1789,6242,88,Pilot,Selected Schools,email,ProductTelemetry,GC0020
+PU-20134,ORG-20134,Canyon Creek Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,165,5176,17800,37,Live,Single School,email,ProductTelemetry,GC0020
+PU-20135,ORG-20135,Riverside Credit Recovery,StudySync,Core ELA,2025-11-01,13,2665,12991,31,Live,Single School,none,ProductTelemetry,GC0021
+PU-20136,ORG-20136,Riverside Credit Recovery,StudySync,Core ELA,2025-10-01,103,3724,19931,56,Sandbox,District-wide,name_school,ProductTelemetry,GC0021
+PU-20137,ORG-20137,Riverside Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,136,2396,16350,37,Pilot,Single School,email,ProductTelemetry,GC0021
+PU-20138,ORG-20138,Riverside Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,146,735,4829,33,Live,Selected Schools,name_school,ProductTelemetry,GC0021
+PU-20139,ORG-20139,Riverside School District,Courseware,Core Courseware,2025-11-01,123,4229,16043,77,Sandbox,Single School,none,ProductTelemetry,GC0021
+PU-20140,ORG-20140,Riverside School District,Courseware,Core Courseware,2025-12-01,177,4997,19699,45,Pilot,Selected Schools,email,ProductTelemetry,GC0021
+PU-20141,ORG-20141,Riverside School District,StudySync,Core ELA,2025-11-01,71,2262,9528,93,Live,Selected Schools,name_school,ProductTelemetry,GC0021
+PU-20142,ORG-20142,Riverside School District,StudySync,Core ELA,2025-10-01,147,1606,11480,67,Live,Selected Schools,none,ProductTelemetry,GC0021
+PU-20143,ORG-20143,Summit Credit Recovery,Courseware,Core Courseware,2025-12-01,121,4805,17103,50,Live,Single School,none,ProductTelemetry,GC0022
+PU-20144,ORG-20144,Summit Credit Recovery,Courseware,Core Courseware,2025-11-01,166,2063,6801,71,Live,Single School,name_school,ProductTelemetry,GC0022
+PU-20145,ORG-20145,Summit Credit Recovery,Twig Science,Science,2025-10-01,72,4694,15103,96,Live,District-wide,name_school,ProductTelemetry,GC0022
+PU-20146,ORG-20146,Summit Credit Recovery,Twig Science,Science,2025-11-01,67,1059,12399,78,Live,District-wide,email,ProductTelemetry,GC0022
+PU-20147,ORG-20147,Summit Math Program,Imagine Learning PD,Professional Learning,2025-12-01,112,5185,16101,41,Pilot,Selected Schools,name_school,ProductTelemetry,GC0022
+PU-20148,ORG-20148,Summit Math Program,Imagine Learning PD,Professional Learning,2025-11-01,38,1523,4087,74,Live,District-wide,email,ProductTelemetry,GC0022
+PU-20149,ORG-20149,Summit Math Program,Courseware,Core Courseware,2025-10-01,178,3507,6773,33,Sandbox,Single School,email,ProductTelemetry,GC0022
+PU-20150,ORG-20150,SUMMIT MATH PROGRAM,Courseware,Core Courseware,2025-11-01,162,2310,9372,83,Live,District-wide,email,ProductTelemetry,GC0022
+PU-20151,ORG-20151,Summit School District,Twig Science,Science,2025-10-01,84,1841,5690,77,Live,Single School,none,ProductTelemetry,GC0022
+PU-20152,ORG-20152,SUMMIT_SCHOOL_DISTRICT,StudySync,Core ELA,2025-10-01,160,2249,15993,43,Live,District-wide,name_school,ProductTelemetry,GC0022
+PU-20153,ORG-20153,Heritage Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,151,4952,12731,85,Live,District-wide,email,ProductTelemetry,GC0023
+PU-20154,ORG-20154,Heritage Credit Recovery,StudySync,Core ELA,2025-11-01,116,1271,12658,76,Live,Single School,name_school,ProductTelemetry,GC0023
+PU-20155,ORG-20155,Heritage School District,StudySync,Core ELA,2025-12-01,130,4197,20233,77,Pilot,Single School,email,ProductTelemetry,GC0023
+PU-20156,ORG-20156,Heritage School District,StudySync,Core ELA,2025-11-01,22,4963,12435,49,Pilot,District-wide,email,ProductTelemetry,GC0023
+PU-20157,ORG-20157,Franklin Math Program,Imagine Learning PD,Professional Learning,2025-12-01,65,5327,2179,85,Sandbox,District-wide,name_school,ProductTelemetry,GC0024
+PU-20158,ORG-20158,FRANKLIN MATH PROGRAM,StudySync,Core ELA,2025-11-01,117,3514,2991,83,Live,Selected Schools,email,ProductTelemetry,GC0024
+PU-20159,ORG-20159,Franklin Math Program,StudySync,Core ELA,2025-12-01,69,3960,5240,49,Live,Single School,none,ProductTelemetry,GC0024
+PU-20160,ORG-20160,Franklin ISD,Courseware,Core Courseware,2025-11-01,26,1340,3087,34,Live,District-wide,none,ProductTelemetry,GC0024
+PU-20161,ORG-20161,Franklin ISD,Courseware,Core Courseware,2025-10-01,118,1260,9666,46,Pilot,Selected Schools,email,ProductTelemetry,GC0024
+PU-20162,ORG-20162,Jefferson ISD,StudySync,Core ELA,2025-11-01,111,1415,7801,30,Live,Single School,none,ProductTelemetry,GC0025
+PU-20163,ORG-20163,Jefferson Literacy Pilot,StudySync,Core ELA,2025-11-01,48,4414,4127,87,Training,Selected Schools,none,ProductTelemetry,GC0025
+PU-20164,ORG-20164,Lincoln Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,17,3266,4482,49,Live,Selected Schools,email,ProductTelemetry,GC0026
+PU-20165,ORG-20165,Lincoln Credit Recovery,Twig Science,Science,2025-10-01,97,4741,9211,87,Live,Selected Schools,email,ProductTelemetry,GC0026
+PU-20166,ORG-20166,Lincoln School District,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,13,589,12427,45,Live,Selected Schools,name_school,ProductTelemetry,GC0026
+PU-20167,ORG-20167,Roosevelt Math Program,Courseware,Core Courseware,2025-10-01,156,3050,9839,42,Training,Selected Schools,name_school,ProductTelemetry,GC0027
+PU-20168,ORG-20168,Roosevelt Math Program,Courseware,Core Courseware,2025-12-01,98,235,10367,90,Live,District-wide,email,ProductTelemetry,GC0027
+PU-20169,ORG-20169,Roosevelt Math Program,StudySync,Core ELA,2025-12-01,154,1185,21328,66,Pilot,District-wide,email,ProductTelemetry,GC0027
+PU-20170,ORG-20170,Roosevelt Math Program,StudySync,Core ELA,2025-10-01,115,2111,16010,79,Pilot,Single School,name_school,ProductTelemetry,GC0027
+PU-20171,ORG-20171,Roosevelt Literacy Pilot,Imagine Learning PD,Professional Learning,2025-11-01,65,1232,21032,40,Live,Selected Schools,email,ProductTelemetry,GC0027
+PU-20172,ORG-20172,Roosevelt Literacy Pilot,Courseware,Core Courseware,2025-11-01,113,679,19663,65,Live,Single School,none,ProductTelemetry,GC0027
+PU-20173,ORG-20173,Roosevelt Literacy Pilot,Courseware,Core Courseware,2025-12-01,125,595,11610,70,Live,Selected Schools,none,ProductTelemetry,GC0027
+PU-20174,ORG-20174,Roosevelt Credit Recovery,StudySync,Core ELA,2025-10-01,146,2248,2022,31,Training,District-wide,none,ProductTelemetry,GC0027
+PU-20175,ORG-20175,Adams Literacy Pilot,StudySync,Core ELA,2025-11-01,113,4250,1244,92,Live,District-wide,name_school,ProductTelemetry,GC0028
+PU-20176,ORG-20176,Adams Literacy Pilot,Courseware,Core Courseware,2025-12-01,165,2228,4777,46,Live,District-wide,none,ProductTelemetry,GC0028
+PU-20177,ORG-20177,Adams Literacy Pilot,Courseware,Core Courseware,2025-11-01,103,1844,1432,33,Live,District-wide,email,ProductTelemetry,GC0028
+PU-20178,ORG-20178,Adams Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,41,3537,17985,60,Live,District-wide,email,ProductTelemetry,GC0028
+PU-20179,ORG-20179,Adams Math Program,Courseware,Core Courseware,2025-12-01,59,3876,5486,91,Live,District-wide,none,ProductTelemetry,GC0028
+PU-20180,ORG-20180,Adams Math Program,Courseware,Core Courseware,2025-11-01,90,5092,12253,88,Live,Single School,none,ProductTelemetry,GC0028
+PU-20181,ORG-20181,Washington Math Program,Courseware,Core Courseware,2025-11-01,87,4208,9909,91,Sandbox,Selected Schools,email,ProductTelemetry,GC0029
+PU-20182,ORG-20182,Washington Literacy Pilot,Twig Science,Science,2025-12-01,59,2077,15275,47,Live,Single School,none,ProductTelemetry,GC0029
+PU-20183,ORG-20183,Washington Literacy Pilot,Imagine Learning PD,Professional Learning,2025-11-01,87,2490,2718,59,Live,Single School,name_school,ProductTelemetry,GC0029
+PU-20184,ORG-20184,Washington Literacy Pilot,Imagine Learning PD,Professional Learning,2025-12-01,172,583,10347,35,Pilot,Selected Schools,name_school,ProductTelemetry,GC0029
+PU-20185,ORG-20185,Madison Math Program,Imagine Learning PD,Professional Learning,2025-11-01,128,3286,19341,55,Pilot,Selected Schools,email,ProductTelemetry,GC0030
+PU-20186,ORG-20186,Madison Credit Recovery,StudySync,Core ELA,2025-10-01,24,864,2750,38,Sandbox,District-wide,email,ProductTelemetry,GC0030
+PU-20187,ORG-20187,Madison Credit Recovery,StudySync,Core ELA,2025-11-01,129,796,21292,47,Live,District-wide,name_school,ProductTelemetry,GC0030
+PU-20188,ORG-20188,MADISON CREDIT RECOVERY,Imagine Learning PD,Professional Learning,2025-10-01,176,2966,21885,39,Live,District-wide,name_school,ProductTelemetry,GC0030
+PU-20189,ORG-20189,Granite School District,Imagine Learning PD,Professional Learning,2025-10-01,160,4349,2408,64,Live,District-wide,name_school,ProductTelemetry,GC0031
+PU-20190,ORG-20190,Granite School District,Imagine Learning PD,Professional Learning,2025-11-01,69,1329,21145,93,Live,Selected Schools,none,ProductTelemetry,GC0031
+PU-20191,ORG-20191,Granite Literacy Pilot,Twig Science,Science,2025-10-01,173,1373,15548,85,Live,Single School,name_school,ProductTelemetry,GC0031
+PU-20192,ORG-20192,Granite Literacy Pilot,Twig Science,Science,2025-11-01,105,3464,7764,67,Sandbox,Selected Schools,email,ProductTelemetry,GC0031
+PU-20193,ORG-20193,Blue Ridge ISD,StudySync,Core ELA,2025-10-01,35,1263,2466,64,Live,Single School,name_school,ProductTelemetry,GC0032
+PU-20194,ORG-20194,Blue Ridge Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,174,4562,19316,66,Sandbox,District-wide,name_school,ProductTelemetry,GC0032
+PU-20195,ORG-20195,Blue Ridge Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,96,1322,12865,52,Live,District-wide,email,ProductTelemetry,GC0032
+PU-20196,ORG-20196,Prairie Literacy Pilot,StudySync,Core ELA,2025-11-01,111,5433,10374,51,Live,District-wide,name_school,ProductTelemetry,GC0033
+PU-20197,ORG-20197,Prairie Literacy Pilot,Courseware,Core Courseware,2025-10-01,88,1253,1437,45,Live,Single School,none,ProductTelemetry,GC0033
+PU-20198,ORG-20198,Prairie Literacy Pilot,Courseware,Core Courseware,2025-11-01,74,1696,5975,81,Live,District-wide,none,ProductTelemetry,GC0033
+PU-20199,ORG-20199,Prairie Credit Recovery,StudySync,Core ELA,2025-10-01,131,1692,6976,46,Live,Single School,none,ProductTelemetry,GC0033
+PU-20200,ORG-20200,Prairie Credit Recovery,StudySync,Core ELA,2025-12-01,132,2280,17455,78,Training,Single School,none,ProductTelemetry,GC0033
+PU-20201,ORG-20201,Prairie Credit Recovery,Courseware,Core Courseware,2025-11-01,13,3766,19425,65,Training,Selected Schools,email,ProductTelemetry,GC0033
+PU-20202,ORG-20202,Harbor Literacy Pilot,StudySync,Core ELA,2025-12-01,79,5381,1328,57,Sandbox,Single School,name_school,ProductTelemetry,GC0034
+PU-20203,ORG-20203,Harbor Literacy Pilot,StudySync,Core ELA,2025-10-01,4,4387,7571,33,Live,Selected Schools,email,ProductTelemetry,GC0034
+PU-20204,ORG-20204,Harbor Literacy Pilot,Courseware,Core Courseware,2025-10-01,73,4424,17969,81,Live,Single School,none,ProductTelemetry,GC0034
+PU-20205,ORG-20205,Harbor Literacy Pilot,Courseware,Core Courseware,2025-11-01,166,2548,19728,34,Pilot,Single School,email,ProductTelemetry,GC0034
+PU-20206,ORG-20206,HARBOR_CREDIT_RECOVERY,Courseware,Core Courseware,2025-12-01,54,156,14133,38,Live,Single School,email,ProductTelemetry,GC0034
+PU-20207,ORG-20207,Harbor Credit Recovery,Courseware,Core Courseware,2025-11-01,8,854,4315,61,Live,Single School,name_school,ProductTelemetry,GC0034
+PU-20208,ORG-20208,Harbor Credit Recovery,StudySync,Core ELA,2025-11-01,55,1382,11903,40,Live,Selected Schools,none,ProductTelemetry,GC0034
+PU-20209,ORG-20209,Harbor Credit Recovery,StudySync,Core ELA,2025-10-01,166,601,2557,47,Live,District-wide,email,ProductTelemetry,GC0034
+PU-20210,ORG-20210,Cypress Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,74,722,11733,39,Live,District-wide,name_school,ProductTelemetry,GC0035
+PU-20211,ORG-20211,Cypress Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,25,559,5377,46,Live,District-wide,none,ProductTelemetry,GC0035
+PU-20212,ORG-20212,SIERRA_ISD,Twig Science,Science,2025-10-01,126,4843,2252,57,Sandbox,Selected Schools,none,ProductTelemetry,GC0036
+PU-20213,ORG-20213,Sierra ISD,Twig Science,Science,2025-12-01,102,2679,21114,75,Live,District-wide,email,ProductTelemetry,GC0036
+PU-20214,ORG-20214,Sierra ISD,StudySync,Core ELA,2025-10-01,7,5484,12267,71,Pilot,Single School,email,ProductTelemetry,GC0036
+PU-20215,ORG-20215,Sierra ISD,StudySync,Core ELA,2025-12-01,121,738,4453,40,Training,Single School,none,ProductTelemetry,GC0036
+PU-20216,ORG-20216,Sierra Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,166,2637,8122,67,Training,Selected Schools,name_school,ProductTelemetry,GC0036
+PU-20217,ORG-20217,Sierra Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,17,2499,21844,45,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0036
+PU-20218,ORG-20218,Sierra Math Program,StudySync,Core ELA,2025-11-01,96,655,16387,67,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0036
+PU-20219,ORG-20219,SIERRA MATH PROGRAM,StudySync,Core ELA,2025-10-01,86,1553,3109,45,Training,Single School,none,ProductTelemetry,GC0036
+PU-20220,ORG-20220,Frontier Math Program,Courseware,Core Courseware,2025-12-01,62,442,9120,67,Training,Single School,email,ProductTelemetry,GC0037
+PU-20221,ORG-20221,FRONTIER MATH PROGRAM,Imagine Math,Supplemental Math,2025-12-01,13,2595,13828,39,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0037
+PU-20222,ORG-20222,Frontier Math Program,Imagine Math,Supplemental Math,2025-11-01,38,603,3150,28,Live,Selected Schools,email,ProductTelemetry,GC0037
+PU-20223,ORG-20223,FRONTIER_CREDIT_RECOVERY,Imagine Math,Supplemental Math,2025-11-01,66,711,11006,49,Live,Single School,none,ProductTelemetry,GC0037
+PU-20224,ORG-20224,Frontier Credit Recovery,Courseware,Core Courseware,2025-12-01,123,1829,4210,49,Sandbox,Single School,none,ProductTelemetry,GC0037
+PU-20225,ORG-20225,Liberty Credit Recovery,Imagine Math,Supplemental Math,2025-12-01,52,4363,9651,72,Live,Selected Schools,none,ProductTelemetry,GC0038
+PU-20226,ORG-20226,Liberty Literacy Pilot,Imagine Math,Supplemental Math,2025-12-01,34,3482,8415,91,Live,District-wide,name_school,ProductTelemetry,GC0038
+PU-20227,ORG-20227,Liberty Literacy Pilot,StudySync,Core ELA,2025-12-01,35,4763,6101,43,Sandbox,District-wide,email,ProductTelemetry,GC0038
+PU-20228,ORG-20228,Liberty School District,StudySync,Core ELA,2025-12-01,178,3273,4416,55,Live,District-wide,none,ProductTelemetry,GC0038
+PU-20229,ORG-20229,MONROE_SCHOOL_DISTRICT,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,168,1049,12143,69,Pilot,Selected Schools,none,ProductTelemetry,GC0039
+PU-20230,ORG-20230,Monroe Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,51,5494,21762,59,Pilot,Selected Schools,name_school,ProductTelemetry,GC0039
+PU-20231,ORG-20231,MONROE CREDIT RECOVERY,Imagine Learning PD,Professional Learning,2025-10-01,43,543,2012,86,Training,Selected Schools,email,ProductTelemetry,GC0039
+PU-20232,ORG-20232,Monroe Credit Recovery,Imagine Learning PD,Professional Learning,2025-11-01,76,1192,9347,63,Live,Selected Schools,email,ProductTelemetry,GC0039
+PU-20233,ORG-20233,Concord Math Program,Twig Science,Science,2025-11-01,115,1133,621,58,Sandbox,Selected Schools,name_school,ProductTelemetry,GC0040
+PU-20234,ORG-20234,Concord Math Program,Twig Science,Science,2025-12-01,144,4215,21093,46,Live,Selected Schools,none,ProductTelemetry,GC0040
+PU-20235,ORG-20235,Concord Math Program,Imagine Math,Supplemental Math,2025-12-01,72,5432,16984,67,Sandbox,Selected Schools,email,ProductTelemetry,GC0040
+PU-20236,ORG-20236,Concord Math Program,Imagine Math,Supplemental Math,2025-11-01,64,2356,8320,59,Sandbox,Single School,none,ProductTelemetry,GC0040
+PU-20237,ORG-20237,Concord Literacy Pilot,StudySync,Core ELA,2025-12-01,86,4577,13813,71,Live,Selected Schools,email,ProductTelemetry,GC0040
+PU-20238,ORG-20238,CONCORD_LITERACY_PILOT,StudySync,Core ELA,2025-10-01,81,3520,8290,62,Training,District-wide,none,ProductTelemetry,GC0040
+PU-20239,ORG-20239,Concord School District,StudySync,Core ELA,2025-11-01,53,2046,10700,33,Live,Selected Schools,name_school,ProductTelemetry,GC0040
+PU-20240,ORG-20240,Concord School District,Imagine Math,Supplemental Math,2025-12-01,61,3569,18489,30,Sandbox,District-wide,email,ProductTelemetry,GC0040
+PU-20241,ORG-20241,Hamilton Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,57,1829,12212,40,Live,Selected Schools,email,ProductTelemetry,GC0041
+PU-20242,ORG-20242,Hamilton Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,107,1025,9248,85,Live,District-wide,name_school,ProductTelemetry,GC0041
+PU-20243,ORG-20243,Hamilton Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,140,5193,7963,33,Pilot,Single School,name_school,ProductTelemetry,GC0041
+PU-20244,ORG-20244,Aurora Math Program,StudySync,Core ELA,2025-11-01,94,3745,18288,49,Live,Single School,email,ProductTelemetry,GC0042
+PU-20245,ORG-20245,Aurora ISD,StudySync,Core ELA,2025-10-01,62,410,5938,53,Live,District-wide,email,ProductTelemetry,GC0042
+PU-20246,ORG-20246,AURORA_LITERACY_PILOT,Twig Science,Science,2025-10-01,55,3043,20609,66,Sandbox,Selected Schools,email,ProductTelemetry,GC0042
+PU-20247,ORG-20247,Aurora Literacy Pilot,Twig Science,Science,2025-12-01,43,3920,12449,28,Live,Selected Schools,email,ProductTelemetry,GC0042
+PU-20248,ORG-20248,Aurora Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,110,929,2839,48,Live,District-wide,email,ProductTelemetry,GC0042
+PU-20249,ORG-20249,Briarwood Math Program,StudySync,Core ELA,2025-11-01,159,3686,9208,68,Live,Single School,email,ProductTelemetry,GC0043
+PU-20250,ORG-20250,Briarwood Math Program,Imagine Math,Supplemental Math,2025-10-01,99,4426,15292,39,Training,District-wide,none,ProductTelemetry,GC0043
+PU-20251,ORG-20251,Briarwood Literacy Pilot,Imagine Math,Supplemental Math,2025-12-01,31,4628,15766,78,Sandbox,Single School,none,ProductTelemetry,GC0043
+PU-20252,ORG-20252,Highland Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,89,4341,17674,39,Live,Selected Schools,name_school,ProductTelemetry,GC0044
+PU-20253,ORG-20253,Highland ISD,Imagine Math,Supplemental Math,2025-11-01,55,1184,7285,39,Training,District-wide,none,ProductTelemetry,GC0044
+PU-20254,ORG-20254,Willow Creek Literacy Pilot,Imagine Math,Supplemental Math,2025-10-01,179,238,1054,38,Live,District-wide,none,ProductTelemetry,GC0045
+PU-20255,ORG-20255,Willow Creek Literacy Pilot,Imagine Learning PD,Professional Learning,2025-10-01,126,844,14444,96,Sandbox,Selected Schools,email,ProductTelemetry,GC0045
+PU-20256,ORG-20256,Willow Creek ISD,Imagine Learning PD,Professional Learning,2025-11-01,175,983,16575,65,Live,Selected Schools,email,ProductTelemetry,GC0045
+PU-20257,ORG-20257,Willow Creek Credit Recovery,Imagine Learning PD,Professional Learning,2025-12-01,141,3945,9470,90,Training,District-wide,email,ProductTelemetry,GC0045
+PU-20258,ORG-20258,Stonebridge Math Program,Courseware,Core Courseware,2025-10-01,3,5463,8621,59,Pilot,Selected Schools,none,ProductTelemetry,GC0046
+PU-20259,ORG-20259,Stonebridge Math Program,Courseware,Core Courseware,2025-12-01,95,4266,9073,95,Live,Selected Schools,name_school,ProductTelemetry,GC0046
+PU-20260,ORG-20260,Stonebridge Math Program,Twig Science,Science,2025-10-01,71,4231,7526,69,Live,Single School,email,ProductTelemetry,GC0046
+PU-20261,ORG-20261,Stonebridge Credit Recovery,Twig Science,Science,2025-12-01,13,5160,15453,34,Pilot,District-wide,email,ProductTelemetry,GC0046
+PU-20262,ORG-20262,Stonebridge Credit Recovery,Twig Science,Science,2025-10-01,160,4613,15134,73,Live,Single School,none,ProductTelemetry,GC0046
+PU-20263,ORG-20263,STONEBRIDGE CREDIT RECOVERY,Courseware,Core Courseware,2025-10-01,15,1042,12894,60,Training,District-wide,none,ProductTelemetry,GC0046
+PU-20264,ORG-20264,Clearwater Credit Recovery,Imagine Math,Supplemental Math,2025-11-01,51,4368,21285,36,Pilot,Selected Schools,email,ProductTelemetry,GC0047
+PU-20265,ORG-20265,CLEARWATER_CREDIT_RECOVERY,Courseware,Core Courseware,2025-12-01,105,5111,9731,49,Training,Single School,none,ProductTelemetry,GC0047
+PU-20266,ORG-20266,Clearwater Math Program,StudySync,Core ELA,2025-10-01,110,1109,12127,95,Pilot,District-wide,email,ProductTelemetry,GC0047
+PU-20267,ORG-20267,Clearwater Math Program,Imagine Math,Supplemental Math,2025-11-01,13,3236,9615,77,Live,Selected Schools,name_school,ProductTelemetry,GC0047
+PU-20268,ORG-20268,Clearwater Math Program,Imagine Math,Supplemental Math,2025-10-01,13,1568,13274,57,Sandbox,Single School,name_school,ProductTelemetry,GC0047
+PU-20269,ORG-20269,Clearwater Literacy Pilot,Imagine Math,Supplemental Math,2025-12-01,123,3130,10143,80,Live,Selected Schools,none,ProductTelemetry,GC0047
+PU-20270,ORG-20270,Clearwater Literacy Pilot,StudySync,Core ELA,2025-10-01,97,2017,18281,92,Training,District-wide,name_school,ProductTelemetry,GC0047
+PU-20271,ORG-20271,Gateway Math Program,StudySync,Core ELA,2025-10-01,56,2948,6427,95,Live,Single School,name_school,ProductTelemetry,GC0048
+PU-20272,ORG-20272,Gateway Math Program,StudySync,Core ELA,2025-12-01,34,3273,7330,46,Live,District-wide,email,ProductTelemetry,GC0048
+PU-20273,ORG-20273,Gateway Math Program,Imagine Learning PD,Professional Learning,2025-12-01,34,4499,1643,53,Live,Single School,email,ProductTelemetry,GC0048
+PU-20274,ORG-20274,Gateway Math Program,Imagine Learning PD,Professional Learning,2025-11-01,53,4075,7163,45,Pilot,Single School,name_school,ProductTelemetry,GC0048
+PU-20275,ORG-20275,Gateway School District,Imagine Learning PD,Professional Learning,2025-10-01,159,4176,16334,69,Pilot,District-wide,name_school,ProductTelemetry,GC0048
+PU-20276,ORG-20276,Gateway School District,Imagine Learning PD,Professional Learning,2025-12-01,107,4566,17245,29,Live,District-wide,email,ProductTelemetry,GC0048
+PU-20277,ORG-20277,North Star Math Program,Imagine Math,Supplemental Math,2025-10-01,88,3908,20927,91,Live,Single School,name_school,ProductTelemetry,GC0049
+PU-20278,ORG-20278,North Star Credit Recovery,Twig Science,Science,2025-12-01,103,3053,20040,72,Live,District-wide,email,ProductTelemetry,GC0049
+PU-20279,ORG-20279,Twin Oaks School District,Twig Science,Science,2025-12-01,9,4845,4624,80,Live,District-wide,none,ProductTelemetry,GC0050
+PU-20280,ORG-20280,Twin Oaks School District,Twig Science,Science,2025-11-01,158,4971,16635,46,Live,District-wide,name_school,ProductTelemetry,GC0050
+PU-20281,ORG-20281,Twin Oaks Math Program,Imagine Math,Supplemental Math,2025-10-01,12,2448,4321,94,Training,Selected Schools,none,ProductTelemetry,GC0050
+PU-20282,ORG-20282,TWIN OAKS MATH PROGRAM,Imagine Math,Supplemental Math,2025-12-01,164,214,11118,58,Pilot,Selected Schools,name_school,ProductTelemetry,GC0050
+PU-20283,ORG-20283,Twin Oaks Math Program,Imagine Learning PD,Professional Learning,2025-12-01,27,994,4280,82,Live,District-wide,email,ProductTelemetry,GC0050
+PU-20284,ORG-20284,Twin Oaks Math Program,Imagine Learning PD,Professional Learning,2025-10-01,17,4301,6717,74,Pilot,Selected Schools,none,ProductTelemetry,GC0050
+PU-20285,ORG-20285,TWIN_OAKS_CREDIT_RECOVERY,Twig Science,Science,2025-10-01,57,858,5811,55,Live,Selected Schools,name_school,ProductTelemetry,GC0050
+PU-20286,ORG-20286,TWIN OAKS CREDIT RECOVERY,Twig Science,Science,2025-11-01,133,4547,6069,83,Training,District-wide,name_school,ProductTelemetry,GC0050
+PU-20287,ORG-20287,Valley View Math Program,StudySync,Core ELA,2025-11-01,4,4363,14721,52,Live,Selected Schools,email,ProductTelemetry,GC0051
+PU-20288,ORG-20288,Valley View Credit Recovery,Imagine Learning PD,Professional Learning,2025-10-01,98,5074,4127,34,Live,Single School,name_school,ProductTelemetry,GC0051
+PU-20289,ORG-20289,Valley View Credit Recovery,Courseware,Core Courseware,2025-12-01,15,4196,12126,36,Live,Selected Schools,none,ProductTelemetry,GC0051
+PU-20290,ORG-20290,Valley View Credit Recovery,Courseware,Core Courseware,2025-10-01,118,2130,19160,49,Pilot,Single School,none,ProductTelemetry,GC0051
+PU-20291,ORG-20291,GOLDEN_PLAINS_LITERACY_PILOT,Imagine Learning PD,Professional Learning,2025-12-01,29,2451,757,92,Live,Single School,none,ProductTelemetry,GC0052
+PU-20292,ORG-20292,Golden Plains Literacy Pilot,Imagine Learning PD,Professional Learning,2025-10-01,52,1474,6298,41,Live,District-wide,name_school,ProductTelemetry,GC0052
+PU-20293,ORG-20293,Golden Plains School District,Courseware,Core Courseware,2025-12-01,8,4610,15558,47,Pilot,Single School,email,ProductTelemetry,GC0052
+PU-20294,ORG-20294,Golden Plains School District,Courseware,Core Courseware,2025-10-01,109,290,21094,84,Live,Single School,email,ProductTelemetry,GC0052
+PU-20295,ORG-20295,Golden Plains Credit Recovery,StudySync,Core ELA,2025-11-01,157,3003,21365,59,Training,District-wide,none,ProductTelemetry,GC0052
+PU-20296,ORG-20296,Golden Plains Credit Recovery,Imagine Learning PD,Professional Learning,2025-11-01,91,3378,21804,43,Live,Single School,none,ProductTelemetry,GC0052
+PU-20297,ORG-20297,Parkside Literacy Pilot,Courseware,Core Courseware,2025-10-01,91,3373,20715,37,Live,District-wide,none,ProductTelemetry,GC0053
+PU-20298,ORG-20298,Parkside Literacy Pilot,Courseware,Core Courseware,2025-11-01,112,844,4834,52,Training,Selected Schools,none,ProductTelemetry,GC0053
+PU-20299,ORG-20299,Parkside Literacy Pilot,Twig Science,Science,2025-10-01,71,3305,17802,47,Live,Single School,name_school,ProductTelemetry,GC0053
+PU-20300,ORG-20300,Parkside Literacy Pilot,Twig Science,Science,2025-11-01,72,5168,1389,31,Live,Selected Schools,email,ProductTelemetry,GC0053
+PU-20301,ORG-20301,Parkside Math Program,StudySync,Core ELA,2025-12-01,102,552,1867,42,Pilot,Single School,email,ProductTelemetry,GC0053
+PU-20302,ORG-20302,PARKSIDE_MATH_PROGRAM,StudySync,Core ELA,2025-11-01,52,5052,11032,31,Live,District-wide,name_school,ProductTelemetry,GC0053
+PU-20303,ORG-20303,Millbrook ISD,Imagine Learning PD,Professional Learning,2025-10-01,116,5299,13532,46,Live,Single School,name_school,ProductTelemetry,GC0054
+PU-20304,ORG-20304,Millbrook ISD,Imagine Learning PD,Professional Learning,2025-12-01,74,2252,611,91,Pilot,Selected Schools,none,ProductTelemetry,GC0054
+PU-20305,ORG-20305,Millbrook Math Program,Imagine Learning PD,Professional Learning,2025-12-01,38,3343,13548,44,Training,District-wide,name_school,ProductTelemetry,GC0054
+PU-20306,ORG-20306,Millbrook Math Program,Imagine Math,Supplemental Math,2025-12-01,128,5163,15596,77,Live,District-wide,none,ProductTelemetry,GC0054
+PU-20307,ORG-20307,Millbrook Credit Recovery,Courseware,Core Courseware,2025-11-01,175,4410,8671,36,Live,District-wide,email,ProductTelemetry,GC0054
+PU-20308,ORG-20308,Kingston Math Program,Imagine Math,Supplemental Math,2025-10-01,23,3843,408,54,Live,Single School,email,ProductTelemetry,GC0055
+PU-20309,ORG-20309,Kingston Math Program,Imagine Math,Supplemental Math,2025-11-01,3,3151,3750,56,Pilot,District-wide,none,ProductTelemetry,GC0055
+PU-20310,ORG-20310,Kingston Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,51,1827,14723,37,Sandbox,Single School,name_school,ProductTelemetry,GC0055
+PU-20311,ORG-20311,Kingston Literacy Pilot,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,154,442,5587,69,Live,District-wide,name_school,ProductTelemetry,GC0055
+PU-20312,ORG-20312,Kingston Literacy Pilot,Imagine Math,Supplemental Math,2025-12-01,27,3572,9084,64,Live,District-wide,name_school,ProductTelemetry,GC0055
+PU-20313,ORG-20313,Kingston Literacy Pilot,Imagine Math,Supplemental Math,2025-10-01,67,872,13113,88,Training,District-wide,email,ProductTelemetry,GC0055
+PU-20314,ORG-20314,Kingston School District,Imagine Learning PD,Professional Learning,2025-10-01,166,795,16167,96,Live,District-wide,none,ProductTelemetry,GC0055
+PU-20315,ORG-20315,Kingston School District,Imagine Math,Supplemental Math,2025-11-01,110,1445,18820,71,Sandbox,Selected Schools,none,ProductTelemetry,GC0055
+PU-20316,ORG-20316,Edgewater Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-10-01,118,227,16208,82,Pilot,Single School,email,ProductTelemetry,GC0056
+PU-20317,ORG-20317,Edgewater Credit Recovery,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,18,3338,16328,58,Pilot,Single School,email,ProductTelemetry,GC0056
+PU-20318,ORG-20318,Edgewater ISD,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,24,5437,5661,51,Live,Single School,name_school,ProductTelemetry,GC0056
+PU-20319,ORG-20319,Shoreline Math Program,Imagine Learning PD,Professional Learning,2025-12-01,136,5375,5768,37,Training,District-wide,name_school,ProductTelemetry,GC0057
+PU-20320,ORG-20320,Shoreline Math Program,Imagine Learning PD,Professional Learning,2025-10-01,119,4907,1352,96,Sandbox,Selected Schools,email,ProductTelemetry,GC0057
+PU-20321,ORG-20321,Shoreline Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,7,1337,4217,32,Live,District-wide,none,ProductTelemetry,GC0057
+PU-20322,ORG-20322,Shoreline Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,61,5465,17829,83,Sandbox,Single School,none,ProductTelemetry,GC0057
+PU-20323,ORG-20323,Shoreline ISD,Imagine Math,Supplemental Math,2025-11-01,89,5034,16843,36,Sandbox,District-wide,name_school,ProductTelemetry,GC0057
+PU-20324,ORG-20324,Shoreline ISD,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,12,5404,14523,39,Live,District-wide,email,ProductTelemetry,GC0057
+PU-20325,ORG-20325,Shoreline ISD,Imagine Language & Literacy,Supplemental Literacy,2025-12-01,105,3706,12855,89,Live,Single School,none,ProductTelemetry,GC0057
+PU-20326,ORG-20326,Shoreline Credit Recovery,Imagine Learning PD,Professional Learning,2025-11-01,160,560,20632,87,Pilot,Single School,none,ProductTelemetry,GC0057
+PU-20327,ORG-20327,Shoreline Credit Recovery,Imagine Learning PD,Professional Learning,2025-12-01,141,1268,20495,83,Training,Selected Schools,none,ProductTelemetry,GC0057
+PU-20328,ORG-20328,Aspen Literacy Pilot,Courseware,Core Courseware,2025-11-01,177,5161,7841,75,Live,Single School,name_school,ProductTelemetry,GC0058
+PU-20329,ORG-20329,Aspen Math Program,Courseware,Core Courseware,2025-11-01,148,353,1063,43,Live,Selected Schools,none,ProductTelemetry,GC0058
+PU-20330,ORG-20330,ASPEN_MATH_PROGRAM,Courseware,Core Courseware,2025-12-01,90,3108,8852,60,Live,Single School,name_school,ProductTelemetry,GC0058
+PU-20331,ORG-20331,Fox Run Math Program,Twig Science,Science,2025-12-01,150,2245,12884,56,Live,Single School,none,ProductTelemetry,GC0059
+PU-20332,ORG-20332,Fox Run Math Program,Imagine Language & Literacy,Supplemental Literacy,2025-11-01,69,692,10803,51,Training,Selected Schools,none,ProductTelemetry,GC0059
+PU-20333,ORG-20333,Fox Run Literacy Pilot,Twig Science,Science,2025-10-01,153,1855,7343,71,Training,Single School,none,ProductTelemetry,GC0059
+PU-20334,ORG-20334,Fox Run Literacy Pilot,Twig Science,Science,2025-12-01,60,4172,3540,78,Live,Selected Schools,email,ProductTelemetry,GC0059
+PU-20335,ORG-20335,Fox Run Literacy Pilot,StudySync,Core ELA,2025-12-01,146,2697,572,69,Pilot,Single School,name_school,ProductTelemetry,GC0059
+PU-20336,ORG-20336,Fox Run Literacy Pilot,StudySync,Core ELA,2025-11-01,60,102,6422,67,Sandbox,Single School,email,ProductTelemetry,GC0059
+PU-20337,ORG-20337,Elmwood Literacy Pilot,Imagine Math,Supplemental Math,2025-11-01,25,3023,6947,78,Live,District-wide,name_school,ProductTelemetry,GC0060
+PU-20338,ORG-20338,ELMWOOD_SCHOOL_DISTRICT,StudySync,Core ELA,2025-11-01,47,3039,20355,55,Pilot,Selected Schools,none,ProductTelemetry,GC0060
+PU-20339,ORG-20339,Elmwood School District,StudySync,Core ELA,2025-10-01,137,837,7863,82,Pilot,Selected Schools,email,ProductTelemetry,GC0060
+PU-20340,ORG-20340,Elmwood School District,Twig Science,Science,2025-12-01,41,5310,3635,64,Live,District-wide,name_school,ProductTelemetry,GC0060
+PU-20341,ORG-20341,Elmwood Math Program,StudySync,Core ELA,2025-12-01,137,3913,18458,35,Training,Single School,email,ProductTelemetry,GC0060
+PU-20342,ORG-20342,Elmwood Math Program,StudySync,Core ELA,2025-10-01,4,2265,11888,44,Live,Single School,none,ProductTelemetry,GC0060

@@ -1,0 +1,361 @@
+golden_customer_id,canonical_account_name,product_name,owned_flag,crm_arr_usd,billing_amount_usd,contracted_seats,active_teachers_3m,active_students_3m,avg_usage_health_score,cross_sell_whitespace_flag
+GC0001,Houston ISD,Imagine Math,Y,312093,0,0,0,0,,N
+GC0001,Houston ISD,Imagine Language & Literacy,N,0,0,0,0,0,,N
+GC0001,Houston ISD,Courseware,Y,358004,128000,1750,0,0,,N
+GC0001,Houston ISD,StudySync,Y,0,39000,750,0,0,,N
+GC0001,Houston ISD,Twig Science,Y,0,39000,10000,317,19321,78.2,N
+GC0001,Houston ISD,Imagine Learning PD,Y,0,180000,2800,173,9564,84.0,N
+GC0002,Riverview ISD,Imagine Math,Y,0,250000,10400,100,4918,45.0,N
+GC0002,Riverview ISD,Imagine Language & Literacy,Y,235580,22000,400,410,9269,70.8,N
+GC0002,Riverview ISD,Courseware,N,0,0,0,0,0,,N
+GC0002,Riverview ISD,StudySync,N,0,0,0,0,0,,N
+GC0002,Riverview ISD,Twig Science,N,0,0,0,0,0,,Y
+GC0002,Riverview ISD,Imagine Learning PD,N,0,0,0,0,0,,N
+GC0003,Oak Valley School District,Imagine Math,N,0,0,0,0,0,,N
+GC0003,Oak Valley School District,Imagine Language & Literacy,Y,123486,180000,10000,0,0,,N
+GC0003,Oak Valley School District,Courseware,N,0,0,0,0,0,,N
+GC0003,Oak Valley School District,StudySync,Y,250689,255000,2800,0,0,,N
+GC0003,Oak Valley School District,Twig Science,N,0,0,0,76,491,33.0,N
+GC0003,Oak Valley School District,Imagine Learning PD,Y,0,180000,1500,213,4933,86.0,N
+GC0004,Pine Hills ISD,Imagine Math,Y,248417,78000,20000,0,0,,N
+GC0004,Pine Hills ISD,Imagine Language & Literacy,Y,179543,89000,750,200,2776,70.3,N
+GC0004,Pine Hills ISD,Courseware,N,0,0,0,99,2318,90.0,N
+GC0004,Pine Hills ISD,StudySync,Y,376433,0,0,0,0,,N
+GC0004,Pine Hills ISD,Twig Science,N,0,0,0,142,6626,72.0,N
+GC0004,Pine Hills ISD,Imagine Learning PD,Y,0,202000,5600,149,5286,29.0,N
+GC0005,Maple Grove ISD,Imagine Math,N,0,0,0,0,0,,N
+GC0005,Maple Grove ISD,Imagine Language & Literacy,N,0,0,0,398,6997,54.7,N
+GC0005,Maple Grove ISD,Courseware,Y,89214,89000,400,0,0,,N
+GC0005,Maple Grove ISD,StudySync,Y,118414,22000,2800,157,2677,36.0,N
+GC0005,Maple Grove ISD,Twig Science,Y,176562,0,0,0,0,,N
+GC0005,Maple Grove ISD,Imagine Learning PD,Y,0,89000,250,0,0,,N
+GC0006,Cedar Ridge ISD,Imagine Math,Y,67606,0,0,0,0,,N
+GC0006,Cedar Ridge ISD,Imagine Language & Literacy,Y,0,202000,1900,109,3813,84.0,N
+GC0006,Cedar Ridge ISD,Courseware,Y,64507,0,0,161,3017,80.0,N
+GC0006,Cedar Ridge ISD,StudySync,N,0,0,0,0,0,,Y
+GC0006,Cedar Ridge ISD,Twig Science,Y,59533,435000,1500,0,0,,N
+GC0006,Cedar Ridge ISD,Imagine Learning PD,Y,0,61000,400,0,0,,N
+GC0007,Springfield School District,Imagine Math,Y,88933,0,0,0,0,,N
+GC0007,Springfield School District,Imagine Language & Literacy,Y,0,180000,10000,43,5443,94.0,N
+GC0007,Springfield School District,Courseware,Y,89171,39000,1500,0,0,,N
+GC0007,Springfield School District,StudySync,N,0,0,0,47,5384,38.0,N
+GC0007,Springfield School District,Twig Science,Y,0,22000,750,0,0,,N
+GC0007,Springfield School District,Imagine Learning PD,Y,0,125000,750,0,0,,N
+GC0008,Lakeview School District,Imagine Math,N,0,0,0,7,2519,53.0,N
+GC0008,Lakeview School District,Imagine Language & Literacy,Y,57294,89000,5200,510,12410,55.0,N
+GC0008,Lakeview School District,Courseware,Y,36111,0,0,0,0,,N
+GC0008,Lakeview School District,StudySync,N,0,0,0,0,0,,Y
+GC0008,Lakeview School District,Twig Science,Y,88822,0,0,0,0,,N
+GC0008,Lakeview School District,Imagine Learning PD,Y,0,358000,3450,0,0,,N
+GC0009,Northfield School District,Imagine Math,N,0,0,0,0,0,,N
+GC0009,Northfield School District,Imagine Language & Literacy,Y,0,255000,2800,0,0,,N
+GC0009,Northfield School District,Courseware,N,0,0,0,212,6555,34.0,Y
+GC0009,Northfield School District,StudySync,N,0,0,0,0,0,,N
+GC0009,Northfield School District,Twig Science,Y,116256,39000,10000,0,0,,N
+GC0009,Northfield School District,Imagine Learning PD,Y,0,180000,750,45,8311,46.5,N
+GC0010,Westbrook ISD,Imagine Math,Y,60397,125000,10000,0,0,,N
+GC0010,Westbrook ISD,Imagine Language & Literacy,Y,0,269000,4300,0,0,,N
+GC0010,Westbrook ISD,Courseware,Y,366239,0,0,270,5384,57.5,N
+GC0010,Westbrook ISD,StudySync,Y,0,180000,400,0,0,,N
+GC0010,Westbrook ISD,Twig Science,N,0,0,0,282,1682,43.5,Y
+GC0010,Westbrook ISD,Imagine Learning PD,Y,57745,255000,5200,0,0,,N
+GC0011,Easton ISD,Imagine Math,N,0,0,0,0,0,,N
+GC0011,Easton ISD,Imagine Language & Literacy,Y,0,180000,5200,0,0,,N
+GC0011,Easton ISD,Courseware,N,0,0,0,229,9261,71.7,N
+GC0011,Easton ISD,StudySync,Y,0,255000,2800,0,0,,N
+GC0011,Easton ISD,Twig Science,Y,377160,39000,1500,0,0,,N
+GC0011,Easton ISD,Imagine Learning PD,N,0,0,0,554,12634,63.8,N
+GC0012,Fairview ISD,Imagine Math,N,0,0,0,0,0,,N
+GC0012,Fairview ISD,Imagine Language & Literacy,Y,176869,180000,1500,392,13961,70.8,N
+GC0012,Fairview ISD,Courseware,Y,350452,0,0,0,0,,N
+GC0012,Fairview ISD,StudySync,N,0,0,0,257,4516,52.5,Y
+GC0012,Fairview ISD,Twig Science,Y,0,255000,10000,66,4042,88.0,N
+GC0012,Fairview ISD,Imagine Learning PD,Y,0,39000,400,0,0,,N
+GC0013,Brookside ISD,Imagine Math,Y,90608,0,0,192,5092,40.5,N
+GC0013,Brookside ISD,Imagine Language & Literacy,Y,21719,61000,10000,0,0,,N
+GC0013,Brookside ISD,Courseware,N,0,0,0,307,7545,57.5,N
+GC0013,Brookside ISD,StudySync,N,0,0,0,0,0,,Y
+GC0013,Brookside ISD,Twig Science,N,0,0,0,0,0,,N
+GC0013,Brookside ISD,Imagine Learning PD,Y,0,78000,10750,147,4697,93.0,N
+GC0014,Greenwood ISD,Imagine Math,Y,21699,89000,1500,0,0,,N
+GC0014,Greenwood ISD,Imagine Language & Literacy,Y,0,89000,250,0,0,,N
+GC0014,Greenwood ISD,Courseware,Y,252363,0,0,0,0,,N
+GC0014,Greenwood ISD,StudySync,Y,0,89000,750,0,0,,N
+GC0014,Greenwood ISD,Twig Science,N,0,0,0,62,1290,92.0,N
+GC0014,Greenwood ISD,Imagine Learning PD,N,0,0,0,13,1679,32.0,N
+GC0015,Hillcrest ISD,Imagine Math,Y,0,316000,5950,0,0,,N
+GC0015,Hillcrest ISD,Imagine Language & Literacy,N,0,0,0,337,5834,64.5,N
+GC0015,Hillcrest ISD,Courseware,Y,56331,22000,400,246,2115,62.5,N
+GC0015,Hillcrest ISD,StudySync,Y,172228,61000,1500,0,0,,N
+GC0015,Hillcrest ISD,Twig Science,Y,247770,255000,250,0,0,,N
+GC0015,Hillcrest ISD,Imagine Learning PD,Y,23476,0,0,0,0,,N
+GC0016,Sunnydale ISD,Imagine Math,N,0,0,0,0,0,,N
+GC0016,Sunnydale ISD,Imagine Language & Literacy,N,0,0,0,137,4672,71.0,N
+GC0016,Sunnydale ISD,Courseware,Y,70117,277000,20000,0,0,,N
+GC0016,Sunnydale ISD,StudySync,Y,183746,0,0,54,2229,62.0,N
+GC0016,Sunnydale ISD,Twig Science,Y,0,89000,1500,0,0,,N
+GC0016,Sunnydale ISD,Imagine Learning PD,Y,172463,0,0,0,0,,N
+GC0017,Redwood School District,Imagine Math,N,0,0,0,141,1233,72.0,N
+GC0017,Redwood School District,Imagine Language & Literacy,Y,0,180000,400,0,0,,N
+GC0017,Redwood School District,Courseware,Y,0,239000,2150,0,0,,N
+GC0017,Redwood School District,StudySync,N,0,0,0,0,0,,Y
+GC0017,Redwood School District,Twig Science,N,0,0,0,0,0,,N
+GC0017,Redwood School District,Imagine Learning PD,Y,173793,89000,250,38,2766,87.0,N
+GC0018,Silver Lake ISD,Imagine Math,Y,0,122000,15200,0,0,,N
+GC0018,Silver Lake ISD,Imagine Language & Literacy,N,0,0,0,238,3444,43.0,Y
+GC0018,Silver Lake ISD,Courseware,Y,82857,0,0,0,0,,N
+GC0018,Silver Lake ISD,StudySync,Y,254276,180000,10000,199,9639,71.3,N
+GC0018,Silver Lake ISD,Twig Science,Y,319002,0,0,11,4135,72.0,N
+GC0018,Silver Lake ISD,Imagine Learning PD,N,0,0,0,0,0,,N
+GC0019,Meadow Park ISD,Imagine Math,Y,0,22000,250,192,3157,61.5,N
+GC0019,Meadow Park ISD,Imagine Language & Literacy,N,0,0,0,36,4997,31.0,N
+GC0019,Meadow Park ISD,Courseware,Y,152700,22000,750,0,0,,N
+GC0019,Meadow Park ISD,StudySync,N,0,0,0,116,606,51.0,N
+GC0019,Meadow Park ISD,Twig Science,N,0,0,0,0,0,,N
+GC0019,Meadow Park ISD,Imagine Learning PD,Y,0,125000,250,297,11433,43.0,N
+GC0020,Canyon Creek School District,Imagine Math,Y,124536,0,0,0,0,,N
+GC0020,Canyon Creek School District,Imagine Language & Literacy,N,0,0,0,197,9800,47.0,N
+GC0020,Canyon Creek School District,Courseware,Y,0,380000,1900,0,0,,N
+GC0020,Canyon Creek School District,StudySync,Y,173135,39000,1500,0,0,,N
+GC0020,Canyon Creek School District,Twig Science,Y,0,125000,1500,130,4875,90.5,N
+GC0020,Canyon Creek School District,Imagine Learning PD,Y,0,255000,1500,0,0,,N
+GC0021,Riverside School District,Imagine Math,Y,0,89000,250,0,0,,N
+GC0021,Riverside School District,Imagine Language & Literacy,Y,0,255000,250,282,3131,35.0,N
+GC0021,Riverside School District,Courseware,N,0,0,0,177,4997,45.0,N
+GC0021,Riverside School District,StudySync,N,0,0,0,231,6533,63.7,N
+GC0021,Riverside School District,Twig Science,Y,42866,22000,10000,0,0,,N
+GC0021,Riverside School District,Imagine Learning PD,N,0,0,0,0,0,,N
+GC0022,Summit School District,Imagine Math,Y,179051,0,0,0,0,,N
+GC0022,Summit School District,Imagine Language & Literacy,N,0,0,0,0,0,,Y
+GC0022,Summit School District,Courseware,Y,250454,180000,10000,449,9178,68.0,N
+GC0022,Summit School District,StudySync,N,0,0,0,160,2249,43.0,N
+GC0022,Summit School District,Twig Science,Y,0,186000,5950,223,7594,83.7,N
+GC0022,Summit School District,Imagine Learning PD,N,0,0,0,150,6708,57.5,N
+GC0023,Heritage School District,Imagine Math,Y,0,255000,10000,0,0,,N
+GC0023,Heritage School District,Imagine Language & Literacy,Y,0,22000,10000,151,4952,85.0,N
+GC0023,Heritage School District,Courseware,N,0,0,0,0,0,,N
+GC0023,Heritage School District,StudySync,Y,180360,0,0,268,10431,67.3,N
+GC0023,Heritage School District,Twig Science,Y,293664,22000,10000,0,0,,N
+GC0023,Heritage School District,Imagine Learning PD,Y,158400,0,0,0,0,,N
+GC0024,Franklin ISD,Imagine Math,Y,246245,180000,400,0,0,,N
+GC0024,Franklin ISD,Imagine Language & Literacy,Y,39553,186000,10400,0,0,,N
+GC0024,Franklin ISD,Courseware,N,0,0,0,144,2600,40.0,N
+GC0024,Franklin ISD,StudySync,Y,264099,61000,10000,186,7474,66.0,N
+GC0024,Franklin ISD,Twig Science,N,0,0,0,0,0,,Y
+GC0024,Franklin ISD,Imagine Learning PD,Y,0,61000,10000,0,0,,N
+GC0025,Jefferson ISD,Imagine Math,N,0,0,0,0,0,,N
+GC0025,Jefferson ISD,Imagine Language & Literacy,N,0,0,0,0,0,,N
+GC0025,Jefferson ISD,Courseware,Y,0,202000,650,0,0,,N
+GC0025,Jefferson ISD,StudySync,Y,30702,0,0,111,1415,30.0,N
+GC0025,Jefferson ISD,Twig Science,Y,30736,294000,5600,0,0,,N
+GC0025,Jefferson ISD,Imagine Learning PD,N,0,0,0,0,0,,N
+GC0026,Lincoln School District,Imagine Math,Y,125496,180000,1500,0,0,,N
+GC0026,Lincoln School District,Imagine Language & Literacy,Y,0,147000,1750,30,3855,47.0,N
+GC0026,Lincoln School District,Courseware,Y,330765,0,0,0,0,,N
+GC0026,Lincoln School District,StudySync,Y,247113,294000,20000,0,0,,N
+GC0026,Lincoln School District,Twig Science,N,0,0,0,97,4741,87.0,Y
+GC0026,Lincoln School District,Imagine Learning PD,N,0,0,0,0,0,,Y
+GC0027,Roosevelt ISD,Imagine Math,Y,68991,0,0,0,0,,N
+GC0027,Roosevelt ISD,Imagine Language & Literacy,Y,0,39000,250,0,0,,N
+GC0027,Roosevelt ISD,Courseware,Y,0,435000,1500,336,1509,75.0,N
+GC0027,Roosevelt ISD,StudySync,Y,175439,0,0,269,3296,72.5,N
+GC0027,Roosevelt ISD,Twig Science,Y,41496,0,0,0,0,,N
+GC0027,Roosevelt ISD,Imagine Learning PD,Y,38617,0,0,65,1232,40.0,N
+GC0028,Adams ISD,Imagine Math,Y,90719,0,0,0,0,,N
+GC0028,Adams ISD,Imagine Language & Literacy,Y,0,125000,2800,41,3537,60.0,N
+GC0028,Adams ISD,Courseware,Y,67154,0,0,417,13040,64.5,N
+GC0028,Adams ISD,StudySync,Y,0,510000,3550,113,4250,92.0,N
+GC0028,Adams ISD,Twig Science,Y,21674,125000,5200,0,0,,N
+GC0028,Adams ISD,Imagine Learning PD,Y,0,61000,250,0,0,,N
+GC0029,Washington ISD,Imagine Math,Y,60917,0,0,0,0,,N
+GC0029,Washington ISD,Imagine Language & Literacy,Y,44035,0,0,0,0,,N
+GC0029,Washington ISD,Courseware,Y,61104,61000,750,0,0,,N
+GC0029,Washington ISD,StudySync,N,0,0,0,0,0,,N
+GC0029,Washington ISD,Twig Science,Y,0,125000,1500,59,2077,47.0,N
+GC0029,Washington ISD,Imagine Learning PD,Y,0,405000,7100,259,3073,47.0,N
+GC0030,Madison ISD,Imagine Math,N,0,0,0,0,0,,Y
+GC0030,Madison ISD,Imagine Language & Literacy,N,0,0,0,0,0,,N
+GC0030,Madison ISD,Courseware,Y,59261,125000,5200,0,0,,N
+GC0030,Madison ISD,StudySync,Y,27304,125000,750,129,796,47.0,N
+GC0030,Madison ISD,Twig Science,N,0,0,0,0,0,,N
+GC0030,Madison ISD,Imagine Learning PD,Y,171438,89000,1500,304,6252,47.0,N
+GC0031,Granite School District,Imagine Math,Y,255509,405000,15600,0,0,,N
+GC0031,Granite School District,Imagine Language & Literacy,Y,0,180000,750,0,0,,N
+GC0031,Granite School District,Courseware,Y,0,61000,400,0,0,,N
+GC0031,Granite School District,StudySync,N,0,0,0,0,0,,N
+GC0031,Granite School District,Twig Science,N,0,0,0,173,1373,85.0,Y
+GC0031,Granite School District,Imagine Learning PD,N,0,0,0,229,5678,78.5,N
+GC0032,Blue Ridge ISD,Imagine Math,N,0,0,0,0,0,,Y
+GC0032,Blue Ridge ISD,Imagine Language & Literacy,Y,0,435000,5950,96,1322,52.0,N
+GC0032,Blue Ridge ISD,Courseware,Y,176196,0,0,0,0,,N
+GC0032,Blue Ridge ISD,StudySync,Y,0,22000,250,35,1263,64.0,N
+GC0032,Blue Ridge ISD,Twig Science,Y,63786,164000,11500,0,0,,N
+GC0032,Blue Ridge ISD,Imagine Learning PD,Y,46324,0,0,0,0,,N
+GC0033,Prairie ISD,Imagine Math,Y,0,180000,10000,0,0,,N
+GC0033,Prairie ISD,Imagine Language & Literacy,Y,0,22000,1500,0,0,,N
+GC0033,Prairie ISD,Courseware,N,0,0,0,162,2949,63.0,Y
+GC0033,Prairie ISD,StudySync,Y,0,125000,750,242,7125,48.5,N
+GC0033,Prairie ISD,Twig Science,N,0,0,0,0,0,,N
+GC0033,Prairie ISD,Imagine Learning PD,Y,0,61000,1500,0,0,,N
+GC0034,Harbor ISD,Imagine Math,Y,274334,0,0,0,0,,N
+GC0034,Harbor ISD,Imagine Language & Literacy,Y,0,61000,10000,0,0,,N
+GC0034,Harbor ISD,Courseware,Y,0,39000,250,301,7982,53.5,N
+GC0034,Harbor ISD,StudySync,Y,115698,0,0,225,6370,40.0,N
+GC0034,Harbor ISD,Twig Science,Y,0,255000,1500,0,0,,N
+GC0034,Harbor ISD,Imagine Learning PD,Y,0,83000,5450,0,0,,N
+GC0035,Cypress ISD,Imagine Math,Y,0,61000,750,0,0,,N
+GC0035,Cypress ISD,Imagine Language & Literacy,Y,60698,22000,400,99,1281,42.5,N
+GC0035,Cypress ISD,Courseware,Y,82279,0,0,0,0,,N
+GC0035,Cypress ISD,StudySync,N,0,0,0,0,0,,N
+GC0035,Cypress ISD,Twig Science,Y,83692,180000,2800,0,0,,N
+GC0035,Cypress ISD,Imagine Learning PD,N,0,0,0,0,0,,Y
+GC0036,Sierra ISD,Imagine Math,Y,274246,241000,3550,0,0,,N
+GC0036,Sierra ISD,Imagine Language & Literacy,Y,507557,61000,250,0,0,,N
+GC0036,Sierra ISD,Courseware,Y,0,180000,250,0,0,,N
+GC0036,Sierra ISD,StudySync,Y,176060,0,0,7,5484,71.0,N
+GC0036,Sierra ISD,Twig Science,N,0,0,0,102,2679,75.0,N
+GC0036,Sierra ISD,Imagine Learning PD,Y,57945,125000,10000,0,0,,N
+GC0037,Frontier School District,Imagine Math,N,0,0,0,104,1314,38.5,N
+GC0037,Frontier School District,Imagine Language & Literacy,N,0,0,0,0,0,,Y
+GC0037,Frontier School District,Courseware,N,0,0,0,0,0,,Y
+GC0037,Frontier School District,StudySync,Y,248184,0,0,0,0,,N
+GC0037,Frontier School District,Twig Science,Y,65630,430000,13200,0,0,,N
+GC0037,Frontier School District,Imagine Learning PD,Y,293467,89000,2800,0,0,,N
+GC0038,Liberty School District,Imagine Math,Y,0,180000,400,86,7845,81.5,N
+GC0038,Liberty School District,Imagine Language & Literacy,N,0,0,0,0,0,,N
+GC0038,Liberty School District,Courseware,N,0,0,0,0,0,,N
+GC0038,Liberty School District,StudySync,Y,0,39000,250,178,3273,55.0,N
+GC0038,Liberty School District,Twig Science,Y,0,39000,250,0,0,,N
+GC0038,Liberty School District,Imagine Learning PD,N,0,0,0,0,0,,N
+GC0039,Monroe School District,Imagine Math,Y,0,61000,650,0,0,,N
+GC0039,Monroe School District,Imagine Language & Literacy,Y,172035,0,0,219,6543,64.0,N
+GC0039,Monroe School District,Courseware,Y,122403,0,0,0,0,,N
+GC0039,Monroe School District,StudySync,Y,0,180000,400,0,0,,N
+GC0039,Monroe School District,Twig Science,Y,278545,255000,750,0,0,,N
+GC0039,Monroe School District,Imagine Learning PD,Y,0,39000,2800,76,1192,63.0,N
+GC0040,Concord School District,Imagine Math,Y,0,61000,5200,0,0,,N
+GC0040,Concord School District,Imagine Language & Literacy,Y,23993,0,0,0,0,,N
+GC0040,Concord School District,Courseware,Y,175072,0,0,0,0,,N
+GC0040,Concord School District,StudySync,N,0,0,0,139,6623,52.0,Y
+GC0040,Concord School District,Twig Science,Y,37902,269000,20000,144,4215,46.0,N
+GC0040,Concord School District,Imagine Learning PD,Y,246118,0,0,0,0,,N
+GC0041,Hamilton ISD,Imagine Math,Y,495778,255000,250,0,0,,N
+GC0041,Hamilton ISD,Imagine Language & Literacy,N,0,0,0,304,8047,52.7,Y
+GC0041,Hamilton ISD,Courseware,N,0,0,0,0,0,,N
+GC0041,Hamilton ISD,StudySync,Y,0,89000,750,0,0,,N
+GC0041,Hamilton ISD,Twig Science,Y,0,214000,650,0,0,,N
+GC0041,Hamilton ISD,Imagine Learning PD,Y,0,255000,1500,0,0,,N
+GC0042,Aurora ISD,Imagine Math,Y,176022,125000,1500,0,0,,N
+GC0042,Aurora ISD,Imagine Language & Literacy,N,0,0,0,110,929,48.0,N
+GC0042,Aurora ISD,Courseware,Y,373538,0,0,0,0,,N
+GC0042,Aurora ISD,StudySync,Y,0,125000,2800,156,4155,51.0,N
+GC0042,Aurora ISD,Twig Science,Y,146684,89000,400,43,3920,28.0,N
+GC0042,Aurora ISD,Imagine Learning PD,Y,0,22000,750,0,0,,N
+GC0043,Briarwood ISD,Imagine Math,Y,0,89000,10000,0,0,,N
+GC0043,Briarwood ISD,Imagine Language & Literacy,Y,61956,89000,1500,0,0,,N
+GC0043,Briarwood ISD,Courseware,N,0,0,0,0,0,,N
+GC0043,Briarwood ISD,StudySync,N,0,0,0,159,3686,68.0,N
+GC0043,Briarwood ISD,Twig Science,Y,21022,255000,2800,0,0,,N
+GC0043,Briarwood ISD,Imagine Learning PD,Y,0,125000,400,0,0,,N
+GC0044,Highland ISD,Imagine Math,Y,423166,0,0,0,0,,N
+GC0044,Highland ISD,Imagine Language & Literacy,Y,0,255000,5200,89,4341,39.0,N
+GC0044,Highland ISD,Courseware,Y,23344,61000,5200,0,0,,N
+GC0044,Highland ISD,StudySync,N,0,0,0,0,0,,N
+GC0044,Highland ISD,Twig Science,Y,0,39000,400,0,0,,N
+GC0044,Highland ISD,Imagine Learning PD,N,0,0,0,0,0,,N
+GC0045,Willow Creek ISD,Imagine Math,Y,126233,0,0,179,238,38.0,N
+GC0045,Willow Creek ISD,Imagine Language & Literacy,Y,41703,0,0,0,0,,N
+GC0045,Willow Creek ISD,Courseware,Y,125973,61000,5600,0,0,,N
+GC0045,Willow Creek ISD,StudySync,Y,0,22000,1500,0,0,,N
+GC0045,Willow Creek ISD,Twig Science,Y,86139,0,0,0,0,,N
+GC0045,Willow Creek ISD,Imagine Learning PD,Y,290370,255000,400,175,983,65.0,N
+GC0046,Stonebridge School District,Imagine Math,Y,63601,294000,11500,0,0,,N
+GC0046,Stonebridge School District,Imagine Language & Literacy,Y,0,89000,250,0,0,,N
+GC0046,Stonebridge School District,Courseware,N,0,0,0,98,9729,77.0,N
+GC0046,Stonebridge School District,StudySync,Y,91059,255000,1500,0,0,,N
+GC0046,Stonebridge School District,Twig Science,Y,0,125000,5200,244,14004,58.7,N
+GC0046,Stonebridge School District,Imagine Learning PD,Y,36455,0,0,0,0,,N
+GC0047,Clearwater School District,Imagine Math,Y,45468,125000,5200,187,10734,64.3,N
+GC0047,Clearwater School District,Imagine Language & Literacy,N,0,0,0,0,0,,N
+GC0047,Clearwater School District,Courseware,Y,0,186000,1750,0,0,,N
+GC0047,Clearwater School District,StudySync,Y,0,89000,10000,110,1109,95.0,N
+GC0047,Clearwater School District,Twig Science,N,0,0,0,0,0,,Y
+GC0047,Clearwater School District,Imagine Learning PD,Y,0,39000,10000,0,0,,N
+GC0048,Gateway School District,Imagine Math,Y,25513,89000,400,0,0,,N
+GC0048,Gateway School District,Imagine Language & Literacy,Y,36208,0,0,0,0,,N
+GC0048,Gateway School District,Courseware,Y,103495,39000,10000,0,0,,N
+GC0048,Gateway School District,StudySync,N,0,0,0,90,6221,70.5,Y
+GC0048,Gateway School District,Twig Science,N,0,0,0,0,0,,N
+GC0048,Gateway School District,Imagine Learning PD,Y,172768,89000,2800,353,17316,49.0,N
+GC0049,North Star ISD,Imagine Math,Y,179956,89000,5200,88,3908,91.0,N
+GC0049,North Star ISD,Imagine Language & Literacy,N,0,0,0,0,0,,Y
+GC0049,North Star ISD,Courseware,Y,0,89000,400,0,0,,N
+GC0049,North Star ISD,StudySync,Y,0,39000,5200,0,0,,N
+GC0049,North Star ISD,Twig Science,Y,0,128000,3550,103,3053,72.0,N
+GC0049,North Star ISD,Imagine Learning PD,N,0,0,0,0,0,,N
+GC0050,Twin Oaks School District,Imagine Math,Y,141084,0,0,164,214,58.0,N
+GC0050,Twin Oaks School District,Imagine Language & Literacy,N,0,0,0,0,0,,N
+GC0050,Twin Oaks School District,Courseware,Y,0,22000,250,0,0,,N
+GC0050,Twin Oaks School District,StudySync,Y,59285,255000,750,0,0,,N
+GC0050,Twin Oaks School District,Twig Science,Y,0,22000,250,224,10674,60.3,N
+GC0050,Twin Oaks School District,Imagine Learning PD,Y,0,150000,15200,44,5295,78.0,N
+GC0051,Valley View ISD,Imagine Math,Y,0,22000,750,0,0,,N
+GC0051,Valley View ISD,Imagine Language & Literacy,Y,0,61000,250,0,0,,N
+GC0051,Valley View ISD,Courseware,N,0,0,0,133,6326,42.5,N
+GC0051,Valley View ISD,StudySync,Y,0,180000,400,4,4363,52.0,N
+GC0051,Valley View ISD,Twig Science,N,0,0,0,0,0,,Y
+GC0051,Valley View ISD,Imagine Learning PD,N,0,0,0,98,5074,34.0,N
+GC0052,Golden Plains School District,Imagine Math,Y,85309,39000,750,0,0,,N
+GC0052,Golden Plains School District,Imagine Language & Literacy,N,0,0,0,0,0,,N
+GC0052,Golden Plains School District,Courseware,N,0,0,0,117,4900,65.5,N
+GC0052,Golden Plains School District,StudySync,Y,0,39000,5200,0,0,,N
+GC0052,Golden Plains School District,Twig Science,Y,122750,0,0,0,0,,N
+GC0052,Golden Plains School District,Imagine Learning PD,Y,25029,61000,750,172,7303,58.7,N
+GC0053,Parkside ISD,Imagine Math,Y,116407,61000,5200,0,0,,N
+GC0053,Parkside ISD,Imagine Language & Literacy,N,0,0,0,0,0,,Y
+GC0053,Parkside ISD,Courseware,Y,86066,22000,750,91,3373,37.0,N
+GC0053,Parkside ISD,StudySync,N,0,0,0,154,5604,36.5,Y
+GC0053,Parkside ISD,Twig Science,Y,0,39000,2800,143,8473,39.0,N
+GC0053,Parkside ISD,Imagine Learning PD,Y,122519,0,0,0,0,,N
+GC0054,Millbrook ISD,Imagine Math,Y,256074,147000,6700,128,5163,77.0,N
+GC0054,Millbrook ISD,Imagine Language & Literacy,Y,0,255000,400,0,0,,N
+GC0054,Millbrook ISD,Courseware,N,0,0,0,175,4410,36.0,N
+GC0054,Millbrook ISD,StudySync,N,0,0,0,0,0,,N
+GC0054,Millbrook ISD,Twig Science,Y,250550,0,0,0,0,,N
+GC0054,Millbrook ISD,Imagine Learning PD,Y,88583,180000,5200,190,7551,68.5,N
+GC0055,Kingston School District,Imagine Math,Y,0,22000,400,53,10566,58.0,N
+GC0055,Kingston School District,Imagine Language & Literacy,Y,0,61000,6700,154,442,69.0,N
+GC0055,Kingston School District,Courseware,N,0,0,0,0,0,,Y
+GC0055,Kingston School District,StudySync,Y,429908,0,0,0,0,,N
+GC0055,Kingston School District,Twig Science,Y,58666,0,0,0,0,,N
+GC0055,Kingston School District,Imagine Learning PD,Y,40924,0,0,166,795,96.0,N
+GC0056,Edgewater ISD,Imagine Math,N,0,0,0,0,0,,Y
+GC0056,Edgewater ISD,Imagine Language & Literacy,Y,61233,0,0,160,9002,63.7,N
+GC0056,Edgewater ISD,Courseware,N,0,0,0,0,0,,N
+GC0056,Edgewater ISD,StudySync,Y,66419,0,0,0,0,,N
+GC0056,Edgewater ISD,Twig Science,Y,123555,89000,1500,0,0,,N
+GC0056,Edgewater ISD,Imagine Learning PD,Y,118731,44000,5450,0,0,,N
+GC0057,Shoreline ISD,Imagine Math,N,0,0,0,0,0,,N
+GC0057,Shoreline ISD,Imagine Language & Literacy,Y,92461,111000,1500,124,10447,53.3,N
+GC0057,Shoreline ISD,Courseware,N,0,0,0,0,0,,N
+GC0057,Shoreline ISD,StudySync,Y,250009,0,0,0,0,,N
+GC0057,Shoreline ISD,Twig Science,Y,62295,214000,10400,0,0,,N
+GC0057,Shoreline ISD,Imagine Learning PD,N,0,0,0,160,560,87.0,Y
+GC0058,Aspen ISD,Imagine Math,Y,0,22000,10000,0,0,,N
+GC0058,Aspen ISD,Imagine Language & Literacy,Y,23249,0,0,0,0,,N
+GC0058,Aspen ISD,Courseware,Y,85017,39000,1500,415,8622,59.3,N
+GC0058,Aspen ISD,StudySync,Y,41332,22000,10000,0,0,,N
+GC0058,Aspen ISD,Twig Science,N,0,0,0,0,0,,Y
+GC0058,Aspen ISD,Imagine Learning PD,Y,88001,125000,10000,0,0,,N
+GC0059,Fox Run School District,Imagine Math,N,0,0,0,0,0,,N
+GC0059,Fox Run School District,Imagine Language & Literacy,N,0,0,0,0,0,,Y
+GC0059,Fox Run School District,Courseware,Y,0,89000,2800,0,0,,N
+GC0059,Fox Run School District,StudySync,N,0,0,0,146,2697,69.0,Y
+GC0059,Fox Run School District,Twig Science,Y,0,22000,5200,210,6417,67.0,N
+GC0059,Fox Run School District,Imagine Learning PD,Y,0,255000,400,0,0,,N
+GC0060,Elmwood School District,Imagine Math,Y,0,39000,5200,25,3023,78.0,N
+GC0060,Elmwood School District,Imagine Language & Literacy,Y,0,180000,400,0,0,,N
+GC0060,Elmwood School District,Courseware,Y,0,39000,250,0,0,,N
+GC0060,Elmwood School District,StudySync,N,0,0,0,188,6141,60.3,N
+GC0060,Elmwood School District,Twig Science,Y,0,61000,750,41,5310,64.0,N
+GC0060,Elmwood School District,Imagine Learning PD,N,0,0,0,0,0,,N

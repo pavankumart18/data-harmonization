@@ -1,0 +1,419 @@
+golden_contact_id,golden_customer_id,canonical_contact_name,best_email,best_role,best_subject,best_grade_band
+GCON-40001,GC0001,Praveen Jackson,pjackson@houstonschools.org,Math Coordinator,Science,8
+GCON-40002,GC0001,Laura Johnson,laura.johnson@houstonschools.org,Curriculum Director,,6
+GCON-40003,GC0001,Tanisha Wilson,tanishaw@houstonschools.org,Principal,,10
+GCON-40004,GC0001,Michael Martin,michael.martin@houstonschools.org,Teacher,,
+GCON-40005,GC0001,Mark Smith,marks@houstonschools.org,Literacy Specialist,Math,6
+GCON-40006,GC0001,Sarah Moore,smoore@houstonschools.org,Literacy Specialist,ELA,3
+GCON-40007,GC0001,Carlos Thomas,carlost@houstonschools.org,Math Coordinator,,3
+GCON-40008,GC0001,Kevin Jackson,kevinj@houstonschools.org,District Admin,Math,
+GCON-40009,GC0002,Monique Miller,moniquem@riverviewschools.org,Teacher,Math,6
+GCON-40010,GC0002,Nina Patel,npatel@riverviewschools.org,Instructional Coach,ELA,
+GCON-40011,GC0002,John Lee,,Teacher,General,
+GCON-40012,GC0002,Praveen Jackson,pjackson@riverviewschools.org,Principal,,
+GCON-40013,GC0002,Praveen Anderson,,Math Coordinator,Literacy,4
+GCON-40014,GC0002,Michael White,michaelw@riverviewschools.org,Teacher,ELA,9
+GCON-40015,GC0003,Sanjay Taylor,sanjayt@oak_valleyschools.org,Principal,Literacy,
+GCON-40016,GC0003,Tanisha Martin,tanisham@oak_valleyschools.org,Principal,Math,3
+GCON-40017,GC0003,Jane Thomas,jthomas@oak_valleyschools.org,Instructional Coach,,7
+GCON-40018,GC0003,Michael Martin,,Literacy Specialist,,10
+GCON-40019,GC0003,Nina Martin,,Curriculum Director,,2
+GCON-40020,GC0003,Mark Jackson,markj@oak_valleyschools.org,Curriculum Director,General,1
+GCON-40021,GC0003,Michael Patel,michaelp@oak_valleyschools.org,District Admin,General,6
+GCON-40022,GC0004,K Anderson,kevin.anderson@pine_hillsschools.org,Literacy Specialist,Math,
+GCON-40023,GC0004,Eric Martin,,Teacher,ELA,1
+GCON-40024,GC0004,Michael Patel,mpatel@pine_hillsschools.org,District Admin,STEM,1
+GCON-40025,GC0004,Alicia Jackson,alicia.jackson@pine_hillsschools.org,Teacher,General,
+GCON-40026,GC0004,Emily Miller,emiller@pine_hillsschools.org,Literacy Specialist,STEM,
+GCON-40027,GC0004,John Garcia,johng@pine_hillsschools.org,,,
+GCON-40028,GC0005,Sanjay White,,Math Coordinator,Literacy,
+GCON-40029,GC0005,Sanjay Moore,sanjaym@maple_groveschools.org,Teacher,,9
+GCON-40030,GC0005,Kevin Anderson,kevina@maple_groveschools.org,Literacy Specialist,STEM,9
+GCON-40031,GC0005,Sanjay Lee,slee@maple_groveschools.org,Literacy Specialist,Math,12
+GCON-40032,GC0005,Praveen Brown,praveenb@maple_groveschools.org,Literacy Specialist,,1
+GCON-40033,GC0005,Emily Taylor,emilyt@maple_groveschools.org,,General,
+GCON-40034,GC0005,Praveen Lee,,Curriculum Director,Literacy,
+GCON-40035,GC0005,Laura Miller,lmiller@maple_groveschools.org,Teacher,STEM,
+GCON-40036,GC0006,Jane Taylor,,Literacy Specialist,Literacy,7
+GCON-40037,GC0006,Priya Miller,,,,
+GCON-40038,GC0006,David Lee,dlee@cedar_ridgeschools.org,Literacy Specialist,Science,
+GCON-40039,GC0006,E Miller,ericm@cedar_ridgeschools.org,Curriculum Director,,10
+GCON-40040,GC0006,Kevin Anderson,kevina@cedar_ridgeschools.org,Curriculum Director,Literacy,K
+GCON-40041,GC0006,Tanisha Davis,tanishad@cedar_ridgeschools.org,Teacher,ELA,2
+GCON-40042,GC0007,Laura Garcia,,Curriculum Director,Science,
+GCON-40043,GC0007,Emily Brown,emilyb@springfieldschools.org,Math Coordinator,,
+GCON-40044,GC0007,Monique Johnson,mjohnson@springfieldschools.org,Curriculum Director,General,
+GCON-40045,GC0007,Renee Garcia,rgarcia@springfieldschools.org,Literacy Specialist,ELA,
+GCON-40046,GC0007,Priya Davis,,Curriculum Director,Science,
+GCON-40047,GC0008,Sarah Patel,sarahp@lakeviewschools.org,District Admin,Literacy,
+GCON-40048,GC0008,T Smith,tsmith@lakeviewschools.org,Literacy Specialist,STEM,
+GCON-40049,GC0008,Sanjay Patel,sanjayp@lakeviewschools.org,,Literacy,10
+GCON-40050,GC0008,Carlos Miller,carlosm@lakeviewschools.org,Teacher,STEM,6
+GCON-40051,GC0008,Eric Martin,eric.martin@lakeviewschools.org,Math Coordinator,General,K
+GCON-40052,GC0008,Sanjay Wilson,sanjayw@lakeviewschools.org,Curriculum Director,,
+GCON-40053,GC0008,David Patel,davidp@lakeviewschools.org,Literacy Specialist,,
+GCON-40054,GC0009,Carlos Anderson,carlos.anderson@northfieldschools.org,Curriculum Director,,2
+GCON-40055,GC0009,Praveen Jackson,praveen.jackson@northfieldschools.org,Math Coordinator,Math,7
+GCON-40056,GC0009,Renee Martin,renee.martin@northfieldschools.org,Literacy Specialist,General,
+GCON-40057,GC0009,Lisa Taylor,lisa.taylor@northfieldschools.org,,Literacy,11
+GCON-40058,GC0009,Priya Lee,priyal@northfieldschools.org,Math Coordinator,Literacy,2
+GCON-40059,GC0009,Eric White,ewhite@northfieldschools.org,Instructional Coach,,7
+GCON-40060,GC0009,Kevin Johnson,kjohnson@northfieldschools.org,Teacher,Literacy,1
+GCON-40061,GC0010,Eric Anderson,eanderson@westbrookschools.org,District Admin,,4
+GCON-40062,GC0010,Eric Thomas,erict@westbrookschools.org,Instructional Coach,STEM,K
+GCON-40063,GC0010,David Jackson,david.jackson@westbrookschools.org,Math Coordinator,,1
+GCON-40064,GC0010,S Wilson,sanjayw@westbrookschools.org,District Admin,Math,
+GCON-40065,GC0010,Alicia Smith,alicias@westbrookschools.org,Literacy Specialist,General,8
+GCON-40066,GC0010,Alicia Smith,alicia.smith@westbrookschools.org,Curriculum Director,,
+GCON-40067,GC0010,M Garcia,mgarcia@westbrookschools.org,Math Coordinator,Literacy,2
+GCON-40068,GC0011,John Anderson,janderson@eastonschools.org,Principal,General,
+GCON-40069,GC0011,Alicia Taylor,ataylor@eastonschools.org,Instructional Coach,ELA,1
+GCON-40070,GC0011,Laura White,,Instructional Coach,,
+GCON-40071,GC0011,Laura Anderson,landerson@eastonschools.org,Instructional Coach,ELA,7
+GCON-40072,GC0011,Priya Brown,pbrown@eastonschools.org,,,12
+GCON-40073,GC0011,Praveen Thomas,pthomas@eastonschools.org,,Literacy,
+GCON-40074,GC0011,Eric Brown,eric.brown@eastonschools.org,District Admin,Science,7
+GCON-40075,GC0011,Eric Miller,eric.miller@eastonschools.org,Principal,,10
+GCON-40076,GC0012,Sanjay Anderson,sanjaya@fairviewschools.org,Curriculum Director,,4
+GCON-40077,GC0012,Sarah Thomas,sarah.thomas@fairviewschools.org,Math Coordinator,ELA,
+GCON-40078,GC0012,David White,,Math Coordinator,,2
+GCON-40079,GC0012,John Anderson,john.anderson@fairviewschools.org,,Literacy,
+GCON-40080,GC0012,Alicia Anderson,,Principal,Science,1
+GCON-40081,GC0013,Priya Miller,priya.miller@brooksideschools.org,,Math,
+GCON-40082,GC0013,Carlos Davis,carlosd@brooksideschools.org,,Math,3
+GCON-40083,GC0013,Jane Wilson,jane.wilson@brooksideschools.org,Instructional Coach,ELA,12
+GCON-40084,GC0013,Praveen Johnson,praveenj@brooksideschools.org,Instructional Coach,,
+GCON-40085,GC0013,Alicia Wilson,,Principal,ELA,8
+GCON-40086,GC0013,Eric Wilson,ewilson@brooksideschools.org,Math Coordinator,Literacy,3
+GCON-40087,GC0014,Sanjay Patel,sanjayp@greenwoodschools.org,Curriculum Director,,
+GCON-40088,GC0014,Laura Miller,,Math Coordinator,ELA,K
+GCON-40089,GC0014,Mark Smith,msmith@greenwoodschools.org,,,10
+GCON-40090,GC0014,Tanisha Smith,tsmith@greenwoodschools.org,District Admin,,2
+GCON-40091,GC0014,Eric White,eric.white@greenwoodschools.org,Teacher,,12
+GCON-40092,GC0014,Kevin Smith,,Teacher,,
+GCON-40093,GC0014,Mark Anderson,marka@greenwoodschools.org,Math Coordinator,General,11
+GCON-40094,GC0015,Monique Taylor,monique.taylor@hillcrestschools.org,Math Coordinator,ELA,
+GCON-40095,GC0015,Michael White,michael.white@hillcrestschools.org,Teacher,,
+GCON-40096,GC0015,Monique Moore,moniquem@hillcrestschools.org,Curriculum Director,,9
+GCON-40097,GC0015,David Brown,dbrown@hillcrestschools.org,Principal,,7
+GCON-40098,GC0015,Sanjay Wilson,swilson@hillcrestschools.org,,STEM,12
+GCON-40099,GC0015,Jane Moore,jane.moore@hillcrestschools.org,Principal,ELA,K
+GCON-40100,GC0015,Mark Patel,,District Admin,,5
+GCON-40101,GC0016,Sarah Miller,smiller@sunnydaleschools.org,District Admin,Math,8
+GCON-40102,GC0016,Kevin Davis,kdavis@sunnydaleschools.org,Curriculum Director,ELA,
+GCON-40103,GC0016,Michael Smith,msmith@sunnydaleschools.org,Principal,,
+GCON-40104,GC0016,Emily Patel,emily.patel@sunnydaleschools.org,Literacy Specialist,Science,
+GCON-40105,GC0016,Alicia Wilson,alicia.wilson@sunnydaleschools.org,,ELA,8
+GCON-40106,GC0016,Carlos Miller,carlos.miller@sunnydaleschools.org,Principal,,
+GCON-40107,GC0016,Lisa Thomas,lisa.thomas@sunnydaleschools.org,Math Coordinator,Science,
+GCON-40108,GC0016,Priya Anderson,panderson@sunnydaleschools.org,Math Coordinator,ELA,
+GCON-40109,GC0017,Mark Anderson,marka@redwoodschools.org,Teacher,Science,1
+GCON-40110,GC0017,Michael Patel,michael.patel@redwoodschools.org,Principal,Math,3
+GCON-40111,GC0017,John Johnson,jjohnson@redwoodschools.org,Curriculum Director,,12
+GCON-40112,GC0017,Kevin Thomas,,,,9
+GCON-40113,GC0017,Tanisha Patel,tanishap@redwoodschools.org,Math Coordinator,STEM,11
+GCON-40114,GC0018,Monique Brown,moniqueb@silver_lakeschools.org,Principal,Math,12
+GCON-40115,GC0018,Eric Smith,eric.smith@silver_lakeschools.org,Curriculum Director,STEM,11
+GCON-40116,GC0018,Jane Brown,,,General,
+GCON-40117,GC0018,Sanjay White,sanjayw@silver_lakeschools.org,Curriculum Director,ELA,7
+GCON-40118,GC0018,D Davis,davidd@silver_lakeschools.org,District Admin,General,11
+GCON-40119,GC0018,Carlos Brown,carlosb@silver_lakeschools.org,Literacy Specialist,General,3
+GCON-40120,GC0018,Carlos Davis,carlosd@silver_lakeschools.org,Math Coordinator,ELA,
+GCON-40121,GC0018,Monique Thomas,mthomas@silver_lakeschools.org,District Admin,Math,5
+GCON-40122,GC0018,David Thomas,david.thomas@silver_lakeschools.org,Principal,General,
+GCON-40123,GC0019,Tanisha Lee,tlee@meadow_parkschools.org,Instructional Coach,General,11
+GCON-40124,GC0019,Sanjay Wilson,sanjayw@meadow_parkschools.org,Math Coordinator,ELA,
+GCON-40125,GC0019,Sarah Taylor,sarah.taylor@meadow_parkschools.org,,,9
+GCON-40126,GC0019,Nina Martin,,Math Coordinator,ELA,
+GCON-40127,GC0019,Lisa Smith,lsmith@meadow_parkschools.org,,,4
+GCON-40128,GC0019,Sanjay Davis,sdavis@meadow_parkschools.org,Teacher,,3
+GCON-40129,GC0019,Tanisha Anderson,tanderson@meadow_parkschools.org,Teacher,,8
+GCON-40130,GC0019,Renee Wilson,rwilson@meadow_parkschools.org,,STEM,1
+GCON-40131,GC0019,Priya Lee,priyal@meadow_parkschools.org,Math Coordinator,ELA,3
+GCON-40132,GC0020,Lisa Thomas,lisa.thomas@canyon_creekschools.org,Instructional Coach,STEM,12
+GCON-40133,GC0020,Kevin Lee,kevinl@canyon_creekschools.org,,Science,
+GCON-40134,GC0020,Renee Davis,reneed@canyon_creekschools.org,Instructional Coach,STEM,5
+GCON-40135,GC0020,Laura Brown,laura.brown@canyon_creekschools.org,District Admin,,
+GCON-40136,GC0020,Laura Smith,lsmith@canyon_creekschools.org,Teacher,Math,12
+GCON-40137,GC0020,Eric Anderson,,Curriculum Director,Math,4
+GCON-40138,GC0021,Tanisha Patel,,Math Coordinator,,2
+GCON-40139,GC0021,Priya Martin,priyam@riversideschools.org,Literacy Specialist,STEM,9
+GCON-40140,GC0021,Eric Lee,ericl@riversideschools.org,Instructional Coach,,
+GCON-40141,GC0021,Lisa Garcia,,,General,
+GCON-40142,GC0021,Mark Jackson,markj@riversideschools.org,Instructional Coach,General,2
+GCON-40143,GC0021,Laura Garcia,laurag@riversideschools.org,Curriculum Director,,7
+GCON-40144,GC0021,John Davis,john.davis@riversideschools.org,,Science,3
+GCON-40145,GC0021,Laura Martin,lauram@riversideschools.org,Curriculum Director,Literacy,
+GCON-40146,GC0022,Tanisha White,,Math Coordinator,,1
+GCON-40147,GC0022,John Brown,john.brown@summitschools.org,Instructional Coach,,
+GCON-40148,GC0022,John Garcia,john.garcia@summitschools.org,Principal,,11
+GCON-40149,GC0022,Carlos White,carlos.white@summitschools.org,,,K
+GCON-40150,GC0022,Jane Anderson,janea@summitschools.org,Math Coordinator,,K
+GCON-40151,GC0022,Nina Brown,nina.brown@summitschools.org,Curriculum Director,Literacy,1
+GCON-40152,GC0022,Mark Johnson,markj@summitschools.org,District Admin,,3
+GCON-40153,GC0022,Eric Moore,ericm@summitschools.org,Instructional Coach,Literacy,2
+GCON-40154,GC0023,Lisa Taylor,ltaylor@heritageschools.org,Math Coordinator,General,3
+GCON-40155,GC0023,Emily Smith,emilys@heritageschools.org,,Math,
+GCON-40156,GC0023,Alicia White,awhite@heritageschools.org,,Literacy,9
+GCON-40157,GC0023,Jane Taylor,,District Admin,,2
+GCON-40158,GC0023,Michael Thomas,,Curriculum Director,Science,
+GCON-40159,GC0023,Monique Thomas,moniquet@heritageschools.org,Math Coordinator,General,
+GCON-40160,GC0023,R Martin,rmartin@heritageschools.org,,Literacy,7
+GCON-40161,GC0023,Emily Wilson,ewilson@heritageschools.org,,General,10
+GCON-40162,GC0024,Sarah Davis,sarah.davis@franklinschools.org,,ELA,2
+GCON-40163,GC0024,Sarah Brown,sbrown@franklinschools.org,Curriculum Director,Science,
+GCON-40164,GC0024,John Brown,jbrown@franklinschools.org,Principal,General,8
+GCON-40165,GC0024,Eric Taylor,etaylor@franklinschools.org,Teacher,Literacy,10
+GCON-40166,GC0024,Lisa Jackson,,Math Coordinator,,11
+GCON-40167,GC0024,Lisa Garcia,,Literacy Specialist,Science,7
+GCON-40168,GC0024,Priya Martin,,Principal,Literacy,9
+GCON-40169,GC0024,Kevin Taylor,kevint@franklinschools.org,Teacher,General,12
+GCON-40170,GC0024,Praveen White,praveen.white@franklinschools.org,Principal,ELA,12
+GCON-40171,GC0025,Mark Thomas,mark.thomas@jeffersonschools.org,,Science,8
+GCON-40172,GC0025,Sanjay Thomas,sanjay.thomas@jeffersonschools.org,Literacy Specialist,ELA,4
+GCON-40173,GC0025,John Jackson,johnj@jeffersonschools.org,Instructional Coach,Math,11
+GCON-40174,GC0025,Monique Miller,monique.miller@jeffersonschools.org,Teacher,STEM,3
+GCON-40175,GC0025,Jane Garcia,janeg@jeffersonschools.org,District Admin,ELA,11
+GCON-40176,GC0025,Tanisha Wilson,,Teacher,Science,4
+GCON-40177,GC0025,Eric Jackson,ericj@jeffersonschools.org,Principal,ELA,
+GCON-40178,GC0025,Emily Taylor,emilyt@jeffersonschools.org,,Literacy,4
+GCON-40179,GC0025,John Smith,jsmith@jeffersonschools.org,Instructional Coach,STEM,5
+GCON-40180,GC0026,Sarah Miller,sarahm@lincolnschools.org,Principal,Science,8
+GCON-40181,GC0026,Michael Anderson,manderson@lincolnschools.org,Teacher,,7
+GCON-40182,GC0026,Laura White,lwhite@lincolnschools.org,District Admin,General,2
+GCON-40183,GC0026,Sarah Martin,sarah.martin@lincolnschools.org,Math Coordinator,Literacy,
+GCON-40184,GC0026,Lisa Davis,lisad@lincolnschools.org,District Admin,General,
+GCON-40185,GC0026,Eric Anderson,erica@lincolnschools.org,Instructional Coach,General,
+GCON-40186,GC0026,Priya Miller,priya.miller@lincolnschools.org,Instructional Coach,General,2
+GCON-40187,GC0026,Lisa Johnson,lisa.johnson@lincolnschools.org,Instructional Coach,,12
+GCON-40188,GC0027,Tanisha Garcia,tgarcia@rooseveltschools.org,Principal,Math,K
+GCON-40189,GC0027,Eric Thomas,eric.thomas@rooseveltschools.org,Curriculum Director,General,
+GCON-40190,GC0027,Eric Jackson,,District Admin,,2
+GCON-40191,GC0027,Mark Jackson,markj@rooseveltschools.org,,General,
+GCON-40192,GC0027,Eric Brown,eric.brown@rooseveltschools.org,District Admin,Science,12
+GCON-40193,GC0027,Nina Brown,ninab@rooseveltschools.org,Principal,,
+GCON-40194,GC0027,Michael Martin,,Instructional Coach,STEM,
+GCON-40195,GC0028,Tanisha White,twhite@adamsschools.org,,,
+GCON-40196,GC0028,Sanjay Wilson,swilson@adamsschools.org,District Admin,STEM,6
+GCON-40197,GC0028,Eric Smith,erics@adamsschools.org,District Admin,Math,7
+GCON-40198,GC0028,E Moore,emoore@adamsschools.org,Teacher,Literacy,
+GCON-40199,GC0028,Alicia Anderson,aliciaa@adamsschools.org,District Admin,Science,12
+GCON-40200,GC0028,Lisa Martin,lisa.martin@adamsschools.org,Principal,,
+GCON-40201,GC0028,L Miller,lmiller@adamsschools.org,District Admin,General,2
+GCON-40202,GC0028,Eric Lee,eric.lee@adamsschools.org,,General,
+GCON-40203,GC0029,Tanisha Lee,tanisha.lee@washingtonschools.org,Literacy Specialist,,7
+GCON-40204,GC0029,Sarah Moore,smoore@washingtonschools.org,,General,6
+GCON-40205,GC0029,John Taylor,john.taylor@washingtonschools.org,Curriculum Director,ELA,11
+GCON-40206,GC0029,Lisa White,lwhite@washingtonschools.org,Math Coordinator,General,5
+GCON-40207,GC0029,Lisa Lee,lisa.lee@washingtonschools.org,Instructional Coach,ELA,10
+GCON-40208,GC0029,Tanisha Moore,tanisham@washingtonschools.org,Math Coordinator,Math,
+GCON-40209,GC0029,Lisa Miller,,Literacy Specialist,,
+GCON-40210,GC0029,Mark Davis,mark.davis@washingtonschools.org,Literacy Specialist,Literacy,
+GCON-40211,GC0030,K Brown,kevin.brown@madisonschools.org,,ELA,8
+GCON-40212,GC0030,Eric Moore,emoore@madisonschools.org,Math Coordinator,,6
+GCON-40213,GC0030,Carlos Martin,,Principal,General,
+GCON-40214,GC0030,John White,john.white@madisonschools.org,Curriculum Director,Science,
+GCON-40215,GC0030,Eric White,ewhite@madisonschools.org,Teacher,Literacy,5
+GCON-40216,GC0031,Priya Miller,priyam@graniteschools.org,Teacher,Science,5
+GCON-40217,GC0031,Michael Davis,michaeld@graniteschools.org,Math Coordinator,Math,
+GCON-40218,GC0031,Michael Thomas,michael.thomas@graniteschools.org,Literacy Specialist,,10
+GCON-40219,GC0031,Emily Moore,,Teacher,ELA,8
+GCON-40220,GC0031,Jane White,jane.white@graniteschools.org,Literacy Specialist,,9
+GCON-40221,GC0032,Alicia Thomas,,District Admin,Math,6
+GCON-40222,GC0032,Jane Wilson,jwilson@blue_ridgeschools.org,Principal,ELA,
+GCON-40223,GC0032,Tanisha White,twhite@blue_ridgeschools.org,Math Coordinator,General,
+GCON-40224,GC0032,Alicia Johnson,ajohnson@blue_ridgeschools.org,,,6
+GCON-40225,GC0032,Carlos Brown,cbrown@blue_ridgeschools.org,,,
+GCON-40226,GC0033,M Garcia,michael.garcia@prairieschools.org,Math Coordinator,Literacy,11
+GCON-40227,GC0033,Nina Lee,,Principal,,5
+GCON-40228,GC0033,Michael Miller,michael.miller@prairieschools.org,Teacher,Literacy,
+GCON-40229,GC0033,Kevin Johnson,kevin.johnson@prairieschools.org,District Admin,,7
+GCON-40230,GC0033,John Jackson,johnj@prairieschools.org,Literacy Specialist,Literacy,12
+GCON-40231,GC0033,Monique Davis,mdavis@prairieschools.org,,,5
+GCON-40232,GC0034,Michael Moore,michael.moore@harborschools.org,,Science,2
+GCON-40233,GC0034,Praveen Moore,pmoore@harborschools.org,Math Coordinator,General,
+GCON-40234,GC0034,Renee Patel,reneep@harborschools.org,Math Coordinator,General,
+GCON-40235,GC0034,Michael Davis,michael.davis@harborschools.org,District Admin,ELA,
+GCON-40236,GC0034,Jane White,jane.white@harborschools.org,Math Coordinator,General,
+GCON-40237,GC0034,Emily Taylor,emilyt@harborschools.org,Instructional Coach,STEM,12
+GCON-40238,GC0034,Lisa Lee,lisal@harborschools.org,Instructional Coach,STEM,1
+GCON-40239,GC0035,Lisa Patel,lpatel@cypressschools.org,,Literacy,6
+GCON-40240,GC0035,Priya Garcia,priyag@cypressschools.org,Teacher,Math,8
+GCON-40241,GC0035,Praveen Miller,praveen.miller@cypressschools.org,Principal,STEM,9
+GCON-40242,GC0035,David Johnson,djohnson@cypressschools.org,,Math,4
+GCON-40243,GC0035,Kevin Miller,kmiller@cypressschools.org,Instructional Coach,,K
+GCON-40244,GC0036,Sanjay White,,Math Coordinator,,3
+GCON-40245,GC0036,J Garcia,jgarcia@sierraschools.org,Literacy Specialist,,
+GCON-40246,GC0036,Sarah Jackson,sjackson@sierraschools.org,Teacher,Science,
+GCON-40247,GC0036,Sanjay Davis,sanjayd@sierraschools.org,,Math,2
+GCON-40248,GC0036,Carlos Johnson,cjohnson@sierraschools.org,Literacy Specialist,,12
+GCON-40249,GC0036,John White,jwhite@sierraschools.org,Literacy Specialist,Literacy,
+GCON-40250,GC0036,Lisa Smith,lisas@sierraschools.org,Instructional Coach,,1
+GCON-40251,GC0036,Laura Martin,,District Admin,General,6
+GCON-40252,GC0037,Lisa Davis,,Math Coordinator,,8
+GCON-40253,GC0037,Mark Jackson,,District Admin,,11
+GCON-40254,GC0037,Michael Smith,michaels@frontierschools.org,Teacher,STEM,1
+GCON-40255,GC0037,Jane Miller,janem@frontierschools.org,Principal,Science,
+GCON-40256,GC0037,S Garcia,sanjayg@frontierschools.org,Math Coordinator,ELA,8
+GCON-40257,GC0037,Priya Lee,priyal@frontierschools.org,Literacy Specialist,ELA,
+GCON-40258,GC0037,T Thomas,tanisha.thomas@frontierschools.org,Literacy Specialist,,
+GCON-40259,GC0037,Monique Garcia,moniqueg@frontierschools.org,District Admin,,2
+GCON-40260,GC0037,Nina Davis,nina.davis@frontierschools.org,Literacy Specialist,General,2
+GCON-40261,GC0038,Carlos Taylor,ctaylor@libertyschools.org,,,
+GCON-40262,GC0038,Martin,,Teacher,,3
+GCON-40263,GC0038,Monique Miller,monique.miller@libertyschools.org,Instructional Coach,,3
+GCON-40264,GC0038,Laura Jackson,ljackson@libertyschools.org,Principal,General,5
+GCON-40265,GC0038,Renee Davis,reneed@libertyschools.org,Teacher,STEM,
+GCON-40266,GC0038,Lisa Thomas,lisa.thomas@libertyschools.org,Literacy Specialist,,9
+GCON-40267,GC0038,Praveen Thomas,praveent@libertyschools.org,Principal,Literacy,2
+GCON-40268,GC0038,Lisa Martin,,Teacher,ELA,
+GCON-40269,GC0039,Jane Smith,,Literacy Specialist,,K
+GCON-40270,GC0039,Laura Anderson,laura.anderson@monroeschools.org,Curriculum Director,,
+GCON-40271,GC0039,Jane Moore,jane.moore@monroeschools.org,,General,
+GCON-40272,GC0039,Emily White,,Instructional Coach,General,10
+GCON-40273,GC0039,Monique Patel,monique.patel@monroeschools.org,District Admin,Science,
+GCON-40274,GC0039,Priya Davis,priya.davis@monroeschools.org,Instructional Coach,,9
+GCON-40275,GC0039,Lisa Wilson,,Principal,STEM,
+GCON-40276,GC0039,Carlos Taylor,carlost@monroeschools.org,Principal,Science,
+GCON-40277,GC0040,Michael Martin,michael.martin@concordschools.org,Curriculum Director,,10
+GCON-40278,GC0040,Mark Johnson,mjohnson@concordschools.org,District Admin,General,
+GCON-40279,GC0040,Emily Smith,emily.smith@concordschools.org,,,1
+GCON-40280,GC0040,Nina Patel,,Curriculum Director,Math,12
+GCON-40281,GC0040,N Moore,nmoore@concordschools.org,Teacher,General,
+GCON-40282,GC0040,Alicia Smith,alicia.smith@concordschools.org,Principal,General,11
+GCON-40283,GC0040,Emily Jackson,emily.jackson@concordschools.org,,ELA,
+GCON-40284,GC0040,Alicia Wilson,aliciaw@concordschools.org,Principal,,
+GCON-40285,GC0040,Emily Lee,emilyl@concordschools.org,Teacher,STEM,
+GCON-40286,GC0041,Emily Patel,emily.patel@hamiltonschools.org,Literacy Specialist,,
+GCON-40287,GC0041,Renee Taylor,reneet@hamiltonschools.org,,Literacy,
+GCON-40288,GC0041,Sarah Taylor,staylor@hamiltonschools.org,Math Coordinator,,3
+GCON-40289,GC0041,Laura Anderson,lauraa@hamiltonschools.org,Literacy Specialist,Science,10
+GCON-40290,GC0041,Eric White,eric.white@hamiltonschools.org,Literacy Specialist,,3
+GCON-40291,GC0042,Monique Wilson,moniquew@auroraschools.org,Teacher,,
+GCON-40292,GC0042,Eric Martin,emartin@auroraschools.org,Math Coordinator,General,10
+GCON-40293,GC0042,John Martin,john.martin@auroraschools.org,Teacher,Literacy,1
+GCON-40294,GC0042,Eric Martin,eric.martin@auroraschools.org,Math Coordinator,General,5
+GCON-40295,GC0042,Carlos Moore,carlos.moore@auroraschools.org,,,4
+GCON-40296,GC0042,Renee Smith,renees@auroraschools.org,Teacher,Literacy,12
+GCON-40297,GC0042,Kevin Patel,kevin.patel@auroraschools.org,District Admin,ELA,10
+GCON-40298,GC0042,Monique Anderson,manderson@auroraschools.org,Principal,ELA,2
+GCON-40299,GC0042,D Miller,davidm@auroraschools.org,Math Coordinator,ELA,12
+GCON-40300,GC0043,Jane Thomas,janet@briarwoodschools.org,Curriculum Director,ELA,3
+GCON-40301,GC0043,Priya Patel,ppatel@briarwoodschools.org,Instructional Coach,Science,8
+GCON-40302,GC0043,Jane Smith,,Teacher,Literacy,11
+GCON-40303,GC0043,Nina Patel,ninap@briarwoodschools.org,,Science,4
+GCON-40304,GC0043,Lisa Martin,lisam@briarwoodschools.org,District Admin,Literacy,8
+GCON-40305,GC0043,Praveen Jackson,,Curriculum Director,ELA,K
+GCON-40306,GC0043,Eric Martin,eric.martin@briarwoodschools.org,Literacy Specialist,,11
+GCON-40307,GC0043,Sarah Jackson,sarahj@briarwoodschools.org,Math Coordinator,,2
+GCON-40308,GC0043,Praveen Garcia,praveen.garcia@briarwoodschools.org,Math Coordinator,Math,1
+GCON-40309,GC0044,Sarah Wilson,sarah.wilson@highlandschools.org,Teacher,,
+GCON-40310,GC0044,Mark Anderson,manderson@highlandschools.org,Teacher,Science,4
+GCON-40311,GC0044,Mark Moore,markm@highlandschools.org,,General,6
+GCON-40312,GC0044,John Wilson,john.wilson@highlandschools.org,Instructional Coach,STEM,
+GCON-40313,GC0044,Tanisha Brown,tanishab@highlandschools.org,Literacy Specialist,,
+GCON-40314,GC0044,Sanjay Miller,sanjay.miller@highlandschools.org,District Admin,Math,7
+GCON-40315,GC0044,Nina Thomas,nina.thomas@highlandschools.org,Teacher,,12
+GCON-40316,GC0045,Sarah Patel,sarah.patel@willow_creekschools.org,Teacher,Math,3
+GCON-40317,GC0045,Emily Anderson,emily.anderson@willow_creekschools.org,,,4
+GCON-40318,GC0045,Kevin Johnson,kevinj@willow_creekschools.org,Curriculum Director,Science,9
+GCON-40319,GC0045,Nina Lee,,Principal,STEM,
+GCON-40320,GC0045,D White,dwhite@willow_creekschools.org,,Math,10
+GCON-40321,GC0045,Praveen Davis,praveend@willow_creekschools.org,Instructional Coach,Science,11
+GCON-40322,GC0045,Sarah Jackson,sarahj@willow_creekschools.org,,General,6
+GCON-40323,GC0046,Emily Miller,emilym@stonebridgeschools.org,,Literacy,
+GCON-40324,GC0046,John Patel,john.patel@stonebridgeschools.org,Literacy Specialist,Literacy,8
+GCON-40325,GC0046,Praveen Miller,pmiller@stonebridgeschools.org,District Admin,STEM,2
+GCON-40326,GC0046,Sarah Taylor,saraht@stonebridgeschools.org,Literacy Specialist,,
+GCON-40327,GC0046,Laura Anderson,laura.anderson@stonebridgeschools.org,Instructional Coach,General,
+GCON-40328,GC0046,Renee Patel,,Teacher,General,9
+GCON-40329,GC0046,David Smith,dsmith@stonebridgeschools.org,Instructional Coach,ELA,
+GCON-40330,GC0047,Lisa Davis,lisad@clearwaterschools.org,Math Coordinator,,K
+GCON-40331,GC0047,Lisa Thomas,lisa.thomas@clearwaterschools.org,Instructional Coach,ELA,
+GCON-40332,GC0047,Michael Thomas,michael.thomas@clearwaterschools.org,Math Coordinator,STEM,
+GCON-40333,GC0047,Carlos Thomas,carlos.thomas@clearwaterschools.org,,,
+GCON-40334,GC0047,Jane Martin,janem@clearwaterschools.org,Instructional Coach,Literacy,6
+GCON-40335,GC0048,Carlos Miller,,Instructional Coach,STEM,5
+GCON-40336,GC0048,Nina Davis,ndavis@gatewayschools.org,Teacher,STEM,
+GCON-40337,GC0048,Carlos Anderson,,Instructional Coach,,K
+GCON-40338,GC0048,Carlos White,cwhite@gatewayschools.org,Literacy Specialist,,
+GCON-40339,GC0048,Lisa Smith,lsmith@gatewayschools.org,District Admin,Literacy,
+GCON-40340,GC0048,Kevin Miller,kevin.miller@gatewayschools.org,Teacher,General,
+GCON-40341,GC0048,Carlos Anderson,carlos.anderson@gatewayschools.org,,,4
+GCON-40342,GC0048,Jane White,jane.white@gatewayschools.org,Instructional Coach,Literacy,
+GCON-40343,GC0049,Lisa Moore,lmoore@north_starschools.org,Literacy Specialist,Literacy,
+GCON-40344,GC0049,Michael Johnson,michael.johnson@north_starschools.org,,,12
+GCON-40345,GC0049,Sanjay White,sanjayw@north_starschools.org,,General,
+GCON-40346,GC0049,Priya Davis,priyad@north_starschools.org,Math Coordinator,,
+GCON-40347,GC0049,K Martin,kevin.martin@north_starschools.org,Math Coordinator,Math,5
+GCON-40348,GC0049,Praveen Johnson,praveen.johnson@north_starschools.org,Math Coordinator,Science,2
+GCON-40349,GC0049,John Lee,johnl@north_starschools.org,Teacher,Literacy,6
+GCON-40350,GC0050,Lisa Thomas,lisa.thomas@twin_oaksschools.org,Instructional Coach,STEM,
+GCON-40351,GC0050,Alicia Brown,alicia.brown@twin_oaksschools.org,Principal,Science,
+GCON-40352,GC0050,Emily Martin,emartin@twin_oaksschools.org,District Admin,Math,4
+GCON-40353,GC0050,Jane Wilson,jwilson@twin_oaksschools.org,,,5
+GCON-40354,GC0050,Eric White,ewhite@twin_oaksschools.org,Curriculum Director,,1
+GCON-40355,GC0050,Jane Garcia,jane.garcia@twin_oaksschools.org,Teacher,,11
+GCON-40356,GC0050,Alicia Patel,aliciap@twin_oaksschools.org,Curriculum Director,,3
+GCON-40357,GC0050,Carlos Taylor,carlos.taylor@twin_oaksschools.org,Curriculum Director,STEM,5
+GCON-40358,GC0051,Emily Jackson,,Instructional Coach,ELA,
+GCON-40359,GC0051,Carlos Brown,carlosb@valley_viewschools.org,Teacher,ELA,
+GCON-40360,GC0051,Praveen Jackson,pjackson@valley_viewschools.org,Teacher,,8
+GCON-40361,GC0051,Sarah Smith,sarah.smith@valley_viewschools.org,Curriculum Director,,
+GCON-40362,GC0051,Sarah Taylor,sarah.taylor@valley_viewschools.org,Math Coordinator,Science,3
+GCON-40363,GC0052,John Anderson,john.anderson@golden_plainsschools.org,Instructional Coach,Science,
+GCON-40364,GC0052,David Brown,,Literacy Specialist,Science,
+GCON-40365,GC0052,John Anderson,johna@golden_plainsschools.org,,Math,5
+GCON-40366,GC0052,Emily White,ewhite@golden_plainsschools.org,District Admin,,
+GCON-40367,GC0052,Carlos Garcia,cgarcia@golden_plainsschools.org,,,1
+GCON-40368,GC0052,John Wilson,john.wilson@golden_plainsschools.org,Math Coordinator,,8
+GCON-40369,GC0052,Sarah White,,Principal,STEM,
+GCON-40370,GC0052,Nina Anderson,nina.anderson@golden_plainsschools.org,,ELA,5
+GCON-40371,GC0053,Eric Thomas,ethomas@parksideschools.org,Teacher,,2
+GCON-40372,GC0053,Kevin Johnson,kevin.johnson@parksideschools.org,Curriculum Director,STEM,
+GCON-40373,GC0053,Priya Lee,,Math Coordinator,STEM,1
+GCON-40374,GC0053,Laura Davis,laurad@parksideschools.org,Instructional Coach,Science,5
+GCON-40375,GC0053,Emily Thomas,emilyt@parksideschools.org,District Admin,Math,4
+GCON-40376,GC0053,Eric White,ewhite@parksideschools.org,,,
+GCON-40377,GC0054,Monique Miller,,District Admin,STEM,5
+GCON-40378,GC0054,Moore,,Curriculum Director,Literacy,K
+GCON-40379,GC0054,John Garcia,jgarcia@millbrookschools.org,Math Coordinator,General,
+GCON-40380,GC0054,Jane Garcia,jgarcia@millbrookschools.org,Curriculum Director,STEM,1
+GCON-40381,GC0054,Mark Moore,mark.moore@millbrookschools.org,Instructional Coach,,5
+GCON-40382,GC0054,Jane Martin,jmartin@millbrookschools.org,Math Coordinator,Literacy,10
+GCON-40383,GC0054,Michael Patel,mpatel@millbrookschools.org,Literacy Specialist,,9
+GCON-40384,GC0054,Carlos Johnson,cjohnson@millbrookschools.org,,Science,
+GCON-40385,GC0054,Monique Davis,moniqued@millbrookschools.org,Instructional Coach,Science,
+GCON-40386,GC0055,John White,johnw@kingstonschools.org,Math Coordinator,General,
+GCON-40387,GC0055,Jane Patel,jpatel@kingstonschools.org,Math Coordinator,,
+GCON-40388,GC0055,Sanjay Moore,sanjay.moore@kingstonschools.org,,Science,9
+GCON-40389,GC0055,Sarah Thomas,sthomas@kingstonschools.org,Instructional Coach,Literacy,
+GCON-40390,GC0055,Renee Jackson,rjackson@kingstonschools.org,,Science,
+GCON-40391,GC0055,Priya Garcia,,,Science,1
+GCON-40392,GC0055,Laura Smith,lsmith@kingstonschools.org,Literacy Specialist,ELA,
+GCON-40393,GC0056,Praveen Jackson,pjackson@edgewaterschools.org,Literacy Specialist,,
+GCON-40394,GC0056,Priya Brown,priya.brown@edgewaterschools.org,Literacy Specialist,STEM,
+GCON-40395,GC0056,Emily Moore,emilym@edgewaterschools.org,Instructional Coach,Math,
+GCON-40396,GC0056,Carlos Smith,,Curriculum Director,STEM,9
+GCON-40397,GC0056,Sarah Jackson,sarah.jackson@edgewaterschools.org,District Admin,ELA,7
+GCON-40398,GC0056,Eric White,eric.white@edgewaterschools.org,Literacy Specialist,General,8
+GCON-40399,GC0056,Priya Taylor,ptaylor@edgewaterschools.org,,Math,10
+GCON-40400,GC0056,Monique Thomas,mthomas@edgewaterschools.org,,General,
+GCON-40401,GC0056,Laura Patel,lpatel@edgewaterschools.org,Teacher,ELA,
+GCON-40402,GC0057,Renee Jackson,,Instructional Coach,,5
+GCON-40403,GC0057,Carlos Martin,carlosm@shorelineschools.org,Principal,,11
+GCON-40404,GC0057,Sarah Smith,sarahs@shorelineschools.org,Literacy Specialist,,8
+GCON-40405,GC0057,David Anderson,,,ELA,4
+GCON-40406,GC0057,Priya Jackson,priya.jackson@shorelineschools.org,District Admin,Math,
+GCON-40407,GC0057,Emily Smith,emily.smith@shorelineschools.org,Principal,Science,5
+GCON-40408,GC0057,Laura Patel,laura.patel@shorelineschools.org,Principal,General,
+GCON-40409,GC0057,Sanjay Garcia,sgarcia@shorelineschools.org,Curriculum Director,ELA,
+GCON-40410,GC0058,K Garcia,kgarcia@aspenschools.org,District Admin,Literacy,7
+GCON-40411,GC0058,Tanisha Wilson,,Literacy Specialist,Literacy,
+GCON-40412,GC0058,Sarah Johnson,sjohnson@aspenschools.org,Math Coordinator,,11
+GCON-40413,GC0058,Monique Moore,moniquem@aspenschools.org,,STEM,1
+GCON-40414,GC0058,J Brown,,Curriculum Director,ELA,9
+GCON-40415,GC0058,David Garcia,dgarcia@aspenschools.org,Instructional Coach,Literacy,6
+GCON-40416,GC0058,Jane Jackson,jane.jackson@aspenschools.org,Teacher,General,11
+GCON-40417,GC0058,Monique Taylor,,Math Coordinator,,4
+GCON-40418,GC0059,Jane Davis,janed@fox_runschools.org,Teacher,Math,4

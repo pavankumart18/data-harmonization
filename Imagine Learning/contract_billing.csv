@@ -1,0 +1,235 @@
+billing_record_id,contract_id,billing_customer_name,erp_customer_id,product_name_billing,product_family_billing,contract_start_date,contract_end_date,billing_status,invoice_amount_usd,seats_contracted,billing_country,is_netsuite_only_customer,source,true_golden_customer_id
+BILL-30001,CT-30001,Houston Public Schools,NS-7666,Courseware,Core Courseware,2024-12-04,2027-05-21,Expired,89000,250,USA,N,NetSuite,GC0001
+BILL-30002,CT-30002,Houston Public Schools,NS-8842,Courseware,Core Courseware,2024-10-13,2026-08-29,Active,39000,1500,USA,N,NetSuite,GC0001
+BILL-30003,CT-30003,Houston Federal Programs,NS-9089,PL,Professional Learning,2025-07-08,2027-08-06,Invoiced,180000,2800,USA,N,NetSuite,GC0001
+BILL-30004,CT-30004,Houston Federal Programs,NS-8299,StudySync,Core ELA,2024-10-21,2026-04-28,Amendment Pending,39000,750,USA,N,NetSuite,GC0001
+BILL-30005,CT-30005,Houston ISD,NS-7339,Twig Science,Science,2025-03-14,2026-10-03,Active,39000,10000,USA,N,NetSuite,GC0001
+BILL-30006,CT-30006,Riverview ISD,NS-7638,Imagine Math,Supplemental Math,2025-01-16,2027-08-13,Active,125000,5200,USA,N,NetSuite,GC0002
+BILL-30007,CT-30007,Riverview ISD,NS-7968,Imagine Language & Literacy,Supplemental Literacy,2024-11-29,2028-04-04,Invoiced,22000,400,USA,N,NetSuite,GC0002
+BILL-30008,CT-30008,Riverview Federal Programs,NS-8392,Imagine Math,Supplemental Math,2025-06-18,2026-05-24,Expired,125000,5200,USA,N,NetSuite,GC0002
+BILL-30009,CT-30009,Oak Valley School District,NS-8162,PD Services,Professional Learning,2025-01-30,2027-06-20,Amendment Pending,180000,1500,USA,N,NetSuite,GC0003
+BILL-30010,CT-30010,Oak Valley Public Schools,NS-9827,Imagine Language & Literacy,Supplemental Literacy,2024-08-15,2027-01-04,Expired,180000,10000,USA,N,NetSuite,GC0003
+BILL-30011,CT-30011,Oak Valley Federal Programs,NS-9634,StudySync,Core ELA,2024-01-07,2026-03-09,Invoiced,255000,2800,USA,N,NetSuite,GC0003
+BILL-30012,CT-30012,Pine Hills Independent School District Finance,NS-8510,Imagine Learning PD,Professional Learning,2025-06-22,2026-06-08,Active,180000,2800,USA,N,NetSuite,GC0004
+BILL-30013,CT-30013,Pine Hills Independent School District Finance,NS-7779,Imagine Math,Supplemental Math,2024-05-09,2026-05-20,Amendment Pending,39000,10000,USA,N,NetSuite,GC0004
+BILL-30014,CT-30014,Pine Hills ISD,NS-9567,Imagine Learning PD,Professional Learning,2024-03-01,2026-11-18,Active,22000,2800,USA,N,NetSuite,GC0004
+BILL-30015,CT-30015,Pine Hills Public Schools,NS-8074,Imagine Language & Literacy,Supplemental Literacy,2024-07-27,2027-11-01,Amendment Pending,89000,750,USA,N,NetSuite,GC0004
+BILL-30016,CT-30016,Pine Hills Independent School District Finance,NS-8931,Imagine Math,Supplemental Math,2024-03-30,2027-09-09,Expired,39000,10000,USA,N,NetSuite,GC0004
+BILL-30017,CT-30017,Maple Grove Public Schools,NS-8901,CW,Core Courseware,2025-07-29,2027-08-01,Invoiced,89000,400,USA,N,NetSuite,GC0005
+BILL-30018,CT-30018,Maple Grove Independent School District Finance,NS-9339,StudySync,Core ELA,2024-11-29,2026-03-22,Amendment Pending,22000,2800,USA,N,NetSuite,GC0005
+BILL-30019,CT-30019,Maple Grove Public Schools,NS-8566,Imagine Learning PD,Professional Learning,2025-07-21,2026-07-01,Active,89000,250,USA,N,NetSuite,GC0005
+BILL-30020,CT-30020,Cedar Ridge Public Schools,NS-7495,Imagine Language & Literacy,Supplemental Literacy,2024-06-28,2025-12-31,Expired,180000,400,UK,Y,NetSuite,GC0006
+BILL-30021,CT-30021,Cedar Ridge Independent School District Finance,NS-9312,Imagine Learning PD,Professional Learning,2024-07-09,2028-03-03,Active,61000,400,UK,Y,NetSuite,GC0006
+BILL-30022,CT-30022,Cedar Ridge Independent School District Finance,NS-8687,Twig Science,Science,2024-04-13,2027-11-17,Expired,255000,750,UK,N,NetSuite,GC0006
+BILL-30023,CT-30023,Cedar Ridge ISD,NS-9622,Twig,Science,2024-08-30,2026-04-16,Invoiced,180000,750,UK,N,NetSuite,GC0006
+BILL-30024,CT-30024,Cedar Ridge Independent School District Finance,NS-8311,Imagine Language & Literacy,Supplemental Literacy,2024-11-11,2026-07-28,Expired,22000,1500,UK,N,NetSuite,GC0006
+BILL-30025,CT-30025,Springfield Public Schools,NS-7896,PD Services,Professional Learning,2024-10-23,2026-07-08,Active,125000,750,USA,N,NetSuite,GC0007
+BILL-30026,CT-30026,Springfield Federal Programs,NS-9365,Courseware,Core Courseware,2025-05-25,2027-07-15,Active,39000,1500,USA,N,NetSuite,GC0007
+BILL-30027,CT-30027,Springfield Public Schools,NS-7011,Twig,Science,2025-03-26,2026-01-07,Active,22000,750,USA,N,NetSuite,GC0007
+BILL-30028,CT-30028,Springfield Public Schools,NS-9158,Imagine Language & Literacy,Supplemental Literacy,2024-04-25,2026-06-04,Expired,180000,10000,USA,N,NetSuite,GC0007
+BILL-30029,CT-30029,Lakeview Independent School District Finance,NS-7535,Imagine Language & Literacy,Supplemental Literacy,2024-05-17,2028-01-18,Invoiced,89000,5200,USA,N,NetSuite,GC0008
+BILL-30030,CT-30030,Lakeview School District,NS-9244,Imagine Learning PD,Professional Learning,2024-02-15,2026-07-26,Amendment Pending,89000,2800,USA,N,NetSuite,GC0008
+BILL-30031,CT-30031,Lakeview Public Schools,NS-9124,Imagine Learning PD,Professional Learning,2025-08-05,2027-01-19,Invoiced,180000,400,USA,N,NetSuite,GC0008
+BILL-30032,CT-30032,Lakeview Federal Programs,NS-9733,Imagine Learning PD,Professional Learning,2024-07-08,2026-06-27,Amendment Pending,89000,250,USA,N,NetSuite,GC0008
+BILL-30033,CT-30033,Northfield School District,NS-8139,Imagine Language & Literacy,Supplemental Literacy,2024-08-29,2026-11-29,Active,255000,2800,USA,N,NetSuite,GC0009
+BILL-30034,CT-30034,Northfield Federal Programs,NS-7448,Twig Science,Science,2024-12-21,2028-03-01,Active,39000,10000,USA,N,NetSuite,GC0009
+BILL-30035,CT-30035,Northfield School District,NS-7093,Imagine Learning PD,Professional Learning,2025-08-14,2026-04-17,Amendment Pending,180000,750,USA,N,NetSuite,GC0009
+BILL-30036,CT-30036,Westbrook ISD,NS-8240,Math Suite,Supplemental Math,2025-06-07,2026-05-13,Active,125000,10000,USA,N,NetSuite,GC0010
+BILL-30037,CT-30037,Westbrook ISD,NS-9361,Imagine Language & Literacy,Supplemental Literacy,2025-04-26,2026-01-20,Active,180000,2800,USA,N,NetSuite,GC0010
+BILL-30038,CT-30038,Westbrook ISD,NS-9493,StudySync,Core ELA,2024-05-28,2026-12-09,Active,180000,400,USA,N,NetSuite,GC0010
+BILL-30039,CT-30039,Westbrook Independent School District Finance,NS-7473,Imagine Learning PD,Professional Learning,2025-04-16,2026-12-21,Expired,255000,5200,USA,N,NetSuite,GC0010
+BILL-30040,CT-30040,Westbrook ISD,NS-7471,Imagine Language & Literacy,Supplemental Literacy,2024-04-01,2026-02-23,Active,89000,1500,USA,N,NetSuite,GC0010
+BILL-30041,CT-30041,Easton Independent School District Finance,NS-7171,Imagine Language & Literacy,Supplemental Literacy,2025-04-02,2026-03-16,Invoiced,180000,5200,USA,N,NetSuite,GC0011
+BILL-30042,CT-30042,Easton Public Schools,NS-8018,Twig,Science,2024-02-07,2026-08-24,Amendment Pending,39000,1500,USA,N,NetSuite,GC0011
+BILL-30043,CT-30043,Easton Federal Programs,NS-7853,StudySync,Core ELA,2024-07-02,2027-02-06,Invoiced,255000,2800,USA,N,NetSuite,GC0011
+BILL-30044,CT-30044,Fairview Federal Programs,NS-7721,ILL,Supplemental Literacy,2024-01-24,2028-01-14,Amendment Pending,180000,1500,USA,N,NetSuite,GC0012
+BILL-30045,CT-30045,Fairview Independent School District Finance,NS-8380,Imagine Learning PD,Professional Learning,2025-08-13,2027-09-08,Invoiced,39000,400,USA,N,NetSuite,GC0012
+BILL-30046,CT-30046,Fairview Federal Programs,NS-8538,Twig,Science,2025-01-10,2026-10-21,Expired,255000,10000,USA,N,NetSuite,GC0012
+BILL-30047,CT-30047,Brookside ISD,NS-7879,Imagine Learning PD,Professional Learning,2025-08-05,2027-06-30,Invoiced,39000,10000,USA,N,NetSuite,GC0013
+BILL-30048,CT-30048,Brookside Public Schools,NS-7069,Imagine Learning PD,Professional Learning,2024-08-22,2027-02-04,Active,39000,750,USA,N,NetSuite,GC0013
+BILL-30049,CT-30049,Brookside Public Schools,NS-8470,Imagine Language & Literacy,Supplemental Literacy,2025-07-06,2026-11-07,Expired,61000,10000,USA,N,NetSuite,GC0013
+BILL-30050,CT-30050,Greenwood ISD,NS-8062,Imagine Language & Literacy,Supplemental Literacy,2024-06-08,2025-11-23,Active,89000,250,USA,N,NetSuite,GC0014
+BILL-30051,CT-30051,Greenwood ISD,NS-8482,StudySync,Core ELA,2025-05-05,2026-06-21,Amendment Pending,89000,750,USA,N,NetSuite,GC0014
+BILL-30052,CT-30052,Greenwood Independent School District Finance,NS-9453,Imagine Math,Supplemental Math,2025-03-29,2027-11-03,Active,89000,1500,USA,N,NetSuite,GC0014
+BILL-30053,CT-30053,Hillcrest Public Schools,NS-7934,Math Suite,Supplemental Math,2025-06-27,2027-08-24,Active,61000,750,USA,N,NetSuite,GC0015
+BILL-30054,CT-30054,Hillcrest Independent School District Finance,NS-9803,Courseware,Core Courseware,2024-01-08,2026-06-12,Invoiced,22000,400,USA,N,NetSuite,GC0015
+BILL-30055,CT-30055,Hillcrest ISD,NS-7069,Imagine Math,Supplemental Math,2025-02-19,2027-03-20,Amendment Pending,255000,5200,USA,N,NetSuite,GC0015
+BILL-30056,CT-30056,Hillcrest Federal Programs,NS-8733,StudySync,Core ELA,2024-11-11,2027-07-27,Active,61000,1500,USA,N,NetSuite,GC0015
+BILL-30057,CT-30057,Hillcrest Federal Programs,NS-8523,Twig,Science,2024-09-09,2026-07-12,Expired,255000,250,USA,N,NetSuite,GC0015
+BILL-30058,CT-30058,Sunnydale Public Schools,NS-8778,Courseware,Core Courseware,2025-07-22,2025-12-27,Active,255000,10000,USA,N,NetSuite,GC0016
+BILL-30059,CT-30059,Sunnydale ISD,NS-7158,Science Suite,Science,2025-07-21,2026-06-20,Active,89000,1500,USA,N,NetSuite,GC0016
+BILL-30060,CT-30060,Sunnydale ISD,NS-9002,Courseware,Core Courseware,2025-07-11,2025-11-10,Amendment Pending,22000,10000,USA,N,NetSuite,GC0016
+BILL-30061,CT-30061,Redwood Federal Programs,NS-8834,Imagine Learning PD,Professional Learning,2024-04-20,2026-10-13,Active,89000,250,USA,N,NetSuite,GC0017
+BILL-30062,CT-30062,Redwood School District,NS-8673,Imagine Language & Literacy,Supplemental Literacy,2024-09-09,2025-12-22,Expired,180000,400,USA,N,NetSuite,GC0017
+BILL-30063,CT-30063,Redwood School District,NS-7195,Courseware,Core Courseware,2024-10-21,2026-11-01,Amendment Pending,61000,1500,USA,N,NetSuite,GC0017
+BILL-30064,CT-30064,Redwood Independent School District Finance,NS-8640,Edgenuity Courseware,Core Courseware,2024-01-26,2025-11-14,Amendment Pending,89000,400,USA,N,NetSuite,GC0017
+BILL-30065,CT-30065,Redwood Federal Programs,NS-8830,Courseware,Core Courseware,2025-03-15,2027-06-30,Invoiced,89000,250,USA,N,NetSuite,GC0017
+BILL-30066,CT-30066,Silver Lake ISD,NS-8367,IM,Supplemental Math,2025-02-16,2026-04-06,Expired,61000,10000,Canada,Y,NetSuite,GC0018
+BILL-30067,CT-30067,Silver Lake Public Schools,NS-7609,StudySync,Core ELA,2025-06-21,2026-07-01,Active,180000,10000,Canada,Y,NetSuite,GC0018
+BILL-30068,CT-30068,Silver Lake ISD,NS-8089,Imagine Math,Supplemental Math,2025-03-11,2026-02-07,Invoiced,61000,5200,Canada,Y,NetSuite,GC0018
+BILL-30069,CT-30069,Meadow Park ISD,NS-8830,Imagine Math,Supplemental Math,2025-04-23,2026-03-04,Invoiced,22000,250,USA,N,NetSuite,GC0019
+BILL-30070,CT-30070,Meadow Park Federal Programs,NS-9398,Imagine Learning PD,Professional Learning,2025-07-30,2027-12-12,Invoiced,125000,250,USA,N,NetSuite,GC0019
+BILL-30071,CT-30071,Meadow Park Independent School District Finance,NS-9734,Courseware,Core Courseware,2024-03-08,2026-09-17,Active,22000,750,USA,N,NetSuite,GC0019
+BILL-30072,CT-30072,Canyon Creek School District,NS-9415,Science Suite,Science,2025-02-08,2028-01-08,Amendment Pending,125000,1500,USA,N,NetSuite,GC0020
+BILL-30073,CT-30073,Canyon Creek Independent School District Finance,NS-9654,PD Services,Professional Learning,2025-03-25,2027-09-29,Active,255000,1500,USA,N,NetSuite,GC0020
+BILL-30074,CT-30074,Canyon Creek Federal Programs,NS-7418,StudySync,Core ELA,2025-01-26,2026-02-06,Active,39000,1500,USA,N,NetSuite,GC0020
+BILL-30075,CT-30075,Canyon Creek School District,NS-8986,Courseware,Core Courseware,2024-09-29,2026-07-09,Active,255000,400,USA,N,NetSuite,GC0020
+BILL-30076,CT-30076,Canyon Creek Public Schools,NS-7749,CW,Core Courseware,2025-08-19,2027-06-02,Active,125000,1500,USA,N,NetSuite,GC0020
+BILL-30077,CT-30077,Riverside Federal Programs,NS-7676,Imagine Math,Supplemental Math,2024-05-22,2025-11-23,Active,89000,250,USA,N,NetSuite,GC0021
+BILL-30078,CT-30078,Riverside Public Schools,NS-9214,Twig Science,Science,2024-04-18,2026-01-27,Expired,22000,10000,USA,N,NetSuite,GC0021
+BILL-30079,CT-30079,Riverside School District,NS-9583,Imagine Language & Literacy,Supplemental Literacy,2024-09-22,2026-02-02,Amendment Pending,255000,250,USA,N,NetSuite,GC0021
+BILL-30080,CT-30080,Summit Public Schools,NS-7600,Courseware,Core Courseware,2024-03-26,2027-01-26,Active,180000,10000,USA,N,NetSuite,GC0022
+BILL-30081,CT-30081,Summit Federal Programs,NS-9709,Twig Science,Science,2024-03-13,2027-05-10,Expired,61000,750,USA,N,NetSuite,GC0022
+BILL-30082,CT-30082,Summit Independent School District Finance,NS-7658,Twig Science,Science,2025-04-07,2026-10-27,Amendment Pending,125000,5200,USA,N,NetSuite,GC0022
+BILL-30083,CT-30083,Heritage Public Schools,NS-9076,Twig Science,Science,2024-01-12,2027-05-03,Active,22000,10000,USA,N,NetSuite,GC0023
+BILL-30084,CT-30084,Heritage Federal Programs,NS-9212,ImagineMath,Supplemental Math,2024-11-23,2027-02-24,Active,255000,10000,USA,N,NetSuite,GC0023
+BILL-30085,CT-30085,Heritage Independent School District Finance,NS-8557,Imagine Language & Literacy,Supplemental Literacy,2024-11-02,2027-06-29,Expired,22000,10000,USA,N,NetSuite,GC0023
+BILL-30086,CT-30086,Franklin ISD,NS-7646,Imagine Learning PD,Professional Learning,2025-05-26,2027-09-18,Amendment Pending,61000,10000,USA,N,NetSuite,GC0024
+BILL-30087,CT-30087,Franklin Public Schools,NS-9292,Imagine Language & Literacy,Supplemental Literacy,2024-06-03,2027-02-14,Expired,125000,5200,USA,N,NetSuite,GC0024
+BILL-30088,CT-30088,Franklin ISD,NS-8094,Study Sync,Core ELA,2024-08-22,2027-10-28,Active,61000,10000,USA,N,NetSuite,GC0024
+BILL-30089,CT-30089,Franklin Public Schools,NS-7460,Imagine Math,Supplemental Math,2024-02-15,2027-03-18,Amendment Pending,180000,400,USA,N,NetSuite,GC0024
+BILL-30090,CT-30090,Franklin Public Schools,NS-8163,Imagine Language & Literacy,Supplemental Literacy,2025-07-20,2027-05-22,Active,61000,5200,USA,N,NetSuite,GC0024
+BILL-30091,CT-30091,Jefferson ISD,NS-8885,Courseware,Core Courseware,2025-02-11,2026-05-02,Invoiced,180000,250,USA,N,NetSuite,GC0025
+BILL-30092,CT-30092,Jefferson Public Schools,NS-9875,Twig Science,Science,2025-01-20,2026-11-24,Amendment Pending,39000,5200,USA,N,NetSuite,GC0025
+BILL-30093,CT-30093,Jefferson Public Schools,NS-7104,CW,Core Courseware,2024-06-04,2026-01-02,Expired,22000,400,USA,N,NetSuite,GC0025
+BILL-30094,CT-30094,Jefferson Federal Programs,NS-7418,Twig Science,Science,2024-06-12,2026-10-27,Amendment Pending,255000,400,USA,N,NetSuite,GC0025
+BILL-30095,CT-30095,Lincoln Federal Programs,NS-9222,StudySync,Core ELA,2024-01-01,2027-03-26,Amendment Pending,255000,10000,USA,N,NetSuite,GC0026
+BILL-30096,CT-30096,Lincoln Federal Programs,NS-9189,Imagine Language & Literacy,Supplemental Literacy,2025-05-28,2026-06-18,Amendment Pending,22000,1500,USA,N,NetSuite,GC0026
+BILL-30097,CT-30097,Lincoln Federal Programs,NS-8618,Imagine Language & Literacy,Supplemental Literacy,2025-06-23,2027-01-26,Amendment Pending,125000,250,USA,N,NetSuite,GC0026
+BILL-30098,CT-30098,Lincoln School District,NS-9552,StudySync,Core ELA,2024-04-01,2026-08-31,Active,39000,10000,USA,N,NetSuite,GC0026
+BILL-30099,CT-30099,Lincoln Independent School District Finance,NS-8465,Imagine Math,Supplemental Math,2024-06-16,2028-02-15,Active,180000,1500,USA,N,NetSuite,GC0026
+BILL-30100,CT-30100,Roosevelt Independent School District Finance,NS-8946,Imagine Language & Literacy,Supplemental Literacy,2024-01-01,2026-10-12,Active,39000,250,Canada,N,NetSuite,GC0027
+BILL-30101,CT-30101,Roosevelt ISD,NS-8640,Courseware,Core Courseware,2024-06-18,2026-10-31,Invoiced,255000,750,Canada,Y,NetSuite,GC0027
+BILL-30102,CT-30102,Roosevelt ISD,NS-9524,CW,Core Courseware,2024-02-02,2028-04-08,Active,180000,750,Canada,Y,NetSuite,GC0027
+BILL-30103,CT-30103,Adams Public Schools,NS-7258,StudySync,Core ELA,2025-05-10,2027-12-02,Active,255000,2800,USA,N,NetSuite,GC0028
+BILL-30104,CT-30104,Adams Federal Programs,NS-9435,Imagine Language & Literacy,Supplemental Literacy,2025-07-13,2027-08-04,Active,125000,2800,USA,N,NetSuite,GC0028
+BILL-30105,CT-30105,Adams ISD,NS-8641,Imagine Learning PD,Professional Learning,2025-07-18,2026-03-25,Active,61000,250,USA,N,NetSuite,GC0028
+BILL-30106,CT-30106,Adams Federal Programs,NS-8694,StudySync,Core ELA,2024-04-17,2028-01-12,Active,255000,750,USA,N,NetSuite,GC0028
+BILL-30107,CT-30107,Adams Independent School District Finance,NS-8615,Twig Science,Science,2024-09-28,2027-05-10,Expired,125000,5200,USA,N,NetSuite,GC0028
+BILL-30108,CT-30108,Washington Independent School District Finance,NS-9862,Twig Science,Science,2025-02-09,2027-10-11,Amendment Pending,125000,1500,USA,N,NetSuite,GC0029
+BILL-30109,CT-30109,Washington Public Schools,NS-9323,Courseware,Core Courseware,2024-12-01,2026-10-11,Amendment Pending,61000,750,USA,N,NetSuite,GC0029
+BILL-30110,CT-30110,Washington ISD,NS-7453,Professional Development,Professional Learning,2024-07-03,2025-12-26,Expired,61000,400,USA,N,NetSuite,GC0029
+BILL-30111,CT-30111,Washington Public Schools,NS-9845,Imagine Learning PD,Professional Learning,2024-03-13,2027-02-25,Active,89000,5200,USA,N,NetSuite,GC0029
+BILL-30112,CT-30112,Washington ISD,NS-7930,Imagine Learning PD,Professional Learning,2025-07-04,2027-12-07,Amendment Pending,255000,1500,USA,N,NetSuite,GC0029
+BILL-30113,CT-30113,Madison Federal Programs,NS-8018,StudySync,Core ELA,2024-05-08,2026-02-07,Amendment Pending,125000,750,USA,N,NetSuite,GC0030
+BILL-30114,CT-30114,Madison Federal Programs,NS-9455,Course Ware,Core Courseware,2024-01-08,2025-12-17,Active,125000,5200,USA,N,NetSuite,GC0030
+BILL-30115,CT-30115,Madison Federal Programs,NS-7556,PL,Professional Learning,2024-07-02,2025-12-15,Invoiced,89000,1500,USA,N,NetSuite,GC0030
+BILL-30116,CT-30116,Granite Public Schools,NS-8766,Courseware,Core Courseware,2024-02-21,2026-09-27,Expired,61000,400,USA,N,NetSuite,GC0031
+BILL-30117,CT-30117,Granite Federal Programs,NS-8289,Imagine Math,Supplemental Math,2025-01-07,2027-03-13,Expired,61000,2800,USA,N,NetSuite,GC0031
+BILL-30118,CT-30118,Granite Public Schools,NS-8263,Imagine Math,Supplemental Math,2024-08-14,2026-05-12,Amendment Pending,255000,2800,USA,N,NetSuite,GC0031
+BILL-30119,CT-30119,Granite Public Schools,NS-7535,Math Suite,Supplemental Math,2024-09-21,2028-01-24,Expired,89000,10000,USA,N,NetSuite,GC0031
+BILL-30120,CT-30120,Granite Independent School District Finance,NS-8715,ILL,Supplemental Literacy,2024-02-25,2026-02-16,Expired,180000,750,USA,N,NetSuite,GC0031
+BILL-30121,CT-30121,Blue Ridge Federal Programs,NS-7937,Twig Science,Science,2024-01-10,2027-10-09,Expired,39000,10000,USA,N,NetSuite,GC0032
+BILL-30122,CT-30122,Blue Ridge ISD,NS-7716,Language and Literacy,Supplemental Literacy,2025-04-07,2027-01-09,Expired,180000,5200,USA,N,NetSuite,GC0032
+BILL-30123,CT-30123,Blue Ridge Federal Programs,NS-8643,Study Sync,Core ELA,2024-03-09,2026-12-01,Active,22000,250,USA,N,NetSuite,GC0032
+BILL-30124,CT-30124,Blue Ridge Federal Programs,NS-9904,Imagine Language & Literacy,Supplemental Literacy,2024-04-04,2026-11-13,Amendment Pending,255000,750,USA,N,NetSuite,GC0032
+BILL-30125,CT-30125,Blue Ridge Public Schools,NS-7245,Twig Science,Science,2024-04-20,2027-02-25,Amendment Pending,125000,1500,USA,N,NetSuite,GC0032
+BILL-30126,CT-30126,Prairie Public Schools,NS-9288,Imagine Learning PD,Professional Learning,2024-06-26,2027-06-11,Amendment Pending,61000,1500,USA,N,NetSuite,GC0033
+BILL-30127,CT-30127,Prairie Federal Programs,NS-8827,ImagineMath,Supplemental Math,2024-09-26,2028-03-19,Active,180000,10000,USA,N,NetSuite,GC0033
+BILL-30128,CT-30128,Prairie ISD,NS-7603,StudySync,Core ELA,2024-06-17,2025-12-21,Active,125000,750,USA,N,NetSuite,GC0033
+BILL-30129,CT-30129,Prairie Public Schools,NS-8401,ILL,Supplemental Literacy,2025-01-30,2028-04-02,Amendment Pending,22000,1500,USA,N,NetSuite,GC0033
+BILL-30130,CT-30130,Harbor Independent School District Finance,NS-8509,Courseware,Core Courseware,2025-06-10,2026-04-25,Invoiced,39000,250,USA,N,NetSuite,GC0034
+BILL-30131,CT-30131,Harbor Independent School District Finance,NS-9062,PL,Professional Learning,2025-01-05,2028-01-22,Invoiced,22000,250,USA,N,NetSuite,GC0034
+BILL-30132,CT-30132,Harbor Public Schools,NS-8042,PL,Professional Learning,2024-10-19,2027-08-26,Expired,61000,5200,USA,N,NetSuite,GC0034
+BILL-30133,CT-30133,Harbor Independent School District Finance,NS-7314,Language and Literacy,Supplemental Literacy,2024-06-06,2027-10-28,Expired,61000,10000,USA,N,NetSuite,GC0034
+BILL-30134,CT-30134,Harbor Public Schools,NS-9794,Twig Science,Science,2024-03-27,2027-02-01,Expired,255000,1500,USA,N,NetSuite,GC0034
+BILL-30135,CT-30135,Cypress Federal Programs,NS-9642,Imagine Language & Literacy,Supplemental Literacy,2024-06-19,2027-03-13,Active,22000,400,USA,N,NetSuite,GC0035
+BILL-30136,CT-30136,Cypress Public Schools,NS-9806,Twig Science,Science,2025-05-01,2026-10-25,Active,180000,2800,USA,N,NetSuite,GC0035
+BILL-30137,CT-30137,Cypress ISD,NS-9485,Imagine Math,Supplemental Math,2024-09-09,2028-02-21,Active,61000,750,USA,N,NetSuite,GC0035
+BILL-30138,CT-30138,Sierra Independent School District Finance,NS-7135,Imagine Learning PD,Professional Learning,2024-08-23,2026-09-25,Amendment Pending,125000,10000,USA,N,NetSuite,GC0036
+BILL-30139,CT-30139,Sierra Federal Programs,NS-9556,Imagine Language & Literacy,Supplemental Literacy,2024-12-04,2028-03-14,Active,61000,250,USA,N,NetSuite,GC0036
+BILL-30140,CT-30140,Sierra ISD,NS-9108,ImagineMath,Supplemental Math,2025-03-27,2027-02-25,Amendment Pending,61000,2800,USA,N,NetSuite,GC0036
+BILL-30141,CT-30141,Sierra Public Schools,NS-8414,Imagine Math,Supplemental Math,2024-10-12,2026-07-15,Invoiced,180000,750,USA,N,NetSuite,GC0036
+BILL-30142,CT-30142,Sierra Federal Programs,NS-8751,Edgenuity Courseware,Core Courseware,2025-07-01,2028-04-15,Invoiced,180000,250,USA,N,NetSuite,GC0036
+BILL-30143,CT-30143,Frontier Independent School District Finance,NS-8844,Twig Science,Science,2025-07-19,2026-02-14,Active,180000,5200,USA,N,NetSuite,GC0037
+BILL-30144,CT-30144,Frontier Federal Programs,NS-7986,Imagine Learning PD,Professional Learning,2024-05-06,2026-03-27,Amendment Pending,89000,2800,USA,N,NetSuite,GC0037
+BILL-30145,CT-30145,Frontier Federal Programs,NS-9207,Twig Science,Science,2025-08-04,2027-06-13,Expired,125000,2800,USA,N,NetSuite,GC0037
+BILL-30146,CT-30146,Frontier Independent School District Finance,NS-9828,Twig Science,Science,2024-11-09,2026-09-15,Expired,125000,5200,USA,N,NetSuite,GC0037
+BILL-30147,CT-30147,Liberty School District,NS-8123,StudySync,Core ELA,2024-05-20,2026-07-14,Expired,39000,250,USA,N,NetSuite,GC0038
+BILL-30148,CT-30148,Liberty Public Schools,NS-9910,Math Suite,Supplemental Math,2024-05-15,2026-05-24,Amendment Pending,180000,400,USA,N,NetSuite,GC0038
+BILL-30149,CT-30149,Liberty Public Schools,NS-7666,Twig Science,Science,2024-08-31,2027-06-01,Active,39000,250,USA,N,NetSuite,GC0038
+BILL-30150,CT-30150,Monroe Public Schools,NS-7123,Imagine Learning PD,Professional Learning,2024-06-09,2027-05-31,Active,39000,2800,UAE,N,NetSuite,GC0039
+BILL-30151,CT-30151,Monroe Independent School District Finance,NS-7687,Imagine Math,Supplemental Math,2024-04-29,2025-11-12,Active,39000,400,UAE,N,NetSuite,GC0039
+BILL-30152,CT-30152,Monroe School District,NS-9833,Imagine Math,Supplemental Math,2025-04-17,2027-01-15,Expired,22000,250,UAE,N,NetSuite,GC0039
+BILL-30153,CT-30153,Monroe Public Schools,NS-9928,Twig Science,Science,2024-01-12,2027-05-11,Active,255000,750,UAE,Y,NetSuite,GC0039
+BILL-30154,CT-30154,Monroe School District,NS-8182,BookheadEd StudySync,Core ELA,2025-07-20,2026-08-20,Invoiced,180000,400,UAE,N,NetSuite,GC0039
+BILL-30155,CT-30155,Concord School District,NS-8976,Twig,Science,2024-07-18,2026-09-15,Invoiced,89000,10000,USA,N,NetSuite,GC0040
+BILL-30156,CT-30156,Concord Federal Programs,NS-9770,Twig Science,Science,2024-02-05,2025-10-31,Active,180000,10000,USA,N,NetSuite,GC0040
+BILL-30157,CT-30157,Concord Public Schools,NS-8655,Imagine Math,Supplemental Math,2024-01-04,2026-11-10,Invoiced,61000,5200,USA,N,NetSuite,GC0040
+BILL-30158,CT-30158,Hamilton Public Schools,NS-7305,StudySync,Core ELA,2025-03-22,2027-01-14,Expired,89000,750,USA,N,NetSuite,GC0041
+BILL-30159,CT-30159,Hamilton ISD,NS-7053,Imagine Math,Supplemental Math,2025-02-06,2026-11-11,Invoiced,255000,250,USA,N,NetSuite,GC0041
+BILL-30160,CT-30160,Hamilton ISD,NS-9883,Imagine Learning PD,Professional Learning,2024-08-18,2026-08-12,Active,255000,1500,USA,N,NetSuite,GC0041
+BILL-30161,CT-30161,Hamilton Federal Programs,NS-7411,Twig Science,Science,2024-10-02,2027-12-27,Amendment Pending,89000,250,USA,N,NetSuite,GC0041
+BILL-30162,CT-30162,Hamilton ISD,NS-8504,Twig Science,Science,2024-07-18,2027-01-11,Expired,125000,400,USA,N,NetSuite,GC0041
+BILL-30163,CT-30163,Aurora Independent School District Finance,NS-8547,Twig Science,Science,2025-08-04,2027-05-29,Amendment Pending,89000,400,USA,N,NetSuite,GC0042
+BILL-30164,CT-30164,Aurora Public Schools,NS-7063,StudySync,Core ELA,2025-07-06,2027-01-14,Amendment Pending,125000,2800,USA,N,NetSuite,GC0042
+BILL-30165,CT-30165,Aurora ISD,NS-8935,Imagine Learning PD,Professional Learning,2025-05-11,2028-01-06,Amendment Pending,22000,750,USA,N,NetSuite,GC0042
+BILL-30166,CT-30166,Aurora Federal Programs,NS-9422,Imagine Math,Supplemental Math,2025-01-06,2027-02-04,Active,125000,1500,USA,N,NetSuite,GC0042
+BILL-30167,CT-30167,Briarwood Independent School District Finance,NS-7518,Imagine Math,Supplemental Math,2024-05-15,2027-01-12,Invoiced,89000,10000,Canada,N,NetSuite,GC0043
+BILL-30168,CT-30168,Briarwood Independent School District Finance,NS-8557,Twig Science,Science,2025-07-20,2028-03-21,Active,255000,2800,Canada,Y,NetSuite,GC0043
+BILL-30169,CT-30169,Briarwood ISD,NS-8888,Imagine Language & Literacy,Supplemental Literacy,2025-06-06,2026-09-14,Active,89000,1500,Canada,Y,NetSuite,GC0043
+BILL-30170,CT-30170,Briarwood ISD,NS-9748,Imagine Learning PD,Professional Learning,2025-05-14,2026-08-27,Expired,125000,400,Canada,N,NetSuite,GC0043
+BILL-30171,CT-30171,Highland Independent School District Finance,NS-8148,Science Suite,Science,2024-05-21,2027-01-17,Invoiced,39000,400,USA,N,NetSuite,GC0044
+BILL-30172,CT-30172,Highland Public Schools,NS-8369,Imagine Language & Literacy,Supplemental Literacy,2024-03-17,2027-01-31,Active,255000,5200,USA,N,NetSuite,GC0044
+BILL-30173,CT-30173,Highland Federal Programs,NS-8091,Courseware,Core Courseware,2024-04-17,2028-02-18,Amendment Pending,61000,5200,USA,N,NetSuite,GC0044
+BILL-30174,CT-30174,Willow Creek Public Schools,NS-7185,Edgenuity Courseware,Core Courseware,2024-01-03,2028-03-11,Amendment Pending,39000,400,India,N,NetSuite,GC0045
+BILL-30175,CT-30175,Willow Creek Public Schools,NS-7000,Courseware,Core Courseware,2024-01-19,2027-11-18,Active,22000,5200,India,Y,NetSuite,GC0045
+BILL-30176,CT-30176,Willow Creek Federal Programs,NS-8679,Imagine Learning PD,Professional Learning,2025-04-15,2026-04-21,Active,255000,400,India,Y,NetSuite,GC0045
+BILL-30177,CT-30177,Willow Creek Independent School District Finance,NS-9060,Study Sync,Core ELA,2024-10-13,2025-11-02,Active,22000,1500,India,Y,NetSuite,GC0045
+BILL-30178,CT-30178,Stonebridge Independent School District Finance,NS-9821,Imagine Literacy,Supplemental Literacy,2024-09-03,2026-01-28,Active,89000,250,Canada,Y,NetSuite,GC0046
+BILL-30179,CT-30179,Stonebridge Federal Programs,NS-7025,Twig Science,Science,2024-03-01,2028-01-11,Invoiced,125000,5200,Canada,N,NetSuite,GC0046
+BILL-30180,CT-30180,Stonebridge School District,NS-7475,Imagine Math,Supplemental Math,2024-01-02,2027-07-15,Active,255000,1500,Canada,N,NetSuite,GC0046
+BILL-30181,CT-30181,Stonebridge School District,NS-8290,Imagine Math,Supplemental Math,2024-02-14,2027-11-28,Invoiced,39000,10000,Canada,N,NetSuite,GC0046
+BILL-30182,CT-30182,Stonebridge School District,NS-9332,StudySync,Core ELA,2024-02-03,2027-02-13,Active,255000,1500,Canada,Y,NetSuite,GC0046
+BILL-30183,CT-30183,Clearwater School District,NS-8981,Imagine Math,Supplemental Math,2025-05-31,2027-06-07,Invoiced,125000,5200,USA,N,NetSuite,GC0047
+BILL-30184,CT-30184,Clearwater Federal Programs,NS-7929,Courseware,Core Courseware,2024-05-24,2028-01-22,Amendment Pending,125000,1500,USA,N,NetSuite,GC0047
+BILL-30185,CT-30185,Clearwater Independent School District Finance,NS-8688,Study Sync,Core ELA,2024-10-12,2027-02-23,Active,89000,10000,USA,N,NetSuite,GC0047
+BILL-30186,CT-30186,Clearwater School District,NS-9557,Imagine Learning PD,Professional Learning,2025-06-11,2026-03-21,Expired,39000,10000,USA,N,NetSuite,GC0047
+BILL-30187,CT-30187,Clearwater School District,NS-7873,Courseware,Core Courseware,2024-03-13,2025-12-03,Invoiced,61000,250,USA,N,NetSuite,GC0047
+BILL-30188,CT-30188,Gateway Public Schools,NS-7908,Courseware,Core Courseware,2024-03-11,2027-02-19,Invoiced,39000,10000,USA,N,NetSuite,GC0048
+BILL-30189,CT-30189,Gateway Federal Programs,NS-8793,Professional Development,Professional Learning,2024-12-11,2028-04-07,Active,89000,2800,USA,N,NetSuite,GC0048
+BILL-30190,CT-30190,Gateway Public Schools,NS-8118,Imagine Math,Supplemental Math,2025-03-21,2025-12-06,Expired,89000,400,USA,N,NetSuite,GC0048
+BILL-30191,CT-30191,North Star Independent School District Finance,NS-9939,Twig Science,Science,2024-11-02,2027-05-05,Amendment Pending,39000,2800,USA,N,NetSuite,GC0049
+BILL-30192,CT-30192,North Star Independent School District Finance,NS-8302,Courseware,Core Courseware,2025-01-26,2028-01-22,Invoiced,89000,400,USA,N,NetSuite,GC0049
+BILL-30193,CT-30193,North Star ISD,NS-8355,Science Suite,Science,2025-03-30,2026-08-07,Active,89000,750,USA,N,NetSuite,GC0049
+BILL-30194,CT-30194,North Star Federal Programs,NS-8443,ELA Core,Core ELA,2024-06-12,2026-05-26,Amendment Pending,39000,5200,USA,N,NetSuite,GC0049
+BILL-30195,CT-30195,North Star ISD,NS-9215,Imagine Math,Supplemental Math,2024-11-28,2026-02-14,Active,89000,5200,USA,N,NetSuite,GC0049
+BILL-30196,CT-30196,Twin Oaks School District,NS-9728,Courseware,Core Courseware,2024-04-14,2026-06-24,Active,22000,250,USA,N,NetSuite,GC0050
+BILL-30197,CT-30197,Twin Oaks Public Schools,NS-7388,StudySync,Core ELA,2024-01-20,2026-03-22,Invoiced,255000,750,USA,N,NetSuite,GC0050
+BILL-30198,CT-30198,Twin Oaks Public Schools,NS-9793,Imagine Learning PD,Professional Learning,2024-06-30,2026-04-18,Active,89000,5200,USA,N,NetSuite,GC0050
+BILL-30199,CT-30199,Twin Oaks Federal Programs,NS-7957,Twig Education,Science,2024-03-26,2027-09-26,Active,22000,250,USA,N,NetSuite,GC0050
+BILL-30200,CT-30200,Twin Oaks Independent School District Finance,NS-7746,Imagine Learning PD,Professional Learning,2024-11-17,2028-01-09,Amendment Pending,61000,10000,USA,N,NetSuite,GC0050
+BILL-30201,CT-30201,Valley View Independent School District Finance,NS-8710,Imagine Math,Supplemental Math,2024-02-21,2026-01-16,Invoiced,22000,750,USA,N,NetSuite,GC0051
+BILL-30202,CT-30202,Valley View Independent School District Finance,NS-8421,Imagine Language & Literacy,Supplemental Literacy,2024-09-22,2027-01-21,Amendment Pending,61000,250,USA,N,NetSuite,GC0051
+BILL-30203,CT-30203,Valley View Federal Programs,NS-7179,StudySync,Core ELA,2025-05-19,2026-02-07,Expired,180000,400,USA,N,NetSuite,GC0051
+BILL-30204,CT-30204,Golden Plains School District,NS-8449,StudySync,Core ELA,2025-01-09,2027-08-18,Active,39000,5200,USA,N,NetSuite,GC0052
+BILL-30205,CT-30205,Golden Plains School District,NS-7039,Imagine Math,Supplemental Math,2024-10-21,2027-09-21,Amendment Pending,39000,750,USA,N,NetSuite,GC0052
+BILL-30206,CT-30206,Golden Plains School District,NS-7832,Imagine Learning PD,Professional Learning,2025-08-15,2026-02-26,Active,61000,750,USA,N,NetSuite,GC0052
+BILL-30207,CT-30207,Parkside Independent School District Finance,NS-8754,Math Suite,Supplemental Math,2024-03-06,2026-01-09,Amendment Pending,61000,5200,USA,N,NetSuite,GC0053
+BILL-30208,CT-30208,Parkside ISD,NS-7906,Twig Science,Science,2024-12-10,2027-07-20,Amendment Pending,39000,2800,USA,N,NetSuite,GC0053
+BILL-30209,CT-30209,Parkside Federal Programs,NS-7997,Courseware,Core Courseware,2025-08-03,2026-10-11,Active,22000,750,USA,N,NetSuite,GC0053
+BILL-30210,CT-30210,Millbrook ISD,NS-7242,Imagine Math,Supplemental Math,2025-05-13,2027-06-03,Amendment Pending,22000,5200,USA,N,NetSuite,GC0054
+BILL-30211,CT-30211,Millbrook Public Schools,NS-9339,Imagine Math,Supplemental Math,2025-07-14,2025-12-27,Active,125000,1500,USA,N,NetSuite,GC0054
+BILL-30212,CT-30212,Millbrook Public Schools,NS-8955,Professional Development,Professional Learning,2025-05-05,2027-03-24,Invoiced,180000,5200,USA,N,NetSuite,GC0054
+BILL-30213,CT-30213,Millbrook Independent School District Finance,NS-9712,ILL,Supplemental Literacy,2024-11-10,2027-06-14,Invoiced,255000,400,USA,N,NetSuite,GC0054
+BILL-30214,CT-30214,Kingston Public Schools,NS-9010,Imagine Math,Supplemental Math,2024-06-09,2026-10-05,Invoiced,22000,400,USA,N,NetSuite,GC0055
+BILL-30215,CT-30215,Kingston Federal Programs,NS-7045,Language and Literacy,Supplemental Literacy,2025-01-23,2026-09-13,Invoiced,39000,1500,USA,N,NetSuite,GC0055
+BILL-30216,CT-30216,Kingston Federal Programs,NS-7433,Imagine Language & Literacy,Supplemental Literacy,2024-09-17,2026-05-04,Amendment Pending,22000,5200,USA,N,NetSuite,GC0055
+BILL-30217,CT-30217,Edgewater Independent School District Finance,NS-7896,Imagine Learning PD,Professional Learning,2024-11-11,2026-10-01,Active,22000,250,USA,N,NetSuite,GC0056
+BILL-30218,CT-30218,Edgewater ISD,NS-9340,PD Services,Professional Learning,2024-02-17,2026-10-27,Active,22000,5200,USA,N,NetSuite,GC0056
+BILL-30219,CT-30219,Edgewater Public Schools,NS-9090,Twig Science,Science,2024-06-04,2026-02-24,Active,89000,1500,USA,N,NetSuite,GC0056
+BILL-30220,CT-30220,Shoreline Independent School District Finance,NS-9524,Imagine Language & Literacy,Supplemental Literacy,2024-10-15,2027-09-22,Invoiced,89000,750,USA,N,NetSuite,GC0057
+BILL-30221,CT-30221,Shoreline Public Schools,NS-8324,Twig Science,Science,2024-07-09,2026-01-25,Active,125000,5200,USA,N,NetSuite,GC0057
+BILL-30222,CT-30222,Shoreline Public Schools,NS-8276,Twig Science,Science,2024-08-24,2028-03-09,Active,89000,5200,USA,N,NetSuite,GC0057
+BILL-30223,CT-30223,Shoreline ISD,NS-9843,ILL,Supplemental Literacy,2024-12-28,2027-04-14,Active,22000,750,USA,N,NetSuite,GC0057
+BILL-30224,CT-30224,Aspen ISD,NS-9846,StudySync,Core ELA,2024-01-02,2027-01-26,Active,22000,10000,USA,N,NetSuite,GC0058
+BILL-30225,CT-30225,Aspen Independent School District Finance,NS-7924,Courseware,Core Courseware,2025-07-17,2025-11-03,Active,39000,1500,USA,N,NetSuite,GC0058
+BILL-30226,CT-30226,Aspen Independent School District Finance,NS-7405,Imagine Learning PD,Professional Learning,2024-06-24,2026-01-05,Invoiced,125000,10000,USA,N,NetSuite,GC0058
+BILL-30227,CT-30227,Aspen Public Schools,NS-9960,Math Suite,Supplemental Math,2025-08-02,2026-02-01,Expired,22000,10000,USA,N,NetSuite,GC0058
+BILL-30228,CT-30228,Fox Run Public Schools,NS-7866,Twig Science,Science,2024-12-06,2027-05-14,Amendment Pending,22000,5200,Canada,Y,NetSuite,GC0059
+BILL-30229,CT-30229,Fox Run Public Schools,NS-9827,Courseware,Core Courseware,2024-06-20,2027-10-18,Active,89000,2800,Canada,Y,NetSuite,GC0059
+BILL-30230,CT-30230,Fox Run School District,NS-8391,Imagine Learning PD,Professional Learning,2025-05-05,2027-04-28,Amendment Pending,255000,400,Canada,Y,NetSuite,GC0059
+BILL-30231,CT-30231,Elmwood Independent School District Finance,NS-9082,Twig Science,Science,2025-05-06,2026-04-22,Amendment Pending,61000,750,USA,N,NetSuite,GC0060
+BILL-30232,CT-30232,Elmwood School District,NS-9692,Edgenuity Courseware,Core Courseware,2024-06-21,2027-11-06,Expired,39000,250,USA,N,NetSuite,GC0060
+BILL-30233,CT-30233,Elmwood Independent School District Finance,NS-9257,Math Suite,Supplemental Math,2025-07-03,2026-03-07,Active,39000,5200,USA,N,NetSuite,GC0060
+BILL-30234,CT-30234,Elmwood School District,NS-8032,ILL,Supplemental Literacy,2025-05-13,2026-08-09,Active,180000,400,USA,N,NetSuite,GC0060

@@ -1,0 +1,721 @@
+mapping_id,source_system,source_record_id,source_business_key,golden_customer_id,match_confidence,match_method
+MAP-50001,Salesforce,CRM-10001,Houston Independent School District,GC0001,0.89,name_state
+MAP-50002,Salesforce,CRM-10002,Houston ISD - Supplemental,GC0001,0.84,name_state
+MAP-50003,Salesforce,CRM-10003,Houston School District,GC0001,0.86,name_parent
+MAP-50004,Salesforce,CRM-10004,Houston ISD - Supplemental,GC0001,0.93,name_contact_domain
+MAP-50005,Salesforce,CRM-10005,Houston ISD - Supplemental,GC0001,0.88,name_contact_domain
+MAP-50006,Salesforce,CRM-10006,Houston Public Schools,GC0001,0.91,name_parent
+MAP-50007,Salesforce,CRM-10007,Houston ISD - Supplemental,GC0001,0.87,name_state
+MAP-50008,Salesforce,CRM-10008,Houston ISD - Supplemental,GC0001,0.84,name_contact_domain
+MAP-50009,Salesforce,CRM-10009,Riverview ISD,GC0002,0.96,name_contact_domain
+MAP-50010,Salesforce,CRM-10010,Riverview ISD,GC0002,0.97,name_state
+MAP-50011,Salesforce,CRM-10011,Riverview Public Schools,GC0002,0.91,name_parent
+MAP-50012,Salesforce,CRM-10012,Riverview Public Schools,GC0002,0.98,name_contact_domain
+MAP-50013,Salesforce,CRM-10013,Riverview ISD,GC0002,0.98,name_contact_domain
+MAP-50014,Salesforce,CRM-10014,Riverview ISD - Supplemental,GC0002,0.84,name_contact_domain
+MAP-50015,Salesforce,CRM-10015,Oak Valley Independent School District,GC0003,0.98,name_state
+MAP-50016,Salesforce,CRM-10016,Oak Valley School District,GC0003,0.93,name_contact_domain
+MAP-50017,Salesforce,CRM-10017,Oak Valley School District,GC0003,0.87,name_contact_domain
+MAP-50018,Salesforce,CRM-10018,Oak Valley School District - Supplemental,GC0003,0.83,name_contact_domain
+MAP-50019,Salesforce,CRM-10019,Oak Valley Independent School District,GC0003,0.92,name_parent
+MAP-50020,Salesforce,CRM-10020,Oak Valley School District - Supplemental,GC0003,0.86,name_state
+MAP-50021,Salesforce,CRM-10021,Oak Valley School District - Supplemental,GC0003,0.92,name_state
+MAP-50022,Salesforce,CRM-10022,Pine Hills ISD,GC0004,0.97,name_contact_domain
+MAP-50023,Salesforce,CRM-10023,Pine Hills Independent School District,GC0004,0.98,name_parent
+MAP-50024,Salesforce,CRM-10024,Pine Hills Public Schools,GC0004,0.98,name_state
+MAP-50025,Salesforce,CRM-10025,Pine Hills Public Schools,GC0004,0.97,name_contact_domain
+MAP-50026,Salesforce,CRM-10026,Pine Hills ISD,GC0004,0.83,name_contact_domain
+MAP-50027,Salesforce,CRM-10027,Pine Hills Public Schools,GC0004,0.86,name_state
+MAP-50028,Salesforce,CRM-10028,Maple Grove ISD - Supplemental,GC0005,0.86,name_state
+MAP-50029,Salesforce,CRM-10029,Maple Grove ISD - Supplemental,GC0005,0.98,name_state
+MAP-50030,Salesforce,CRM-10030,Maple Grove ISD,GC0005,0.96,name_state
+MAP-50031,Salesforce,CRM-10031,Maple Grove ISD - Supplemental,GC0005,0.83,name_contact_domain
+MAP-50032,Salesforce,CRM-10032,Maple Grove ISD,GC0005,0.96,name_contact_domain
+MAP-50033,Salesforce,CRM-10033,Maple Grove ISD - Supplemental,GC0005,0.91,name_parent
+MAP-50034,Salesforce,CRM-10034,Maple Grove ISD,GC0005,0.82,name_contact_domain
+MAP-50035,Salesforce,CRM-10035,Maple Grove Public Schools,GC0005,0.87,name_parent
+MAP-50036,Salesforce,CRM-10036,Cedar Ridge Public Schools,GC0006,0.95,name_parent
+MAP-50037,Salesforce,CRM-10037,Cedar Ridge ISD - Supplemental,GC0006,0.98,name_contact_domain
+MAP-50038,Salesforce,CRM-10038,Cedar Ridge Public Schools,GC0006,0.93,name_parent
+MAP-50039,Salesforce,CRM-10039,Cedar Ridge ISD,GC0006,0.88,name_parent
+MAP-50040,Salesforce,CRM-10040,Cedar Ridge Indep. SD,GC0006,0.89,name_contact_domain
+MAP-50041,Salesforce,CRM-10041,Cedar Ridge ISD,GC0006,0.97,name_parent
+MAP-50042,Salesforce,CRM-10042,Cedar Ridge ISD - Supplemental,GC0006,0.94,name_contact_domain
+MAP-50043,Salesforce,CRM-10043,Springfield School District - Supplemental,GC0007,0.88,name_state
+MAP-50044,Salesforce,CRM-10044,Springfield Indep. SD,GC0007,0.88,name_state
+MAP-50045,Salesforce,CRM-10045,Springfield School District,GC0007,0.89,name_contact_domain
+MAP-50046,Salesforce,CRM-10046,Springfield School District - Supplemental,GC0007,0.9,name_parent
+MAP-50047,Salesforce,CRM-10047,Springfield Public Schools,GC0007,0.89,name_contact_domain
+MAP-50048,Salesforce,CRM-10048,Lakeview School District,GC0008,0.92,name_contact_domain
+MAP-50049,Salesforce,CRM-10049,Lakeview School District - Supplemental,GC0008,0.88,name_state
+MAP-50050,Salesforce,CRM-10050,Lakeview School District,GC0008,0.89,name_parent
+MAP-50051,Salesforce,CRM-10051,Lakeview Independent School District,GC0008,0.84,name_state
+MAP-50052,Salesforce,CRM-10052,Lakeview Independent School District,GC0008,0.88,name_parent
+MAP-50053,Salesforce,CRM-10053,Lakeview School District,GC0008,0.82,name_contact_domain
+MAP-50054,Salesforce,CRM-10054,Lakeview School District - Supplemental,GC0008,0.97,name_contact_domain
+MAP-50055,Salesforce,CRM-10055,Northfield School District,GC0009,0.88,name_contact_domain
+MAP-50056,Salesforce,CRM-10056,Northfield School District,GC0009,0.98,name_parent
+MAP-50057,Salesforce,CRM-10057,Northfield School District,GC0009,0.91,name_parent
+MAP-50058,Salesforce,CRM-10058,Northfield School District,GC0009,0.85,name_parent
+MAP-50059,Salesforce,CRM-10059,Northfield School District,GC0009,0.92,name_parent
+MAP-50060,Salesforce,CRM-10060,Northfield Public Schools,GC0009,0.95,name_parent
+MAP-50061,Salesforce,CRM-10061,Northfield Public Schools,GC0009,0.92,name_parent
+MAP-50062,Salesforce,CRM-10062,Westbrook Public Schools,GC0010,0.87,name_parent
+MAP-50063,Salesforce,CRM-10063,Westbrook Public Schools,GC0010,0.85,name_state
+MAP-50064,Salesforce,CRM-10064,Westbrook ISD,GC0010,0.82,name_parent
+MAP-50065,Salesforce,CRM-10065,Westbrook Public Schools,GC0010,0.84,name_parent
+MAP-50066,Salesforce,CRM-10066,Westbrook ISD,GC0010,0.95,name_contact_domain
+MAP-50067,Salesforce,CRM-10067,Westbrook Public Schools,GC0010,0.99,name_parent
+MAP-50068,Salesforce,CRM-10068,Westbrook ISD - Supplemental,GC0010,0.85,name_state
+MAP-50069,Salesforce,CRM-10069,Easton Public Schools,GC0011,0.98,name_parent
+MAP-50070,Salesforce,CRM-10070,Easton School District,GC0011,0.83,name_contact_domain
+MAP-50071,Salesforce,CRM-10071,Easton ISD,GC0011,0.98,name_contact_domain
+MAP-50072,Salesforce,CRM-10072,Easton Indep. SD,GC0011,0.91,name_state
+MAP-50073,Salesforce,CRM-10073,Easton ISD,GC0011,0.86,name_state
+MAP-50074,Salesforce,CRM-10074,Easton Public Schools,GC0011,0.98,name_state
+MAP-50075,Salesforce,CRM-10075,Easton Public Schools,GC0011,0.87,name_parent
+MAP-50076,Salesforce,CRM-10076,Easton Public Schools,GC0011,0.97,name_state
+MAP-50077,Salesforce,CRM-10077,Fairview Independent School District,GC0012,0.94,name_state
+MAP-50078,Salesforce,CRM-10078,Fairview Independent School District,GC0012,0.9,name_parent
+MAP-50079,Salesforce,CRM-10079,Fairview Public Schools,GC0012,0.86,name_parent
+MAP-50080,Salesforce,CRM-10080,Fairview ISD - Supplemental,GC0012,0.86,name_contact_domain
+MAP-50081,Salesforce,CRM-10081,Fairview ISD,GC0012,0.97,name_state
+MAP-50082,Salesforce,CRM-10082,Brookside ISD,GC0013,0.91,name_contact_domain
+MAP-50083,Salesforce,CRM-10083,Brookside ISD,GC0013,0.94,name_parent
+MAP-50084,Salesforce,CRM-10084,Brookside School District,GC0013,0.98,name_parent
+MAP-50085,Salesforce,CRM-10085,Brookside ISD - Supplemental,GC0013,0.98,name_state
+MAP-50086,Salesforce,CRM-10086,Brookside School District,GC0013,0.98,name_state
+MAP-50087,Salesforce,CRM-10087,Brookside School District,GC0013,0.88,name_contact_domain
+MAP-50088,Salesforce,CRM-10088,Greenwood ISD,GC0014,0.9,name_contact_domain
+MAP-50089,Salesforce,CRM-10089,Greenwood Public Schools,GC0014,0.87,name_state
+MAP-50090,Salesforce,CRM-10090,Greenwood ISD,GC0014,0.86,name_contact_domain
+MAP-50091,Salesforce,CRM-10091,Greenwood Public Schools,GC0014,0.87,name_state
+MAP-50092,Salesforce,CRM-10092,Greenwood Public Schools,GC0014,0.89,name_contact_domain
+MAP-50093,Salesforce,CRM-10093,Greenwood ISD - Supplemental,GC0014,0.96,name_parent
+MAP-50094,Salesforce,CRM-10094,Greenwood Independent School District,GC0014,0.87,name_contact_domain
+MAP-50095,Salesforce,CRM-10095,Hillcrest Independent School District,GC0015,0.93,name_contact_domain
+MAP-50096,Salesforce,CRM-10096,Hillcrest School District,GC0015,0.9,name_state
+MAP-50097,Salesforce,CRM-10097,Hillcrest Public Schools,GC0015,0.9,name_contact_domain
+MAP-50098,Salesforce,CRM-10098,Hillcrest ISD,GC0015,0.98,name_contact_domain
+MAP-50099,Salesforce,CRM-10099,Hillcrest Public Schools,GC0015,0.98,name_contact_domain
+MAP-50100,Salesforce,CRM-10100,Hillcrest Independent School District,GC0015,0.82,name_contact_domain
+MAP-50101,Salesforce,CRM-10101,Hillcrest ISD,GC0015,0.89,name_parent
+MAP-50102,Salesforce,CRM-10102,Sunnydale ISD,GC0016,0.97,name_state
+MAP-50103,Salesforce,CRM-10103,Sunnydale ISD,GC0016,0.86,name_parent
+MAP-50104,Salesforce,CRM-10104,Sunnydale ISD - Supplemental,GC0016,0.9,name_state
+MAP-50105,Salesforce,CRM-10105,Sunnydale ISD - Supplemental,GC0016,0.92,name_parent
+MAP-50106,Salesforce,CRM-10106,Sunnydale Indep. SD,GC0016,0.94,name_parent
+MAP-50107,Salesforce,CRM-10107,Sunnydale ISD - Supplemental,GC0016,0.85,name_parent
+MAP-50108,Salesforce,CRM-10108,Sunnydale ISD - Supplemental,GC0016,0.82,name_parent
+MAP-50109,Salesforce,CRM-10109,Sunnydale ISD,GC0016,0.97,name_contact_domain
+MAP-50110,Salesforce,CRM-10110,Redwood Indep. SD,GC0017,0.96,name_contact_domain
+MAP-50111,Salesforce,CRM-10111,Redwood Public Schools,GC0017,0.94,name_state
+MAP-50112,Salesforce,CRM-10112,Redwood School District,GC0017,0.96,name_contact_domain
+MAP-50113,Salesforce,CRM-10113,Redwood School District,GC0017,0.83,name_parent
+MAP-50114,Salesforce,CRM-10114,Redwood Public Schools,GC0017,0.88,name_contact_domain
+MAP-50115,Salesforce,CRM-10115,Silver Lake ISD,GC0018,0.93,name_state
+MAP-50116,Salesforce,CRM-10116,Silver Lake ISD,GC0018,0.83,name_state
+MAP-50117,Salesforce,CRM-10117,Silver Lake ISD,GC0018,0.9,name_contact_domain
+MAP-50118,Salesforce,CRM-10118,Silver Lake Public Schools,GC0018,0.85,name_state
+MAP-50119,Salesforce,CRM-10119,Silver Lake Indep. SD,GC0018,0.83,name_state
+MAP-50120,Salesforce,CRM-10120,Silver Lake ISD,GC0018,0.87,name_contact_domain
+MAP-50121,Salesforce,CRM-10121,Silver Lake ISD,GC0018,0.96,name_state
+MAP-50122,Salesforce,CRM-10122,Silver Lake ISD - Supplemental,GC0018,0.84,name_state
+MAP-50123,Salesforce,CRM-10123,Silver Lake Public Schools,GC0018,0.92,name_state
+MAP-50124,Salesforce,CRM-10124,Meadow Park Public Schools,GC0019,0.98,name_contact_domain
+MAP-50125,Salesforce,CRM-10125,Meadow Park ISD,GC0019,0.95,name_state
+MAP-50126,Salesforce,CRM-10126,Meadow Park Indep. SD,GC0019,0.95,name_contact_domain
+MAP-50127,Salesforce,CRM-10127,Meadow Park Independent School District,GC0019,0.96,name_contact_domain
+MAP-50128,Salesforce,CRM-10128,Meadow Park Public Schools,GC0019,0.83,name_state
+MAP-50129,Salesforce,CRM-10129,Meadow Park Public Schools,GC0019,0.97,name_state
+MAP-50130,Salesforce,CRM-10130,Meadow Park Indep. SD,GC0019,0.84,name_parent
+MAP-50131,Salesforce,CRM-10131,Meadow Park ISD - Supplemental,GC0019,0.93,name_parent
+MAP-50132,Salesforce,CRM-10132,Meadow Park ISD,GC0019,0.94,name_contact_domain
+MAP-50133,Salesforce,CRM-10133,Canyon Creek School District - Supplemental,GC0020,0.95,name_state
+MAP-50134,Salesforce,CRM-10134,Canyon Creek Public Schools,GC0020,0.97,name_state
+MAP-50135,Salesforce,CRM-10135,Canyon Creek School District,GC0020,0.92,name_state
+MAP-50136,Salesforce,CRM-10136,Canyon Creek ISD,GC0020,0.92,name_contact_domain
+MAP-50137,Salesforce,CRM-10137,Canyon Creek Public Schools,GC0020,0.97,name_state
+MAP-50138,Salesforce,CRM-10138,Canyon Creek School District - Supplemental,GC0020,0.88,name_contact_domain
+MAP-50139,Salesforce,CRM-10139,Riverside School District,GC0021,0.88,name_contact_domain
+MAP-50140,Salesforce,CRM-10140,Riverside Independent School District,GC0021,0.88,name_contact_domain
+MAP-50141,Salesforce,CRM-10141,Riverside Public Schools,GC0021,0.94,name_state
+MAP-50142,Salesforce,CRM-10142,Riverside Public Schools,GC0021,0.85,name_state
+MAP-50143,Salesforce,CRM-10143,Riverside Public Schools,GC0021,0.93,name_parent
+MAP-50144,Salesforce,CRM-10144,Riverside School District - Supplemental,GC0021,0.86,name_contact_domain
+MAP-50145,Salesforce,CRM-10145,Riverside School District - Supplemental,GC0021,0.85,name_contact_domain
+MAP-50146,Salesforce,CRM-10146,Riverside Public Schools,GC0021,0.92,name_state
+MAP-50147,Salesforce,CRM-10147,Summit School District,GC0022,0.82,name_parent
+MAP-50148,Salesforce,CRM-10148,Summit School District,GC0022,0.96,name_contact_domain
+MAP-50149,Salesforce,CRM-10149,Summit School District - Supplemental,GC0022,0.94,name_state
+MAP-50150,Salesforce,CRM-10150,Summit School District,GC0022,0.95,name_state
+MAP-50151,Salesforce,CRM-10151,Summit School District,GC0022,0.84,name_parent
+MAP-50152,Salesforce,CRM-10152,Summit School District - Supplemental,GC0022,0.89,name_contact_domain
+MAP-50153,Salesforce,CRM-10153,Summit School District,GC0022,0.88,name_state
+MAP-50154,Salesforce,CRM-10154,Summit School District - Supplemental,GC0022,0.9,name_state
+MAP-50155,Salesforce,CRM-10155,Heritage ISD,GC0023,0.97,name_contact_domain
+MAP-50156,Salesforce,CRM-10156,Heritage School District,GC0023,0.99,name_state
+MAP-50157,Salesforce,CRM-10157,Heritage School District,GC0023,0.91,name_parent
+MAP-50158,Salesforce,CRM-10158,Heritage Independent School District,GC0023,0.92,name_state
+MAP-50159,Salesforce,CRM-10159,Heritage School District - Supplemental,GC0023,0.95,name_state
+MAP-50160,Salesforce,CRM-10160,Heritage School District - Supplemental,GC0023,0.96,name_state
+MAP-50161,Salesforce,CRM-10161,Heritage School District,GC0023,0.88,name_state
+MAP-50162,Salesforce,CRM-10162,Heritage School District - Supplemental,GC0023,0.82,name_state
+MAP-50163,Salesforce,CRM-10163,Franklin Independent School District,GC0024,0.85,name_state
+MAP-50164,Salesforce,CRM-10164,Franklin ISD,GC0024,0.88,name_contact_domain
+MAP-50165,Salesforce,CRM-10165,Franklin Independent School District,GC0024,0.86,name_contact_domain
+MAP-50166,Salesforce,CRM-10166,Franklin ISD,GC0024,0.94,name_contact_domain
+MAP-50167,Salesforce,CRM-10167,Franklin ISD,GC0024,0.98,name_contact_domain
+MAP-50168,Salesforce,CRM-10168,Franklin Public Schools,GC0024,0.84,name_parent
+MAP-50169,Salesforce,CRM-10169,Franklin ISD,GC0024,0.93,name_contact_domain
+MAP-50170,Salesforce,CRM-10170,Franklin ISD - Supplemental,GC0024,0.89,name_contact_domain
+MAP-50171,Salesforce,CRM-10171,Franklin Public Schools,GC0024,0.95,name_contact_domain
+MAP-50172,Salesforce,CRM-10172,Jefferson ISD,GC0025,0.97,name_parent
+MAP-50173,Salesforce,CRM-10173,Jefferson ISD,GC0025,0.9,name_parent
+MAP-50174,Salesforce,CRM-10174,Jefferson ISD,GC0025,0.9,name_parent
+MAP-50175,Salesforce,CRM-10175,Jefferson ISD - Supplemental,GC0025,0.84,name_state
+MAP-50176,Salesforce,CRM-10176,Jefferson Public Schools,GC0025,0.99,name_state
+MAP-50177,Salesforce,CRM-10177,Jefferson Public Schools,GC0025,0.99,name_state
+MAP-50178,Salesforce,CRM-10178,Jefferson ISD - Supplemental,GC0025,0.84,name_state
+MAP-50179,Salesforce,CRM-10179,Jefferson School District,GC0025,0.98,name_contact_domain
+MAP-50180,Salesforce,CRM-10180,Jefferson ISD - Supplemental,GC0025,0.82,name_state
+MAP-50181,Salesforce,CRM-10181,Lincoln Public Schools,GC0026,0.95,name_parent
+MAP-50182,Salesforce,CRM-10182,Lincoln School District - Supplemental,GC0026,0.86,name_state
+MAP-50183,Salesforce,CRM-10183,Lincoln Public Schools,GC0026,0.88,name_contact_domain
+MAP-50184,Salesforce,CRM-10184,Lincoln School District - Supplemental,GC0026,0.97,name_contact_domain
+MAP-50185,Salesforce,CRM-10185,Lincoln Public Schools,GC0026,0.85,name_contact_domain
+MAP-50186,Salesforce,CRM-10186,Lincoln School District,GC0026,0.99,name_contact_domain
+MAP-50187,Salesforce,CRM-10187,Lincoln School District - Supplemental,GC0026,0.97,name_state
+MAP-50188,Salesforce,CRM-10188,Lincoln School District - Supplemental,GC0026,0.94,name_parent
+MAP-50189,Salesforce,CRM-10189,Roosevelt ISD,GC0027,0.89,name_parent
+MAP-50190,Salesforce,CRM-10190,Roosevelt ISD - Supplemental,GC0027,0.85,name_contact_domain
+MAP-50191,Salesforce,CRM-10191,Roosevelt Public Schools,GC0027,0.99,name_parent
+MAP-50192,Salesforce,CRM-10192,Roosevelt ISD - Supplemental,GC0027,0.86,name_contact_domain
+MAP-50193,Salesforce,CRM-10193,Roosevelt ISD - Supplemental,GC0027,0.83,name_parent
+MAP-50194,Salesforce,CRM-10194,Roosevelt ISD,GC0027,0.86,name_contact_domain
+MAP-50195,Salesforce,CRM-10195,Roosevelt Public Schools,GC0027,0.95,name_parent
+MAP-50196,Salesforce,CRM-10196,Adams ISD,GC0028,0.97,name_state
+MAP-50197,Salesforce,CRM-10197,Adams Indep. SD,GC0028,0.83,name_contact_domain
+MAP-50198,Salesforce,CRM-10198,Adams ISD,GC0028,0.84,name_state
+MAP-50199,Salesforce,CRM-10199,Adams ISD,GC0028,0.87,name_contact_domain
+MAP-50200,Salesforce,CRM-10200,Adams Independent School District,GC0028,0.95,name_parent
+MAP-50201,Salesforce,CRM-10201,Adams ISD,GC0028,0.84,name_state
+MAP-50202,Salesforce,CRM-10202,Adams Public Schools,GC0028,0.82,name_contact_domain
+MAP-50203,Salesforce,CRM-10203,Adams Independent School District,GC0028,0.87,name_contact_domain
+MAP-50204,Salesforce,CRM-10204,Washington ISD,GC0029,0.98,name_state
+MAP-50205,Salesforce,CRM-10205,Washington Public Schools,GC0029,0.93,name_parent
+MAP-50206,Salesforce,CRM-10206,Washington ISD - Supplemental,GC0029,0.85,name_contact_domain
+MAP-50207,Salesforce,CRM-10207,Washington Public Schools,GC0029,0.83,name_parent
+MAP-50208,Salesforce,CRM-10208,Washington ISD - Supplemental,GC0029,0.85,name_contact_domain
+MAP-50209,Salesforce,CRM-10209,Washington ISD - Supplemental,GC0029,0.83,name_parent
+MAP-50210,Salesforce,CRM-10210,Washington ISD - Supplemental,GC0029,0.93,name_state
+MAP-50211,Salesforce,CRM-10211,Washington ISD,GC0029,0.92,name_contact_domain
+MAP-50212,Salesforce,CRM-10212,Madison Public Schools,GC0030,0.9,name_parent
+MAP-50213,Salesforce,CRM-10213,Madison School District,GC0030,0.89,name_parent
+MAP-50214,Salesforce,CRM-10214,Madison Public Schools,GC0030,0.94,name_parent
+MAP-50215,Salesforce,CRM-10215,Madison ISD,GC0030,0.83,name_parent
+MAP-50216,Salesforce,CRM-10216,Madison Public Schools,GC0030,0.86,name_state
+MAP-50217,Salesforce,CRM-10217,Granite Independent School District,GC0031,0.96,name_contact_domain
+MAP-50218,Salesforce,CRM-10218,Granite School District - Supplemental,GC0031,0.93,name_parent
+MAP-50219,Salesforce,CRM-10219,Granite School District - Supplemental,GC0031,0.83,name_contact_domain
+MAP-50220,Salesforce,CRM-10220,Granite Independent School District,GC0031,0.87,name_state
+MAP-50221,Salesforce,CRM-10221,Granite Public Schools,GC0031,0.92,name_contact_domain
+MAP-50222,Salesforce,CRM-10222,Blue Ridge ISD,GC0032,0.88,name_parent
+MAP-50223,Salesforce,CRM-10223,Blue Ridge ISD,GC0032,0.87,name_contact_domain
+MAP-50224,Salesforce,CRM-10224,Blue Ridge ISD,GC0032,0.98,name_state
+MAP-50225,Salesforce,CRM-10225,Blue Ridge ISD - Supplemental,GC0032,0.92,name_parent
+MAP-50226,Salesforce,CRM-10226,Blue Ridge School District,GC0032,0.92,name_state
+MAP-50227,Salesforce,CRM-10227,Prairie School District,GC0033,0.92,name_parent
+MAP-50228,Salesforce,CRM-10228,Prairie ISD - Supplemental,GC0033,0.91,name_parent
+MAP-50229,Salesforce,CRM-10229,Prairie ISD - Supplemental,GC0033,0.96,name_state
+MAP-50230,Salesforce,CRM-10230,Prairie ISD,GC0033,0.9,name_state
+MAP-50231,Salesforce,CRM-10231,Prairie ISD,GC0033,0.96,name_state
+MAP-50232,Salesforce,CRM-10232,Prairie ISD,GC0033,0.86,name_parent
+MAP-50233,Salesforce,CRM-10233,Harbor Indep. SD,GC0034,0.99,name_contact_domain
+MAP-50234,Salesforce,CRM-10234,Harbor ISD,GC0034,0.82,name_contact_domain
+MAP-50235,Salesforce,CRM-10235,Harbor ISD,GC0034,0.97,name_parent
+MAP-50236,Salesforce,CRM-10236,Harbor Independent School District,GC0034,0.84,name_contact_domain
+MAP-50237,Salesforce,CRM-10237,Harbor ISD - Supplemental,GC0034,0.93,name_state
+MAP-50238,Salesforce,CRM-10238,Harbor School District,GC0034,0.87,name_state
+MAP-50239,Salesforce,CRM-10239,Harbor Public Schools,GC0034,0.92,name_contact_domain
+MAP-50240,Salesforce,CRM-10240,Cypress ISD,GC0035,0.89,name_contact_domain
+MAP-50241,Salesforce,CRM-10241,Cypress ISD - Supplemental,GC0035,0.89,name_contact_domain
+MAP-50242,Salesforce,CRM-10242,Cypress ISD,GC0035,0.92,name_parent
+MAP-50243,Salesforce,CRM-10243,Cypress ISD - Supplemental,GC0035,0.89,name_contact_domain
+MAP-50244,Salesforce,CRM-10244,Cypress Independent School District,GC0035,0.98,name_parent
+MAP-50245,Salesforce,CRM-10245,Sierra ISD - Supplemental,GC0036,0.86,name_state
+MAP-50246,Salesforce,CRM-10246,Sierra ISD - Supplemental,GC0036,0.89,name_parent
+MAP-50247,Salesforce,CRM-10247,Sierra School District,GC0036,0.86,name_contact_domain
+MAP-50248,Salesforce,CRM-10248,Sierra ISD,GC0036,0.99,name_state
+MAP-50249,Salesforce,CRM-10249,Sierra Independent School District,GC0036,0.84,name_contact_domain
+MAP-50250,Salesforce,CRM-10250,Sierra Public Schools,GC0036,0.89,name_state
+MAP-50251,Salesforce,CRM-10251,Sierra ISD - Supplemental,GC0036,0.9,name_parent
+MAP-50252,Salesforce,CRM-10252,Sierra ISD - Supplemental,GC0036,0.94,name_contact_domain
+MAP-50253,Salesforce,CRM-10253,Sierra Public Schools,GC0036,0.91,name_parent
+MAP-50254,Salesforce,CRM-10254,Frontier Public Schools,GC0037,0.93,name_parent
+MAP-50255,Salesforce,CRM-10255,Frontier School District - Supplemental,GC0037,0.88,name_contact_domain
+MAP-50256,Salesforce,CRM-10256,Frontier Public Schools,GC0037,0.98,name_contact_domain
+MAP-50257,Salesforce,CRM-10257,Frontier Public Schools,GC0037,0.94,name_contact_domain
+MAP-50258,Salesforce,CRM-10258,Frontier ISD,GC0037,0.94,name_state
+MAP-50259,Salesforce,CRM-10259,Frontier School District,GC0037,0.84,name_state
+MAP-50260,Salesforce,CRM-10260,Frontier Independent School District,GC0037,0.93,name_parent
+MAP-50261,Salesforce,CRM-10261,Frontier School District,GC0037,0.88,name_state
+MAP-50262,Salesforce,CRM-10262,Frontier School District,GC0037,0.83,name_contact_domain
+MAP-50263,Salesforce,CRM-10263,Liberty Public Schools,GC0038,0.93,name_contact_domain
+MAP-50264,Salesforce,CRM-10264,Liberty Public Schools,GC0038,0.93,name_state
+MAP-50265,Salesforce,CRM-10265,Liberty School District - Supplemental,GC0038,0.86,name_state
+MAP-50266,Salesforce,CRM-10266,Liberty School District,GC0038,0.83,name_state
+MAP-50267,Salesforce,CRM-10267,Liberty Public Schools,GC0038,0.92,name_parent
+MAP-50268,Salesforce,CRM-10268,Liberty School District,GC0038,0.96,name_parent
+MAP-50269,Salesforce,CRM-10269,Liberty School District,GC0038,0.9,name_parent
+MAP-50270,Salesforce,CRM-10270,Liberty ISD,GC0038,0.87,name_parent
+MAP-50271,Salesforce,CRM-10271,Monroe Public Schools,GC0039,0.92,name_parent
+MAP-50272,Salesforce,CRM-10272,Monroe Public Schools,GC0039,0.96,name_parent
+MAP-50273,Salesforce,CRM-10273,Monroe Independent School District,GC0039,0.9,name_contact_domain
+MAP-50274,Salesforce,CRM-10274,Monroe Public Schools,GC0039,0.83,name_state
+MAP-50275,Salesforce,CRM-10275,Monroe ISD,GC0039,0.89,name_contact_domain
+MAP-50276,Salesforce,CRM-10276,Monroe School District - Supplemental,GC0039,0.9,name_parent
+MAP-50277,Salesforce,CRM-10277,Monroe Public Schools,GC0039,0.87,name_contact_domain
+MAP-50278,Salesforce,CRM-10278,Monroe Independent School District,GC0039,0.95,name_parent
+MAP-50279,Salesforce,CRM-10279,Concord Independent School District,GC0040,0.89,name_contact_domain
+MAP-50280,Salesforce,CRM-10280,Concord School District,GC0040,0.9,name_parent
+MAP-50281,Salesforce,CRM-10281,Concord Public Schools,GC0040,0.98,name_state
+MAP-50282,Salesforce,CRM-10282,Concord Public Schools,GC0040,0.89,name_state
+MAP-50283,Salesforce,CRM-10283,Concord School District - Supplemental,GC0040,0.89,name_parent
+MAP-50284,Salesforce,CRM-10284,Concord School District,GC0040,0.89,name_state
+MAP-50285,Salesforce,CRM-10285,Concord School District,GC0040,0.86,name_parent
+MAP-50286,Salesforce,CRM-10286,Concord School District,GC0040,0.83,name_parent
+MAP-50287,Salesforce,CRM-10287,Concord School District,GC0040,0.86,name_parent
+MAP-50288,Salesforce,CRM-10288,Hamilton ISD - Supplemental,GC0041,0.94,name_parent
+MAP-50289,Salesforce,CRM-10289,Hamilton ISD - Supplemental,GC0041,0.85,name_contact_domain
+MAP-50290,Salesforce,CRM-10290,Hamilton ISD,GC0041,0.95,name_parent
+MAP-50291,Salesforce,CRM-10291,Hamilton ISD - Supplemental,GC0041,0.92,name_contact_domain
+MAP-50292,Salesforce,CRM-10292,Hamilton Public Schools,GC0041,0.85,name_parent
+MAP-50293,Salesforce,CRM-10293,Aurora Public Schools,GC0042,0.9,name_state
+MAP-50294,Salesforce,CRM-10294,Aurora ISD,GC0042,0.97,name_contact_domain
+MAP-50295,Salesforce,CRM-10295,Aurora Indep. SD,GC0042,0.93,name_state
+MAP-50296,Salesforce,CRM-10296,Aurora ISD - Supplemental,GC0042,0.92,name_parent
+MAP-50297,Salesforce,CRM-10297,Aurora ISD - Supplemental,GC0042,0.86,name_state
+MAP-50298,Salesforce,CRM-10298,Aurora ISD,GC0042,0.83,name_parent
+MAP-50299,Salesforce,CRM-10299,Aurora School District,GC0042,0.92,name_contact_domain
+MAP-50300,Salesforce,CRM-10300,Aurora ISD,GC0042,0.82,name_parent
+MAP-50301,Salesforce,CRM-10301,Aurora ISD,GC0042,0.88,name_state
+MAP-50302,Salesforce,CRM-10302,Briarwood ISD,GC0043,0.91,name_parent
+MAP-50303,Salesforce,CRM-10303,Briarwood Indep. SD,GC0043,0.89,name_state
+MAP-50304,Salesforce,CRM-10304,Briarwood ISD,GC0043,0.89,name_state
+MAP-50305,Salesforce,CRM-10305,Briarwood ISD,GC0043,0.99,name_parent
+MAP-50306,Salesforce,CRM-10306,Briarwood ISD,GC0043,0.92,name_contact_domain
+MAP-50307,Salesforce,CRM-10307,Briarwood ISD,GC0043,0.93,name_contact_domain
+MAP-50308,Salesforce,CRM-10308,Briarwood ISD,GC0043,0.96,name_parent
+MAP-50309,Salesforce,CRM-10309,Briarwood Public Schools,GC0043,0.92,name_parent
+MAP-50310,Salesforce,CRM-10310,Briarwood ISD,GC0043,0.98,name_parent
+MAP-50311,Salesforce,CRM-10311,Highland Public Schools,GC0044,0.93,name_state
+MAP-50312,Salesforce,CRM-10312,Highland ISD - Supplemental,GC0044,0.87,name_parent
+MAP-50313,Salesforce,CRM-10313,Highland ISD,GC0044,0.95,name_parent
+MAP-50314,Salesforce,CRM-10314,Highland School District,GC0044,0.95,name_parent
+MAP-50315,Salesforce,CRM-10315,Highland ISD,GC0044,0.94,name_state
+MAP-50316,Salesforce,CRM-10316,Highland ISD - Supplemental,GC0044,0.95,name_parent
+MAP-50317,Salesforce,CRM-10317,Highland ISD - Supplemental,GC0044,0.92,name_parent
+MAP-50318,Salesforce,CRM-10318,Willow Creek ISD - Supplemental,GC0045,0.92,name_contact_domain
+MAP-50319,Salesforce,CRM-10319,Willow Creek ISD - Supplemental,GC0045,0.92,name_contact_domain
+MAP-50320,Salesforce,CRM-10320,Willow Creek ISD - Supplemental,GC0045,0.86,name_contact_domain
+MAP-50321,Salesforce,CRM-10321,Willow Creek ISD,GC0045,0.98,name_parent
+MAP-50322,Salesforce,CRM-10322,Willow Creek Public Schools,GC0045,0.87,name_parent
+MAP-50323,Salesforce,CRM-10323,Willow Creek Public Schools,GC0045,0.87,name_contact_domain
+MAP-50324,Salesforce,CRM-10324,Willow Creek ISD,GC0045,0.97,name_parent
+MAP-50325,Salesforce,CRM-10325,Stonebridge School District,GC0046,0.86,name_contact_domain
+MAP-50326,Salesforce,CRM-10326,Stonebridge School District,GC0046,0.95,name_contact_domain
+MAP-50327,Salesforce,CRM-10327,Stonebridge Public Schools,GC0046,0.94,name_state
+MAP-50328,Salesforce,CRM-10328,Stonebridge Public Schools,GC0046,0.84,name_state
+MAP-50329,Salesforce,CRM-10329,Stonebridge ISD,GC0046,0.92,name_contact_domain
+MAP-50330,Salesforce,CRM-10330,Stonebridge Public Schools,GC0046,0.89,name_contact_domain
+MAP-50331,Salesforce,CRM-10331,Stonebridge School District,GC0046,0.94,name_contact_domain
+MAP-50332,Salesforce,CRM-10332,Clearwater School District - Supplemental,GC0047,0.98,name_contact_domain
+MAP-50333,Salesforce,CRM-10333,Clearwater School District,GC0047,0.93,name_contact_domain
+MAP-50334,Salesforce,CRM-10334,Clearwater Public Schools,GC0047,0.93,name_contact_domain
+MAP-50335,Salesforce,CRM-10335,Clearwater School District - Supplemental,GC0047,0.92,name_parent
+MAP-50336,Salesforce,CRM-10336,Clearwater School District,GC0047,0.84,name_state
+MAP-50337,Salesforce,CRM-10337,Gateway School District,GC0048,0.84,name_state
+MAP-50338,Salesforce,CRM-10338,Gateway Public Schools,GC0048,0.99,name_contact_domain
+MAP-50339,Salesforce,CRM-10339,Gateway Public Schools,GC0048,0.9,name_state
+MAP-50340,Salesforce,CRM-10340,Gateway ISD,GC0048,0.94,name_state
+MAP-50341,Salesforce,CRM-10341,Gateway School District,GC0048,0.97,name_state
+MAP-50342,Salesforce,CRM-10342,Gateway School District,GC0048,0.9,name_parent
+MAP-50343,Salesforce,CRM-10343,Gateway School District,GC0048,0.97,name_contact_domain
+MAP-50344,Salesforce,CRM-10344,Gateway School District,GC0048,0.88,name_parent
+MAP-50345,Salesforce,CRM-10345,North Star ISD - Supplemental,GC0049,0.93,name_parent
+MAP-50346,Salesforce,CRM-10346,North Star ISD,GC0049,0.88,name_parent
+MAP-50347,Salesforce,CRM-10347,North Star ISD - Supplemental,GC0049,0.96,name_state
+MAP-50348,Salesforce,CRM-10348,North Star ISD,GC0049,0.97,name_state
+MAP-50349,Salesforce,CRM-10349,North Star Public Schools,GC0049,0.83,name_state
+MAP-50350,Salesforce,CRM-10350,North Star Public Schools,GC0049,0.83,name_parent
+MAP-50351,Salesforce,CRM-10351,North Star Public Schools,GC0049,0.92,name_parent
+MAP-50352,Salesforce,CRM-10352,Twin Oaks School District,GC0050,0.88,name_state
+MAP-50353,Salesforce,CRM-10353,Twin Oaks School District,GC0050,0.85,name_contact_domain
+MAP-50354,Salesforce,CRM-10354,Twin Oaks ISD,GC0050,0.86,name_state
+MAP-50355,Salesforce,CRM-10355,Twin Oaks School District - Supplemental,GC0050,0.96,name_state
+MAP-50356,Salesforce,CRM-10356,Twin Oaks School District,GC0050,0.97,name_parent
+MAP-50357,Salesforce,CRM-10357,Twin Oaks School District,GC0050,0.84,name_state
+MAP-50358,Salesforce,CRM-10358,Twin Oaks School District - Supplemental,GC0050,0.85,name_parent
+MAP-50359,Salesforce,CRM-10359,Twin Oaks School District,GC0050,0.88,name_parent
+MAP-50360,Salesforce,CRM-10360,Valley View Public Schools,GC0051,0.97,name_contact_domain
+MAP-50361,Salesforce,CRM-10361,Valley View ISD - Supplemental,GC0051,0.94,name_parent
+MAP-50362,Salesforce,CRM-10362,Valley View ISD,GC0051,0.85,name_contact_domain
+MAP-50363,Salesforce,CRM-10363,Valley View ISD - Supplemental,GC0051,0.88,name_contact_domain
+MAP-50364,Salesforce,CRM-10364,Valley View ISD,GC0051,0.96,name_state
+MAP-50365,Salesforce,CRM-10365,Golden Plains School District - Supplemental,GC0052,0.91,name_parent
+MAP-50366,Salesforce,CRM-10366,Golden Plains Public Schools,GC0052,0.99,name_state
+MAP-50367,Salesforce,CRM-10367,Golden Plains School District,GC0052,0.98,name_contact_domain
+MAP-50368,Salesforce,CRM-10368,Golden Plains ISD,GC0052,0.86,name_state
+MAP-50369,Salesforce,CRM-10369,Golden Plains ISD,GC0052,0.86,name_parent
+MAP-50370,Salesforce,CRM-10370,Golden Plains School District - Supplemental,GC0052,0.91,name_state
+MAP-50371,Salesforce,CRM-10371,Golden Plains Public Schools,GC0052,0.86,name_parent
+MAP-50372,Salesforce,CRM-10372,Golden Plains Public Schools,GC0052,0.89,name_state
+MAP-50373,Salesforce,CRM-10373,Parkside ISD,GC0053,0.83,name_state
+MAP-50374,Salesforce,CRM-10374,Parkside ISD - Supplemental,GC0053,0.98,name_contact_domain
+MAP-50375,Salesforce,CRM-10375,Parkside ISD,GC0053,0.88,name_state
+MAP-50376,Salesforce,CRM-10376,Parkside ISD - Supplemental,GC0053,0.87,name_state
+MAP-50377,Salesforce,CRM-10377,Parkside ISD,GC0053,0.85,name_parent
+MAP-50378,Salesforce,CRM-10378,Parkside Public Schools,GC0053,0.85,name_contact_domain
+MAP-50379,Salesforce,CRM-10379,Millbrook Public Schools,GC0054,0.95,name_state
+MAP-50380,Salesforce,CRM-10380,Millbrook ISD,GC0054,0.97,name_state
+MAP-50381,Salesforce,CRM-10381,Millbrook Indep. SD,GC0054,0.87,name_parent
+MAP-50382,Salesforce,CRM-10382,Millbrook ISD,GC0054,0.85,name_parent
+MAP-50383,Salesforce,CRM-10383,Millbrook ISD - Supplemental,GC0054,0.86,name_state
+MAP-50384,Salesforce,CRM-10384,Millbrook ISD - Supplemental,GC0054,0.82,name_state
+MAP-50385,Salesforce,CRM-10385,Millbrook ISD,GC0054,0.93,name_contact_domain
+MAP-50386,Salesforce,CRM-10386,Millbrook Indep. SD,GC0054,0.92,name_contact_domain
+MAP-50387,Salesforce,CRM-10387,Millbrook ISD,GC0054,0.95,name_contact_domain
+MAP-50388,Salesforce,CRM-10388,Kingston School District - Supplemental,GC0055,0.96,name_parent
+MAP-50389,Salesforce,CRM-10389,Kingston School District - Supplemental,GC0055,0.95,name_contact_domain
+MAP-50390,Salesforce,CRM-10390,Kingston Public Schools,GC0055,0.96,name_state
+MAP-50391,Salesforce,CRM-10391,Kingston Indep. SD,GC0055,0.91,name_contact_domain
+MAP-50392,Salesforce,CRM-10392,Kingston Public Schools,GC0055,0.87,name_contact_domain
+MAP-50393,Salesforce,CRM-10393,Kingston School District,GC0055,0.97,name_contact_domain
+MAP-50394,Salesforce,CRM-10394,Kingston Public Schools,GC0055,0.97,name_parent
+MAP-50395,Salesforce,CRM-10395,Edgewater Public Schools,GC0056,0.95,name_state
+MAP-50396,Salesforce,CRM-10396,Edgewater Public Schools,GC0056,0.85,name_contact_domain
+MAP-50397,Salesforce,CRM-10397,Edgewater ISD - Supplemental,GC0056,0.84,name_contact_domain
+MAP-50398,Salesforce,CRM-10398,Edgewater ISD - Supplemental,GC0056,0.99,name_parent
+MAP-50399,Salesforce,CRM-10399,Edgewater Public Schools,GC0056,0.97,name_state
+MAP-50400,Salesforce,CRM-10400,Edgewater ISD - Supplemental,GC0056,0.9,name_state
+MAP-50401,Salesforce,CRM-10401,Edgewater Public Schools,GC0056,0.99,name_parent
+MAP-50402,Salesforce,CRM-10402,Edgewater Public Schools,GC0056,0.86,name_parent
+MAP-50403,Salesforce,CRM-10403,Edgewater Independent School District,GC0056,0.83,name_state
+MAP-50404,Salesforce,CRM-10404,Shoreline ISD - Supplemental,GC0057,0.91,name_parent
+MAP-50405,Salesforce,CRM-10405,Shoreline Public Schools,GC0057,0.98,name_state
+MAP-50406,Salesforce,CRM-10406,Shoreline ISD - Supplemental,GC0057,0.85,name_contact_domain
+MAP-50407,Salesforce,CRM-10407,Shoreline ISD,GC0057,0.92,name_parent
+MAP-50408,Salesforce,CRM-10408,Shoreline Independent School District,GC0057,0.89,name_parent
+MAP-50409,Salesforce,CRM-10409,Shoreline Public Schools,GC0057,0.85,name_parent
+MAP-50410,Salesforce,CRM-10410,Shoreline ISD - Supplemental,GC0057,0.94,name_state
+MAP-50411,Salesforce,CRM-10411,Shoreline Public Schools,GC0057,0.85,name_state
+MAP-50412,Salesforce,CRM-10412,Aspen Public Schools,GC0058,0.91,name_state
+MAP-50413,Salesforce,CRM-10413,Aspen Public Schools,GC0058,0.93,name_state
+MAP-50414,Salesforce,CRM-10414,Aspen ISD,GC0058,0.82,name_state
+MAP-50415,Salesforce,CRM-10415,Aspen ISD - Supplemental,GC0058,0.84,name_parent
+MAP-50416,Salesforce,CRM-10416,Aspen ISD - Supplemental,GC0058,0.92,name_state
+MAP-50417,Salesforce,CRM-10417,Aspen Indep. SD,GC0058,0.86,name_state
+MAP-50418,Salesforce,CRM-10418,Aspen Public Schools,GC0058,0.86,name_state
+MAP-50419,Salesforce,CRM-10419,Aspen ISD,GC0058,0.85,name_parent
+MAP-50420,Salesforce,CRM-10420,Fox Run School District,GC0059,0.9,name_state
+MAP-50421,ProductTelemetry,PU-20001,Houston Literacy Pilot,GC0001,0.91,name_state
+MAP-50422,ProductTelemetry,PU-20002,Houston Literacy Pilot,GC0001,0.9,org_alias
+MAP-50423,ProductTelemetry,PU-20003,Houston Literacy Pilot,GC0001,0.92,org_alias
+MAP-50424,ProductTelemetry,PU-20004,HOUSTON MATH PROGRAM,GC0001,0.96,name_state
+MAP-50425,ProductTelemetry,PU-20005,HOUSTON MATH PROGRAM,GC0001,0.85,org_alias
+MAP-50426,ProductTelemetry,PU-20006,Houston Math Program,GC0001,0.79,org_alias
+MAP-50427,ProductTelemetry,PU-20007,Houston Math Program,GC0001,0.89,org_alias
+MAP-50428,ProductTelemetry,PU-20008,Houston Credit Recovery,GC0001,0.92,org_alias
+MAP-50429,ProductTelemetry,PU-20009,Houston Credit Recovery,GC0001,0.81,manual_review
+MAP-50430,ProductTelemetry,PU-20010,HOUSTON CREDIT RECOVERY,GC0001,0.77,org_alias
+MAP-50431,ProductTelemetry,PU-20011,Riverview Credit Recovery,GC0002,0.89,name_state
+MAP-50432,ProductTelemetry,PU-20012,Riverview Credit Recovery,GC0002,0.77,name_state
+MAP-50433,ProductTelemetry,PU-20013,RIVERVIEW CREDIT RECOVERY,GC0002,0.95,manual_review
+MAP-50434,ProductTelemetry,PU-20014,Riverview Math Program,GC0002,0.88,org_alias
+MAP-50435,ProductTelemetry,PU-20015,Riverview Math Program,GC0002,0.93,name_state
+MAP-50436,ProductTelemetry,PU-20016,Riverview Math Program,GC0002,0.81,name_state
+MAP-50437,ProductTelemetry,PU-20017,Riverview Literacy Pilot,GC0002,0.82,name_state
+MAP-50438,ProductTelemetry,PU-20018,Riverview Literacy Pilot,GC0002,0.77,manual_review
+MAP-50439,ProductTelemetry,PU-20019,Oak Valley Math Program,GC0003,0.82,name_state
+MAP-50440,ProductTelemetry,PU-20020,Oak Valley Credit Recovery,GC0003,0.96,manual_review
+MAP-50441,ProductTelemetry,PU-20021,Oak Valley Credit Recovery,GC0003,0.93,name_state
+MAP-50442,ProductTelemetry,PU-20022,Oak Valley Credit Recovery,GC0003,0.78,manual_review
+MAP-50443,ProductTelemetry,PU-20023,Pine Hills ISD,GC0004,0.79,name_state
+MAP-50444,ProductTelemetry,PU-20024,Pine Hills ISD,GC0004,0.9,name_state
+MAP-50445,ProductTelemetry,PU-20025,Pine Hills ISD,GC0004,0.82,org_alias
+MAP-50446,ProductTelemetry,PU-20026,Pine Hills ISD,GC0004,0.77,manual_review
+MAP-50447,ProductTelemetry,PU-20027,Pine Hills Literacy Pilot,GC0004,0.85,org_alias
+MAP-50448,ProductTelemetry,PU-20028,PINE_HILLS_LITERACY_PILOT,GC0004,0.9,manual_review
+MAP-50449,ProductTelemetry,PU-20029,PINE_HILLS_LITERACY_PILOT,GC0004,0.86,name_state
+MAP-50450,ProductTelemetry,PU-20030,Pine Hills Math Program,GC0004,0.93,org_alias
+MAP-50451,ProductTelemetry,PU-20031,Pine Hills Math Program,GC0004,0.89,manual_review
+MAP-50452,ProductTelemetry,PU-20032,Maple Grove Literacy Pilot,GC0005,0.86,org_alias
+MAP-50453,ProductTelemetry,PU-20033,Maple Grove Literacy Pilot,GC0005,0.85,manual_review
+MAP-50454,ProductTelemetry,PU-20034,MAPLE_GROVE_LITERACY_PILOT,GC0005,0.93,manual_review
+MAP-50455,ProductTelemetry,PU-20035,Maple Grove Math Program,GC0005,0.96,name_state
+MAP-50456,ProductTelemetry,PU-20036,Maple Grove Math Program,GC0005,0.95,name_state
+MAP-50457,ProductTelemetry,PU-20037,Maple Grove Math Program,GC0005,0.84,manual_review
+MAP-50458,ProductTelemetry,PU-20038,Maple Grove ISD,GC0005,0.87,manual_review
+MAP-50459,ProductTelemetry,PU-20039,Maple Grove ISD,GC0005,0.94,org_alias
+MAP-50460,ProductTelemetry,PU-20040,Cedar Ridge Literacy Pilot,GC0006,0.79,manual_review
+MAP-50461,ProductTelemetry,PU-20041,Cedar Ridge Credit Recovery,GC0006,0.86,name_state
+MAP-50462,ProductTelemetry,PU-20042,CEDAR_RIDGE_CREDIT_RECOVERY,GC0006,0.83,name_state
+MAP-50463,ProductTelemetry,PU-20043,Cedar Ridge Credit Recovery,GC0006,0.8,org_alias
+MAP-50464,ProductTelemetry,PU-20044,Springfield School District,GC0007,0.89,manual_review
+MAP-50465,ProductTelemetry,PU-20045,Springfield School District,GC0007,0.92,org_alias
+MAP-50466,ProductTelemetry,PU-20046,Springfield Math Program,GC0007,0.84,manual_review
+MAP-50467,ProductTelemetry,PU-20047,Springfield Math Program,GC0007,0.82,org_alias
+MAP-50468,ProductTelemetry,PU-20048,Springfield Credit Recovery,GC0007,0.95,manual_review
+MAP-50469,ProductTelemetry,PU-20049,Springfield Credit Recovery,GC0007,0.92,name_state
+MAP-50470,ProductTelemetry,PU-20050,Springfield Credit Recovery,GC0007,0.86,manual_review
+MAP-50471,ProductTelemetry,PU-20051,Lakeview School District,GC0008,0.8,manual_review
+MAP-50472,ProductTelemetry,PU-20052,Lakeview School District,GC0008,0.92,name_state
+MAP-50473,ProductTelemetry,PU-20053,Lakeview School District,GC0008,0.93,name_state
+MAP-50474,ProductTelemetry,PU-20054,Lakeview Literacy Pilot,GC0008,0.79,name_state
+MAP-50475,ProductTelemetry,PU-20055,Lakeview Literacy Pilot,GC0008,0.97,name_state
+MAP-50476,ProductTelemetry,PU-20056,Lakeview Math Program,GC0008,0.87,manual_review
+MAP-50477,ProductTelemetry,PU-20057,LAKEVIEW_MATH_PROGRAM,GC0008,0.77,manual_review
+MAP-50478,ProductTelemetry,PU-20058,Northfield Math Program,GC0009,0.83,manual_review
+MAP-50479,ProductTelemetry,PU-20059,Northfield Math Program,GC0009,0.88,manual_review
+MAP-50480,ProductTelemetry,PU-20060,Northfield Math Program,GC0009,0.89,manual_review
+MAP-50481,ProductTelemetry,PU-20061,Northfield Credit Recovery,GC0009,0.95,name_state
+MAP-50482,ProductTelemetry,PU-20062,Northfield Literacy Pilot,GC0009,0.86,name_state
+MAP-50483,ProductTelemetry,PU-20063,Westbrook Credit Recovery,GC0010,0.94,org_alias
+MAP-50484,ProductTelemetry,PU-20064,Westbrook Credit Recovery,GC0010,0.82,name_state
+MAP-50485,ProductTelemetry,PU-20065,Westbrook Math Program,GC0010,0.93,name_state
+MAP-50486,ProductTelemetry,PU-20066,Westbrook Math Program,GC0010,0.89,org_alias
+MAP-50487,ProductTelemetry,PU-20067,Westbrook Literacy Pilot,GC0010,0.78,manual_review
+MAP-50488,ProductTelemetry,PU-20068,Westbrook Literacy Pilot,GC0010,0.89,manual_review
+MAP-50489,ProductTelemetry,PU-20069,Easton Math Program,GC0011,0.83,manual_review
+MAP-50490,ProductTelemetry,PU-20070,Easton Credit Recovery,GC0011,0.83,name_state
+MAP-50491,ProductTelemetry,PU-20071,Easton Credit Recovery,GC0011,0.86,name_state
+MAP-50492,ProductTelemetry,PU-20072,Easton Credit Recovery,GC0011,0.8,org_alias
+MAP-50493,ProductTelemetry,PU-20073,Easton Credit Recovery,GC0011,0.96,manual_review
+MAP-50494,ProductTelemetry,PU-20074,Easton Literacy Pilot,GC0011,0.81,name_state
+MAP-50495,ProductTelemetry,PU-20075,Easton Literacy Pilot,GC0011,0.88,name_state
+MAP-50496,ProductTelemetry,PU-20076,Easton Literacy Pilot,GC0011,0.79,org_alias
+MAP-50497,ProductTelemetry,PU-20077,Easton Literacy Pilot,GC0011,0.94,name_state
+MAP-50498,ProductTelemetry,PU-20078,Fairview Credit Recovery,GC0012,0.79,org_alias
+MAP-50499,ProductTelemetry,PU-20079,Fairview Credit Recovery,GC0012,0.8,manual_review
+MAP-50500,ProductTelemetry,PU-20080,Fairview Credit Recovery,GC0012,0.83,org_alias
+MAP-50501,ProductTelemetry,PU-20081,Fairview Literacy Pilot,GC0012,0.88,manual_review
+MAP-50502,ProductTelemetry,PU-20082,Fairview Literacy Pilot,GC0012,0.84,name_state
+MAP-50503,ProductTelemetry,PU-20083,Fairview Literacy Pilot,GC0012,0.95,manual_review
+MAP-50504,ProductTelemetry,PU-20084,Fairview Literacy Pilot,GC0012,0.91,manual_review
+MAP-50505,ProductTelemetry,PU-20085,Fairview Math Program,GC0012,0.87,name_state
+MAP-50506,ProductTelemetry,PU-20086,Fairview Math Program,GC0012,0.8,org_alias
+MAP-50507,ProductTelemetry,PU-20087,BROOKSIDE MATH PROGRAM,GC0013,0.82,org_alias
+MAP-50508,ProductTelemetry,PU-20088,Brookside Math Program,GC0013,0.94,name_state
+MAP-50509,ProductTelemetry,PU-20089,Brookside Math Program,GC0013,0.82,manual_review
+MAP-50510,ProductTelemetry,PU-20090,Brookside ISD,GC0013,0.86,manual_review
+MAP-50511,ProductTelemetry,PU-20091,Brookside Credit Recovery,GC0013,0.88,org_alias
+MAP-50512,ProductTelemetry,PU-20092,Brookside Credit Recovery,GC0013,0.76,org_alias
+MAP-50513,ProductTelemetry,PU-20093,Greenwood ISD,GC0014,0.76,name_state
+MAP-50514,ProductTelemetry,PU-20094,Greenwood Math Program,GC0014,0.76,org_alias
+MAP-50515,ProductTelemetry,PU-20095,Greenwood Math Program,GC0014,0.89,org_alias
+MAP-50516,ProductTelemetry,PU-20096,Greenwood Math Program,GC0014,0.92,manual_review
+MAP-50517,ProductTelemetry,PU-20097,Hillcrest Credit Recovery,GC0015,0.83,manual_review
+MAP-50518,ProductTelemetry,PU-20098,Hillcrest Credit Recovery,GC0015,0.92,org_alias
+MAP-50519,ProductTelemetry,PU-20099,HILLCREST_CREDIT_RECOVERY,GC0015,0.8,manual_review
+MAP-50520,ProductTelemetry,PU-20100,Hillcrest Credit Recovery,GC0015,0.85,org_alias
+MAP-50521,ProductTelemetry,PU-20101,Hillcrest Literacy Pilot,GC0015,0.89,name_state
+MAP-50522,ProductTelemetry,PU-20102,Hillcrest Literacy Pilot,GC0015,0.84,manual_review
+MAP-50523,ProductTelemetry,PU-20103,Hillcrest Literacy Pilot,GC0015,0.9,name_state
+MAP-50524,ProductTelemetry,PU-20104,Hillcrest Math Program,GC0015,0.96,manual_review
+MAP-50525,ProductTelemetry,PU-20105,Sunnydale ISD,GC0016,0.92,org_alias
+MAP-50526,ProductTelemetry,PU-20106,Sunnydale ISD,GC0016,0.81,name_state
+MAP-50527,ProductTelemetry,PU-20107,Sunnydale Literacy Pilot,GC0016,0.85,org_alias
+MAP-50528,ProductTelemetry,PU-20108,Sunnydale Literacy Pilot,GC0016,0.86,name_state
+MAP-50529,ProductTelemetry,PU-20109,Redwood Math Program,GC0017,0.79,org_alias
+MAP-50530,ProductTelemetry,PU-20110,Redwood Math Program,GC0017,0.88,name_state
+MAP-50531,ProductTelemetry,PU-20111,REDWOOD MATH PROGRAM,GC0017,0.85,org_alias
+MAP-50532,ProductTelemetry,PU-20112,Redwood Math Program,GC0017,0.83,name_state
+MAP-50533,ProductTelemetry,PU-20113,Redwood School District,GC0017,0.79,manual_review
+MAP-50534,ProductTelemetry,PU-20114,Redwood Credit Recovery,GC0017,0.79,manual_review
+MAP-50535,ProductTelemetry,PU-20115,Silver Lake Literacy Pilot,GC0018,0.84,manual_review
+MAP-50536,ProductTelemetry,PU-20116,Silver Lake Literacy Pilot,GC0018,0.95,name_state
+MAP-50537,ProductTelemetry,PU-20117,SILVER_LAKE_MATH_PROGRAM,GC0018,0.88,name_state
+MAP-50538,ProductTelemetry,PU-20118,Silver Lake ISD,GC0018,0.77,org_alias
+MAP-50539,ProductTelemetry,PU-20119,SILVER LAKE ISD,GC0018,0.81,name_state
+MAP-50540,ProductTelemetry,PU-20120,Silver Lake ISD,GC0018,0.88,org_alias
+MAP-50541,ProductTelemetry,PU-20121,Silver Lake ISD,GC0018,0.92,manual_review
+MAP-50542,ProductTelemetry,PU-20122,Meadow Park Credit Recovery,GC0019,0.88,name_state
+MAP-50543,ProductTelemetry,PU-20123,Meadow Park Credit Recovery,GC0019,0.85,org_alias
+MAP-50544,ProductTelemetry,PU-20124,Meadow Park Math Program,GC0019,0.9,name_state
+MAP-50545,ProductTelemetry,PU-20125,Meadow Park Math Program,GC0019,0.9,name_state
+MAP-50546,ProductTelemetry,PU-20126,Meadow Park Math Program,GC0019,0.93,manual_review
+MAP-50547,ProductTelemetry,PU-20127,Meadow Park Literacy Pilot,GC0019,0.82,name_state
+MAP-50548,ProductTelemetry,PU-20128,Meadow Park Literacy Pilot,GC0019,0.77,org_alias
+MAP-50549,ProductTelemetry,PU-20129,Meadow Park Literacy Pilot,GC0019,0.78,manual_review
+MAP-50550,ProductTelemetry,PU-20130,Meadow Park Literacy Pilot,GC0019,0.81,manual_review
+MAP-50551,ProductTelemetry,PU-20131,CANYON CREEK LITERACY PILOT,GC0020,0.77,manual_review
+MAP-50552,ProductTelemetry,PU-20132,Canyon Creek Literacy Pilot,GC0020,0.88,name_state
+MAP-50553,ProductTelemetry,PU-20133,Canyon Creek Math Program,GC0020,0.8,manual_review
+MAP-50554,ProductTelemetry,PU-20134,Canyon Creek Math Program,GC0020,0.78,manual_review
+MAP-50555,ProductTelemetry,PU-20135,Riverside Credit Recovery,GC0021,0.87,name_state
+MAP-50556,ProductTelemetry,PU-20136,Riverside Credit Recovery,GC0021,0.77,manual_review
+MAP-50557,ProductTelemetry,PU-20137,Riverside Credit Recovery,GC0021,0.87,name_state
+MAP-50558,ProductTelemetry,PU-20138,Riverside Credit Recovery,GC0021,0.91,name_state
+MAP-50559,ProductTelemetry,PU-20139,Riverside School District,GC0021,0.77,manual_review
+MAP-50560,ProductTelemetry,PU-20140,Riverside School District,GC0021,0.78,name_state
+MAP-50561,ProductTelemetry,PU-20141,Riverside School District,GC0021,0.78,name_state
+MAP-50562,ProductTelemetry,PU-20142,Riverside School District,GC0021,0.92,org_alias
+MAP-50563,ProductTelemetry,PU-20143,Summit Credit Recovery,GC0022,0.92,manual_review
+MAP-50564,ProductTelemetry,PU-20144,Summit Credit Recovery,GC0022,0.9,name_state
+MAP-50565,ProductTelemetry,PU-20145,Summit Credit Recovery,GC0022,0.91,manual_review
+MAP-50566,ProductTelemetry,PU-20146,Summit Credit Recovery,GC0022,0.79,org_alias
+MAP-50567,ProductTelemetry,PU-20147,Summit Math Program,GC0022,0.87,manual_review
+MAP-50568,ProductTelemetry,PU-20148,Summit Math Program,GC0022,0.86,org_alias
+MAP-50569,ProductTelemetry,PU-20149,Summit Math Program,GC0022,0.82,name_state
+MAP-50570,ProductTelemetry,PU-20150,SUMMIT MATH PROGRAM,GC0022,0.78,manual_review
+MAP-50571,ProductTelemetry,PU-20151,Summit School District,GC0022,0.78,org_alias
+MAP-50572,ProductTelemetry,PU-20152,SUMMIT_SCHOOL_DISTRICT,GC0022,0.82,manual_review
+MAP-50573,ProductTelemetry,PU-20153,Heritage Credit Recovery,GC0023,0.77,org_alias
+MAP-50574,ProductTelemetry,PU-20154,Heritage Credit Recovery,GC0023,0.97,name_state
+MAP-50575,ProductTelemetry,PU-20155,Heritage School District,GC0023,0.94,manual_review
+MAP-50576,ProductTelemetry,PU-20156,Heritage School District,GC0023,0.76,org_alias
+MAP-50577,ProductTelemetry,PU-20157,Franklin Math Program,GC0024,0.8,manual_review
+MAP-50578,ProductTelemetry,PU-20158,FRANKLIN MATH PROGRAM,GC0024,0.95,org_alias
+MAP-50579,ProductTelemetry,PU-20159,Franklin Math Program,GC0024,0.85,manual_review
+MAP-50580,ProductTelemetry,PU-20160,Franklin ISD,GC0024,0.86,org_alias
+MAP-50581,ProductTelemetry,PU-20161,Franklin ISD,GC0024,0.87,manual_review
+MAP-50582,ProductTelemetry,PU-20162,Jefferson ISD,GC0025,0.96,manual_review
+MAP-50583,ProductTelemetry,PU-20163,Jefferson Literacy Pilot,GC0025,0.84,org_alias
+MAP-50584,ProductTelemetry,PU-20164,Lincoln Credit Recovery,GC0026,0.92,manual_review
+MAP-50585,ProductTelemetry,PU-20165,Lincoln Credit Recovery,GC0026,0.78,org_alias
+MAP-50586,ProductTelemetry,PU-20166,Lincoln School District,GC0026,0.91,name_state
+MAP-50587,ProductTelemetry,PU-20167,Roosevelt Math Program,GC0027,0.82,name_state
+MAP-50588,ProductTelemetry,PU-20168,Roosevelt Math Program,GC0027,0.78,name_state
+MAP-50589,ProductTelemetry,PU-20169,Roosevelt Math Program,GC0027,0.91,org_alias
+MAP-50590,ProductTelemetry,PU-20170,Roosevelt Math Program,GC0027,0.93,name_state
+MAP-50591,ProductTelemetry,PU-20171,Roosevelt Literacy Pilot,GC0027,0.78,name_state
+MAP-50592,ProductTelemetry,PU-20172,Roosevelt Literacy Pilot,GC0027,0.76,manual_review
+MAP-50593,ProductTelemetry,PU-20173,Roosevelt Literacy Pilot,GC0027,0.77,org_alias
+MAP-50594,ProductTelemetry,PU-20174,Roosevelt Credit Recovery,GC0027,0.79,org_alias
+MAP-50595,ProductTelemetry,PU-20175,Adams Literacy Pilot,GC0028,0.87,name_state
+MAP-50596,ProductTelemetry,PU-20176,Adams Literacy Pilot,GC0028,0.82,org_alias
+MAP-50597,ProductTelemetry,PU-20177,Adams Literacy Pilot,GC0028,0.96,manual_review
+MAP-50598,ProductTelemetry,PU-20178,Adams Credit Recovery,GC0028,0.92,manual_review
+MAP-50599,ProductTelemetry,PU-20179,Adams Math Program,GC0028,0.94,name_state
+MAP-50600,ProductTelemetry,PU-20180,Adams Math Program,GC0028,0.86,manual_review
+MAP-50601,NetSuite,BILL-30001,Houston Public Schools,GC0001,0.87,finance_alias
+MAP-50602,NetSuite,BILL-30002,Houston Public Schools,GC0001,0.9,manual_review
+MAP-50603,NetSuite,BILL-30003,Houston Federal Programs,GC0001,0.98,finance_alias
+MAP-50604,NetSuite,BILL-30004,Houston Federal Programs,GC0001,0.9,manual_review
+MAP-50605,NetSuite,BILL-30005,Houston ISD,GC0001,0.81,name_country
+MAP-50606,NetSuite,BILL-30006,Riverview ISD,GC0002,0.89,name_country
+MAP-50607,NetSuite,BILL-30007,Riverview ISD,GC0002,0.81,manual_review
+MAP-50608,NetSuite,BILL-30008,Riverview Federal Programs,GC0002,0.79,name_country
+MAP-50609,NetSuite,BILL-30009,Oak Valley School District,GC0003,0.96,finance_alias
+MAP-50610,NetSuite,BILL-30010,Oak Valley Public Schools,GC0003,0.87,manual_review
+MAP-50611,NetSuite,BILL-30011,Oak Valley Federal Programs,GC0003,0.92,name_country
+MAP-50612,NetSuite,BILL-30012,Pine Hills Independent School District Finance,GC0004,0.92,name_country
+MAP-50613,NetSuite,BILL-30013,Pine Hills Independent School District Finance,GC0004,0.79,name_country
+MAP-50614,NetSuite,BILL-30014,Pine Hills ISD,GC0004,0.93,manual_review
+MAP-50615,NetSuite,BILL-30015,Pine Hills Public Schools,GC0004,0.85,manual_review
+MAP-50616,NetSuite,BILL-30016,Pine Hills Independent School District Finance,GC0004,0.87,name_country
+MAP-50617,NetSuite,BILL-30017,Maple Grove Public Schools,GC0005,0.79,manual_review
+MAP-50618,NetSuite,BILL-30018,Maple Grove Independent School District Finance,GC0005,0.8,name_country
+MAP-50619,NetSuite,BILL-30019,Maple Grove Public Schools,GC0005,0.84,manual_review
+MAP-50620,NetSuite,BILL-30020,Cedar Ridge Public Schools,GC0006,0.96,manual_review
+MAP-50621,NetSuite,BILL-30021,Cedar Ridge Independent School District Finance,GC0006,0.92,finance_alias
+MAP-50622,NetSuite,BILL-30022,Cedar Ridge Independent School District Finance,GC0006,0.9,name_country
+MAP-50623,NetSuite,BILL-30023,Cedar Ridge ISD,GC0006,0.97,manual_review
+MAP-50624,NetSuite,BILL-30024,Cedar Ridge Independent School District Finance,GC0006,0.82,manual_review
+MAP-50625,NetSuite,BILL-30025,Springfield Public Schools,GC0007,0.94,name_country
+MAP-50626,NetSuite,BILL-30026,Springfield Federal Programs,GC0007,0.8,finance_alias
+MAP-50627,NetSuite,BILL-30027,Springfield Public Schools,GC0007,0.89,finance_alias
+MAP-50628,NetSuite,BILL-30028,Springfield Public Schools,GC0007,0.82,finance_alias
+MAP-50629,NetSuite,BILL-30029,Lakeview Independent School District Finance,GC0008,0.93,name_country
+MAP-50630,NetSuite,BILL-30030,Lakeview School District,GC0008,0.95,name_country
+MAP-50631,NetSuite,BILL-30031,Lakeview Public Schools,GC0008,0.95,name_country
+MAP-50632,NetSuite,BILL-30032,Lakeview Federal Programs,GC0008,0.96,manual_review
+MAP-50633,NetSuite,BILL-30033,Northfield School District,GC0009,0.91,finance_alias
+MAP-50634,NetSuite,BILL-30034,Northfield Federal Programs,GC0009,0.92,name_country
+MAP-50635,NetSuite,BILL-30035,Northfield School District,GC0009,0.83,finance_alias
+MAP-50636,NetSuite,BILL-30036,Westbrook ISD,GC0010,0.87,manual_review
+MAP-50637,NetSuite,BILL-30037,Westbrook ISD,GC0010,0.81,finance_alias
+MAP-50638,NetSuite,BILL-30038,Westbrook ISD,GC0010,0.91,manual_review
+MAP-50639,NetSuite,BILL-30039,Westbrook Independent School District Finance,GC0010,0.97,finance_alias
+MAP-50640,NetSuite,BILL-30040,Westbrook ISD,GC0010,0.82,finance_alias
+MAP-50641,NetSuite,BILL-30041,Easton Independent School District Finance,GC0011,0.81,finance_alias
+MAP-50642,NetSuite,BILL-30042,Easton Public Schools,GC0011,0.89,name_country
+MAP-50643,NetSuite,BILL-30043,Easton Federal Programs,GC0011,0.79,name_country
+MAP-50644,NetSuite,BILL-30044,Fairview Federal Programs,GC0012,0.83,manual_review
+MAP-50645,NetSuite,BILL-30045,Fairview Independent School District Finance,GC0012,0.89,name_country
+MAP-50646,NetSuite,BILL-30046,Fairview Federal Programs,GC0012,0.83,name_country
+MAP-50647,NetSuite,BILL-30047,Brookside ISD,GC0013,0.93,name_country
+MAP-50648,NetSuite,BILL-30048,Brookside Public Schools,GC0013,0.81,manual_review
+MAP-50649,NetSuite,BILL-30049,Brookside Public Schools,GC0013,0.95,manual_review
+MAP-50650,NetSuite,BILL-30050,Greenwood ISD,GC0014,0.97,finance_alias
+MAP-50651,NetSuite,BILL-30051,Greenwood ISD,GC0014,0.96,finance_alias
+MAP-50652,NetSuite,BILL-30052,Greenwood Independent School District Finance,GC0014,0.93,manual_review
+MAP-50653,NetSuite,BILL-30053,Hillcrest Public Schools,GC0015,0.95,manual_review
+MAP-50654,NetSuite,BILL-30054,Hillcrest Independent School District Finance,GC0015,0.88,manual_review
+MAP-50655,NetSuite,BILL-30055,Hillcrest ISD,GC0015,0.97,manual_review
+MAP-50656,NetSuite,BILL-30056,Hillcrest Federal Programs,GC0015,0.97,name_country
+MAP-50657,NetSuite,BILL-30057,Hillcrest Federal Programs,GC0015,0.87,finance_alias
+MAP-50658,NetSuite,BILL-30058,Sunnydale Public Schools,GC0016,0.88,name_country
+MAP-50659,NetSuite,BILL-30059,Sunnydale ISD,GC0016,0.91,finance_alias
+MAP-50660,NetSuite,BILL-30060,Sunnydale ISD,GC0016,0.93,manual_review
+MAP-50661,NetSuite,BILL-30061,Redwood Federal Programs,GC0017,0.86,manual_review
+MAP-50662,NetSuite,BILL-30062,Redwood School District,GC0017,0.82,manual_review
+MAP-50663,NetSuite,BILL-30063,Redwood School District,GC0017,0.96,manual_review
+MAP-50664,NetSuite,BILL-30064,Redwood Independent School District Finance,GC0017,0.89,manual_review
+MAP-50665,NetSuite,BILL-30065,Redwood Federal Programs,GC0017,0.94,name_country
+MAP-50666,NetSuite,BILL-30066,Silver Lake ISD,GC0018,0.94,manual_review
+MAP-50667,NetSuite,BILL-30067,Silver Lake Public Schools,GC0018,0.81,manual_review
+MAP-50668,NetSuite,BILL-30068,Silver Lake ISD,GC0018,0.87,finance_alias
+MAP-50669,NetSuite,BILL-30069,Meadow Park ISD,GC0019,0.81,manual_review
+MAP-50670,NetSuite,BILL-30070,Meadow Park Federal Programs,GC0019,0.92,finance_alias
+MAP-50671,NetSuite,BILL-30071,Meadow Park Independent School District Finance,GC0019,0.97,finance_alias
+MAP-50672,NetSuite,BILL-30072,Canyon Creek School District,GC0020,0.9,manual_review
+MAP-50673,NetSuite,BILL-30073,Canyon Creek Independent School District Finance,GC0020,0.91,manual_review
+MAP-50674,NetSuite,BILL-30074,Canyon Creek Federal Programs,GC0020,0.92,finance_alias
+MAP-50675,NetSuite,BILL-30075,Canyon Creek School District,GC0020,0.92,name_country
+MAP-50676,NetSuite,BILL-30076,Canyon Creek Public Schools,GC0020,0.93,name_country
+MAP-50677,NetSuite,BILL-30077,Riverside Federal Programs,GC0021,0.98,manual_review
+MAP-50678,NetSuite,BILL-30078,Riverside Public Schools,GC0021,0.82,finance_alias
+MAP-50679,NetSuite,BILL-30079,Riverside School District,GC0021,0.86,manual_review
+MAP-50680,NetSuite,BILL-30080,Summit Public Schools,GC0022,0.97,finance_alias
+MAP-50681,NetSuite,BILL-30081,Summit Federal Programs,GC0022,0.89,name_country
+MAP-50682,NetSuite,BILL-30082,Summit Independent School District Finance,GC0022,0.91,finance_alias
+MAP-50683,NetSuite,BILL-30083,Heritage Public Schools,GC0023,0.9,name_country
+MAP-50684,NetSuite,BILL-30084,Heritage Federal Programs,GC0023,0.82,finance_alias
+MAP-50685,NetSuite,BILL-30085,Heritage Independent School District Finance,GC0023,0.83,manual_review
+MAP-50686,NetSuite,BILL-30086,Franklin ISD,GC0024,0.89,manual_review
+MAP-50687,NetSuite,BILL-30087,Franklin Public Schools,GC0024,0.96,name_country
+MAP-50688,NetSuite,BILL-30088,Franklin ISD,GC0024,0.86,name_country
+MAP-50689,NetSuite,BILL-30089,Franklin Public Schools,GC0024,0.9,manual_review
+MAP-50690,NetSuite,BILL-30090,Franklin Public Schools,GC0024,0.87,manual_review
+MAP-50691,NetSuite,BILL-30091,Jefferson ISD,GC0025,0.79,finance_alias
+MAP-50692,NetSuite,BILL-30092,Jefferson Public Schools,GC0025,0.93,name_country
+MAP-50693,NetSuite,BILL-30093,Jefferson Public Schools,GC0025,0.9,manual_review
+MAP-50694,NetSuite,BILL-30094,Jefferson Federal Programs,GC0025,0.79,finance_alias
+MAP-50695,NetSuite,BILL-30095,Lincoln Federal Programs,GC0026,0.91,name_country
+MAP-50696,NetSuite,BILL-30096,Lincoln Federal Programs,GC0026,0.94,finance_alias
+MAP-50697,NetSuite,BILL-30097,Lincoln Federal Programs,GC0026,0.87,finance_alias
+MAP-50698,NetSuite,BILL-30098,Lincoln School District,GC0026,0.8,finance_alias
+MAP-50699,NetSuite,BILL-30099,Lincoln Independent School District Finance,GC0026,0.9,finance_alias
+MAP-50700,NetSuite,BILL-30100,Roosevelt Independent School District Finance,GC0027,0.88,manual_review
+MAP-50701,NetSuite,BILL-30101,Roosevelt ISD,GC0027,0.79,manual_review
+MAP-50702,NetSuite,BILL-30102,Roosevelt ISD,GC0027,0.88,manual_review
+MAP-50703,NetSuite,BILL-30103,Adams Public Schools,GC0028,0.92,finance_alias
+MAP-50704,NetSuite,BILL-30104,Adams Federal Programs,GC0028,0.9,manual_review
+MAP-50705,NetSuite,BILL-30105,Adams ISD,GC0028,0.91,manual_review
+MAP-50706,NetSuite,BILL-30106,Adams Federal Programs,GC0028,0.84,finance_alias
+MAP-50707,NetSuite,BILL-30107,Adams Independent School District Finance,GC0028,0.8,manual_review
+MAP-50708,NetSuite,BILL-30108,Washington Independent School District Finance,GC0029,0.83,manual_review
+MAP-50709,NetSuite,BILL-30109,Washington Public Schools,GC0029,0.94,finance_alias
+MAP-50710,NetSuite,BILL-30110,Washington ISD,GC0029,0.81,finance_alias
+MAP-50711,NetSuite,BILL-30111,Washington Public Schools,GC0029,0.84,finance_alias
+MAP-50712,NetSuite,BILL-30112,Washington ISD,GC0029,0.89,manual_review
+MAP-50713,NetSuite,BILL-30113,Madison Federal Programs,GC0030,0.86,finance_alias
+MAP-50714,NetSuite,BILL-30114,Madison Federal Programs,GC0030,0.93,manual_review
+MAP-50715,NetSuite,BILL-30115,Madison Federal Programs,GC0030,0.94,name_country
+MAP-50716,NetSuite,BILL-30116,Granite Public Schools,GC0031,0.98,finance_alias
+MAP-50717,NetSuite,BILL-30117,Granite Federal Programs,GC0031,0.94,manual_review
+MAP-50718,NetSuite,BILL-30118,Granite Public Schools,GC0031,0.8,finance_alias
+MAP-50719,NetSuite,BILL-30119,Granite Public Schools,GC0031,0.85,manual_review
+MAP-50720,NetSuite,BILL-30120,Granite Independent School District Finance,GC0031,0.82,manual_review

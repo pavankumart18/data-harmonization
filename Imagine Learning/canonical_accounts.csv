@@ -1,0 +1,60 @@
+golden_customer_id,canonical_account_name,state,region,segment,account_type,country,owner_rep,student_enrollment,annual_budget_band,salesforce_source_record_count,source_systems_present
+GC0001,Houston ISD,CO,West,Charter Network,District,USA,A. Rivera,91196,<10M,8,Salesforce|ProductTelemetry|NetSuite
+GC0002,Riverview ISD,AZ,West,Large District,District,USA,A. Rivera,76063,10M-25M,6,Salesforce|ProductTelemetry|NetSuite
+GC0003,Oak Valley School District,VA,South,Mid-Market District,District,USA,A. Rivera,101958,10M-25M,7,Salesforce|ProductTelemetry|NetSuite
+GC0004,Pine Hills ISD,VA,South,Large District,District,USA,A. Rivera,14656,>100M,6,Salesforce|ProductTelemetry|NetSuite
+GC0005,Maple Grove ISD,CA,West,Large District,District,USA,D. Nguyen,72784,<10M,8,Salesforce|ProductTelemetry|NetSuite
+GC0006,Cedar Ridge ISD,NC,South,Large District,District,UK,E. Carter,27703,<10M,7,Salesforce|ProductTelemetry|NetSuite
+GC0007,Springfield School District,TX,South,Charter Network,Regional Service Center,USA,A. Rivera,52323,25M-100M,5,Salesforce|ProductTelemetry|NetSuite
+GC0008,Lakeview School District,PA,Northeast,Mid-Market District,District,USA,C. Thomas,94488,<10M,7,Salesforce|ProductTelemetry|NetSuite
+GC0009,Northfield School District,AZ,West,Mid-Market District,District,USA,C. Thomas,86386,10M-25M,7,Salesforce|ProductTelemetry|NetSuite
+GC0010,Westbrook ISD,CO,West,Charter Network,District,USA,C. Thomas,55081,25M-100M,7,Salesforce|ProductTelemetry|NetSuite
+GC0011,Easton ISD,CA,West,State/Regional,Charter Network,USA,F. Lewis,67935,>100M,8,Salesforce|ProductTelemetry|NetSuite
+GC0012,Fairview ISD,CO,West,Large District,District,USA,C. Thomas,100412,>100M,5,Salesforce|ProductTelemetry|NetSuite
+GC0013,Brookside ISD,AZ,West,Large District,Regional Service Center,USA,A. Rivera,101561,<10M,6,Salesforce|ProductTelemetry|NetSuite
+GC0014,Greenwood ISD,CA,West,Large District,District,USA,D. Nguyen,52519,>100M,7,Salesforce|ProductTelemetry|NetSuite
+GC0015,Hillcrest ISD,OH,Midwest,Mid-Market District,Regional Service Center,USA,A. Rivera,91853,25M-100M,7,Salesforce|ProductTelemetry|NetSuite
+GC0016,Sunnydale ISD,CO,West,Large District,District,USA,F. Lewis,96829,25M-100M,8,Salesforce|ProductTelemetry|NetSuite
+GC0017,Redwood School District,OH,Midwest,Mid-Market District,District,USA,F. Lewis,69040,10M-25M,5,Salesforce|ProductTelemetry|NetSuite
+GC0018,Silver Lake ISD,FL,South,Large District,Regional Service Center,Canada,E. Carter,44987,>100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0019,Meadow Park ISD,TX,South,Mid-Market District,Regional Service Center,USA,B. Shah,10092,10M-25M,9,Salesforce|ProductTelemetry|NetSuite
+GC0020,Canyon Creek School District,AZ,West,Large District,District,USA,E. Carter,102879,10M-25M,6,Salesforce|ProductTelemetry|NetSuite
+GC0021,Riverside School District,FL,South,State/Regional,District,USA,E. Carter,57961,10M-25M,8,Salesforce|ProductTelemetry|NetSuite
+GC0022,Summit School District,OH,Midwest,Mid-Market District,District,USA,F. Lewis,87680,25M-100M,8,Salesforce|ProductTelemetry|NetSuite
+GC0023,Heritage School District,PA,Northeast,Mid-Market District,District,USA,A. Rivera,79610,10M-25M,8,Salesforce|ProductTelemetry|NetSuite
+GC0024,Franklin ISD,AZ,West,Large District,District,USA,A. Rivera,45809,<10M,9,Salesforce|ProductTelemetry|NetSuite
+GC0025,Jefferson ISD,OH,Midwest,Mid-Market District,District,USA,E. Carter,78025,>100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0026,Lincoln School District,NY,Northeast,Charter Network,District,USA,D. Nguyen,48938,>100M,8,Salesforce|ProductTelemetry|NetSuite
+GC0027,Roosevelt ISD,NC,South,Charter Network,District,Canada,A. Rivera,55272,25M-100M,7,Salesforce|ProductTelemetry|NetSuite
+GC0028,Adams ISD,CA,West,Large District,District,USA,C. Thomas,63137,10M-25M,8,Salesforce|ProductTelemetry|NetSuite
+GC0029,Washington ISD,CA,West,Charter Network,District,USA,E. Carter,4434,<10M,8,Salesforce|ProductTelemetry|NetSuite
+GC0030,Madison ISD,NY,Northeast,Mid-Market District,District,USA,A. Rivera,24079,>100M,5,Salesforce|ProductTelemetry|NetSuite
+GC0031,Granite School District,TX,South,Large District,Charter Network,USA,D. Nguyen,93803,>100M,5,Salesforce|ProductTelemetry|NetSuite
+GC0032,Blue Ridge ISD,FL,South,Large District,District,USA,A. Rivera,100538,25M-100M,5,Salesforce|ProductTelemetry|NetSuite
+GC0033,Prairie ISD,TX,South,Mid-Market District,Regional Service Center,USA,A. Rivera,69062,<10M,6,Salesforce|ProductTelemetry|NetSuite
+GC0034,Harbor ISD,FL,South,Large District,Charter Network,USA,E. Carter,34771,<10M,7,Salesforce|ProductTelemetry|NetSuite
+GC0035,Cypress ISD,AZ,West,Mid-Market District,District,USA,C. Thomas,29272,25M-100M,5,Salesforce|ProductTelemetry|NetSuite
+GC0036,Sierra ISD,NY,Northeast,Large District,District,USA,A. Rivera,3720,>100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0037,Frontier School District,AZ,West,State/Regional,District,USA,C. Thomas,19861,25M-100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0038,Liberty School District,CA,West,Mid-Market District,District,USA,F. Lewis,42151,<10M,8,Salesforce|ProductTelemetry|NetSuite
+GC0039,Monroe School District,CO,West,Large District,District,UAE,C. Thomas,17629,<10M,8,Salesforce|ProductTelemetry|NetSuite
+GC0040,Concord School District,VA,South,Large District,District,USA,B. Shah,92611,25M-100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0041,Hamilton ISD,OH,Midwest,State/Regional,Charter Network,USA,D. Nguyen,38765,<10M,5,Salesforce|ProductTelemetry|NetSuite
+GC0042,Aurora ISD,TX,South,Large District,Regional Service Center,USA,D. Nguyen,74809,>100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0043,Briarwood ISD,OH,Midwest,Large District,Charter Network,Canada,C. Thomas,78850,10M-25M,9,Salesforce|ProductTelemetry|NetSuite
+GC0044,Highland ISD,NC,South,Large District,Charter Network,USA,A. Rivera,49398,10M-25M,7,Salesforce|ProductTelemetry|NetSuite
+GC0045,Willow Creek ISD,CO,West,Large District,Charter Network,India,E. Carter,100735,10M-25M,7,Salesforce|ProductTelemetry|NetSuite
+GC0046,Stonebridge School District,NY,Northeast,State/Regional,Charter Network,Canada,B. Shah,99042,25M-100M,7,Salesforce|ProductTelemetry|NetSuite
+GC0047,Clearwater School District,NC,South,Charter Network,Charter Network,USA,F. Lewis,16668,>100M,5,Salesforce|ProductTelemetry|NetSuite
+GC0048,Gateway School District,TX,South,Large District,Charter Network,USA,C. Thomas,106747,10M-25M,8,Salesforce|ProductTelemetry|NetSuite
+GC0049,North Star ISD,NY,Northeast,Large District,District,USA,C. Thomas,48525,>100M,7,Salesforce|ProductTelemetry|NetSuite
+GC0050,Twin Oaks School District,CO,West,Mid-Market District,Regional Service Center,USA,C. Thomas,25905,25M-100M,8,Salesforce|ProductTelemetry|NetSuite
+GC0051,Valley View ISD,TX,South,Mid-Market District,District,USA,E. Carter,69533,<10M,5,Salesforce|ProductTelemetry|NetSuite
+GC0052,Golden Plains School District,NC,South,Large District,District,USA,E. Carter,108210,10M-25M,8,Salesforce|ProductTelemetry|NetSuite
+GC0053,Parkside ISD,GA,South,State/Regional,Regional Service Center,USA,F. Lewis,18834,25M-100M,6,Salesforce|ProductTelemetry|NetSuite
+GC0054,Millbrook ISD,OH,Midwest,Mid-Market District,District,USA,B. Shah,27644,>100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0055,Kingston School District,CO,West,Mid-Market District,Regional Service Center,USA,C. Thomas,55725,<10M,7,Salesforce|ProductTelemetry|NetSuite
+GC0056,Edgewater ISD,IL,Midwest,Mid-Market District,District,USA,D. Nguyen,60405,>100M,9,Salesforce|ProductTelemetry|NetSuite
+GC0057,Shoreline ISD,CO,West,Mid-Market District,Regional Service Center,USA,B. Shah,88856,<10M,8,Salesforce|ProductTelemetry|NetSuite
+GC0058,Aspen ISD,IL,Midwest,Mid-Market District,District,USA,B. Shah,90684,25M-100M,8,Salesforce|ProductTelemetry|NetSuite
+GC0059,Fox Run School District,NY,Northeast,Large District,District,Canada,D. Nguyen,56821,10M-25M,1,Salesforce|ProductTelemetry|NetSuite

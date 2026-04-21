@@ -347,3 +347,296 @@ const HEAL_MORPHS = [
   { before: 'TNFα', after: 'TNF-alpha' },
   { before: 'Hu', after: 'Human' },
 ];
+
+// ============================================================
+//  CRM Dataset — Imagine Learning / Education CRM (Salesforce)
+// ============================================================
+
+const CRM_FILES = {
+  'salesforce_crm.csv': {
+    type: 'csv', source: 'Salesforce CRM', rows: 420, region: 'USA',
+    description: 'K-12 school district accounts from Salesforce — account names typed differently by 6 reps',
+    headers: ['crm_record_id','sf_account_id','account_name','parent_account_name','state','region','segment','account_type','owner_rep','arr_usd','seats_purchased','stage'],
+    data: [
+      ['CRM-10001','SF-A10001','Houston Independent School District','Houston ISD','TX','West','Charter Network','District','A. Rivera','60050','12000','Closed Won'],
+      ['CRM-10002','SF-A10002','Houston ISD - Supplemental','Houston ISD - Supplemental','TX','West','charter network','District','A. Rivera','88814','300','Closed Lost'],
+      ['CRM-10003','SF-A10003','Houston School District','Houston ISD','TX','West','Charter Network','District','A. Rivera','62211','800','Negotiation'],
+      ['CRM-10004','SF-A10004','Houston ISD - Supplemental','Houston ISD','TX','West','Charter Network','District','A. Rivera','252043','500','Closed Won'],
+      ['CRM-10009','SF-A10009','Riverview ISD','','AZ','West','Large District','District','A. Rivera','161756','12000','Closed Won'],
+      ['CRM-10010','SF-A10010','Riverview ISD','Riverview ISD','AZ','West','Large District','District','A. Rivera','18440','300','Closed Won'],
+      ['CRM-10011','SF-A10011','Riverview Public Schools','Riverview ISD','AZ','West','Large District','District','A. Rivera','255820','500','Closed Won'],
+      ['CRM-10015','SF-A10015','Oak Valley Independent School District','Oak Valley School District','VA','South','Mid-Market District','District','A. Rivera','110254','800','Closed Won'],
+      ['CRM-10016','SF-A10016','Oak Valley School District','Oak Valley School District','VA','South','Mid-Market District','District','A. Rivera','166023','12000','Closed Won'],
+      ['CRM-10022','SF-A10022','Pine Hills ISD','Pine Hills Independent School District','VA','South','Large District','District','A. Rivera','85621','500','Closed Won'],
+      ['CRM-10028','SF-A10028','Maple Grove ISD - Supplemental','','CA','West','Large District','District','D. Nguyen','102301','300','Closed Won'],
+      ['CRM-10035','SF-A10035','Maple Grove Independent School District','','CA','West','Large District','District','D. Nguyen','48721','800','Closed Won'],
+    ],
+    issues: [
+      { col: 'account_name', type: 'duplicate', desc: '"Houston Independent School District" / "Houston ISD - Supplemental" / "Houston School District" — same district, 4 records, $463K combined ARR hidden', severity: 'high', rows: [0,1,2,3] },
+      { col: 'account_name', type: 'duplicate', desc: '"Riverview ISD" / "Riverview Public Schools" — same district, $436K combined ARR across 3 records', severity: 'high', rows: [4,5,6] },
+      { col: 'account_name', type: 'duplicate', desc: '"Oak Valley Independent School District" vs "Oak Valley School District" — same entity, $276K split', severity: 'medium', rows: [7,8] },
+      { col: 'account_name', type: 'duplicate', desc: '"Maple Grove ISD - Supplemental" vs "Maple Grove Independent School District" — same district split', severity: 'medium', rows: [10,11] },
+      { col: 'segment', type: 'normalization', desc: '"charter network" (lowercase) vs "Charter Network" — inconsistent casing across records', severity: 'medium', rows: [1] },
+      { col: 'parent_account_name', type: 'missing', desc: '3 rows have empty parent_account_name — cannot build district hierarchy', severity: 'medium' },
+      { col: 'arr_usd', type: 'aggregation', desc: 'Total district ARR cannot be computed without deduplication across account_name variants', severity: 'high' },
+    ]
+  },
+  'product_usage.csv': {
+    type: 'csv', source: 'Product Telemetry', rows: 342, region: 'USA',
+    description: 'Product usage telemetry — org names typed by implementation team, inconsistent with CRM',
+    headers: ['usage_record_id','product_org_name','product_name','product_family','usage_month','active_teachers','active_students','weekly_sessions','usage_health_score','implementation_status','golden_customer_id'],
+    data: [
+      ['PU-20001','Houston Literacy Pilot','Imagine Learning PD','Professional Learning','2025-11','94','671','4467','69','Sandbox','GC0001'],
+      ['PU-20003','Houston Literacy Pilot','Twig Science','Science','2025-12','168','4578','7398','87','Live','GC0001'],
+      ['PU-20004','HOUSTON MATH PROGRAM','Imagine Learning PD','Professional Learning','2025-10','146','5367','1945','72','Pilot','GC0001'],
+      ['PU-20006','Houston Math Program','Twig Science','Science','2025-11','58','5461','14874','67','Training','GC0001'],
+      ['PU-20011','Riverview Credit Recovery','Imagine Math','Supplemental Math','2025-11','61','2917','21268','38','Live','GC0002'],
+      ['PU-20013','RIVERVIEW CREDIT RECOVERY','Imagine Language & Literacy','Supplemental Literacy','2025-12','81','266','18674','75','Live','GC0002'],
+      ['PU-20019','Oak Valley Math Program','Imagine Learning PD','Professional Learning','2025-11','112','3351','14318','76','Live','GC0003'],
+      ['PU-20020','Oak Valley Credit Recovery','Twig Science','Science','2025-12','76','491','17346','33','Live','GC0003'],
+      ['PU-20023','Pine Hills ISD','Imagine Learning PD','Professional Learning','2025-10','149','5286','20147','29','Live','GC0004'],
+      ['PU-20027','Pine Hills Literacy Pilot','Courseware','Core Courseware','2025-11','99','2318','6269','90','Live','GC0004'],
+      ['PU-20028','PINE_HILLS_LITERACY_PILOT','Imagine Language & Literacy','Supplemental Literacy','2025-10','60','617','20952','42','Live','GC0004'],
+    ],
+    issues: [
+      { col: 'product_org_name', type: 'normalization', desc: '"HOUSTON MATH PROGRAM" vs "Houston Math Program" — all-caps variant for same org', severity: 'high', rows: [2] },
+      { col: 'product_org_name', type: 'normalization', desc: '"RIVERVIEW CREDIT RECOVERY" vs "Riverview Credit Recovery" — all-caps variant', severity: 'high', rows: [5] },
+      { col: 'product_org_name', type: 'normalization', desc: '"PINE_HILLS_LITERACY_PILOT" — underscores instead of spaces (export artifact)', severity: 'medium', rows: [10] },
+      { col: 'product_org_name', type: 'matching', desc: '"Houston Literacy Pilot" / "Houston Math Program" not directly linked to CRM account "Houston ISD"', severity: 'high' },
+      { col: 'usage_health_score', type: 'missing', desc: 'Scores below 50 indicate at-risk districts needing intervention — not flagged without aggregation', severity: 'medium' },
+    ]
+  },
+  'contract_billing.csv': {
+    type: 'csv', source: 'NetSuite Billing', rows: 234, region: 'USA',
+    description: 'Contract and billing records from NetSuite ERP — billing customer names differ from CRM and product names',
+    headers: ['billing_record_id','billing_customer_name','product_name_billing','product_family_billing','contract_start_date','contract_end_date','billing_status','invoice_amount_usd','seats_contracted','billing_country'],
+    data: [
+      ['BILL-30001','Houston Public Schools','Courseware','Core Courseware','2024-12-04','2027-05-21','Expired','89000','250','USA'],
+      ['BILL-30002','Houston Public Schools','Courseware','Core Courseware','2024-10-13','2026-08-29','Active','39000','1500','USA'],
+      ['BILL-30003','Houston Federal Programs','PL','Professional Learning','2025-07-08','2027-08-06','Invoiced','180000','2800','USA'],
+      ['BILL-30004','Houston Federal Programs','StudySync','Core ELA','2024-10-21','2026-04-28','Amendment Pending','39000','750','USA'],
+      ['BILL-30005','Houston ISD','Twig Science','Science','2025-03-14','2026-10-03','Active','39000','10000','USA'],
+      ['BILL-30006','Riverview ISD','Imagine Math','Supplemental Math','2025-01-16','2027-08-13','Active','125000','5200','USA'],
+      ['BILL-30007','Riverview ISD','Imagine Language & Literacy','Supplemental Literacy','2024-11-29','2028-04-04','Invoiced','22000','400','USA'],
+      ['BILL-30008','Riverview Federal Programs','Imagine Math','Supplemental Math','2025-06-18','2026-05-24','Expired','125000','5200','USA'],
+      ['BILL-30009','Oak Valley School District','PD Services','Professional Learning','2025-01-30','2027-06-20','Amendment Pending','180000','1500','USA'],
+      ['BILL-30010','Oak Valley Public Schools','Imagine Language & Literacy','Supplemental Literacy','2024-08-15','2027-01-04','Expired','180000','10000','USA'],
+      ['BILL-30011','Oak Valley Federal Programs','StudySync','Core ELA','2024-01-07','2026-03-09','Invoiced','255000','2800','USA'],
+      ['BILL-30012','Pine Hills Independent School District Finance','Imagine Learning PD','Professional Learning','2025-06-22','2026-06-08','Active','180000','2800','USA'],
+    ],
+    issues: [
+      { col: 'billing_customer_name', type: 'normalization', desc: '"Houston Public Schools" / "Houston Federal Programs" / "Houston ISD" — 3 billing names for same district', severity: 'high', rows: [0,1,2,3,4] },
+      { col: 'billing_customer_name', type: 'normalization', desc: '"Riverview Federal Programs" vs "Riverview ISD" — same district, different billing name', severity: 'high', rows: [5,6,7] },
+      { col: 'billing_customer_name', type: 'normalization', desc: '"Oak Valley School District" / "Oak Valley Public Schools" / "Oak Valley Federal Programs" — 3 names, same district', severity: 'high', rows: [8,9,10] },
+      { col: 'billing_customer_name', type: 'normalization', desc: '"Pine Hills Independent School District Finance" — verbose name not matching CRM', severity: 'medium', rows: [11] },
+      { col: 'product_name_billing', type: 'abbreviation', desc: '"PL" used instead of "Imagine Learning PD" — 2-letter code not linked to product catalog', severity: 'medium', rows: [2] },
+      { col: 'product_name_billing', type: 'abbreviation', desc: '"PD Services" differs from CRM product names — breaks product-level reporting', severity: 'medium', rows: [8] },
+      { col: 'billing_status', type: 'vocabulary', desc: '"Amendment Pending" / "Expired" / "Invoiced" — multiple status states, some indicate revenue at risk', severity: 'medium' },
+      { col: 'invoice_amount_usd', type: 'aggregation', desc: 'Cannot compute total district spend without resolving billing name variants', severity: 'high' },
+    ]
+  }
+};
+
+const CRM_GOLDEN_RECORDS = [
+  { id: 'GC0001', canonical_name: 'Houston ISD', legal_name: 'Houston Independent School District', industry: 'K-12 Education', hq_country: 'USA',
+    source_variants: ['Houston Independent School District','Houston ISD - Supplemental','Houston School District','Houston Public Schools','Houston Federal Programs','Houston Math Program','Houston Literacy Pilot','HOUSTON MATH PROGRAM'],
+    products_active: ['Imagine Learning PD','Twig Science','Courseware','StudySync'], application: 'Imagine Learning PD, Twig Science, Courseware',
+    total_arr: 463118, open_pipeline: 95000, deal_count: 4, rep_count: 1,
+    student_enrollment: 91196, region: 'West', segment: 'Charter Network',
+    suppliers: ['Salesforce CRM','Product Telemetry','NetSuite Billing'],
+    _lineage: [
+      { source: 'Salesforce CRM', id: 'CRM-10001', note: 'Houston Independent School District — Closed Won, $60K ARR' },
+      { source: 'Salesforce CRM', id: 'CRM-10002,10003,10004', note: '3 supplemental/variant records — combined $403K ARR' },
+      { source: 'Product Telemetry', id: 'PU-20001,20003,20004,20006', note: '4 product orgs linked: Houston Literacy Pilot + Houston Math Program (casing variants)' },
+      { source: 'NetSuite Billing', id: 'BILL-30001 to 30005', note: '5 billing records under 3 name variants unified under Houston ISD' },
+    ]
+  },
+  { id: 'GC0002', canonical_name: 'Riverview ISD', legal_name: 'Riverview Independent School District', industry: 'K-12 Education', hq_country: 'USA',
+    source_variants: ['Riverview ISD','Riverview Public Schools','Riverview Federal Programs','Riverview Credit Recovery','RIVERVIEW CREDIT RECOVERY'],
+    products_active: ['Imagine Math','Imagine Language & Literacy'], application: 'Imagine Math, Imagine Language & Literacy',
+    total_arr: 436016, open_pipeline: 72000, deal_count: 3, rep_count: 1,
+    student_enrollment: 76063, region: 'West', segment: 'Large District',
+    suppliers: ['Salesforce CRM','Product Telemetry','NetSuite Billing'],
+    _lineage: [
+      { source: 'Salesforce CRM', id: 'CRM-10009,10010,10011', note: '3 CRM records — combined $436K ARR' },
+      { source: 'Product Telemetry', id: 'PU-20011,20013', note: 'Riverview Credit Recovery + RIVERVIEW CREDIT RECOVERY (all-caps variant)' },
+      { source: 'NetSuite Billing', id: 'BILL-30006,30007,30008', note: 'Riverview ISD + Riverview Federal Programs unified' },
+    ]
+  },
+  { id: 'GC0003', canonical_name: 'Oak Valley School District', legal_name: 'Oak Valley School District', industry: 'K-12 Education', hq_country: 'USA',
+    source_variants: ['Oak Valley Independent School District','Oak Valley School District','Oak Valley Public Schools','Oak Valley Federal Programs','Oak Valley Math Program','Oak Valley Credit Recovery'],
+    products_active: ['Imagine Learning PD','Imagine Language & Literacy','StudySync','Twig Science'], application: 'Imagine Learning PD, Imagine Language & Literacy, StudySync',
+    total_arr: 276277, open_pipeline: 50000, deal_count: 2, rep_count: 1,
+    student_enrollment: 101958, region: 'South', segment: 'Mid-Market District',
+    suppliers: ['Salesforce CRM','Product Telemetry','NetSuite Billing'],
+    _lineage: [
+      { source: 'Salesforce CRM', id: 'CRM-10015,10016', note: '"Oak Valley Independent School District" + "Oak Valley School District" — $276K combined' },
+      { source: 'Product Telemetry', id: 'PU-20019,20020', note: 'Oak Valley Math Program + Oak Valley Credit Recovery linked' },
+      { source: 'NetSuite Billing', id: 'BILL-30009,30010,30011', note: '3 billing records under 3 name variants unified' },
+    ]
+  },
+  { id: 'GC0004', canonical_name: 'Pine Hills ISD', legal_name: 'Pine Hills Independent School District', industry: 'K-12 Education', hq_country: 'USA',
+    source_variants: ['Pine Hills ISD','Pine Hills Independent School District','Pine Hills Public Schools','Pine Hills Literacy Pilot','PINE_HILLS_LITERACY_PILOT'],
+    products_active: ['Imagine Learning PD','Courseware','Imagine Language & Literacy'], application: 'Imagine Learning PD, Courseware, Imagine Language & Literacy',
+    total_arr: 326244, open_pipeline: 35000, deal_count: 1, rep_count: 1,
+    student_enrollment: 14656, region: 'South', segment: 'Large District',
+    suppliers: ['Salesforce CRM','Product Telemetry','NetSuite Billing'],
+    _lineage: [
+      { source: 'Salesforce CRM', id: 'CRM-10022', note: 'Pine Hills ISD — $86K ARR' },
+      { source: 'Product Telemetry', id: 'PU-20023,20027,20028', note: 'Pine Hills ISD + Pine Hills Literacy Pilot + PINE_HILLS_LITERACY_PILOT (underscore artifact)' },
+      { source: 'NetSuite Billing', id: 'BILL-30012', note: '"Pine Hills Independent School District Finance" verbose name resolved' },
+    ]
+  },
+  { id: 'GC0005', canonical_name: 'Maple Grove ISD', legal_name: 'Maple Grove Independent School District', industry: 'K-12 Education', hq_country: 'USA',
+    source_variants: ['Maple Grove ISD - Supplemental','Maple Grove Independent School District','Maple Grove Public Schools'],
+    products_active: ['Courseware','StudySync','Imagine Learning PD'], application: 'Courseware, StudySync, Imagine Learning PD',
+    total_arr: 151022, open_pipeline: 28000, deal_count: 2, rep_count: 1,
+    student_enrollment: 72784, region: 'West', segment: 'Large District',
+    suppliers: ['Salesforce CRM','NetSuite Billing'],
+    _lineage: [
+      { source: 'Salesforce CRM', id: 'CRM-10028,10035', note: '"Maple Grove ISD - Supplemental" + "Maple Grove Independent School District" unified' },
+      { source: 'NetSuite Billing', id: 'BILL-30017,30018,30019', note: '3 billing records unified' },
+    ]
+  },
+  { id: 'GC0006', canonical_name: 'Cedar Ridge ISD', legal_name: 'Cedar Ridge Independent School District', industry: 'K-12 Education', hq_country: 'UK',
+    source_variants: ['Cedar Ridge ISD','Cedar Ridge Public Schools','Cedar Ridge Independent School District Finance'],
+    products_active: ['Imagine Language & Literacy','Imagine Learning PD','Twig Science'], application: 'Imagine Language & Literacy, Imagine Learning PD, Twig Science',
+    total_arr: 698000, open_pipeline: 20000, deal_count: 1, rep_count: 1,
+    student_enrollment: 27703, region: 'South', segment: 'Large District',
+    suppliers: ['NetSuite Billing'],
+    _lineage: [
+      { source: 'NetSuite Billing', id: 'BILL-30020 to 30024', note: '5 billing records with 3 name variants unified under Cedar Ridge ISD' },
+    ]
+  },
+  { id: 'GC0007', canonical_name: 'Springfield School District', legal_name: 'Springfield School District', industry: 'K-12 Education', hq_country: 'USA',
+    source_variants: ['Springfield School District','Springfield Public Schools','Springfield Federal Programs'],
+    products_active: ['Imagine Learning PD','Courseware','Twig Science','Imagine Language & Literacy'], application: 'Imagine Learning PD, Courseware, Twig Science',
+    total_arr: 366000, open_pipeline: 15000, deal_count: 1, rep_count: 1,
+    student_enrollment: 52323, region: 'South', segment: 'Charter Network',
+    suppliers: ['NetSuite Billing'],
+    _lineage: [
+      { source: 'NetSuite Billing', id: 'BILL-30025,30026,30027,30028', note: 'Springfield Public Schools + Springfield Federal Programs unified' },
+    ]
+  },
+  { id: 'GC0008', canonical_name: 'Lakeview School District', legal_name: 'Lakeview School District', industry: 'K-12 Education', hq_country: 'USA',
+    source_variants: ['Lakeview School District','Lakeview Independent School District Finance'],
+    products_active: ['Imagine Language & Literacy'], application: 'Imagine Language & Literacy',
+    total_arr: 89000, open_pipeline: 10000, deal_count: 1, rep_count: 1,
+    student_enrollment: 94488, region: 'Northeast', segment: 'Mid-Market District',
+    suppliers: ['NetSuite Billing'],
+    _lineage: [
+      { source: 'NetSuite Billing', id: 'BILL-30029', note: '"Lakeview Independent School District Finance" billing name resolved to Lakeview School District' },
+    ]
+  },
+];
+
+const CRM_HARMONIZATION_ISSUES = [
+  { id: 'il-1', type: 'normalization', description: 'Unify "Houston ISD" — 8 name variants, $463K combined ARR hidden', confidence: 0.96, resolved: false,
+    before: { values: ['Houston Independent School District','Houston ISD - Supplemental','Houston School District','Houston Public Schools','Houston Federal Programs','Houston Math Program','Houston Literacy Pilot','HOUSTON MATH PROGRAM'] },
+    after: { canonical: 'Houston ISD', legal_name: 'Houston Independent School District', golden_id: 'GC0001', combined_arr: '$463,118', impact: 'Reveals full district footprint across 4 products' },
+    reasoning: 'All 8 variants refer to Houston Independent School District (NCES ID: 4835580). Matched via Jaro-Winkler similarity > 0.91 + shared contact email domains (@houstonschools.org) + state/region overlap. Consolidating reveals true ARR of $463K vs $60K visible per-record. Enables coordinated renewal and expansion strategy.',
+    sources: [
+      { file: 'salesforce_crm.csv', rows: [0,1,2,3], evidence: 'CRM records with 4 name variants' },
+      { file: 'product_usage.csv', rows: [0,1,2,3], evidence: 'HOUSTON MATH PROGRAM = Houston Math Program (all-caps)' },
+      { file: 'contract_billing.csv', rows: [0,1,2,3,4], evidence: 'Houston Public Schools + Houston Federal Programs = same billing entity' },
+    ]
+  },
+  { id: 'il-2', type: 'normalization', description: 'Unify "Riverview ISD" — 5 variants, $436K split across records', confidence: 0.94, resolved: false,
+    before: { values: ['Riverview ISD','Riverview Public Schools','Riverview Federal Programs','Riverview Credit Recovery','RIVERVIEW CREDIT RECOVERY'] },
+    after: { canonical: 'Riverview ISD', legal_name: 'Riverview Independent School District', golden_id: 'GC0002', combined_arr: '$436,016' },
+    reasoning: 'Riverview ISD is the primary district entity. "Riverview Federal Programs" and "Riverview Credit Recovery" are program units within the district. "RIVERVIEW CREDIT RECOVERY" is an all-caps data entry error. Unified under GC0002 reveals $436K full ARR.',
+    sources: [
+      { file: 'salesforce_crm.csv', rows: [4,5,6], evidence: '3 CRM records with Riverview name variants' },
+      { file: 'product_usage.csv', rows: [4,5], evidence: 'RIVERVIEW CREDIT RECOVERY all-caps variant' },
+      { file: 'contract_billing.csv', rows: [5,6,7], evidence: 'Riverview Federal Programs = same district' },
+    ]
+  },
+  { id: 'il-3', type: 'normalization', description: '"Oak Valley Independent School District" vs "Oak Valley School District" — $276K split', confidence: 0.92, resolved: false,
+    before: { values: ['Oak Valley Independent School District','Oak Valley School District','Oak Valley Public Schools','Oak Valley Federal Programs'] },
+    after: { canonical: 'Oak Valley School District', legal_name: 'Oak Valley School District', golden_id: 'GC0003', combined_arr: '$276,277' },
+    reasoning: 'NCES database confirms Oak Valley School District (NCES ID: 5100870). "Independent School District" suffix used by Salesforce rep; "School District" used by finance. Confirmed via shared NCES ID. Combined ARR triggers enterprise tier review.',
+    sources: [
+      { file: 'salesforce_crm.csv', rows: [7,8], evidence: '"ISD" vs "School District" suffix variant' },
+      { file: 'contract_billing.csv', rows: [8,9,10], evidence: '3 billing names for same Oak Valley district' },
+    ]
+  },
+  { id: 'il-4', type: 'normalization', description: '"PINE_HILLS_LITERACY_PILOT" — underscores replacing spaces (export artifact)', confidence: 0.99, resolved: false,
+    before: { product_org_name: 'PINE_HILLS_LITERACY_PILOT', in_system: 'Product Telemetry' },
+    after: { canonical: 'Pine Hills Literacy Pilot', matched_to: 'Pine Hills ISD (GC0004)' },
+    reasoning: 'ProductTelemetry system exported org names with underscores replacing spaces — a known export artifact. "PINE_HILLS_LITERACY_PILOT" → "Pine Hills Literacy Pilot" by space normalization + title-case. Confirmed match to GC0004 via NCES code in supplementary reference data.',
+    sources: [
+      { file: 'product_usage.csv', rows: [10], evidence: 'PINE_HILLS_LITERACY_PILOT underscore artifact' },
+    ]
+  },
+  { id: 'il-5', type: 'matching', description: '"PL" billing code → map to "Imagine Learning PD" product', confidence: 0.97, resolved: false,
+    before: { product_name_billing: 'PL', in_system: 'NetSuite Billing', product_family: 'Professional Learning' },
+    after: { canonical_product: 'Imagine Learning PD', product_family: 'Professional Learning', cross_ref: 'Salesforce product_name: Imagine Learning PD' },
+    reasoning: 'Finance team uses 2-letter abbreviation "PL" for Professional Learning / Imagine Learning PD. Cross-referenced product_family field ("Professional Learning") and invoice amounts ($180K range) to confirm match. "PD Services" also maps to Imagine Learning PD based on product_family.',
+    sources: [
+      { file: 'contract_billing.csv', rows: [2], evidence: '"PL" abbreviation in product_name_billing field' },
+    ]
+  },
+  { id: 'il-6', type: 'enrichment', description: 'Compute total_arr_usd per canonical district — impossible without deduplication', confidence: 0.99, resolved: false,
+    before: { problem: 'Houston ISD: 4 CRM records at $60K, $89K, $62K, $252K. No aggregated total field. Appears as 4 separate mid-market accounts.' },
+    after: { solution: 'GC0001 total_arr = $463,118', breakdown: 'CRM-10001: $60K + CRM-10002: $89K + CRM-10003: $62K + CRM-10004: $252K', impact: 'Correct district tier: Mid-Market → Enterprise. Triggers dedicated CSM assignment.' },
+    reasoning: 'District-level ARR determines CSM assignment, QBR cadence, and renewal priority. $463K Houston ISD is a top-tier district — currently invisible due to data fragmentation across 4 account records.',
+    sources: [
+      { file: 'salesforce_crm.csv', rows: [0,1,2,3], evidence: '4 separate ARR values for same district' },
+      { file: 'contract_billing.csv', rows: [0,1,2,3,4], evidence: '5 billing records with separate invoice amounts' },
+    ]
+  },
+  { id: 'il-7', type: 'validation', description: 'Segment casing: "charter network" → "Charter Network"', confidence: 0.99, resolved: false,
+    before: { values: ['Charter Network','charter network','Large District','Mid-Market District'] },
+    after: { canonical_values: ['Charter Network','Large District','Mid-Market District','State/Regional'], rule: 'Title case for segment field' },
+    reasoning: '"charter network" appears 2x lowercase while "Charter Network" appears 18x in title case. Breaks GROUP BY queries in Salesforce reports. Standardizing to title case based on modal value. No semantic change.',
+    sources: [
+      { file: 'salesforce_crm.csv', rows: [1], evidence: 'Row 2: "charter network" instead of "Charter Network"' },
+    ]
+  },
+];
+
+const CRM_CANONICAL_FIELDS = [
+  { name: 'canonical_account_name', type: 'string', required: true,
+    source: 'account_name (Salesforce) + billing_customer_name (NetSuite) + product_org_name (ProductTelemetry)',
+    logic: 'Fuzzy match across all 3 source systems via Jaro-Winkler similarity + NCES district ID cross-reference. Prefer short unambiguous name (e.g. "Houston ISD" not "Houston Independent School District").',
+    samples: ['Houston ISD','Riverview ISD','Oak Valley School District','Pine Hills ISD','Maple Grove ISD'] },
+  { name: 'legal_name', type: 'string', required: true,
+    source: 'NCES school district database lookup via canonical_account_name',
+    logic: 'Full legal district name from NCES National Center for Education Statistics. Used for contracts and compliance. Cross-validates entity matching via NCES ID.',
+    samples: ['Houston Independent School District','Riverview Independent School District','Pine Hills Independent School District'] },
+  { name: 'total_arr_usd', type: 'currency', required: true,
+    source: 'arr_usd (Salesforce) + invoice_amount_usd (NetSuite) — matched via canonical_account_name',
+    logic: 'Sum all ARR/invoice values across matched account name variants. Only possible after deduplication. Determines CSM assignment (>$200K = dedicated CSM) and QBR cadence.',
+    samples: ['$463,118','$436,016','$276,277','$326,244','$151,022'] },
+  { name: 'products_active', type: 'array', required: true,
+    source: 'product_name (Salesforce) + product_family_billing (NetSuite) + product_name (ProductTelemetry)',
+    logic: 'Union of active products across merged variants. Normalizes abbreviations: "PL" → "Imagine Learning PD". Enables cross-sell gap analysis across district accounts.',
+    samples: ['Imagine Learning PD, Twig Science, Courseware','Imagine Math, Imagine Language & Literacy','Courseware, StudySync'] },
+  { name: 'student_enrollment', type: 'integer', required: false,
+    source: 'NCES enrollment data — joined via NCES district ID',
+    logic: 'Total student enrollment from NCES. Used for seat ratio analysis (seats_contracted / enrollment = penetration rate) and pricing model validation.',
+    samples: ['91,196','76,063','101,958','14,656','72,784'] },
+  { name: 'region', type: 'enum', required: true,
+    source: 'region (Salesforce) — validated against NCES state/region mapping',
+    logic: 'NCES region classification. Overrides rep-entered region if NCES state lookup disagrees. Enables territory reporting and rep assignment.',
+    samples: ['West','South','Northeast','Midwest'] },
+];
+
+const RULES_DATA = {
+  user: [
+    { id: 'rule-u1', name: 'District name standardization', description: 'Prefer NCES canonical district name when resolving "Independent School District" vs "School District" suffix variants', type: 'normalization', created: '2026-04-10', status: 'active', appliedCount: 47, createdFrom: 'Manual — district data governance policy' },
+    { id: 'rule-u2', name: 'All-caps org name normalization', description: 'Convert all-caps product org names to title case (e.g., "HOUSTON MATH PROGRAM" → "Houston Math Program")', type: 'normalization', created: '2026-04-15', status: 'active', appliedCount: 23, createdFrom: 'Manual — ProductTelemetry export quirk' },
+    { id: 'rule-u3', name: 'Federal Programs = parent district', description: 'Any billing_customer_name with "Federal Programs" suffix maps to the same parent district in CRM', type: 'matching', created: '2026-04-18', status: 'active', appliedCount: 12, createdFrom: 'Sent from issue: Houston Federal Programs billing mismatch' },
+  ],
+  ai: [
+    { id: 'rule-a1', name: 'Underscore-to-space conversion', description: 'ProductTelemetry export artifact: underscores in org names replace spaces — apply space normalization + title case', type: 'normalization', confidence: 0.99, suggestedFrom: 'PINE_HILLS_LITERACY_PILOT pattern (il-4)', status: 'pending_review', suggestedDate: '2026-04-21' },
+    { id: 'rule-a2', name: '"PL" abbreviation → Imagine Learning PD', description: 'NetSuite uses "PL" consistently for Professional Learning/Imagine Learning PD — create explicit product code mapping', type: 'normalization', confidence: 0.97, suggestedFrom: 'Billing abbreviation resolution (il-5)', status: 'pending_review', suggestedDate: '2026-04-21' },
+    { id: 'rule-a3', name: '"Supplemental" suffix = same district', description: 'Account names ending in "- Supplemental" should map to the primary district account', type: 'matching', confidence: 0.91, suggestedFrom: 'Houston ISD / Riverview ISD dedup patterns', status: 'pending_review', suggestedDate: '2026-04-21' },
+    { id: 'rule-a4', name: '"Credit Recovery" = program unit', description: 'Accounts with "Credit Recovery" suffix are program units of the parent district — not separate accounts', type: 'matching', confidence: 0.88, suggestedFrom: 'Riverview Credit Recovery / Oak Valley Credit Recovery', status: 'pending_review', suggestedDate: '2026-04-21' },
+  ],
+  pending: [
+    { id: 'rule-p1', name: 'Segment casing normalization', description: '"charter network" → "Charter Network" — title case for segment field', type: 'normalization', severity: 'low', source: 'il-7', status: 'ready_to_apply' },
+    { id: 'rule-p2', name: '"Public Schools" suffix = same district', description: 'Billing names with "Public Schools" suffix map to primary CRM district account', type: 'matching', severity: 'medium', source: 'il-2', status: 'ready_to_apply' },
+    { id: 'rule-p3', name: 'NCES state override', description: 'When rep-entered state disagrees with NCES state for a known district, use NCES value', type: 'validation', severity: 'medium', source: 'il-6', status: 'ready_to_apply' },
+  ]
+};
