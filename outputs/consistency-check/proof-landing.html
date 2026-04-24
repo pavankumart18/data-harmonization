@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Data Harmonization Tower proof harness" />
+  <title>Data Harmonization Tower Proof Harness</title>
+  <link rel="stylesheet" href="../../styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+              <path d="M3 12A9 3 0 0 0 21 12"></path>
+            </svg>
+          </div>
+          <span class="brand-name">Data Harmonization Tower</span>
+        </div>
+        <nav id="header-nav" class="header-nav"></nav>
+      </div>
+    </header>
+    <div style="max-width:84rem;margin:0 auto;padding:1rem 1.5rem 0;position:relative;z-index:1" id="pipeline"></div>
+    <main id="main-content" class="app-main"></main>
+  </div>
+  <div id="proof-report" style="display:none;white-space:pre-wrap"></div>
+  <script src="../../icons.js"></script>
+  <script src="../../data.js"></script>
+  <script src="../../app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        
+        if (typeof renderAll === 'function') renderAll();
+        setTimeout(() => {
+          const reportNode = document.getElementById('proof-report');
+          if (reportNode) reportNode.textContent = document.body.innerText;
+        }, 500);
+      }, 0);
+    });
+  </script>
+</body>
+</html>
+
+

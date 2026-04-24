@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Consistency Check</title>
+  <style>
+    body { margin: 0; padding: 32px; background: #f8fafc; font-family: Arial, sans-serif; color: #0f172a; }
+    h1 { margin: 0 0 24px; font-size: 28px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .card { background: #fff; border: 1px solid #cbd5e1; border-radius: 18px; padding: 16px; box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); }
+    .label { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #475569; margin-bottom: 12px; }
+    img { display: block; width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Consistency Check</h1>
+  <div class="grid">
+    <section class="card"><div class="label">landing</div><img src="landing.png" alt="landing" /></section>
+    <section class="card"><div class="label">sku-search</div><img src="sku-search.png" alt="sku-search" /></section>
+    <section class="card"><div class="label">crm-raw</div><img src="crm-raw.png" alt="crm-raw" /></section>
+    <section class="card"><div class="label">crm-golden</div><img src="crm-golden.png" alt="crm-golden" /></section>
+    <section class="card"><div class="label">crm-search</div><img src="crm-search.png" alt="crm-search" /></section>
+  </div>
+</body>
+</html>

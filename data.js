@@ -325,9 +325,9 @@ const DEMO_SCRIPT = [
   { page: 'workbench', highlight: '.btn-emerald-outline', action: () => { fixAllHigh(); },
     narration: 'Clicking <strong>Fix All High-Confidence</strong> — all issues above 90% confidence are auto-resolved. The human-in-the-loop can still override any decision. This is <em>self-healing with guardrails</em>.', stepLabel: 'Step 9 of 12 — Batch Resolution', duration: 5000 },
   { page: 'golden', highlight: '.lineage-timeline', action: () => { state.selectedRecordId = 'EB-0001'; renderAll(); },
-    narration: '<em>58,460 raw records collapsed into 5,260 golden records</em> — a <strong>91% deduplication ratio</strong>. Each golden record traces lineage back to multiple source files. Here\'s the Anti-CD20 antibody: merged from US, EU, and Nordic catalogs.', stepLabel: 'Step 10 of 12 — Golden Dataset', duration: 7000 },
+    narration: 'The full source footprint still spans <em>58,460 raw rows</em>, but this searchable demo slice reduces <strong>50 sampled product rows into 6 canonical golden records</strong> — an <strong>88% merge reduction</strong>. Each golden record traces lineage back to multiple source files. Here\'s the Anti-CD20 antibody: merged from US, EU, and Nordic catalogs.', stepLabel: 'Step 10 of 12 — Golden Dataset', duration: 7000 },
   { page: 'search', highlight: '.search-result:nth-child(1)', action: () => { state.searchQuery = 'cd20'; state.isGolden = false; renderAll(); },
-    narration: 'Search for <strong>"CD20"</strong> in <span style="color:var(--red)">raw data</span> — you get 4 fragmented results: "Anti-CD20 Monoclonal Antibody", "Anti CD20 mAb", "Anti-CD20 Antikorper", "CD20 antikropp FITC". A scientist would be confused.', stepLabel: 'Step 11 of 12 — Raw Search Pain', duration: 5500 },
+    narration: 'Search for <strong>"CD20"</strong> in <span style="color:var(--red)">raw data</span> — you get <strong>8 fragmented rows</strong> spread across source feeds, datasheets, and legacy catalog entries. The same product appears under different names, SKUs, and languages, so a scientist sees clutter instead of one clear answer.', stepLabel: 'Step 11 of 12 — Raw Search Pain', duration: 5500 },
   { page: 'search', highlight: '.revenue-card', action: () => { state.isGolden = true; renderAll(); },
     narration: 'Now toggle to <strong>Golden Records</strong> — the same "CD20" search returns <em>2 clean, canonical products</em> with multi-region pricing. This is the difference between <span style="color:var(--red)">data chaos</span> and <em>data clarity</em>. <strong>That\'s the impact.</strong>', stepLabel: 'Step 12 of 12 — The Impact', duration: 7000 },
 ];
@@ -423,6 +423,9 @@ const CRM_FILES = {
       ['BILL-30010','Oak Valley Public Schools','Imagine Language & Literacy','Supplemental Literacy','2024-08-15','2027-01-04','Expired','180000','10000','USA'],
       ['BILL-30011','Oak Valley Federal Programs','StudySync','Core ELA','2024-01-07','2026-03-09','Invoiced','255000','2800','USA'],
       ['BILL-30012','Pine Hills Independent School District Finance','Imagine Learning PD','Professional Learning','2025-06-22','2026-06-08','Active','180000','2800','USA'],
+      ['BILL-30017','Maple Grove Public Schools','Courseware','Core Courseware','2025-02-14','2027-07-18','Amendment Pending','0','2400','USA'],
+      ['BILL-30018','Maple Grove Public Schools','StudySync','Core ELA','2025-03-07','2027-09-30','Amendment Pending','0','1900','USA'],
+      ['BILL-30019','Maple Grove Public Schools','Imagine Learning PD','Professional Learning','2025-05-22','2027-11-14','Amendment Pending','0','1200','USA'],
     ],
     issues: [
       { col: 'billing_customer_name', type: 'normalization', desc: '"Houston Public Schools" / "Houston Federal Programs" / "Houston ISD" — 3 billing names for same district', severity: 'high', rows: [0,1,2,3,4] },
@@ -476,7 +479,7 @@ const CRM_GOLDEN_RECORDS = [
     ]
   },
   { id: 'GC0004', canonical_name: 'Pine Hills ISD', legal_name: 'Pine Hills Independent School District', industry: 'K-12 Education', hq_country: 'USA',
-    source_variants: ['Pine Hills ISD','Pine Hills Independent School District','Pine Hills Public Schools','Pine Hills Literacy Pilot','PINE_HILLS_LITERACY_PILOT'],
+    source_variants: ['Pine Hills ISD','Pine Hills Independent School District Finance','Pine Hills Literacy Pilot','PINE_HILLS_LITERACY_PILOT'],
     products_active: ['Imagine Learning PD','Courseware','Imagine Language & Literacy'], application: 'Imagine Learning PD, Courseware, Imagine Language & Literacy',
     total_arr: 326244, open_pipeline: 35000, deal_count: 1, rep_count: 1,
     student_enrollment: 14656, region: 'South', segment: 'Large District',
@@ -498,43 +501,13 @@ const CRM_GOLDEN_RECORDS = [
       { source: 'NetSuite Billing', id: 'BILL-30017,30018,30019', note: '3 billing records unified' },
     ]
   },
-  { id: 'GC0006', canonical_name: 'Cedar Ridge ISD', legal_name: 'Cedar Ridge Independent School District', industry: 'K-12 Education', hq_country: 'UK',
-    source_variants: ['Cedar Ridge ISD','Cedar Ridge Public Schools','Cedar Ridge Independent School District Finance'],
-    products_active: ['Imagine Language & Literacy','Imagine Learning PD','Twig Science'], application: 'Imagine Language & Literacy, Imagine Learning PD, Twig Science',
-    total_arr: 698000, open_pipeline: 20000, deal_count: 1, rep_count: 1,
-    student_enrollment: 27703, region: 'South', segment: 'Large District',
-    suppliers: ['NetSuite Billing'],
-    _lineage: [
-      { source: 'NetSuite Billing', id: 'BILL-30020 to 30024', note: '5 billing records with 3 name variants unified under Cedar Ridge ISD' },
-    ]
-  },
-  { id: 'GC0007', canonical_name: 'Springfield School District', legal_name: 'Springfield School District', industry: 'K-12 Education', hq_country: 'USA',
-    source_variants: ['Springfield School District','Springfield Public Schools','Springfield Federal Programs'],
-    products_active: ['Imagine Learning PD','Courseware','Twig Science','Imagine Language & Literacy'], application: 'Imagine Learning PD, Courseware, Twig Science',
-    total_arr: 366000, open_pipeline: 15000, deal_count: 1, rep_count: 1,
-    student_enrollment: 52323, region: 'South', segment: 'Charter Network',
-    suppliers: ['NetSuite Billing'],
-    _lineage: [
-      { source: 'NetSuite Billing', id: 'BILL-30025,30026,30027,30028', note: 'Springfield Public Schools + Springfield Federal Programs unified' },
-    ]
-  },
-  { id: 'GC0008', canonical_name: 'Lakeview School District', legal_name: 'Lakeview School District', industry: 'K-12 Education', hq_country: 'USA',
-    source_variants: ['Lakeview School District','Lakeview Independent School District Finance'],
-    products_active: ['Imagine Language & Literacy'], application: 'Imagine Language & Literacy',
-    total_arr: 89000, open_pipeline: 10000, deal_count: 1, rep_count: 1,
-    student_enrollment: 94488, region: 'Northeast', segment: 'Mid-Market District',
-    suppliers: ['NetSuite Billing'],
-    _lineage: [
-      { source: 'NetSuite Billing', id: 'BILL-30029', note: '"Lakeview Independent School District Finance" billing name resolved to Lakeview School District' },
-    ]
-  },
 ];
 
 const CRM_HARMONIZATION_ISSUES = [
   { id: 'il-1', type: 'normalization', description: 'Unify "Houston ISD" — 8 name variants, $463K combined ARR hidden', confidence: 0.96, resolved: false,
     before: { values: ['Houston Independent School District','Houston ISD - Supplemental','Houston School District','Houston Public Schools','Houston Federal Programs','Houston Math Program','Houston Literacy Pilot','HOUSTON MATH PROGRAM'] },
     after: { canonical: 'Houston ISD', legal_name: 'Houston Independent School District', golden_id: 'GC0001', combined_arr: '$463,118', impact: 'Reveals full district footprint across 4 products' },
-    reasoning: 'All 8 variants refer to Houston Independent School District (NCES ID: 4835580). Matched via Jaro-Winkler similarity > 0.91 + shared contact email domains (@houstonschools.org) + state/region overlap. Consolidating reveals true ARR of $463K vs $60K visible per-record. Enables coordinated renewal and expansion strategy.',
+    reasoning: 'All 8 variants refer to Houston Independent School District. Matched via Jaro-Winkler similarity > 0.91 + shared contact email domains (@houstonschools.org) + state/region overlap across CRM, billing, and usage systems. District reference enrichment (NCES) then confirms the final legal name and district profile for the merged record. Consolidating reveals true ARR of $463K vs $60K visible per-record. Enables coordinated renewal and expansion strategy.',
     sources: [
       { file: 'salesforce_crm.csv', rows: [0,1,2,3], evidence: 'CRM records with 4 name variants' },
       { file: 'product_usage.csv', rows: [0,1,2,3], evidence: 'HOUSTON MATH PROGRAM = Houston Math Program (all-caps)' },
@@ -554,7 +527,7 @@ const CRM_HARMONIZATION_ISSUES = [
   { id: 'il-3', type: 'normalization', description: '"Oak Valley Independent School District" vs "Oak Valley School District" — $276K split', confidence: 0.92, resolved: false,
     before: { values: ['Oak Valley Independent School District','Oak Valley School District','Oak Valley Public Schools','Oak Valley Federal Programs'] },
     after: { canonical: 'Oak Valley School District', legal_name: 'Oak Valley School District', golden_id: 'GC0003', combined_arr: '$276,277' },
-    reasoning: 'NCES database confirms Oak Valley School District (NCES ID: 5100870). "Independent School District" suffix used by Salesforce rep; "School District" used by finance. Confirmed via shared NCES ID. Combined ARR triggers enterprise tier review.',
+    reasoning: 'District reference enrichment (NCES) confirms Oak Valley School District after the Salesforce and billing variants are clustered. "Independent School District" suffix used by Salesforce rep; "School District" used by finance. Shared reference matching validates the final legal name. Combined ARR triggers enterprise tier review.',
     sources: [
       { file: 'salesforce_crm.csv', rows: [7,8], evidence: '"ISD" vs "School District" suffix variant' },
       { file: 'contract_billing.csv', rows: [8,9,10], evidence: '3 billing names for same Oak Valley district' },
@@ -563,7 +536,7 @@ const CRM_HARMONIZATION_ISSUES = [
   { id: 'il-4', type: 'normalization', description: '"PINE_HILLS_LITERACY_PILOT" — underscores replacing spaces (export artifact)', confidence: 0.99, resolved: false,
     before: { product_org_name: 'PINE_HILLS_LITERACY_PILOT', in_system: 'Product Telemetry' },
     after: { canonical: 'Pine Hills Literacy Pilot', matched_to: 'Pine Hills ISD (GC0004)' },
-    reasoning: 'ProductTelemetry system exported org names with underscores replacing spaces — a known export artifact. "PINE_HILLS_LITERACY_PILOT" → "Pine Hills Literacy Pilot" by space normalization + title-case. Confirmed match to GC0004 via NCES code in supplementary reference data.',
+    reasoning: 'ProductTelemetry system exported org names with underscores replacing spaces - a known export artifact. "PINE_HILLS_LITERACY_PILOT" -> "Pine Hills Literacy Pilot" by space normalization + title-case. Final district attachment is validated against the resolved district reference profile.',
     sources: [
       { file: 'product_usage.csv', rows: [10], evidence: 'PINE_HILLS_LITERACY_PILOT underscore artifact' },
     ]
@@ -598,11 +571,11 @@ const CRM_HARMONIZATION_ISSUES = [
 const CRM_CANONICAL_FIELDS = [
   { name: 'canonical_account_name', type: 'string', required: true,
     source: 'account_name (Salesforce) + billing_customer_name (NetSuite) + product_org_name (ProductTelemetry)',
-    logic: 'Fuzzy match across all 3 source systems via Jaro-Winkler similarity + NCES district ID cross-reference. Prefer short unambiguous name (e.g. "Houston ISD" not "Houston Independent School District").',
+    logic: 'Fuzzy match across all 3 source systems via Jaro-Winkler similarity. Once a cluster is formed, validate the district identity against district reference enrichment (NCES) when available. Prefer short unambiguous name (e.g. "Houston ISD" not "Houston Independent School District").',
     samples: ['Houston ISD','Riverview ISD','Oak Valley School District','Pine Hills ISD','Maple Grove ISD'] },
   { name: 'legal_name', type: 'string', required: true,
-    source: 'NCES school district database lookup via canonical_account_name',
-    logic: 'Full legal district name from NCES National Center for Education Statistics. Used for contracts and compliance. Cross-validates entity matching via NCES ID.',
+    source: 'canonical_account_name (resolved cluster) + district_legal_name (NCES reference)',
+    logic: 'After the district cluster is resolved, join district reference enrichment to pull the contract-safe legal name. If no confident reference match exists, fall back to the cleanest CRM or billing variant.',
     samples: ['Houston Independent School District','Riverview Independent School District','Pine Hills Independent School District'] },
   { name: 'total_arr_usd', type: 'currency', required: true,
     source: 'arr_usd (Salesforce) + invoice_amount_usd (NetSuite) — matched via canonical_account_name',
@@ -613,18 +586,18 @@ const CRM_CANONICAL_FIELDS = [
     logic: 'Union of active products across merged variants. Normalizes abbreviations: "PL" → "Imagine Learning PD". Enables cross-sell gap analysis across district accounts.',
     samples: ['Imagine Learning PD, Twig Science, Courseware','Imagine Math, Imagine Language & Literacy','Courseware, StudySync'] },
   { name: 'student_enrollment', type: 'integer', required: false,
-    source: 'NCES enrollment data — joined via NCES district ID',
-    logic: 'Total student enrollment from NCES. Used for seat ratio analysis (seats_contracted / enrollment = penetration rate) and pricing model validation.',
+    source: 'matched_district_profile (NCES reference)',
+    logic: 'Optional reference enrichment once district identity is resolved. Used for seat ratio analysis (seats_contracted / enrollment = penetration rate) and pricing model validation.',
     samples: ['91,196','76,063','101,958','14,656','72,784'] },
   { name: 'region', type: 'enum', required: true,
-    source: 'region (Salesforce) — validated against NCES state/region mapping',
-    logic: 'NCES region classification. Overrides rep-entered region if NCES state lookup disagrees. Enables territory reporting and rep assignment.',
+    source: 'region (Salesforce) + district_region_reference (NCES)',
+    logic: 'Keep the operational region from Salesforce, but use district reference mapping to flag or override clear state/region mismatches. Supports territory reporting and rep assignment.',
     samples: ['West','South','Northeast','Midwest'] },
 ];
 
 const RULES_DATA = {
   user: [
-    { id: 'rule-u1', name: 'District name standardization', description: 'Prefer NCES canonical district name when resolving "Independent School District" vs "School District" suffix variants', type: 'normalization', created: '2026-04-10', status: 'active', appliedCount: 47, createdFrom: 'Manual — district data governance policy' },
+    { id: 'rule-u1', name: 'District name standardization', description: 'Prefer district reference legal name (NCES) when resolving "Independent School District" vs "School District" suffix variants', type: 'normalization', created: '2026-04-10', status: 'active', appliedCount: 47, createdFrom: 'Manual — district data governance policy' },
     { id: 'rule-u2', name: 'All-caps org name normalization', description: 'Convert all-caps product org names to title case (e.g., "HOUSTON MATH PROGRAM" → "Houston Math Program")', type: 'normalization', created: '2026-04-15', status: 'active', appliedCount: 23, createdFrom: 'Manual — ProductTelemetry export quirk' },
     { id: 'rule-u3', name: 'Federal Programs = parent district', description: 'Any billing_customer_name with "Federal Programs" suffix maps to the same parent district in CRM', type: 'matching', created: '2026-04-18', status: 'active', appliedCount: 12, createdFrom: 'Sent from issue: Houston Federal Programs billing mismatch' },
   ],
@@ -637,6 +610,6 @@ const RULES_DATA = {
   pending: [
     { id: 'rule-p1', name: 'Segment casing normalization', description: '"charter network" → "Charter Network" — title case for segment field', type: 'normalization', severity: 'low', source: 'il-7', status: 'ready_to_apply' },
     { id: 'rule-p2', name: '"Public Schools" suffix = same district', description: 'Billing names with "Public Schools" suffix map to primary CRM district account', type: 'matching', severity: 'medium', source: 'il-2', status: 'ready_to_apply' },
-    { id: 'rule-p3', name: 'NCES state override', description: 'When rep-entered state disagrees with NCES state for a known district, use NCES value', type: 'validation', severity: 'medium', source: 'il-6', status: 'ready_to_apply' },
+    { id: 'rule-p3', name: 'District reference state override', description: 'When rep-entered state disagrees with district reference state (NCES) for a known district, use the reference value', type: 'validation', severity: 'medium', source: 'il-6', status: 'ready_to_apply' },
   ]
 };

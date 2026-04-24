@@ -1,0 +1,132 @@
+[
+  {
+    "name": "landing",
+    "currentPage": "landing",
+    "activeDataset": "sku",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 1549
+  },
+  {
+    "name": "sku-upload",
+    "currentPage": "upload",
+    "activeDataset": "sku",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 1200
+  },
+  {
+    "name": "sku-raw",
+    "currentPage": "raw",
+    "activeDataset": "sku",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 3813
+  },
+  {
+    "name": "sku-mapping",
+    "currentPage": "mapping",
+    "activeDataset": "sku",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 1917
+  },
+  {
+    "name": "sku-workbench",
+    "currentPage": "workbench",
+    "activeDataset": "sku",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 2249
+  },
+  {
+    "name": "sku-golden",
+    "currentPage": "golden",
+    "activeDataset": "sku",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 2101
+  },
+  {
+    "name": "sku-search",
+    "currentPage": "search",
+    "activeDataset": "sku",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 2021
+  },
+  {
+    "name": "crm-upload",
+    "currentPage": "upload",
+    "activeDataset": "crm",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 1200
+  },
+  {
+    "name": "crm-raw",
+    "currentPage": "raw",
+    "activeDataset": "crm",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 3116
+  },
+  {
+    "name": "crm-mapping",
+    "currentPage": "mapping",
+    "activeDataset": "crm",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 1779
+  },
+  {
+    "name": "crm-workbench",
+    "currentPage": "workbench",
+    "activeDataset": "crm",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 2420
+  },
+  {
+    "name": "crm-golden",
+    "currentPage": "golden",
+    "activeDataset": "crm",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 3084
+  },
+  {
+    "name": "crm-search",
+    "currentPage": "search",
+    "activeDataset": "crm",
+    "htmlBg": "rgba(0, 0, 0, 0)",
+    "bodyBg": "rgb(245, 247, 251)",
+    "sampleBg": "rgba(0, 0, 0, 0)",
+    "bodyText": "rgb(15, 23, 42)",
+    "scrollHeight": 2021
+  }
+]

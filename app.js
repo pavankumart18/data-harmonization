@@ -31,11 +31,11 @@ const state = {
 
 // ── Page Descriptions ────────────────────────────────────
 const PAGE_INTROS = {
-  raw: { title: 'Stage 1 — Ingest & Profile', desc: 'We start by ingesting raw supplier feeds from 4 regions. The system auto-scans every column for missing values, format inconsistencies, language mismatches, and naming conflicts. The heatmap below visualizes data quality across all 64 records — <strong>red means broken, green means clean</strong>.' },
+  raw: { title: 'Stage 1 — Ingest & Profile', desc: 'We start by ingesting raw supplier feeds across multiple regions. The system auto-scans every column for missing values, format inconsistencies, language mismatches, and naming conflicts. The heatmap below visualizes data quality across the loaded demo records — <strong>red means broken, green means clean</strong>.' },
   mapping: { title: 'Stage 2 — Schema Unification', desc: 'Each supplier uses different column names in different languages. Here, AI maps every source column to a single canonical schema. "anwendung" (German), "anvandning" (Swedish), and "application" (English) all resolve to one standardized field.' },
   workbench: { title: 'Stage 3 — AI Self-Healing', desc: 'The engine detects 5 categories of data issues and proposes fixes with confidence scores. <strong>Normalization</strong> resolves synonyms. <strong>Matching</strong> links records across catalogs. <strong>Enrichment</strong> fills missing fields. <strong>Validation</strong> corrects formats. Every fix requires human approval.' },
-  golden: { title: 'Stage 4 — Golden Master Catalog', desc: '64 messy source records have been deduplicated into <strong>6 canonical golden records</strong>. Each one traces its lineage back to 3 source files. Multi-region pricing is normalized. This is the single source of truth.' },
-  search: { title: 'Stage 5 — Business Impact', desc: 'The proof is in the search. With raw data, a scientist searching "CD20" gets 4 confusing, fragmented results in 3 languages. With golden records, they get <strong>2 clean canonical products</strong> with unified pricing. <em>20% of searches previously returned zero results — that\'s €340K in lost pipeline.</em>' },
+  golden: { title: 'Stage 4 — Golden Master Catalog', desc: 'Messy source records have been deduplicated into canonical golden records. Each one traces its lineage back to multiple source files. Multi-region pricing is normalized. This is the single source of truth.' },
+  search: { title: 'Stage 5 — Business Impact', desc: 'The proof is in the search. Raw data produces fragmented results across languages and source systems. Golden records return clean canonical products with unified pricing and much higher recall.' },
 };
 
 function renderPageIntro() {
@@ -964,18 +964,18 @@ renderSearchResults = function() {
   }
 
   return `<div style="margin-bottom:2rem;animation:fadeInUp 0.3s ease-out">
-      ${state.isGolden ? `<h3 style="color:var(--emerald);font-size:0.875rem;margin-bottom:1rem;display:flex;align-items:center;"><span>${icon('checkCircle2','icon-sm')} ${goldenResults.length.toLocaleString()} clean results â€” ${improvementText}</span></h3>
+      ${state.isGolden ? `<h3 style="color:var(--emerald);font-size:0.875rem;margin-bottom:1rem;display:flex;align-items:center;"><span>${icon('checkCircle2','icon-sm')} ${goldenResults.length.toLocaleString()} clean results — ${improvementText}</span></h3>
         <div class="search-results-grid">${goldenResults.map(g => `<div class="result-card is-golden">
           <div class="result-card-header golden-header"><div class="result-title">${g.name}</div><span class="badge badge-accent">${icon('sparkles','icon-sm')} Harmonized</span></div>
           <div class="result-card-body"><div class="result-fields">
             <div class="result-field"><div class="field-label">ID</div><div class="field-value">${g.id}</div></div>
-            <div class="result-field"><div class="field-label">Target</div><div class="field-value">${g.target || 'â€”'}</div></div>
+            <div class="result-field"><div class="field-label">Target</div><div class="field-value">${g.target || '—'}</div></div>
             <div class="result-field"><div class="field-label">Application</div><div class="field-value">${g.application}</div></div>
             <div class="result-field"><div class="field-label">Suppliers</div><div class="field-value">${g.suppliers} sources</div></div>
             <div class="result-field" style="grid-column:span 2"><div class="field-label">Multi-Region Pricing</div><div class="field-value">${g.prices}</div></div>
           </div></div>
         </div>`).join('')}</div>`
-      : `<h3 style="color:var(--red);font-size:0.875rem;margin-bottom:1rem;display:flex;align-items:center;"><span>${icon('alertCircle','icon-sm')} ${rawResults.length.toLocaleString()} fragmented results â€” Showing every matching record in this demo dataset.</span></h3>
+      : `<h3 style="color:var(--red);font-size:0.875rem;margin-bottom:1rem;display:flex;align-items:center;"><span>${icon('alertCircle','icon-sm')} ${rawResults.length.toLocaleString()} fragmented results — Showing every matching record in this demo dataset.</span></h3>
         <div class="search-results-grid">${rawResults.map(raw => `<div class="result-card is-raw">
           <div class="result-card-header raw-header"><div class="result-title">${raw.name}</div><span class="badge badge-surface">${raw.source}</span></div>
           <div class="result-card-body"><div class="result-fields">
@@ -1263,7 +1263,7 @@ renderNav = function() {
     <button class="nav-link ${state.currentPage === item.page ? 'active' : ''}" onclick="navigateTo('${item.page}')">
       ${icon(item.icon)} ${item.name}
     </button>
-  `).join('') + `<button class="btn btn-demo" style="margin-left:auto" onclick="startDemo()">${demoRunning ? icon('crosshair')+' Stop' : icon('activity')+' ▶ Run Demo'}</button>`;
+  `).join('') + `<button class="btn btn-demo" style="margin-left:auto" onclick="startDemo()">${demoRunning ? icon('crosshair')+' Stop' : icon('activity')+' &#9656; Run Demo'}</button>`;
 };
 
 // ── Override renderRawPage to include chaos heatmap ──────
@@ -1517,6 +1517,105 @@ function getActiveHarmonizationIssues() {
   }
   return state.issues;
 }
+function getSKUSampleRowCount() { return Object.values(RAW_FILES).reduce((sum, file) => sum + file.data.length, 0); }
+function getSKUSearchableRowCount() { return buildRawSearchRecords().length; }
+function getSKUGoldenRecordCount() { return GOLDEN_RECORDS.length; }
+function getSKUIssueTypeCount() { return new Set(HARMONIZATION_ISSUES.map(issue => issue.type)).size; }
+function getSKUDedupRate() {
+  const raw = getSKUSearchableRowCount();
+  return raw > 0 ? Math.round((1 - getSKUGoldenRecordCount() / raw) * 100) : 0;
+}
+function getSKULocaleVariantCount() { return 5; }
+function getCRMSampleRowCount() { return Object.values(CRM_FILES).reduce((sum, file) => sum + file.data.length, 0); }
+function getCRMGoldenDistrictCount() { return CRM_GOLDEN_RECORDS.length; }
+function getCRMPrimaryDistrictRecord() {
+  return CRM_GOLDEN_RECORDS.find(record => record.id === 'GC0001') || CRM_GOLDEN_RECORDS[0] || null;
+}
+function formatCompactUsd(value) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    notation: 'compact',
+    maximumFractionDigits: 0,
+  }).format(value || 0);
+}
+function getCRMPrimaryDistrictVariantCount() {
+  const record = getCRMPrimaryDistrictRecord();
+  return record ? record.source_variants.length : 0;
+}
+function getCRMPrimaryDistrictARR() {
+  const record = getCRMPrimaryDistrictRecord();
+  return formatCompactUsd(record ? record.total_arr : 0);
+}
+function getCRMSalesforceAccountCount() {
+  const file = CRM_FILES['salesforce_crm.csv'];
+  return file ? file.data.length : 0;
+}
+function getCRMHealthSummary() {
+  const usageFile = CRM_FILES['product_usage.csv'];
+  if (!usageFile) return { byGoldenId: {}, atRiskCount: 0 };
+
+  const idIdx = usageFile.headers.indexOf('golden_customer_id');
+  const scoreIdx = usageFile.headers.indexOf('usage_health_score');
+  const grouped = {};
+
+  usageFile.data.forEach(row => {
+    const goldenId = row[idIdx];
+    const score = Number(row[scoreIdx]);
+    if (!goldenId || !Number.isFinite(score)) return;
+    if (!grouped[goldenId]) grouped[goldenId] = [];
+    grouped[goldenId].push(score);
+  });
+
+  const byGoldenId = Object.fromEntries(
+    Object.entries(grouped).map(([goldenId, scores]) => [
+      goldenId,
+      Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length),
+    ])
+  );
+
+  return {
+    byGoldenId,
+    atRiskCount: Object.values(byGoldenId).filter(score => score < 70).length,
+  };
+}
+function buildCRMGoldenSearchData() {
+  const { byGoldenId } = getCRMHealthSummary();
+  const scenarioMap = {
+    houston: 'GC0001',
+    riverview: 'GC0002',
+    'oak valley': 'GC0003',
+    'pine hills': 'GC0004',
+  };
+
+  return Object.fromEntries(
+    Object.entries(scenarioMap).map(([key, goldenId]) => {
+      const record = CRM_GOLDEN_RECORDS.find(item => item.id === goldenId);
+      return [key, {
+        id: record.id,
+        name: record.canonical_name,
+        arr: record.total_arr,
+        pipeline: record.open_pipeline,
+        products: record.products_active,
+        variants: record.source_variants.length,
+        enrollment: record.student_enrollment,
+        segment: record.segment,
+        region: record.region,
+        health: byGoldenId[record.id] ?? null,
+        sourceSystems: `${record.suppliers.length} operational systems + NCES reference`,
+      }];
+    })
+  );
+}
+function getCombinedDemoMetrics() {
+  const rawRows = getSKUSampleRowCount() + getCRMSampleRowCount();
+  const goldenCount = getSKUGoldenRecordCount() + getCRMGoldenDistrictCount();
+  return {
+    rawRows,
+    goldenCount,
+    dedupRate: rawRows > 0 ? Math.round((1 - goldenCount / rawRows) * 100) : 0,
+  };
+}
 
 // ── Select dataset and go to upload ──────────────────────
 function selectDataset(ds) {
@@ -1532,22 +1631,22 @@ function selectDataset(ds) {
 // ── Upload page stages ────────────────────────────────────
 const UPLOAD_STAGES = {
   sku: [
-    { msg: 'Parsing column headers…', pct: 14 },
-    { msg: 'Scanning 4 source files…', pct: 28 },
-    { msg: 'Detecting schema variants…', pct: 44 },
-    { msg: 'Running quality profiler…', pct: 60 },
-    { msg: 'Flagging 22 data issues…', pct: 76 },
-    { msg: 'Building quality heatmap…', pct: 90 },
-    { msg: 'Ready — 64 records loaded', pct: 100 },
+    { msg: 'Parsing column headers...', pct: 14 },
+    { msg: 'Scanning 4 source files...', pct: 28 },
+    { msg: 'Detecting schema variants...', pct: 44 },
+    { msg: 'Running quality profiler...', pct: 60 },
+    { msg: 'Flagging 22 data issues...', pct: 76 },
+    { msg: 'Building quality heatmap...', pct: 90 },
+    { msg: `Ready - ${getSKUSampleRowCount()} demo rows loaded`, pct: 100 },
   ],
   crm: [
-    { msg: 'Parsing Salesforce CRM export…', pct: 14 },
-    { msg: 'Parsing NetSuite contract billing…', pct: 28 },
-    { msg: 'Parsing ProductTelemetry usage data…', pct: 44 },
-    { msg: 'Detecting duplicate district account names…', pct: 60 },
-    { msg: 'Running NCES district ID cross-reference…', pct: 76 },
-    { msg: 'Flagging 23 harmonization issues…', pct: 90 },
-    { msg: 'Ready — 35 district records loaded', pct: 100 },
+    { msg: 'Parsing Salesforce CRM export...', pct: 14 },
+    { msg: 'Parsing NetSuite contract billing...', pct: 28 },
+    { msg: 'Parsing ProductTelemetry usage data...', pct: 44 },
+    { msg: 'Detecting duplicate district account names...', pct: 60 },
+    { msg: 'Running district reference (NCES) cross-check...', pct: 76 },
+    { msg: 'Flagging 23 harmonization issues...', pct: 90 },
+    { msg: `Ready - ${getCRMSampleRowCount()} district records loaded`, pct: 100 },
   ],
 };
 let _uploadInterval = null;
@@ -1580,28 +1679,28 @@ function _getTransitionConfig(msgKey) {
   const isCRM = state.activeDataset === 'crm';
   const c = {
     'self-healing': {
-      title: 'Running Entity Resolution Pipeline…', icon: 'zap',
+      title: 'Running Entity Resolution Pipeline...', icon: 'zap',
       msgs: isCRM
-        ? ['Submitting canonical field mapping…','Initializing Jaro-Winkler similarity engine…','Clustering duplicate district account names…','Cross-referencing NCES district IDs…','Generating merge proposals…']
-        : ['Submitting canonical mapping…','Initializing AI Self-Healing Engine…','Detecting normalization conflicts…','Cross-referencing entity matches…','Generating correction proposals…'],
+        ? ['Submitting canonical field mapping...','Initializing Jaro-Winkler similarity engine...','Clustering duplicate district account names...','Cross-checking district reference data (NCES)...','Generating merge proposals...']
+        : ['Submitting canonical mapping...','Initializing AI Self-Healing Engine...','Detecting normalization conflicts...','Cross-referencing entity matches...','Generating correction proposals...'],
     },
     'canonicalization': {
-      title: 'Beginning Canonicalization…', icon: 'layers',
+      title: 'Beginning Canonicalization...', icon: 'layers',
       msgs: isCRM
-        ? ['Parsing Salesforce CRM schema…','Parsing NetSuite billing schema…','Parsing ProductTelemetry schema…','Running AI field alignment across 3 systems…','Canonical schema ready…']
-        : ['Parsing source file schemas…','Detecting column name variants across suppliers…','Running multilingual field alignment…','AI mapping fields to canonical model…','Building confidence scores…'],
+        ? ['Parsing Salesforce CRM schema...','Parsing NetSuite billing schema...','Parsing ProductTelemetry schema...','Running AI field alignment across 3 systems...','Canonical schema ready...']
+        : ['Parsing source file schemas...','Detecting column name variants across suppliers...','Running multilingual field alignment...','AI mapping fields to canonical model...','Building confidence scores...'],
     },
     'search-impact': {
-      title: 'Preparing Revenue Impact Analysis…', icon: 'search',
+      title: 'Preparing Revenue Impact Analysis...', icon: 'search',
       msgs: isCRM
-        ? ['Indexing 8 golden district accounts…','Running pre-harmonization entity queries…','Benchmarking ARR attribution accuracy…','Computing district match improvement…','Impact analysis ready…']
-        : ['Indexing golden records…','Computing search baseline metrics…','Running pre-harmonization query set…','Benchmarking recall improvement…','Analysis ready…'],
+        ? [`Indexing ${getCRMGoldenDistrictCount()} golden district accounts...`,'Running pre-harmonization entity queries...','Benchmarking ARR attribution accuracy...','Computing district match improvement...','Impact analysis ready...']
+        : ['Indexing golden records...','Computing search baseline metrics...','Running pre-harmonization query set...','Benchmarking recall improvement...','Analysis ready...'],
     },
     'golden-records': {
-      title: 'Generating Golden Records…', icon: 'shield',
+      title: 'Generating Golden Records...', icon: 'shield',
       msgs: isCRM
-        ? ['Applying accepted entity merges…','Aggregating ARR per canonical district…','Computing open pipeline totals…','Building source lineage traces…','Generating golden account records…']
-        : ['Applying approved corrections…','Deduplicating matched records…','Normalizing canonical fields…','Building lineage traces…','Generating golden records…'],
+        ? ['Applying accepted entity merges...','Aggregating ARR per canonical district...','Computing open pipeline totals...','Building source lineage traces...','Generating golden account records...']
+        : ['Applying approved corrections...','Deduplicating matched records...','Normalizing canonical fields...','Building lineage traces...','Generating golden records...'],
     },
   };
   return c[msgKey] || c['golden-records'];
@@ -1611,20 +1710,21 @@ function _buildTransitionSteps(msgs, currentStep) {
   const isCRM = state.activeDataset === 'crm';
   const ac = isCRM ? '#10b981' : '#6366f1';
   const acVar = isCRM ? 'var(--emerald)' : 'var(--accent)';
+  const activeBg = isCRM ? 'rgba(5,150,105,0.08)' : 'rgba(79,70,229,0.08)';
   return msgs.map((m, i) => {
     const done = i < currentStep;
     const active = i === currentStep;
     const circle = done
-      ? `background:${ac};color:#000;font-size:0.75rem;font-weight:800;border:none`
+      ? `background:${ac};color:#fff;font-size:0.75rem;font-weight:800;border:none`
       : active
-      ? `border:2px solid ${ac};color:${ac};font-size:0.8125rem;font-weight:700`
-      : `border:2px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.22);font-size:0.8125rem`;
-    return `<div style="display:flex;align-items:center;gap:0.875rem;padding:0.5625rem 0;${i < msgs.length-1 ? 'border-bottom:1px solid rgba(255,255,255,0.045)' : ''}">
+      ? `background:${activeBg};border:2px solid ${ac};color:${ac};font-size:0.8125rem;font-weight:700`
+      : `border:2px solid var(--track-strong);color:var(--text-muted);font-size:0.8125rem`;
+    return `<div style="display:flex;align-items:center;gap:0.875rem;padding:0.5625rem 0;${i < msgs.length-1 ? 'border-bottom:1px solid var(--border-subtle)' : ''}">
       <div style="width:1.875rem;height:1.875rem;border-radius:9999px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all 0.3s;${circle}">
         ${done ? '✓' : i + 1}
       </div>
-      <span style="font-size:0.875rem;font-weight:${active ? 600 : 400};color:${done ? acVar : active ? 'var(--text-primary)' : 'rgba(255,255,255,0.28)'};transition:color 0.3s">
-        ${m}${active ? `<span style="margin-left:0.25rem;letter-spacing:0.12em;color:${acVar};animation:blink 1.1s ease-in-out infinite">···</span>` : ''}
+      <span style="font-size:0.875rem;font-weight:${active ? 600 : 400};color:${done ? acVar : active ? 'var(--text-primary)' : 'var(--text-tertiary)'};transition:color 0.3s">
+        ${m}${active ? `<span style="margin-left:0.25rem;letter-spacing:0.12em;color:${acVar};animation:blink 1.1s ease-in-out infinite">...</span>` : ''}
       </span>
     </div>`;
   }).join('');
@@ -1752,13 +1852,34 @@ function renderLandingPage() {
   const problemHtml  = problemItems.map(p => `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:rgba(239,68,68,0.75)"><span style="flex-shrink:0;color:var(--danger)">${icon(p.ico,'icon-xs')}</span><span style="color:var(--text-secondary)">${p.text}</span></div>`).join('');
   const solutionHtml = solutionItems.map(s => `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;"><span style="flex-shrink:0;color:var(--emerald)">${icon(s.ico,'icon-xs')}</span><span style="color:var(--text-secondary)">${s.text}</span></div>`).join('');
 
+  const combinedDemo = getCombinedDemoMetrics();
+  const crmPrimaryArr = getCRMPrimaryDistrictARR();
+  const skuCardMetrics = [
+    { v: String(getSKUSampleRowCount()), l: 'Sample Rows', c: 'var(--accent)' },
+    { v: String(getSKUGoldenRecordCount()), l: 'Golden Records', c: 'var(--accent)' },
+    { v: String(getSKUIssueTypeCount()), l: 'Issue Types', c: 'var(--amber)' },
+  ];
+  const crmCardMetrics = [
+    { v: String(getCRMSampleRowCount()), l: 'Sample Rows', c: 'var(--emerald)' },
+    { v: String(getCRMPrimaryDistrictVariantCount()), l: 'Houston Variants', c: 'var(--danger)' },
+    { v: crmPrimaryArr, l: 'Hidden ARR', c: 'var(--amber)' },
+  ];
+  const skuCardSources = [
+    { key: 'supplier_feed_us_antibodies.csv', fmt: 'CSV', clr: 'rgba(99,102,241,0.7)' },
+    { key: 'supplier_feed_eu_reagents.csv', fmt: 'CSV', clr: 'rgba(99,102,241,0.7)' },
+    { key: 'acquisition_catalog_nordic.csv', fmt: 'CSV', clr: 'rgba(99,102,241,0.7)' },
+    { key: 'customer_search_logs.csv', fmt: 'CSV', clr: 'rgba(14,165,233,0.72)' },
+    { key: 'pricing_and_inventory_snapshot.csv', fmt: 'CSV', clr: 'rgba(245,158,11,0.76)' },
+    { key: 'supplier_datasheets.json', fmt: 'JSON', clr: 'rgba(8,145,178,0.78)' },
+    { key: 'internal_master_catalog_legacy.xlsx', fmt: 'XLSX', clr: 'rgba(100,116,139,0.82)' },
+  ];
   const metricsHtml = [
-    { val: '99',   unit: '', label: 'Raw Source Records', color: 'var(--text-tertiary)', bg: 'rgba(255,255,255,0.04)' },
+    { val: String(combinedDemo.rawRows), unit: '', label: 'Sample Demo Rows', color: 'var(--text-secondary)', bg: 'rgba(15,23,42,0.05)' },
     { val: '→',    unit: '', label: '',                   color: 'var(--text-tertiary)', bg: 'transparent' },
-    { val: '14',   unit: '', label: 'Golden Records',     color: 'var(--accent)',        bg: 'rgba(99,102,241,0.08)' },
-    { val: '91%',  unit: '', label: 'Dedup Ratio',        color: 'var(--emerald)',       bg: 'rgba(16,185,129,0.08)' },
-    { val: '$463K',unit: '', label: 'ARR Recovered',      color: 'var(--amber)',         bg: 'rgba(245,158,11,0.08)' },
-    { val: '<2min',unit: '', label: 'Time to Golden',     color: 'var(--text-primary)',  bg: 'rgba(255,255,255,0.04)' },
+    { val: String(combinedDemo.goldenCount), unit: '', label: 'Golden Records',     color: 'var(--accent)',        bg: 'rgba(99,102,241,0.08)' },
+    { val: `${combinedDemo.dedupRate}%`,  unit: '', label: 'Merge Reduction',        color: 'var(--emerald)',       bg: 'rgba(16,185,129,0.08)' },
+    { val: crmPrimaryArr, unit: '', label: 'ARR Recovered',      color: 'var(--amber)',         bg: 'rgba(245,158,11,0.08)' },
+    { val: '<2min',unit: '', label: 'Time to Golden',     color: 'var(--text-primary)',  bg: 'rgba(15,23,42,0.05)' },
   ].map(m => m.label
     ? `<div style="flex:1;text-align:center;padding:0.625rem 0.5rem;background:${m.bg};border-radius:var(--radius)"><div style="font-size:1.25rem;font-weight:900;color:${m.color};line-height:1;letter-spacing:-0.03em">${m.val}</div><div style="font-size:0.6rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.2rem">${m.label}</div></div>`
     : `<div style="display:flex;align-items:center;padding:0 0.25rem;color:var(--text-tertiary);font-size:1rem;font-weight:300">${m.val}</div>`
@@ -1767,37 +1888,37 @@ function renderLandingPage() {
   return `<div class="page active" style="max-width:72rem;margin:0 auto">
 
     <!-- Hero -->
-    <div style="text-align:center;padding:3rem 1rem 1.75rem;position:relative">
-      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);border-radius:999px;padding:0.3rem 0.875rem;margin-bottom:1.5rem">
+    <div style="text-align:center;padding:3rem 1rem 1.75rem;position:relative;background:rgba(255,255,255,0.78);border:1px solid var(--border-primary);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);margin-bottom:2rem">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(79,70,229,0.14);border:1px solid rgba(79,70,229,0.3);border-radius:999px;padding:0.3rem 0.875rem;margin-bottom:1.5rem">
         <div style="width:0.5rem;height:0.5rem;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite"></div>
-        <span style="font-size:0.6875rem;font-weight:700;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase">Live Demo · Data Harmonization Tower</span>
+        <span style="font-size:0.6875rem;font-weight:800;color:var(--accent-dark);letter-spacing:0.08em;text-transform:uppercase">Live Demo · Data Harmonization Tower</span>
       </div>
       <h1 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;letter-spacing:-0.04em;line-height:1.1;margin-bottom:0.875rem">
-        <span style="background:linear-gradient(135deg,#f1f5f9 30%,#94a3b8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Your data says Houston ISD<br>is 8 different customers.</span>
+        <span style="color:var(--text-primary)">Your data says Houston ISD<br>is 8 different customers.</span>
       </h1>
-      <p style="color:var(--text-secondary);font-size:1rem;max-width:44rem;margin:0 auto 1.5rem;line-height:1.65">It isn't. Pick a scenario below to watch <strong style="color:var(--text-primary)">Data Harmonization Tower</strong> ingest messy source files, resolve conflicts with AI, and produce a single trusted golden record — in under 2 minutes.</p>
+      <p style="color:var(--text-primary);font-size:1.025rem;max-width:46rem;margin:0 auto 1.5rem;line-height:1.65">It isn't. Pick a scenario below to watch <strong style="color:var(--accent-dark)">Data Harmonization Tower</strong> ingest messy source files, resolve conflicts with AI, and produce a single trusted golden record — in under 2 minutes.</p>
 
       <!-- Key Metrics Strip -->
-      <div style="display:flex;align-items:stretch;gap:0.375rem;max-width:38rem;margin:0 auto 2rem;padding:0.75rem;background:rgba(15,23,42,0.7);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+      <div style="display:flex;align-items:stretch;gap:0.375rem;max-width:38rem;margin:0 auto 2rem;padding:0.75rem;background:#ffffff;border:1px solid var(--border-primary);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)">
         ${metricsHtml}
       </div>
 
       <!-- Pipeline Strip -->
-      <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;max-width:38rem;margin:0 auto;padding:1.25rem 1.5rem;background:rgba(15,23,42,0.6);border:1px solid var(--border-subtle);border-radius:var(--radius-lg)">
+      <div style="display:flex;align-items:flex-start;justify-content:center;gap:0;max-width:38rem;margin:0 auto;padding:1.25rem 1.5rem;background:#ffffff;border:1px solid var(--border-primary);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg)">
         ${pipelineHtml}
       </div>
     </div>
 
     <!-- Problem / Solution Banner -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:2rem;background:var(--border-subtle)">
-      <div style="background:rgba(239,68,68,0.05);padding:1.25rem 1.5rem">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;border:1px solid var(--border-primary);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:2rem;background:#ffffff;box-shadow:var(--shadow-md)">
+      <div style="background:linear-gradient(180deg,rgba(255,255,255,0.98) 0%,rgba(239,68,68,0.06) 100%);padding:1.25rem 1.5rem">
         <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.875rem">
           <div style="width:1.75rem;height:1.75rem;border-radius:50%;background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);display:flex;align-items:center;justify-content:center;color:var(--danger);flex-shrink:0">${icon('alertTriangle','icon-xs')}</div>
           <div style="font-size:0.6875rem;font-weight:800;color:var(--danger);text-transform:uppercase;letter-spacing:0.08em">Without Harmonization</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.5rem">${problemHtml}</div>
       </div>
-      <div style="background:rgba(16,185,129,0.05);padding:1.25rem 1.5rem">
+      <div style="background:linear-gradient(180deg,rgba(255,255,255,0.98) 0%,rgba(16,185,129,0.06) 100%);padding:1.25rem 1.5rem">
         <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.875rem">
           <div style="width:1.75rem;height:1.75rem;border-radius:50%;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;color:var(--emerald);flex-shrink:0">${icon('checkCircle2','icon-xs')}</div>
           <div style="font-size:0.6875rem;font-weight:800;color:var(--emerald);text-transform:uppercase;letter-spacing:0.08em">After Harmonization</div>
@@ -1810,7 +1931,7 @@ function renderLandingPage() {
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-bottom:2rem">
 
       <!-- SKU Card -->
-      <div onclick="selectDataset('sku')" style="cursor:pointer;border:1px solid rgba(99,102,241,0.3);background:linear-gradient(145deg,rgba(99,102,241,0.07) 0%,rgba(15,23,42,0) 60%);border-radius:var(--radius-lg);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px rgba(99,102,241,0.22)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+      <div onclick="selectDataset('sku')" style="cursor:pointer;border:1px solid rgba(79,70,229,0.22);background:linear-gradient(145deg,rgba(79,70,229,0.08) 0%,rgba(255,255,255,0.98) 72%);border-radius:var(--radius-lg);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;box-shadow:var(--shadow-md)" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px rgba(79,70,229,0.14)'" onmouseleave="this.style.transform='';this.style.boxShadow='var(--shadow-md)'">
         <div style="padding:0.4rem 1rem;background:rgba(99,102,241,0.1);border-bottom:1px solid rgba(99,102,241,0.18);display:flex;align-items:center;gap:0.5rem">
           <span style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:0.1em">${icon('layers','icon-xs')} Scenario 1 · Life Sciences</span>
           <span class="badge badge-accent" style="font-size:0.5rem;margin-left:auto">CATALOG</span>
@@ -1820,20 +1941,15 @@ function renderLandingPage() {
             <div style="width:3.25rem;height:3.25rem;border-radius:0.875rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)">${icon('database','icon-xl')}</div>
             <div>
               <h2 style="font-size:1.1875rem;font-weight:800;color:var(--text-primary);margin-bottom:0.2rem">SKU / Product Catalog</h2>
-              <p style="color:var(--text-tertiary);font-size:0.8125rem">4 supplier feeds → 1 golden catalog</p>
+              <p style="color:var(--text-tertiary);font-size:0.8125rem">7 demo inputs → 1 golden catalog</p>
             </div>
           </div>
-          <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.65;margin-bottom:1.25rem">Four supplier feeds across US, EU, and Nordic regions collide on the same antibodies and reagents — but with different SKU codes, spellings, and units. Watch the Tower deduplicate and unify them.</p>
+          <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.65;margin-bottom:1.25rem">Supplier feeds across US, EU, and Nordic regions collide on the same antibodies and reagents, then search logs, pricing snapshots, datasheets, and a legacy catalog add even more contradictions. Watch the Tower deduplicate and unify them.</p>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.625rem;padding:0.875rem 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);margin-bottom:1.25rem">
-            ${[{v:'64',l:'Source Records',c:'var(--accent)',i:'fileText'},{v:'6',l:'Golden Records',c:'var(--accent)',i:'fileCheck'},{v:'5',l:'Issue Types',c:'var(--amber)',i:'alertTriangle'}].map(s => `<div style="text-align:center"><div style="display:flex;align-items:center;justify-content:center;gap:0.25rem;margin-bottom:0.15rem"><span style="font-size:1.375rem;font-weight:900;color:${s.c};line-height:1">${s.v}</span></div><div style="font-size:0.6rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">${s.l}</div></div>`).join('')}
+            ${skuCardMetrics.map(s => `<div style="text-align:center"><div style="display:flex;align-items:center;justify-content:center;gap:0.25rem;margin-bottom:0.15rem"><span style="font-size:1.375rem;font-weight:900;color:${s.c};line-height:1">${s.v}</span></div><div style="font-size:0.6rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em">${s.l}</div></div>`).join('')}
           </div>
           <div style="display:flex;flex-direction:column;gap:0.35rem">
-            ${[
-              {src:'US Antibodies Feed',fmt:'CSV',clr:'rgba(99,102,241,0.7)'},
-              {src:'EU Reagents Feed',fmt:'CSV',clr:'rgba(99,102,241,0.7)'},
-              {src:'Nordic Acquisition Catalog',fmt:'CSV',clr:'rgba(99,102,241,0.7)'},
-              {src:'Contract Billing',fmt:'NetSuite',clr:'rgba(245,158,11,0.7)'},
-            ].map(s => `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--text-tertiary)"><span style="color:${s.clr};flex-shrink:0">${icon('fileText','icon-xs')}</span>${s.src}<span style="margin-left:auto;font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.06);padding:0.1rem 0.4rem;border-radius:4px">${s.fmt}</span></div>`).join('')}
+            ${skuCardSources.map(s => `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--text-tertiary)"><span style="color:${s.clr};flex-shrink:0">${icon('fileText','icon-xs')}</span>${displayFileName(s.key)}<span style="margin-left:auto;font-size:0.6rem;font-weight:700;color:var(--text-secondary);background:var(--surface-muted);border:1px solid var(--border-subtle);padding:0.1rem 0.4rem;border-radius:4px">${s.fmt}</span></div>`).join('')}
           </div>
         </div>
         <div style="padding:0.875rem 1.75rem;background:rgba(99,102,241,0.07);border-top:1px solid rgba(99,102,241,0.15);display:flex;align-items:center;justify-content:space-between">
@@ -1843,7 +1959,7 @@ function renderLandingPage() {
       </div>
 
       <!-- CRM Card -->
-      <div onclick="selectDataset('crm')" style="cursor:pointer;border:1px solid rgba(16,185,129,0.3);background:linear-gradient(145deg,rgba(16,185,129,0.07) 0%,rgba(15,23,42,0) 60%);border-radius:var(--radius-lg);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px rgba(16,185,129,0.22)'" onmouseleave="this.style.transform='';this.style.boxShadow=''">
+      <div onclick="selectDataset('crm')" style="cursor:pointer;border:1px solid rgba(5,150,105,0.22);background:linear-gradient(145deg,rgba(5,150,105,0.08) 0%,rgba(255,255,255,0.98) 72%);border-radius:var(--radius-lg);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;box-shadow:var(--shadow-md)" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px rgba(5,150,105,0.14)'" onmouseleave="this.style.transform='';this.style.boxShadow='var(--shadow-md)'">
         <div style="padding:0.4rem 1rem;background:rgba(16,185,129,0.1);border-bottom:1px solid rgba(16,185,129,0.18);display:flex;align-items:center;gap:0.5rem">
           <span style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6rem;font-weight:800;color:var(--emerald);text-transform:uppercase;letter-spacing:0.1em">${icon('gitMerge','icon-xs')} Scenario 2 · Education CRM</span>
           <span class="badge badge-emerald" style="font-size:0.5rem;margin-left:auto">CRM</span>
@@ -1853,19 +1969,20 @@ function renderLandingPage() {
             <div style="width:3.25rem;height:3.25rem;border-radius:0.875rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--emerald)">${icon('gitMerge','icon-xl')}</div>
             <div>
               <h2 style="font-size:1.1875rem;font-weight:800;color:var(--text-primary);margin-bottom:0.2rem">Imagine Learning / CRM</h2>
-              <p style="color:var(--text-tertiary);font-size:0.8125rem">8 duplicates → 1 golden district record</p>
+              <p style="color:var(--text-tertiary);font-size:0.8125rem">3 operational systems + district reference</p>
             </div>
           </div>
-          <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.65;margin-bottom:1.25rem">Six reps entered <strong style="color:var(--text-primary)">Houston ISD</strong> eight different ways across Salesforce, NetSuite, and product telemetry. Result: <strong style="color:var(--amber)">$463K in ARR</strong> scattered across phantom accounts that no one could find.</p>
+          <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.65;margin-bottom:1.25rem">Six reps entered <strong style="color:var(--text-primary)">Houston ISD</strong> eight different ways across Salesforce, NetSuite, and product telemetry. Reference enrichment then validates the merged district so legal names and enrollment stay consistent. Result: <strong style="color:var(--amber)">${crmPrimaryArr} in ARR</strong> scattered across phantom accounts that no one could find.</p>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.625rem;padding:0.875rem 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);margin-bottom:1.25rem">
-            ${[{v:'35',l:'Source Records',c:'var(--emerald)'},{v:'8',l:'District Dupes',c:'var(--danger)'},{v:'$463K',l:'Unified ARR',c:'var(--amber)'}].map(s => `<div style="text-align:center"><div style="font-size:1.375rem;font-weight:900;color:${s.c};line-height:1">${s.v}</div><div style="font-size:0.6rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.2rem">${s.l}</div></div>`).join('')}
+            ${crmCardMetrics.map(s => `<div style="text-align:center"><div style="font-size:1.375rem;font-weight:900;color:${s.c};line-height:1">${s.v}</div><div style="font-size:0.6rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.2rem">${s.l}</div></div>`).join('')}
           </div>
           <div style="display:flex;flex-direction:column;gap:0.35rem">
             ${[
               {src:'Salesforce CRM Export',fmt:'CSV',clr:'rgba(16,185,129,0.7)'},
               {src:'Contract Billing — NetSuite',fmt:'CSV',clr:'rgba(16,185,129,0.7)'},
               {src:'ProductTelemetry Usage',fmt:'CSV',clr:'rgba(16,185,129,0.7)'},
-            ].map(s => `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--text-tertiary)"><span style="color:${s.clr};flex-shrink:0">${icon('fileText','icon-xs')}</span>${s.src}<span style="margin-left:auto;font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.06);padding:0.1rem 0.4rem;border-radius:4px">${s.fmt}</span></div>`).join('')}
+              {src:'NCES District Reference',fmt:'REF',clr:'rgba(8,145,178,0.8)'},
+            ].map(s => `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--text-tertiary)"><span style="color:${s.clr};flex-shrink:0">${icon('fileText','icon-xs')}</span>${s.src}<span style="margin-left:auto;font-size:0.6rem;font-weight:700;color:var(--text-secondary);background:var(--surface-muted);border:1px solid var(--border-subtle);padding:0.1rem 0.4rem;border-radius:4px">${s.fmt}</span></div>`).join('')}
           </div>
         </div>
         <div style="padding:0.875rem 1.75rem;background:rgba(16,185,129,0.07);border-top:1px solid rgba(16,185,129,0.15);display:flex;align-items:center;justify-content:space-between">
@@ -1921,7 +2038,7 @@ function renderUploadPage() {
         </div>
         <div style="flex:1">
           <div style="font-size:0.875rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem">${isDone ? 'Data loaded successfully' : 'Processing data…'}</div>
-          <div style="background:rgba(255,255,255,0.06);border-radius:9999px;height:6px;overflow:hidden">
+          <div style="background:var(--track);border-radius:9999px;height:6px;overflow:hidden">
             <div style="height:100%;background:linear-gradient(90deg,${accentColor},${isCRM?'#34d399':'#818cf8'});border-radius:9999px;transition:width 0.5s ease;width:${state.uploadProgress}%"></div>
           </div>
         </div>
@@ -1934,15 +2051,15 @@ function renderUploadPage() {
           const ac = isCRM ? '#10b981' : '#6366f1';
           const acVar = isCRM ? 'var(--emerald)' : 'var(--accent)';
           const circle = done
-            ? `background:${ac};color:#000;font-size:0.6875rem;font-weight:800`
+            ? `background:${ac};color:#fff;font-size:0.6875rem;font-weight:800`
             : active
             ? `border:2px solid ${ac};color:${ac};font-size:0.75rem;font-weight:700`
-            : `border:2px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.25);font-size:0.75rem`;
-          return `<div style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;${i<stages.length-1?'border-bottom:1px solid rgba(255,255,255,0.04)':''}">
+            : `border:2px solid var(--track-strong);color:var(--text-muted);font-size:0.75rem`;
+          return `<div style="display:flex;align-items:center;gap:0.75rem;padding:0.5rem 0;${i<stages.length-1?'border-bottom:1px solid var(--border-subtle)':''}">
             <div style="width:1.625rem;height:1.625rem;border-radius:9999px;flex-shrink:0;display:flex;align-items:center;justify-content:center;${circle}">
               ${done ? '✓' : i+1}
             </div>
-            <span style="font-size:0.8125rem;font-weight:${active?600:400};color:${done?acVar:active?'var(--text-primary)':'rgba(255,255,255,0.3)'}">
+            <span style="font-size:0.8125rem;font-weight:${active?600:400};color:${done?acVar:active?'var(--text-primary)':'var(--text-tertiary)'}">
               ${s.msg}${active?`<span style="margin-left:0.25rem;letter-spacing:0.1em;color:${acVar};animation:blink 1.1s ease-in-out infinite">···</span>`:''}
             </span>
           </div>`;
@@ -1972,9 +2089,9 @@ function renderTransitionScreen() {
   const ic = iconMap[cfg.icon] || 'database';
 
   return `<div style="min-height:80vh;display:flex;align-items:center;justify-content:center;padding:2rem">
-    <div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:2.25rem 2.5rem 2rem;width:100%;max-width:490px;animation:fadeInUp 0.35s ease-out;box-shadow:0 40px 80px rgba(0,0,0,0.5)">
+    <div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:2.25rem 2.5rem 2rem;width:100%;max-width:490px;animation:fadeInUp 0.35s ease-out;box-shadow:0 32px 72px rgba(15,23,42,0.16)">
       <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.875rem">
-        <div style="width:3rem;height:3rem;border-radius:0.75rem;background:linear-gradient(135deg,${acVar},${acGrad});display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 20px rgba(0,0,0,0.3)">
+        <div style="width:3rem;height:3rem;border-radius:0.75rem;background:linear-gradient(135deg,${acVar},${acGrad});display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 14px 32px rgba(15,23,42,0.12)">
           ${icon(ic)}
         </div>
         <div>
@@ -1987,7 +2104,7 @@ function renderTransitionScreen() {
           <span style="color:var(--text-tertiary)">Pipeline progress</span>
           <span id="ts-pct" style="color:${acVar};font-weight:700">${pct}%</span>
         </div>
-        <div style="height:6px;background:rgba(255,255,255,0.06);border-radius:9999px;overflow:hidden">
+        <div style="height:6px;background:var(--track);border-radius:9999px;overflow:hidden">
           <div id="ts-bar" style="height:100%;background:linear-gradient(90deg,${acVar},${acGrad});border-radius:9999px;width:${pct}%;transition:width 0.42s ease"></div>
         </div>
       </div>
@@ -2082,7 +2199,7 @@ renderMappingPage = function() {
               <div class="canonical-item" style="cursor:pointer" onclick="toggleMappingField('${f.name}')">
                 <div>
                   <div class="item-name" style="display:flex;align-items:center;gap:0.375rem">
-                    <span style="color:var(--text-accent);font-size:0.75rem">${isExp ? '▼' : '▶'}</span>
+                    <span style="color:var(--text-accent);font-size:0.75rem">${isExp ? '&#9660;' : '&#9656;'}</span>
                     ${f.name}
                     ${f.required ? '<span class="badge badge-red" style="margin-left:0.25rem;font-size:0.5rem">REQ</span>' : ''}
                   </div>
@@ -2266,7 +2383,7 @@ function renderGoldenTable() {
         <td><span class="badge badge-surface">${r.industry||'-'}</span></td>
         <td><span style="font-size:0.75rem;color:var(--text-secondary)">${r.application||'-'}</span></td>
         <td><strong style="color:var(--emerald)">$${(r.total_arr/1000).toFixed(0)}K</strong>
-          <div style="margin-top:0.25rem;height:4px;background:rgba(255,255,255,0.06);border-radius:9999px;width:80px"><div style="height:100%;background:var(--emerald);border-radius:9999px;width:${Math.round((r.total_arr/220000)*100)}%"></div></div>
+          <div style="margin-top:0.25rem;height:4px;background:var(--track);border-radius:9999px;width:80px"><div style="height:100%;background:var(--emerald);border-radius:9999px;width:${Math.round((r.total_arr/220000)*100)}%"></div></div>
         </td>
         <td><span style="color:var(--amber)">$${(r.open_pipeline/1000).toFixed(0)}K</span></td>
         <td><span class="badge badge-accent">${r.suppliers.length} src</span></td>
@@ -2337,7 +2454,7 @@ renderGoldenPage = function() {
       <div style="display:flex;flex-direction:column;gap:0.625rem">
         ${records.map(r => `<div style="display:flex;align-items:center;gap:0.875rem">
           <div style="width:148px;font-size:0.75rem;color:var(--text-secondary);text-align:right;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${r.canonical_name}">${r.canonical_name}</div>
-          <div style="flex:1;height:16px;background:rgba(255,255,255,0.04);border-radius:3px;overflow:hidden;position:relative">
+          <div style="flex:1;height:16px;background:var(--surface-muted);border-radius:3px;overflow:hidden;position:relative">
             <div style="height:100%;background:linear-gradient(90deg,var(--emerald),#34d399);border-radius:3px;width:${Math.min(Math.round((r.total_arr/200000)*100),100)}%;transition:width 0.9s ease-out"></div>
           </div>
           <div style="width:52px;font-size:0.75rem;font-weight:700;color:var(--emerald);text-align:right">$${(r.total_arr/1000).toFixed(0)}K</div>
@@ -2412,7 +2529,7 @@ renderNav = function() {
   ).join('');
 
   const datasetBadge = !isLandingOrUpload ? `<span class="badge ${isCRM?'badge-emerald':'badge-accent'}" style="cursor:pointer;margin-left:0.5rem;font-size:0.5625rem" onclick="navigateTo('landing')">${isCRM?'CRM':'SKU'} Dataset ✕</span>` : '';
-  const demoBtn = !isLandingOrUpload ? `<button class="btn btn-demo" style="margin-left:auto" onclick="startDemo()">${demoRunning?icon('crosshair')+' Stop':icon('activity')+' ▶ Run Demo'}</button>` : '';
+  const demoBtn = !isLandingOrUpload ? `<button class="btn btn-demo" style="margin-left:auto" onclick="startDemo()">${demoRunning?icon('crosshair')+' Stop':icon('activity')+' &#9656; Run Demo'}</button>` : '';
 
   document.getElementById('header-nav').innerHTML = navHtml + datasetBadge + demoBtn;
   const brand = document.querySelector('.header-brand');
@@ -2625,7 +2742,7 @@ function renderCRMFileDetail(file, key) {
               const hasMed = colIssues.some(i => i.severity==='medium');
               const dot = hasHigh ? '#ef4444' : hasMed ? '#f59e0b' : '#10b981';
               const label = hasHigh ? 'Critical' : hasMed ? 'Warning' : 'Clean';
-              return `<div style="display:flex;align-items:center;justify-content:space-between;padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              return `<div style="display:flex;align-items:center;justify-content:space-between;padding:0.25rem 0;border-bottom:1px solid var(--border-subtle)">
                 <span style="font-size:0.6875rem;font-family:var(--font-mono);color:var(--text-secondary)">${h}</span>
                 <span style="font-size:0.5625rem;color:${dot};display:flex;align-items:center;gap:0.25rem"><span style="width:6px;height:6px;border-radius:9999px;background:${dot};display:inline-block"></span>${label}</span>
               </div>`;
@@ -2647,6 +2764,10 @@ const _FILE_DISPLAY_NAMES = {
   'supplier_feed_us_antibodies.csv':  'US Antibodies Feed',
   'supplier_feed_eu_reagents.csv':    'EU Reagents Feed',
   'acquisition_catalog_nordic.csv':   'Nordic Acquisition Catalog',
+  'customer_search_logs.csv':         'Customer Search Logs',
+  'pricing_and_inventory_snapshot.csv': 'Pricing & Inventory Snapshot',
+  'supplier_datasheets.json':         'Supplier Datasheets',
+  'internal_master_catalog_legacy.xlsx': 'Legacy Master Catalog',
 };
 function displayFileName(key) {
   return _FILE_DISPLAY_NAMES[key] || key.replace(/\.(csv|json|xlsx|xls)$/i, '').replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
@@ -2915,7 +3036,7 @@ function renderRulesEngine() {
             </div>
             <div style="display:flex;gap:0.375rem;flex-shrink:0">
               ${activeTab==='ai' ? `<button class="btn btn-emerald-outline" style="padding:0.25rem 0.625rem;font-size:0.6875rem" onclick="approveAIRule('${rule.id}')">✓ Approve</button>` : ''}
-              ${activeTab==='pending' ? `<button class="btn btn-emerald-outline" style="padding:0.25rem 0.625rem;font-size:0.6875rem" onclick="applyPendingRule('${rule.id}')">▶ Apply</button>` : ''}
+              ${activeTab==='pending' ? `<button class="btn btn-emerald-outline" style="padding:0.25rem 0.625rem;font-size:0.6875rem" onclick="applyPendingRule('${rule.id}')">&#9656; Apply</button>` : ''}
               ${activeTab==='user' ? `<span class="badge badge-emerald" style="font-size:0.5625rem;align-self:center">Active</span>` : ''}
             </div>
           </div>`).join('')}
@@ -2974,74 +3095,75 @@ document.addEventListener('keydown', event => {
 //  CRM SOURCE NETWORK GRAPH
 // ════════════════════════════════════════════════════════════
 function renderCRMSourceNetwork() {
+  const towerY = 124;
+  const salesforceFile = CRM_FILES['salesforce_crm.csv'];
+  const usageFile = CRM_FILES['product_usage.csv'];
+  const billingFile = CRM_FILES['contract_billing.csv'];
+  const totalRows = Object.values(CRM_FILES).reduce((sum, file) => sum + file.rows, 0);
+  const goldenCount = getCRMGoldenDistrictCount();
   const nodes = [
-    { name:'Salesforce CRM',         sub:'420 account records',  y:28,  color:'#6366f1', status:'connected', issues:12 },
-    { name:'ProductTelemetry',       sub:'342 usage records',    y:100, color:'#8b5cf6', status:'connected', issues:8  },
-    { name:'Contract Billing',       sub:'234 billing records',  y:172, color:'#a78bfa', status:'warning',   issues:7  },
+    { name:'Salesforce CRM', sub:`${salesforceFile.data.length} sampled | ${salesforceFile.rows} total`, y:18, fill:'rgba(79,70,229,0.08)', stroke:'rgba(79,70,229,0.24)', path:'rgba(79,70,229,0.38)', statusColor:'#059669', statusLabel:'Live', meta:`${(salesforceFile.issues || []).length} issues` },
+    { name:'ProductTelemetry', sub:`${usageFile.data.length} sampled | ${usageFile.rows} total`, y:80, fill:'rgba(124,58,237,0.08)', stroke:'rgba(124,58,237,0.22)', path:'rgba(124,58,237,0.34)', statusColor:'#059669', statusLabel:'Live', meta:`${(usageFile.issues || []).length} issues` },
+    { name:'Contract Billing', sub:`${billingFile.data.length} sampled | ${billingFile.rows} total`, y:142, fill:'rgba(217,119,6,0.08)', stroke:'rgba(217,119,6,0.24)', path:'rgba(217,119,6,0.38)', statusColor:'#d97706', statusLabel:'Warning', meta:`${(billingFile.issues || []).length} issues` },
+    { name:'NCES District Ref', sub:'district directory', y:204, fill:'rgba(8,145,178,0.08)', stroke:'rgba(8,145,178,0.22)', path:'rgba(8,145,178,0.34)', statusColor:'#0891b2', statusLabel:'Reference', meta:'enrichment only' },
   ];
-  const paths = nodes.map((n,i) => {
-    const cy = n.y + 22;
-    const mid = 370;
-    return `<path d="M 193 ${cy} C 270 ${cy} 290 100 ${mid-42} 100"
-      stroke="${n.status==='warning'?'rgba(245,158,11,0.55)':'rgba(99,102,241,0.5)'}"
-      stroke-width="1.5" fill="none" stroke-dasharray="6 3"
-      style="animation:dashFlow 2.2s linear infinite ${(i*0.55).toFixed(1)}s"/>`;
+
+  const paths = nodes.map((n, i) => {
+    const cy = n.y + 23;
+    return `<path d="M 193 ${cy} C 270 ${cy} 290 ${towerY} 328 ${towerY}"
+      stroke="${n.path}" stroke-width="1.6" fill="none" stroke-dasharray="6 3"
+      style="animation:dashFlow 2.2s linear infinite ${(i * 0.45).toFixed(1)}s"/>`;
   }).join('');
 
-  const srcNodes = nodes.map((n,i) => `
+  const srcNodes = nodes.map((n, i) => `
     <rect x="4" y="${n.y}" width="186" height="46" rx="7"
-      fill="rgba(99,102,241,0.07)" stroke="${n.status==='warning'?'rgba(245,158,11,0.35)':'rgba(99,102,241,0.28)'}"
-      style="animation:fadeInUp 0.4s ${(i*0.12).toFixed(2)}s both"/>
-    <circle cx="20" cy="${n.y+23}" r="5" fill="${n.status==='warning'?'#f59e0b':'#10b981'}"/>
-    <text x="32" y="${n.y+17}" fill="#f9fafb" font-size="11.5" font-weight="600" font-family="Inter,system-ui,sans-serif">${n.name}</text>
-    <text x="32" y="${n.y+31}" fill="rgba(255,255,255,0.42)" font-size="9.5" font-family="Inter,system-ui,sans-serif">${n.sub}</text>
-    <text x="182" y="${n.y+17}" fill="${n.status==='warning'?'#f59e0b':'#10b981'}" font-size="9" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.status==='warning'?'⚠ Warning':'● Live'}</text>
-    <text x="182" y="${n.y+31}" fill="rgba(255,255,255,0.32)" font-size="8.5" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.issues} issues</text>`).join('');
+      fill="${n.fill}" stroke="${n.stroke}"
+      style="animation:fadeInUp 0.4s ${(i * 0.12).toFixed(2)}s both"/>
+    <circle cx="20" cy="${n.y + 23}" r="5" fill="${n.statusColor}"/>
+    <text x="32" y="${n.y + 17}" fill="#0f172a" font-size="11.5" font-weight="600" font-family="Inter,system-ui,sans-serif">${n.name}</text>
+    <text x="32" y="${n.y + 31}" fill="#64748b" font-size="9.5" font-family="Inter,system-ui,sans-serif">${n.sub}</text>
+    <text x="182" y="${n.y + 17}" fill="${n.statusColor}" font-size="9" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.statusLabel}</text>
+    <text x="182" y="${n.y + 31}" fill="#64748b" font-size="8.5" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.meta}</text>`).join('');
 
-  return `<div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;overflow:hidden">
+  return `<div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;overflow:hidden;box-shadow:var(--shadow-md)">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
       <div>
         <div style="font-size:0.9375rem;font-weight:700;color:var(--text-primary)">Source Network</div>
-        <div style="font-size:0.8125rem;color:var(--text-tertiary);margin-top:0.125rem">3 systems connected · 996 raw records ingested · Last synced <strong style="color:var(--text-secondary)">4 min ago</strong></div>
+        <div style="font-size:0.8125rem;color:var(--text-tertiary);margin-top:0.125rem">3 operational systems + district reference | ${totalRows} raw records ingested | Last synced <strong style="color:var(--text-secondary)">4 min ago</strong></div>
       </div>
-      <span class="badge badge-emerald" style="animation:pulse-ring 2s ease-in-out infinite">● Live</span>
+      <span class="badge badge-emerald" style="animation:pulse-ring 2s ease-in-out infinite">Reference-aware</span>
     </div>
-    <svg viewBox="0 0 720 210" style="width:100%;max-height:210px" preserveAspectRatio="xMidYMid meet">
+    <svg viewBox="0 0 720 286" style="width:100%;max-height:286px" preserveAspectRatio="xMidYMid meet">
       <defs>
         <linearGradient id="outGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#10b981" stop-opacity="0.7"/>
+          <stop offset="0%" stop-color="#059669" stop-opacity="0.72"/>
           <stop offset="100%" stop-color="#34d399" stop-opacity="0.9"/>
         </linearGradient>
+        <marker id="arrowOut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0,8 3,0 6" fill="#059669" opacity="0.8"/>
+        </marker>
       </defs>
 
       ${paths}
 
-      <!-- Output arrow -->
-      <path d="M 412 100 L 525 100"
+      <path d="M 412 ${towerY} L 525 ${towerY}"
         stroke="url(#outGrad)" stroke-width="2" fill="none"
         marker-end="url(#arrowOut)" style="animation:fadeInUp 0.6s 0.5s both"/>
-      <defs>
-        <marker id="arrowOut" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-          <polygon points="0 0,8 3,0 6" fill="#10b981" opacity="0.8"/>
-        </marker>
-      </defs>
 
       ${srcNodes}
 
-      <!-- Central tower -->
-      <circle cx="370" cy="100" r="42" fill="rgba(16,185,129,0.07)" stroke="rgba(16,185,129,0.35)" stroke-width="1.5"/>
-      <circle cx="370" cy="100" r="30" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.45)" stroke-width="1"/>
-      <circle cx="370" cy="100" r="46" fill="none" stroke="rgba(16,185,129,0.18)" stroke-width="1" style="animation:pulse-ring 2.5s ease-in-out infinite"/>
-      <text x="370" y="95"  fill="#10b981" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">DATA</text>
-      <text x="370" y="108" fill="#10b981" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">TOWER</text>
+      <circle cx="370" cy="${towerY}" r="42" fill="rgba(5,150,105,0.08)" stroke="rgba(5,150,105,0.3)" stroke-width="1.5"/>
+      <circle cx="370" cy="${towerY}" r="30" fill="rgba(5,150,105,0.12)" stroke="rgba(5,150,105,0.42)" stroke-width="1"/>
+      <circle cx="370" cy="${towerY}" r="46" fill="none" stroke="rgba(5,150,105,0.16)" stroke-width="1" style="animation:pulse-ring 2.5s ease-in-out infinite"/>
+      <text x="370" y="119" fill="#059669" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">DATA</text>
+      <text x="370" y="132" fill="#059669" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">TOWER</text>
 
-      <!-- Output node -->
-      <rect x="528" y="70" width="186" height="62" rx="9"
-        fill="rgba(16,185,129,0.09)" stroke="rgba(16,185,129,0.4)" stroke-width="1.5"
+      <rect x="528" y="86" width="186" height="78" rx="9"
+        fill="rgba(5,150,105,0.08)" stroke="rgba(5,150,105,0.32)" stroke-width="1.5"
         style="animation:fadeInUp 0.5s 0.4s both"/>
-      <text x="621" y="96"  fill="#10b981" font-size="13" font-weight="800" font-family="Inter,system-ui,sans-serif" text-anchor="middle">8 Golden</text>
-      <text x="621" y="113" fill="#10b981" font-size="13" font-weight="800" font-family="Inter,system-ui,sans-serif" text-anchor="middle">Districts</text>
-      <text x="621" y="126" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="Inter,system-ui,sans-serif" text-anchor="middle">$1.2M ARR attributed</text>
+      <text x="621" y="112" fill="#0f172a" font-size="13" font-weight="800" font-family="Inter,system-ui,sans-serif" text-anchor="middle">${goldenCount} Golden</text>
+      <text x="621" y="128" fill="#059669" font-size="13" font-weight="800" font-family="Inter,system-ui,sans-serif" text-anchor="middle">${goldenCount === 1 ? 'District' : 'Districts'}</text>
+      <text x="621" y="145" fill="#64748b" font-size="9.5" font-family="Inter,system-ui,sans-serif" text-anchor="middle">ARR attributed + reference enrichment</text>
     </svg>
   </div>`;
 }
@@ -3054,7 +3176,7 @@ renderRawPage = function() {
   // inject after renderStorylineCard output (after first </div> following stats-grid section start)
   return html.replace(
     '<div class="stats-grid">',
-    renderCRMSourceNetwork() + '<div class="stats-grid">'
+    renderCRMSourceNetwork() + '<div style="background:rgba(8,145,178,0.08);border:1px solid rgba(8,145,178,0.18);border-radius:var(--radius);padding:0.875rem 1rem;margin:-0.25rem 0 1.5rem;color:var(--text-secondary);font-size:0.8125rem;line-height:1.6">Operational source files are listed below. NCES appears above as reference enrichment after entity matching, not as a raw transactional feed.</div><div class="stats-grid">'
   );
 };
 
@@ -3092,6 +3214,43 @@ const CRM_GOLDEN_SEARCH_DATA = {
   'oak valley': { id:'GC0003', name:'Oak Valley School District', arr:189000, pipeline:28000, products:['Imagine Language & Literacy'], variants:3, enrollment:14000, segment:'SMB', region:'West', renewal:'Mar 2027', health:71 },
 };
 
+Object.keys(CRM_RAW_SEARCH_DATA).forEach(key => { delete CRM_RAW_SEARCH_DATA[key]; });
+Object.assign(CRM_RAW_SEARCH_DATA, {
+  houston: [
+    { name:'Houston Independent School District', source:'Salesforce CRM',   id:'CRM-10001',              arr:null,   issue:'Visible as a standalone $60K account instead of the full district.', severity:'high'   },
+    { name:'Houston ISD - Supplemental',         source:'Salesforce CRM',   id:'CRM-10002',              arr:null,   issue:'Duplicate district variant with separate ARR and pipeline.',         severity:'high'   },
+    { name:'Houston School District',            source:'Salesforce CRM',   id:'CRM-10003',              arr:null,   issue:'Suffix variant splits the same district across CRM reports.',          severity:'high'   },
+    { name:'Houston Literacy Pilot',             source:'ProductTelemetry', id:'PU-20001,PU-20003',      arr:null,   issue:'Program org is not linked back to the parent district account.',      severity:'high'   },
+    { name:'HOUSTON MATH PROGRAM',               source:'ProductTelemetry', id:'PU-20004',               arr:null,   issue:'All-caps export artifact hides the district match.',                  severity:'high'   },
+    { name:'Houston Math Program',               source:'ProductTelemetry', id:'PU-20006',               arr:null,   issue:'Program org appears separate from Houston ISD in usage data.',       severity:'medium' },
+    { name:'Houston Public Schools',             source:'Contract Billing', id:'BILL-30001,BILL-30002', arr:'$128K',issue:'Billing name variant is not tied back to the CRM district.',    severity:'medium' },
+    { name:'Houston Federal Programs',           source:'Contract Billing', id:'BILL-30003,BILL-30004', arr:'$219K',issue:'Federal Programs billing obscures the parent district total.', severity:'high'   },
+  ],
+  riverview: [
+    { name:'Riverview ISD',              source:'Salesforce CRM',   id:'CRM-10009,CRM-10010', arr:null,   issue:'District ARR is split across multiple CRM rows.',              severity:'high'   },
+    { name:'Riverview Public Schools',   source:'Salesforce CRM',   id:'CRM-10011',           arr:null,   issue:'Public Schools suffix creates a duplicate district account.',  severity:'medium' },
+    { name:'Riverview Credit Recovery',  source:'ProductTelemetry', id:'PU-20011',            arr:null,   issue:'Program unit looks like a separate customer in usage data.',   severity:'high'   },
+    { name:'RIVERVIEW CREDIT RECOVERY',  source:'ProductTelemetry', id:'PU-20013',            arr:null,   issue:'All-caps export artifact prevents reliable matching.',         severity:'high'   },
+    { name:'Riverview Federal Programs', source:'Contract Billing', id:'BILL-30008',          arr:'$125K',issue:'Billing name variant is disconnected from the CRM district.', severity:'high' },
+  ],
+  'oak valley': [
+    { name:'Oak Valley Independent School District', source:'Salesforce CRM',   id:'CRM-10015',  arr:null,   issue:'Long legal suffix does not reconcile cleanly with billing.',   severity:'medium' },
+    { name:'Oak Valley School District',             source:'Salesforce CRM',   id:'CRM-10016',  arr:null,   issue:'Second CRM variant fragments the same district.',             severity:'medium' },
+    { name:'Oak Valley Public Schools',              source:'Contract Billing', id:'BILL-30010', arr:'$180K',issue:'Public Schools billing name is not linked to CRM.',            severity:'high'   },
+    { name:'Oak Valley Federal Programs',            source:'Contract Billing', id:'BILL-30011', arr:'$255K',issue:'Federal Programs billing hides district-level revenue.',       severity:'high'   },
+    { name:'Oak Valley Math Program',                source:'ProductTelemetry', id:'PU-20019',   arr:null,   issue:'Program org is separated from the district in telemetry.',     severity:'medium' },
+    { name:'Oak Valley Credit Recovery',             source:'ProductTelemetry', id:'PU-20020',   arr:null,   issue:'Program org appears as a separate account in usage data.',    severity:'medium' },
+  ],
+  'pine hills': [
+    { name:'Pine Hills ISD',                          source:'Salesforce CRM',   id:'CRM-10022',   arr:null,   issue:'Only one CRM row shows $86K, but the district footprint is wider.', severity:'high'   },
+    { name:'Pine Hills Independent School District Finance', source:'Contract Billing', id:'BILL-30012', arr:'$180K',issue:'Verbose finance name does not align to the CRM district.', severity:'high' },
+    { name:'Pine Hills Literacy Pilot',              source:'ProductTelemetry', id:'PU-20027',    arr:null,   issue:'Pilot org is disconnected from the parent district account.',      severity:'medium' },
+    { name:'PINE_HILLS_LITERACY_PILOT',              source:'ProductTelemetry', id:'PU-20028',    arr:null,   issue:'Underscore export artifact breaks exact-name matching.',           severity:'medium' },
+  ],
+});
+Object.keys(CRM_GOLDEN_SEARCH_DATA).forEach(key => { delete CRM_GOLDEN_SEARCH_DATA[key]; });
+Object.assign(CRM_GOLDEN_SEARCH_DATA, buildCRMGoldenSearchData());
+
 function setCRMSearchQuery(q) {
   state.searchQuery = q;
   const el = document.getElementById('crm-search-input');
@@ -3121,7 +3280,7 @@ function renderCRMSplitResults(q) {
           <span class="badge badge-surface" style="font-size:0.5625rem">${r.source}</span>
           ${r.arr ? `<span style="font-size:0.6875rem;color:var(--emerald);font-weight:600">${r.arr}</span>` : '<span style="font-size:0.6875rem;color:var(--text-muted)">ARR: unknown</span>'}
         </div>
-        <div style="font-size:0.75rem;color:var(--red)">⚠ ${r.issue}</div>
+        <div style="font-size:0.75rem;color:var(--red)">&#9888; ${r.issue}</div>
       </div>`).join('');
 
   const rightPanel = !golden
@@ -3142,11 +3301,11 @@ function renderCRMSplitResults(q) {
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.625rem;margin-bottom:0.875rem">
-          <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);padding:0.625rem">
+          <div style="background:var(--surface-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:0.625rem">
             <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-bottom:0.25rem">Open Pipeline</div>
             <div style="font-size:1rem;font-weight:700;color:var(--amber)">$${(golden.pipeline/1000).toFixed(0)}K</div>
           </div>
-          <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);padding:0.625rem">
+          <div style="background:var(--surface-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:0.625rem">
             <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-bottom:0.25rem">Health Score</div>
             <div style="font-size:1rem;font-weight:700;color:${golden.health>=80?'var(--emerald)':golden.health>=60?'var(--amber)':'var(--red)'}">${golden.health}/100</div>
           </div>
@@ -3161,7 +3320,7 @@ function renderCRMSplitResults(q) {
           <div style="font-size:0.75rem;color:var(--emerald);margin-top:0.125rem">↳ All unified into: <strong>${golden.name}</strong></div>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.625rem;border-top:1px solid rgba(16,185,129,0.15)">
-          <span style="font-size:0.75rem;color:var(--text-tertiary)">Renewal: <strong style="color:var(--text-secondary)">${golden.renewal}</strong></span>
+          <span style="font-size:0.75rem;color:var(--text-tertiary)">Source systems: <strong style="color:var(--text-secondary)">${golden.sourceSystems}</strong></span>
           <button class="btn btn-emerald-outline" style="font-size:0.6875rem;padding:0.25rem 0.75rem" onclick="startCRMSync()">Sync to Salesforce →</button>
         </div>
       </div>`;
@@ -3193,6 +3352,8 @@ function renderCRMSplitResults(q) {
 function renderCRMSearchPage() {
   const q = state.searchQuery || 'houston';
   const suggestions = ['houston','riverview','oak valley','pine hills'];
+  const houstonFragmentCount = CRM_RAW_SEARCH_DATA.houston.length;
+  const { atRiskCount } = getCRMHealthSummary();
   return `<div class="page active">
     ${renderPageIntro()}
     <div class="page-header">
@@ -3206,14 +3367,14 @@ function renderCRMSearchPage() {
 
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.875rem;margin-bottom:1.5rem">
       <div style="background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.22);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
-        <div style="font-size:1.75rem;font-weight:900;color:var(--red)">8×</div>
+        <div style="font-size:1.75rem;font-weight:900;color:var(--red)">${houstonFragmentCount}×</div>
         <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Houston ISD Fragments</div>
         <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">Before harmonization</div>
       </div>
       <div style="background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.22);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
-        <div style="font-size:1.75rem;font-weight:900;color:var(--accent)">3</div>
+        <div style="font-size:1.75rem;font-weight:900;color:var(--accent)">${atRiskCount}</div>
         <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">At-Risk Districts Found</div>
-        <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">Health score below 70</div>
+        <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">Average usage health below 70</div>
       </div>
     </div>
 
@@ -3243,12 +3404,12 @@ if (!state.crmSyncState) state.crmSyncState = null;
 function startCRMSync() {
   if (state.crmSyncState === 'syncing') return;
   state.crmSyncState = 'syncing';
-  showToast('Syncing 8 golden districts to Salesforce…');
+  showToast(`Syncing ${getCRMGoldenDistrictCount()} golden districts to Salesforce…`);
   const bar = document.getElementById('crm-sync-bar');
   if (bar) { bar.style.display = 'flex'; }
   setTimeout(() => {
     state.crmSyncState = 'done';
-    showToast('✓ Sync complete — 8 districts · 47 accounts updated · $463K ARR attributed in Salesforce');
+    showToast(`✓ Sync complete — ${getCRMGoldenDistrictCount()} districts · ${getCRMSalesforceAccountCount()} Salesforce accounts updated · $463K ARR attributed in Salesforce`);
     renderAll();
   }, 2200);
 }
@@ -3271,7 +3432,7 @@ renderGoldenPage = function() {
           <span style="font-size:1.5rem">✓</span>
           <div>
             <div style="font-weight:700;color:var(--emerald)">Sync Complete</div>
-            <div style="font-size:0.8125rem;color:var(--text-secondary)">8 golden districts · 47 Salesforce accounts updated · $463K ARR now attributed in CRM</div>
+            <div style="font-size:0.8125rem;color:var(--text-secondary)">${getCRMGoldenDistrictCount()} golden districts · ${getCRMSalesforceAccountCount()} Salesforce accounts updated · $463K ARR now attributed in CRM</div>
           </div>
         </div>
         <span class="badge badge-emerald">Last synced just now</span>
@@ -3279,7 +3440,7 @@ renderGoldenPage = function() {
     : `<div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:1rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between">
         <div>
           <div style="font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Golden records ready to sync</div>
-          <div style="font-size:0.8125rem;color:var(--text-secondary)">Push all 8 canonical districts back to Salesforce — 47 accounts will be updated and $463K ARR attributed</div>
+          <div style="font-size:0.8125rem;color:var(--text-secondary)">Push all ${getCRMGoldenDistrictCount()} canonical districts back to Salesforce — ${getCRMSalesforceAccountCount()} Salesforce accounts will be updated and $463K ARR attributed</div>
         </div>
         <button class="btn btn-primary" style="flex-shrink:0;background:linear-gradient(135deg,#0ea5e9,#6366f1);white-space:nowrap" onclick="startCRMSync()">${icon('refreshCw')} Sync to Salesforce</button>
       </div>`;
@@ -3292,72 +3453,73 @@ renderGoldenPage = function() {
 
 // ── 1. Source Network Graph ──────────────────────────────
 function renderSKUSourceNetwork() {
+  const towerY = 126;
+  const searchableRows = getSKUSearchableRowCount();
+  const goldenCount = getSKUGoldenRecordCount();
+  const dedupRate = getSKUDedupRate();
   const nodes = [
-    { name:'US Antibodies Feed',   sub:'12 sampled · 4,320 total',  y:18,  color:'#6366f1', status:'connected', issues:10 },
-    { name:'EU Reagents Feed',     sub:'10 sampled · 2,850 total',  y:82,  color:'#8b5cf6', status:'warning',   issues:6  },
-    { name:'Nordic Acquisition',   sub:'8 sampled · 1,440 total',   y:146, color:'#a78bfa', status:'warning',   issues:6  },
-    { name:'Legacy PIM (XLSX)',    sub:'8 sampled · 5,000 total',   y:210, color:'#c4b5fd', status:'connected', issues:3  },
+    { name:'US Antibodies Feed', sub:'12 sampled | 4,320 total', y:18, fill:'rgba(79,70,229,0.08)', stroke:'rgba(79,70,229,0.24)', path:'rgba(79,70,229,0.38)', statusColor:'#059669', statusLabel:'Live', meta:'10 issues' },
+    { name:'EU Reagents Feed', sub:'10 sampled | 2,850 total', y:82, fill:'rgba(217,119,6,0.08)', stroke:'rgba(217,119,6,0.24)', path:'rgba(217,119,6,0.38)', statusColor:'#d97706', statusLabel:'Warning', meta:'6 issues' },
+    { name:'Nordic Acquisition', sub:'8 sampled | 1,440 total', y:146, fill:'rgba(217,119,6,0.08)', stroke:'rgba(217,119,6,0.24)', path:'rgba(217,119,6,0.38)', statusColor:'#d97706', statusLabel:'Warning', meta:'6 issues' },
+    { name:'Legacy PIM (XLSX)', sub:'8 sampled | 5,000 total', y:210, fill:'rgba(79,70,229,0.08)', stroke:'rgba(79,70,229,0.24)', path:'rgba(79,70,229,0.38)', statusColor:'#059669', statusLabel:'Live', meta:'3 issues' },
   ];
-  const paths = nodes.map((n,i) => {
-    const cy = n.y + 22;
-    return `<path d="M 193 ${cy} C 270 ${cy} 290 126 328 126"
-      stroke="${n.status==='warning'?'rgba(245,158,11,0.55)':'rgba(99,102,241,0.5)'}"
-      stroke-width="1.5" fill="none" stroke-dasharray="6 3"
-      style="animation:dashFlow 2.2s linear infinite ${(i*0.45).toFixed(1)}s"/>`;
+
+  const paths = nodes.map((n, i) => {
+    const cy = n.y + 23;
+    return `<path d="M 193 ${cy} C 270 ${cy} 290 ${towerY} 328 ${towerY}"
+      stroke="${n.path}" stroke-width="1.5" fill="none" stroke-dasharray="6 3"
+      style="animation:dashFlow 2.2s linear infinite ${(i * 0.45).toFixed(1)}s"/>`;
   }).join('');
 
-  const srcNodes = nodes.map((n,i) => `
+  const srcNodes = nodes.map((n, i) => `
     <rect x="4" y="${n.y}" width="186" height="46" rx="7"
-      fill="rgba(99,102,241,0.07)" stroke="${n.status==='warning'?'rgba(245,158,11,0.35)':'rgba(99,102,241,0.28)'}"
-      style="animation:fadeInUp 0.4s ${(i*0.12).toFixed(2)}s both"/>
-    <circle cx="20" cy="${n.y+23}" r="5" fill="${n.status==='warning'?'#f59e0b':'#10b981'}"/>
-    <text x="32" y="${n.y+17}" fill="#f9fafb" font-size="11" font-weight="600" font-family="Inter,system-ui,sans-serif">${n.name}</text>
-    <text x="32" y="${n.y+31}" fill="rgba(255,255,255,0.42)" font-size="9" font-family="Inter,system-ui,sans-serif">${n.sub}</text>
-    <text x="182" y="${n.y+17}" fill="${n.status==='warning'?'#f59e0b':'#10b981'}" font-size="9" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.status==='warning'?'⚠ Warning':'● Live'}</text>
-    <text x="182" y="${n.y+31}" fill="rgba(255,255,255,0.32)" font-size="8.5" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.issues} issues</text>`).join('');
+      fill="${n.fill}" stroke="${n.stroke}"
+      style="animation:fadeInUp 0.4s ${(i * 0.12).toFixed(2)}s both"/>
+    <circle cx="20" cy="${n.y + 23}" r="5" fill="${n.statusColor}"/>
+    <text x="32" y="${n.y + 17}" fill="#0f172a" font-size="11" font-weight="600" font-family="Inter,system-ui,sans-serif">${n.name}</text>
+    <text x="32" y="${n.y + 31}" fill="#64748b" font-size="9" font-family="Inter,system-ui,sans-serif">${n.sub}</text>
+    <text x="182" y="${n.y + 17}" fill="${n.statusColor}" font-size="9" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.statusLabel}</text>
+    <text x="182" y="${n.y + 31}" fill="#64748b" font-size="8.5" font-family="Inter,system-ui,sans-serif" text-anchor="end">${n.meta}</text>`).join('');
 
-  return `<div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;overflow:hidden">
+  return `<div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.5rem;overflow:hidden;box-shadow:var(--shadow-md)">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
       <div>
         <div style="font-size:0.9375rem;font-weight:700;color:var(--text-primary)">Source Network</div>
-        <div style="font-size:0.8125rem;color:var(--text-tertiary);margin-top:0.125rem">4 feeds connected · 13,610 raw records ingested · Last synced <strong style="color:var(--text-secondary)">2 min ago</strong></div>
+        <div style="font-size:0.8125rem;color:var(--text-tertiary);margin-top:0.125rem">4 feeds connected | 13,610 raw records ingested | Last synced <strong style="color:var(--text-secondary)">2 min ago</strong></div>
       </div>
-      <span class="badge badge-accent" style="animation:pulse-ring 2s ease-in-out infinite">● Live</span>
+      <span class="badge badge-accent" style="animation:pulse-ring 2s ease-in-out infinite">Live</span>
     </div>
     <svg viewBox="0 0 720 258" style="width:100%;max-height:258px" preserveAspectRatio="xMidYMid meet">
       <defs>
         <linearGradient id="skuOutGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#6366f1" stop-opacity="0.7"/>
+          <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.72"/>
           <stop offset="100%" stop-color="#818cf8" stop-opacity="0.9"/>
         </linearGradient>
         <marker id="skuArrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-          <polygon points="0 0,8 3,0 6" fill="#6366f1" opacity="0.8"/>
+          <polygon points="0 0,8 3,0 6" fill="#4f46e5" opacity="0.8"/>
         </marker>
       </defs>
 
       ${paths}
 
-      <!-- Output arrow -->
-      <path d="M 410 126 L 525 126"
+      <path d="M 410 ${towerY} L 525 ${towerY}"
         stroke="url(#skuOutGrad)" stroke-width="2" fill="none"
         marker-end="url(#skuArrow)" style="animation:fadeInUp 0.6s 0.5s both"/>
 
       ${srcNodes}
 
-      <!-- Central tower -->
-      <circle cx="370" cy="126" r="42" fill="rgba(99,102,241,0.07)" stroke="rgba(99,102,241,0.35)" stroke-width="1.5"/>
-      <circle cx="370" cy="126" r="30" fill="rgba(99,102,241,0.12)" stroke="rgba(99,102,241,0.45)" stroke-width="1"/>
-      <circle cx="370" cy="126" r="46" fill="none" stroke="rgba(99,102,241,0.18)" stroke-width="1" style="animation:pulse-ring 2.5s ease-in-out infinite"/>
-      <text x="370" y="121" fill="#818cf8" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">DATA</text>
-      <text x="370" y="134" fill="#818cf8" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">TOWER</text>
+      <circle cx="370" cy="${towerY}" r="42" fill="rgba(79,70,229,0.08)" stroke="rgba(79,70,229,0.32)" stroke-width="1.5"/>
+      <circle cx="370" cy="${towerY}" r="30" fill="rgba(79,70,229,0.12)" stroke="rgba(79,70,229,0.44)" stroke-width="1"/>
+      <circle cx="370" cy="${towerY}" r="46" fill="none" stroke="rgba(79,70,229,0.16)" stroke-width="1" style="animation:pulse-ring 2.5s ease-in-out infinite"/>
+      <text x="370" y="121" fill="#4338ca" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">DATA</text>
+      <text x="370" y="134" fill="#4338ca" font-size="9.5" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">TOWER</text>
 
-      <!-- Output node -->
       <rect x="528" y="92" width="186" height="70" rx="9"
-        fill="rgba(99,102,241,0.09)" stroke="rgba(99,102,241,0.4)" stroke-width="1.5"
+        fill="rgba(79,70,229,0.08)" stroke="rgba(79,70,229,0.32)" stroke-width="1.5"
         style="animation:fadeInUp 0.5s 0.4s both"/>
-      <text x="621" y="118"  fill="#818cf8" font-size="13" font-weight="800" font-family="Inter,system-ui,sans-serif" text-anchor="middle">6 Golden SKUs</text>
-      <text x="621" y="134" fill="#818cf8" font-size="11" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">91% dedup ratio</text>
-      <text x="621" y="150" fill="rgba(255,255,255,0.4)" font-size="9.5" font-family="Inter,system-ui,sans-serif" text-anchor="middle">38 SKUs → 6 canonical products</text>
+      <text x="621" y="118" fill="#0f172a" font-size="13" font-weight="800" font-family="Inter,system-ui,sans-serif" text-anchor="middle">${goldenCount} Golden SKUs</text>
+      <text x="621" y="134" fill="#4338ca" font-size="11" font-weight="700" font-family="Inter,system-ui,sans-serif" text-anchor="middle">${dedupRate}% merge reduction</text>
+      <text x="621" y="150" fill="#64748b" font-size="9.5" font-family="Inter,system-ui,sans-serif" text-anchor="middle">${searchableRows} searchable rows -> ${goldenCount} canonical products</text>
     </svg>
   </div>`;
 }
@@ -3450,7 +3612,7 @@ function renderSKUProductClusters() {
             ${c.variants.map(v=>`<span style="font-size:0.5625rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.18);border-radius:3px;padding:0.1rem 0.3rem;color:var(--red)">${v}</span>`).join('')}
           </div>
           <div style="display:flex;flex-direction:column;gap:0.2rem;margin-bottom:0.5rem">
-            ${c.issues.map(iss=>`<div style="font-size:0.6rem;color:var(--amber);display:flex;align-items:flex-start;gap:0.25rem"><span>⚠</span><span>${iss}</span></div>`).join('')}
+            ${c.issues.map(iss=>`<div style="font-size:0.6rem;color:var(--amber);display:flex;align-items:flex-start;gap:0.25rem"><span>&#9888;</span><span>${iss}</span></div>`).join('')}
           </div>
           <div style="display:flex;gap:0.25rem;margin-bottom:0.5rem;flex-wrap:wrap">
             ${c.sources.map(s=>`<span style="font-size:0.5625rem;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.2);border-radius:3px;padding:0.1rem 0.375rem;color:var(--accent)">${s}</span>`).join('')}
@@ -3563,7 +3725,7 @@ function renderSKUSplitResults(q) {
           <span class="badge badge-surface" style="font-size:0.5625rem">${r.source}</span>
           ${r.price ? `<span style="font-size:0.6875rem;color:var(--accent);font-weight:600">${r.price}</span>` : '<span style="font-size:0.6875rem;color:var(--text-muted)">Price: not normalized</span>'}
         </div>
-        <div style="font-size:0.75rem;color:var(--red)">⚠ ${r.issue}</div>
+        <div style="font-size:0.75rem;color:var(--red)">&#9888; ${r.issue}</div>
       </div>`).join('');
 
   const rightPanel = !golden
@@ -3584,11 +3746,11 @@ function renderSKUSplitResults(q) {
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.625rem;margin-bottom:0.875rem">
-          <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);padding:0.625rem">
+          <div style="background:var(--surface-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:0.625rem">
             <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-bottom:0.25rem">Multi-Currency Pricing</div>
             <div style="font-size:0.75rem;font-weight:700;color:var(--accent)">${Object.entries(golden.currencies).map(([c,v])=>`${c} ${v}`).join(' · ')}</div>
           </div>
-          <div style="background:rgba(255,255,255,0.04);border-radius:var(--radius-sm);padding:0.625rem">
+          <div style="background:var(--surface-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:0.625rem">
             <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-bottom:0.25rem">Availability</div>
             <div style="font-size:0.875rem;font-weight:700;color:var(--emerald)">${golden.availability}</div>
           </div>
@@ -3634,6 +3796,10 @@ function renderSKUSplitResults(q) {
 function renderSKUSearchPage() {
   const q = state.searchQuery || 'cd20';
   const suggestions = ['cd20','tnf','elisa','anti il6','cluster of differentiation 20'];
+  const searchableRows = getSKUSearchableRowCount();
+  const goldenCount = getSKUGoldenRecordCount();
+  const dedupRate = getSKUDedupRate();
+  const localeCount = getSKULocaleVariantCount();
   return `<div class="page active">
     ${renderPageIntro()}
     <div class="page-header">
@@ -3652,14 +3818,14 @@ function renderSKUSearchPage() {
         <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">Before harmonization</div>
       </div>
       <div style="background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.22);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
-        <div style="font-size:1.75rem;font-weight:900;color:var(--accent)">91%</div>
-        <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Dedup Ratio</div>
-        <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">38 raw → 6 golden SKUs</div>
+        <div style="font-size:1.75rem;font-weight:900;color:var(--accent)">${dedupRate}%</div>
+        <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Merge Reduction</div>
+        <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">${searchableRows} searchable rows → ${goldenCount} golden SKUs</div>
       </div>
       <div style="background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.22);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
-        <div style="font-size:1.75rem;font-weight:900;color:var(--emerald)">7</div>
-        <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Language Variants</div>
-        <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">EN / DE / FR / SE / DK resolved</div>
+        <div style="font-size:1.75rem;font-weight:900;color:var(--emerald)">${localeCount}</div>
+        <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Languages Resolved</div>
+        <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">EN / DE / FR / SE / DK normalized</div>
       </div>
     </div>
 
@@ -3694,10 +3860,10 @@ if (!state.skuExportState) state.skuExportState = null;
 function startSKUExport() {
   if (state.skuExportState === 'exporting') return;
   state.skuExportState = 'exporting';
-  showToast('Exporting 6 golden SKUs to PIM / ERP…');
+  showToast(`Exporting ${getSKUGoldenRecordCount()} golden SKUs to PIM / ERP…`);
   setTimeout(() => {
     state.skuExportState = 'done';
-    showToast('✓ Export complete — 6 canonical SKUs · 4 regional price lists · 7 language variants mapped');
+  showToast(`✓ Export complete — ${getSKUGoldenRecordCount()} canonical SKUs · 4 regional price lists · ${getSKULocaleVariantCount()} language locales mapped`);
     renderAll();
   }, 2200);
 }
@@ -3713,7 +3879,7 @@ renderGoldenPage = function() {
           <span style="font-size:1.5rem">✓</span>
           <div>
             <div style="font-weight:700;color:var(--accent)">Export Complete</div>
-            <div style="font-size:0.8125rem;color:var(--text-secondary)">6 golden SKUs · 4 regional price lists · 7 language variants fully mapped to PIM canonical schema</div>
+            <div style="font-size:0.8125rem;color:var(--text-secondary)">${getSKUGoldenRecordCount()} golden SKUs · 4 regional price lists · ${getSKULocaleVariantCount()} language locales fully mapped to PIM canonical schema</div>
           </div>
         </div>
         <span class="badge badge-accent">Exported just now</span>
@@ -3721,7 +3887,7 @@ renderGoldenPage = function() {
     : `<div style="background:var(--bg-card);border:1px solid var(--border-primary);border-radius:var(--radius-lg);padding:1rem 1.5rem;margin-bottom:1.5rem;display:flex;align-items:center;justify-content:space-between">
         <div>
           <div style="font-weight:600;color:var(--text-primary);margin-bottom:0.25rem">Golden catalog ready to export</div>
-          <div style="font-size:0.8125rem;color:var(--text-secondary)">Push 6 canonical SKUs to your PIM or ERP — multi-currency pricing and all language variants included</div>
+          <div style="font-size:0.8125rem;color:var(--text-secondary)">Push ${getSKUGoldenRecordCount()} canonical SKUs to your PIM or ERP — multi-currency pricing and all normalized language variants included</div>
         </div>
         <button class="btn btn-primary" style="flex-shrink:0;background:linear-gradient(135deg,var(--accent),#4f46e5);white-space:nowrap" onclick="startSKUExport()">${icon('upload')} Export to PIM / ERP</button>
       </div>`;
@@ -3838,7 +4004,7 @@ function renderSKUFileDetailPanel(file, key) {
               const hasMed  = colIssues.some(i => i.severity === 'medium');
               const dot   = hasHigh ? '#ef4444' : hasMed ? '#f59e0b' : '#10b981';
               const label = hasHigh ? 'Critical' : hasMed ? 'Warning' : 'Clean';
-              return `<div style="display:flex;align-items:center;justify-content:space-between;padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+              return `<div style="display:flex;align-items:center;justify-content:space-between;padding:0.25rem 0;border-bottom:1px solid var(--border-subtle)">
                 <span style="font-size:0.6875rem;font-family:var(--font-mono);color:var(--text-secondary)">${h}</span>
                 <span style="font-size:0.5625rem;color:${dot};display:flex;align-items:center;gap:0.25rem"><span style="width:6px;height:6px;border-radius:9999px;background:${dot};display:inline-block"></span>${label}</span>
               </div>`;
@@ -3862,7 +4028,7 @@ function renderSKUIssueDiff(issue) {
           <div style="display:flex;flex-direction:column;gap:0.5rem">
             ${variants.map(v => `<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:var(--radius-sm);padding:0.4rem 0.75rem">
               <span style="font-family:var(--font-mono);font-size:0.8125rem;color:var(--red);font-weight:600">${v}</span>
-              <span style="font-size:0.6rem;color:var(--text-muted);background:rgba(255,255,255,0.06);border-radius:3px;padding:0.1rem 0.35rem">${srcMap[v] || 'Source Feed'}</span>
+              <span style="font-size:0.6rem;color:var(--text-muted);background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:3px;padding:0.1rem 0.35rem">${srcMap[v] || 'Source Feed'}</span>
             </div>`).join('')}
           </div>
         </div>
@@ -3938,7 +4104,7 @@ function renderSKUIssueDiff(issue) {
               <span class="badge badge-surface" style="font-size:0.5625rem">EL-7782 · EU Feed</span>
             </div>
             ${[['product_title_local','Anti-CD20 Antikorper',''],['anwendung','Durchflusszytometrie',''],['zielprotein','(empty)','cell-messy'],['preis_eur','389,50','cell-warning'],['spezies','Mensch','cell-warning']].map(([col, val, cls]) =>
-              `<div style="display:flex;gap:0.75rem;padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center">
+              `<div style="display:flex;gap:0.75rem;padding:0.25rem 0;border-bottom:1px solid var(--border-subtle);align-items:center">
                 <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:7rem">${col}</span>
                 <span style="font-size:0.8125rem;${cls==='cell-messy'?'color:var(--red);font-weight:600':cls==='cell-warning'?'color:var(--amber)':'color:var(--text-secondary)'}">${val}</span>
                 ${cls === 'cell-messy' ? '<span style="font-size:0.6rem;background:rgba(239,68,68,0.15);color:var(--red);border-radius:3px;padding:0.1rem 0.35rem;margin-left:auto">MISSING</span>' : ''}
@@ -3952,7 +4118,7 @@ function renderSKUIssueDiff(issue) {
         <div class="diff-block-after" style="padding:1rem">
           <div style="background:rgba(16,185,129,0.05);border-radius:var(--radius-sm);padding:0.75rem;font-size:0.8125rem">
             ${[['product_title_local','Anti-CD20 Antikorper',''],['anwendung','Flow Cytometry','healed'],['zielprotein','CD20','healed'],['preis_eur','389.50','healed'],['spezies','Human','healed']].map(([col, val, cls]) =>
-              `<div style="display:flex;gap:0.75rem;padding:0.25rem 0;border-bottom:1px solid rgba(255,255,255,0.04);align-items:center">
+              `<div style="display:flex;gap:0.75rem;padding:0.25rem 0;border-bottom:1px solid var(--border-subtle);align-items:center">
                 <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:7rem">${col}</span>
                 <span style="font-size:0.8125rem;${cls==='healed'?'color:var(--emerald);font-weight:600':'color:var(--text-secondary)'}">${val}</span>
                 ${cls === 'healed' ? '<span style="font-size:0.6rem;background:rgba(16,185,129,0.15);color:var(--emerald);border-radius:3px;padding:0.1rem 0.35rem;margin-left:auto">HEALED</span>' : ''}
@@ -4003,7 +4169,7 @@ function renderSKUIssueDiff(issue) {
           <div style="display:flex;flex-direction:column;gap:0.4rem">
             ${variants.map(v => `<div style="display:flex;align-items:center;justify-content:space-between;background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.18);border-radius:var(--radius-sm);padding:0.4rem 0.75rem">
               <span style="font-family:var(--font-mono);font-size:0.875rem;color:var(--red);font-weight:600">${v}</span>
-              <span style="font-size:0.6rem;color:var(--text-muted);background:rgba(255,255,255,0.06);border-radius:3px;padding:0.1rem 0.35rem">${flags[v] || 'variant'}</span>
+              <span style="font-size:0.6rem;color:var(--text-muted);background:var(--surface-muted);border:1px solid var(--border-subtle);border-radius:3px;padding:0.1rem 0.35rem">${flags[v] || 'variant'}</span>
             </div>`).join('')}
           </div>
         </div>
@@ -4031,7 +4197,7 @@ function renderSKUIssueDiff(issue) {
     <div>
       <div class="diff-label"><span class="dot dot-red"></span> Before (Raw)</div>
       <div class="diff-block-before" style="padding:1rem">
-        ${beforeEntries.map(([k, v]) => `<div style="display:flex;gap:0.75rem;padding:0.375rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+        ${beforeEntries.map(([k, v]) => `<div style="display:flex;gap:0.75rem;padding:0.375rem 0;border-bottom:1px solid var(--border-subtle)">
           <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:6rem;flex-shrink:0">${k}</span>
           <span style="font-size:0.8125rem;color:var(--red);font-weight:500;word-break:break-all">${Array.isArray(v) ? v.join(', ') : String(v)}</span>
         </div>`).join('')}
@@ -4040,7 +4206,7 @@ function renderSKUIssueDiff(issue) {
     <div>
       <div class="diff-label"><span class="dot dot-green"></span> After (Healed)</div>
       <div class="diff-block-after" style="padding:1rem">
-        ${afterEntries.map(([k, v]) => `<div style="display:flex;gap:0.75rem;padding:0.375rem 0;border-bottom:1px solid rgba(255,255,255,0.04)">
+        ${afterEntries.map(([k, v]) => `<div style="display:flex;gap:0.75rem;padding:0.375rem 0;border-bottom:1px solid var(--border-subtle)">
           <span style="font-family:var(--font-mono);font-size:0.6875rem;color:var(--text-tertiary);min-width:6rem;flex-shrink:0">${k}</span>
           <span style="font-size:0.8125rem;color:var(--emerald);font-weight:500;word-break:break-all">${Array.isArray(v) ? v.join(', ') : String(v)}</span>
         </div>`).join('')}
@@ -4054,16 +4220,20 @@ const _prevRenderGoldenForSKUStats = renderGoldenPage;
 renderGoldenPage = function() {
   const html = _prevRenderGoldenForSKUStats();
   if (state.activeDataset === 'crm') return html;
+  const searchableRows = getSKUSearchableRowCount();
+  const goldenCount = getSKUGoldenRecordCount();
+  const dedupRate = getSKUDedupRate();
+  const localeCount = getSKULocaleVariantCount();
   const heroCards = `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.875rem;margin-bottom:1.5rem">
     <div style="background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.25);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
-      <div style="font-size:1.875rem;font-weight:900;color:var(--accent)">6</div>
+      <div style="font-size:1.875rem;font-weight:900;color:var(--accent)">${goldenCount}</div>
       <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Golden SKUs</div>
-      <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">From 38 raw source records</div>
+      <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">From ${searchableRows} searchable source rows</div>
     </div>
     <div style="background:rgba(16,185,129,0.07);border:1px solid rgba(16,185,129,0.25);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
-      <div style="font-size:1.875rem;font-weight:900;color:var(--emerald)">91%</div>
-      <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Dedup Ratio</div>
-      <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">38 raw → 6 canonical SKUs</div>
+      <div style="font-size:1.875rem;font-weight:900;color:var(--emerald)">${dedupRate}%</div>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Merge Reduction</div>
+      <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">${searchableRows} searchable rows → ${goldenCount} canonical SKUs</div>
     </div>
     <div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
       <div style="font-size:1.875rem;font-weight:900;color:var(--amber)">3</div>
@@ -4071,9 +4241,9 @@ renderGoldenPage = function() {
       <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">USD · EUR · SEK / DKK</div>
     </div>
     <div style="background:rgba(139,92,246,0.07);border:1px solid rgba(139,92,246,0.25);border-radius:var(--radius-lg);padding:1.125rem;text-align:center">
-      <div style="font-size:1.875rem;font-weight:900;color:var(--purple)">7</div>
-      <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Language Variants</div>
-      <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">EN · DE · FR · SE · DK resolved</div>
+      <div style="font-size:1.875rem;font-weight:900;color:var(--purple)">${localeCount}</div>
+      <div style="font-size:0.75rem;font-weight:700;color:var(--text-primary);margin-top:0.25rem">Languages Resolved</div>
+      <div style="font-size:0.6875rem;color:var(--text-tertiary);margin-top:0.125rem">EN · DE · FR · SE · DK normalized</div>
     </div>
   </div>`;
   return html.replace('<div class="stats-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">', heroCards + '<div class="stats-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">');
