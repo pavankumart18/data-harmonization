@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+saved_from_chrome.pdf
+meeting.md
+tasks.md

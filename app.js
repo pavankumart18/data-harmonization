@@ -1131,6 +1131,10 @@ let demoTimer = null;
 let demoStepIndex = -1;
 let demoRunning = false;
 
+function getActiveDemoScript() {
+  return state.activeDataset === 'swire' && typeof SWIRE_DEMO_SCRIPT !== 'undefined' ? SWIRE_DEMO_SCRIPT : DEMO_SCRIPT;
+}
+
 function startDemo() {
   if (demoRunning) { stopDemo(); return; }
   demoRunning = true;
@@ -1142,7 +1146,7 @@ function startDemo() {
   state.activeIssueTab = 'normalization';
   state.selectedIssueId = null;
   state.selectedRecordId = null;
-  state.searchQuery = 'cd20';
+  state.searchQuery = state.activeDataset === 'swire' ? 'walmart' : 'cd20';
   state.isGolden = true;
   state.heatmapSelected = null;
   state.pageHelpOpen = false;
@@ -1173,8 +1177,9 @@ function advanceDemo() {
   if (!demoRunning) return;
   removeHighlights();
   demoStepIndex++;
-  if (demoStepIndex >= DEMO_SCRIPT.length) { stopDemo(); return; }
-  const step = DEMO_SCRIPT[demoStepIndex];
+  const script = getActiveDemoScript();
+  if (demoStepIndex >= script.length) { stopDemo(); return; }
+  const step = script[demoStepIndex];
   state.currentPage = step.page;
   state.pageHelpOpen = false;
   renderAll();
@@ -1193,7 +1198,7 @@ function advanceDemo() {
     updateNarrator(step);
     triggerPostActions(step);
   }
-  const pct = Math.round(((demoStepIndex + 1) / DEMO_SCRIPT.length) * 100);
+  const pct = Math.round(((demoStepIndex + 1) / script.length) * 100);
   setTimeout(() => {
     const bar = document.getElementById('narrator-progress-fill');
     if (bar) bar.style.width = pct + '%';
@@ -1509,11 +1514,12 @@ document.addEventListener('keydown', event => {
 // ============================================================
 
 // ── Dataset helpers ──────────────────────────────────────
-function getActiveFiles() { return state.activeDataset === 'crm' ? CRM_FILES : RAW_FILES; }
-function getActiveGoldenRecords() { return state.activeDataset === 'crm' ? CRM_GOLDEN_RECORDS : GOLDEN_RECORDS; }
+function getActiveFiles() { return state.activeDataset === 'crm' ? CRM_FILES : state.activeDataset === 'swire' ? SWIRE_FILES : RAW_FILES; }
+function getActiveGoldenRecords() { return state.activeDataset === 'crm' ? CRM_GOLDEN_RECORDS : state.activeDataset === 'swire' ? SWIRE_GOLDEN_RECORDS : GOLDEN_RECORDS; }
 function getActiveHarmonizationIssues() {
   if (!state.issues) {
-    state.issues = JSON.parse(JSON.stringify(state.activeDataset === 'crm' ? CRM_HARMONIZATION_ISSUES : HARMONIZATION_ISSUES));
+    const src = state.activeDataset === 'crm' ? CRM_HARMONIZATION_ISSUES : state.activeDataset === 'swire' ? SWIRE_HARMONIZATION_ISSUES : HARMONIZATION_ISSUES;
+    state.issues = JSON.parse(JSON.stringify(src));
   }
   return state.issues;
 }
@@ -1608,8 +1614,8 @@ function buildCRMGoldenSearchData() {
   );
 }
 function getCombinedDemoMetrics() {
-  const rawRows = getSKUSampleRowCount() + getCRMSampleRowCount();
-  const goldenCount = getSKUGoldenRecordCount() + getCRMGoldenDistrictCount();
+  const rawRows = getSKUSampleRowCount() + getCRMSampleRowCount() + getSwireSampleRowCount();
+  const goldenCount = getSKUGoldenRecordCount() + getCRMGoldenDistrictCount() + getSwireGoldenRecordCount();
   return {
     rawRows,
     goldenCount,
@@ -1624,6 +1630,8 @@ function selectDataset(ds) {
   state.selectedFileKey = null; state.autoMapped = false; state.issues = null;
   state.mappingApprovals = {}; state.exceptionAccepted = {}; state.expandedMappingField = null;
   state.goldenDashboardSearch = ''; state.selectedRecordId = null;
+  state.searchQuery = ''; state.selectedIssueId = null; state.activeIssueTab = 'normalization';
+  state.swirePushState = null;
   state.currentPage = 'upload';
   renderAll();
 }
@@ -1647,6 +1655,15 @@ const UPLOAD_STAGES = {
     { msg: 'Running district reference (NCES) cross-check...', pct: 76 },
     { msg: 'Flagging 23 harmonization issues...', pct: 90 },
     { msg: `Ready - ${getCRMSampleRowCount()} district records loaded`, pct: 100 },
+  ],
+  swire: [
+    { msg: 'Parsing ERP/CONA outlet master + CRM outlet list...', pct: 12 },
+    { msg: 'Loading 14 weeks of order history...', pct: 26 },
+    { msg: 'Parsing SKU master, TMS routes, inventory snapshots...', pct: 42 },
+    { msg: 'Loading territory mapping, POD logs, promo calendar...', pct: 58 },
+    { msg: 'Detecting duplicate outlets and SKU aliases...', pct: 74 },
+    { msg: `Flagging ${getSwireIssueCount()} data quality issues (${getSwireCriticalCount()} critical)...`, pct: 90 },
+    { msg: `Ready - ${getSwireSampleRowCount()} demo rows representing ~250K source records`, pct: 100 },
   ],
 };
 let _uploadInterval = null;
@@ -1677,28 +1694,37 @@ function startSampleLoad() {
 // ── Transition helpers ────────────────────────────────────
 function _getTransitionConfig(msgKey) {
   const isCRM = state.activeDataset === 'crm';
+  const isSwire = state.activeDataset === 'swire';
   const c = {
     'self-healing': {
       title: 'Running Entity Resolution Pipeline...', icon: 'zap',
-      msgs: isCRM
+      msgs: isSwire
+        ? ['Submitting canonical Outlet-SKU-Route mapping...','Clustering duplicate outlets by name + address + zip...','Matching legacy and new SKU codes...','Converting UOMs to cases via unit_per_case rules...','Generating merge and inference proposals...']
+        : isCRM
         ? ['Submitting canonical field mapping...','Initializing Jaro-Winkler similarity engine...','Clustering duplicate district account names...','Cross-checking district reference data (NCES)...','Generating merge proposals...']
         : ['Submitting canonical mapping...','Initializing AI Self-Healing Engine...','Detecting normalization conflicts...','Cross-referencing entity matches...','Generating correction proposals...'],
     },
     'canonicalization': {
       title: 'Beginning Canonicalization...', icon: 'layers',
-      msgs: isCRM
+      msgs: isSwire
+        ? ['Parsing ERP, CRM, TMS, inventory and POD schemas...','Detecting outlet ID variants (customer / sold-to / ship-to)...','Aligning SKU codes, aliases and pack variants...','Mapping routes, DCs and delivery windows...','Building confidence scores...']
+        : isCRM
         ? ['Parsing Salesforce CRM schema...','Parsing NetSuite billing schema...','Parsing ProductTelemetry schema...','Running AI field alignment across 3 systems...','Canonical schema ready...']
         : ['Parsing source file schemas...','Detecting column name variants across suppliers...','Running multilingual field alignment...','AI mapping fields to canonical model...','Building confidence scores...'],
     },
     'search-impact': {
-      title: 'Preparing Revenue Impact Analysis...', icon: 'search',
-      msgs: isCRM
+      title: 'Preparing Repeat-Order Impact Analysis...', icon: 'search',
+      msgs: isSwire
+        ? [`Indexing ${getSwireGoldenRecordCount()} golden Outlet-SKU records...`,'Running pre-harmonization outlet queries...','Computing matched-order and coverage rates...','Scoring auto-prefill vs sales review split...','Impact analysis ready...']
+        : isCRM
         ? [`Indexing ${getCRMGoldenDistrictCount()} golden district accounts...`,'Running pre-harmonization entity queries...','Benchmarking ARR attribution accuracy...','Computing district match improvement...','Impact analysis ready...']
         : ['Indexing golden records...','Computing search baseline metrics...','Running pre-harmonization query set...','Benchmarking recall improvement...','Analysis ready...'],
     },
     'golden-records': {
       title: 'Generating Golden Records...', icon: 'shield',
-      msgs: isCRM
+      msgs: isSwire
+        ? ['Applying approved outlet and SKU merges...','Computing 8-week order patterns per Outlet × SKU...','Scoring repeat-order confidence...','Assigning actions: auto-prefill / review / suppress...','Building lineage traces...']
+        : isCRM
         ? ['Applying accepted entity merges...','Aggregating ARR per canonical district...','Computing open pipeline totals...','Building source lineage traces...','Generating golden account records...']
         : ['Applying approved corrections...','Deduplicating matched records...','Normalizing canonical fields...','Building lineage traces...','Generating golden records...'],
     },
@@ -1708,9 +1734,10 @@ function _getTransitionConfig(msgKey) {
 
 function _buildTransitionSteps(msgs, currentStep) {
   const isCRM = state.activeDataset === 'crm';
-  const ac = isCRM ? '#10b981' : '#6366f1';
-  const acVar = isCRM ? 'var(--emerald)' : 'var(--accent)';
-  const activeBg = isCRM ? 'rgba(5,150,105,0.08)' : 'rgba(79,70,229,0.08)';
+  const isSwire = state.activeDataset === 'swire';
+  const ac = isCRM ? '#10b981' : isSwire ? '#dc2626' : '#6366f1';
+  const acVar = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : 'var(--accent)';
+  const activeBg = isCRM ? 'rgba(5,150,105,0.08)' : isSwire ? 'rgba(220,38,38,0.08)' : 'rgba(79,70,229,0.08)';
   return msgs.map((m, i) => {
     const done = i < currentStep;
     const active = i === currentStep;
@@ -1991,6 +2018,43 @@ function renderLandingPage() {
         </div>
       </div>
 
+      <!-- Swire Card -->
+      <div onclick="selectDataset('swire')" style="cursor:pointer;border:1px solid rgba(220,38,38,0.22);background:linear-gradient(145deg,rgba(220,38,38,0.08) 0%,rgba(255,255,255,0.98) 72%);border-radius:var(--radius-lg);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;box-shadow:var(--shadow-md)" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px rgba(220,38,38,0.14)'" onmouseleave="this.style.transform='';this.style.boxShadow='var(--shadow-md)'">
+        <div style="padding:0.4rem 1rem;background:rgba(220,38,38,0.08);border-bottom:1px solid rgba(220,38,38,0.16);display:flex;align-items:center;gap:0.5rem">
+          <span style="display:inline-flex;align-items:center;gap:0.3rem;font-size:0.6rem;font-weight:800;color:#dc2626;text-transform:uppercase;letter-spacing:0.1em">${icon('activity','icon-xs')} Scenario 3 · Beverage Distribution</span>
+          <span class="badge badge-red" style="font-size:0.5rem;margin-left:auto">REPEAT ORDERS</span>
+        </div>
+        <div style="padding:1.75rem">
+          <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem">
+            <div style="width:3.25rem;height:3.25rem;border-radius:0.875rem;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#dc2626">${icon('activity','icon-xl')}</div>
+            <div>
+              <h2 style="font-size:1.1875rem;font-weight:800;color:var(--text-primary);margin-bottom:0.2rem">Swire Repeat Order Intelligence</h2>
+              <p style="color:var(--text-tertiary);font-size:0.8125rem">9 operational files → 1 golden Outlet-SKU dataset</p>
+            </div>
+          </div>
+          <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.65;margin-bottom:1.25rem"><strong style="color:var(--text-primary)">Walmart Sandy</strong> lives in ERP twice, the CRM once, and TMS routes it under a third ID — so nobody can see what it reorders every week. Watch the Tower merge outlets and SKUs, convert units to cases, and produce repeat-order recommendations reps can trust.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.625rem;padding:0.875rem 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);margin-bottom:1.25rem">
+            ${[
+              { v: String(getSwireSampleRowCount()), l: 'Sample Rows', c: '#dc2626' },
+              { v: String(getSwireIssueCount()), l: 'Data Issues', c: 'var(--amber)' },
+              { v: '42%', l: 'Auto-Prefill Ready', c: 'var(--emerald)' },
+            ].map(s => `<div style="text-align:center"><div style="font-size:1.375rem;font-weight:900;color:${s.c};line-height:1">${s.v}</div><div style="font-size:0.6rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.2rem">${s.l}</div></div>`).join('')}
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.35rem">
+            ${[
+              { src: 'ERP/CONA Outlet Master + Order History', fmt: 'CSV', clr: 'rgba(220,38,38,0.7)' },
+              { src: 'CRM Outlets + Sales Rep Territories', fmt: 'CSV/XLSX', clr: 'rgba(220,38,38,0.7)' },
+              { src: 'SKU Master + Inventory Snapshots', fmt: 'CSV', clr: 'rgba(245,158,11,0.76)' },
+              { src: 'TMS Routes + POD Outcomes + Promos', fmt: 'CSV', clr: 'rgba(8,145,178,0.78)' },
+            ].map(s => `<div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:var(--text-tertiary)"><span style="color:${s.clr};flex-shrink:0">${icon('fileText','icon-xs')}</span>${s.src}<span style="margin-left:auto;font-size:0.6rem;font-weight:700;color:var(--text-secondary);background:var(--surface-muted);border:1px solid var(--border-subtle);padding:0.1rem 0.4rem;border-radius:4px">${s.fmt}</span></div>`).join('')}
+          </div>
+        </div>
+        <div style="padding:0.875rem 1.75rem;background:rgba(220,38,38,0.06);border-top:1px solid rgba(220,38,38,0.14);display:flex;align-items:center;justify-content:space-between">
+          <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.875rem;font-weight:700;color:#dc2626">${icon('zap','icon-xs')} Start Swire Demo</span>
+          <div style="display:flex;align-items:center;gap:0.25rem;color:#dc2626">${icon('arrowRight','icon-sm')}</div>
+        </div>
+      </div>
+
     </div>
   </div>`;
 }
@@ -2001,11 +2065,12 @@ function renderLandingPage() {
 function renderUploadPage() {
   const stages = UPLOAD_STAGES[state.activeDataset];
   const isCRM = state.activeDataset === 'crm';
+  const isSwire = state.activeDataset === 'swire';
   const isLoading = state.uploadStageIndex >= 0 && !state.uploadDone;
   const isDone = state.uploadDone;
-  const datasetLabel = isCRM ? 'Salesforce / CRM' : 'SKU / Product';
-  const accentColor = isCRM ? 'var(--emerald)' : 'var(--accent)';
-  const badgeCls = isCRM ? 'badge-emerald' : 'badge-accent';
+  const datasetLabel = isCRM ? 'Salesforce / CRM' : isSwire ? 'Swire Outlet-SKU' : 'SKU / Product';
+  const accentColor = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : 'var(--accent)';
+  const badgeCls = isCRM ? 'badge-emerald' : isSwire ? 'badge-red' : 'badge-accent';
 
   return `<div class="page active" style="max-width:52rem;margin:0 auto;padding-top:1.5rem">
     <button onclick="navigateTo('landing')" style="display:inline-flex;align-items:center;gap:0.375rem;font-size:0.8125rem;color:var(--text-tertiary);background:none;border:none;cursor:pointer;margin-bottom:1.5rem;padding:0.25rem 0">${icon('arrowLeft','icon-sm')} Back to dataset selection</button>
@@ -2024,7 +2089,7 @@ function renderUploadPage() {
             ${icon('upload')} Upload Files
           </button>
           <button class="btn btn-primary" onclick="startSampleLoad()" ${isLoading||isDone?'disabled':''}
-            style="${isCRM?'background:linear-gradient(135deg,var(--emerald),#059669);box-shadow:0 0 20px rgba(16,185,129,0.2)':''}">
+            style="${isCRM?'background:linear-gradient(135deg,var(--emerald),#059669);box-shadow:0 0 20px rgba(16,185,129,0.2)':isSwire?'background:linear-gradient(135deg,#dc2626,#b91c1c);box-shadow:0 0 20px rgba(220,38,38,0.2)':''}">
             ${icon('database')} Use Sample Data
           </button>
         </div>
@@ -2048,8 +2113,8 @@ function renderUploadPage() {
         ${stages.slice(0, Math.min(state.uploadStageIndex+1, stages.length)).map((s,i) => {
           const done = i < state.uploadStageIndex || isDone;
           const active = i === state.uploadStageIndex && !isDone;
-          const ac = isCRM ? '#10b981' : '#6366f1';
-          const acVar = isCRM ? 'var(--emerald)' : 'var(--accent)';
+          const ac = isCRM ? '#10b981' : isSwire ? '#dc2626' : '#6366f1';
+          const acVar = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : 'var(--accent)';
           const circle = done
             ? `background:${ac};color:#fff;font-size:0.6875rem;font-weight:800`
             : active
@@ -2120,7 +2185,8 @@ function renderTransitionScreen() {
 // ════════════════════════════════════════════════════════════
 renderMappingPage = function() {
   const isCRM = state.activeDataset === 'crm';
-  const fields = isCRM ? CRM_CANONICAL_FIELDS : [
+  const isSwireMap = state.activeDataset === 'swire';
+  const fields = isSwireMap ? SWIRE_CANONICAL_FIELDS : isCRM ? CRM_CANONICAL_FIELDS : [
     { name: 'canonical_name', type: 'string', required: true,
       source: 'supplier_product_name (US) + product_title_english (EU) + bezeichnung (Nordic)',
       logic: 'BY item description used as primary label; SAP material description used as fallback where BY row is absent. Longest, most complete name wins.',
@@ -2154,7 +2220,9 @@ renderMappingPage = function() {
       logic: '"Fitc" / "FITC" normalized to "FITC". "HRP", "PE" preserved as-is. "No conjugate" / "Unconjugated" → empty string.',
       samples: ['FITC','PE','HRP',''] },
   ];
-  const mappings = isCRM
+  const mappings = isSwireMap
+    ? SWIRE_MAPPINGS
+    : isCRM
     ? CRM_CANONICAL_FIELDS.map(f => ({
         canonical: f.name, sources: f.source.split('+').map(s => s.trim()),
         confidence: f.name === 'canonical_account_name' ? 0.94 : f.name === 'total_arr_usd' ? 0.99 : f.name === 'legal_name' ? 0.91 : f.name === 'products_active' ? 0.97 : 0.88,
@@ -2175,7 +2243,7 @@ renderMappingPage = function() {
   return `<div class="page active">
     ${renderPageIntro()}
     <div class="page-header">
-      <div><h1>Canonicalization</h1><p class="page-subtitle">${isCRM ? 'Map CRM source fields to canonical account schema.' : 'Standardize disparate schemas into one golden canonical model.'}</p></div>
+      <div><h1>Canonicalization</h1><p class="page-subtitle">${isSwireMap ? 'Map ERP, CRM, TMS, inventory, and POD fields into one canonical Outlet-SKU-Route model.' : isCRM ? 'Map CRM source fields to canonical account schema.' : 'Standardize disparate schemas into one golden canonical model.'}</p></div>
       ${renderPageHeaderActions(`
         <button class="btn btn-accent" onclick="toggleAutoMap()">${icon('wand2')} Auto-Map</button>
         <button class="btn btn-primary" onclick="navigateWithTransition('workbench','self-healing')">Proceed to Self-Healing ${icon('arrowRight')}</button>
@@ -2528,7 +2596,8 @@ renderNav = function() {
     `<button class="nav-link ${state.currentPage===item.page?'active':''}" onclick="navigateTo('${item.page}')">${icon(item.icon)} ${item.name}</button>`
   ).join('');
 
-  const datasetBadge = !isLandingOrUpload ? `<span class="badge ${isCRM?'badge-emerald':'badge-accent'}" style="cursor:pointer;margin-left:0.5rem;font-size:0.5625rem" onclick="navigateTo('landing')">${isCRM?'CRM':'SKU'} Dataset ✕</span>` : '';
+  const isSwireNav = state.activeDataset === 'swire';
+  const datasetBadge = !isLandingOrUpload ? `<span class="badge ${isCRM?'badge-emerald':isSwireNav?'badge-red':'badge-accent'}" style="cursor:pointer;margin-left:0.5rem;font-size:0.5625rem" onclick="navigateTo('landing')">${isCRM?'CRM':isSwireNav?'SWIRE':'SKU'} Dataset ✕</span>` : '';
   const demoBtn = !isLandingOrUpload ? `<button class="btn btn-demo" style="margin-left:auto" onclick="startDemo()">${demoRunning?icon('crosshair')+' Stop':icon('activity')+' &#9656; Run Demo'}</button>` : '';
 
   document.getElementById('header-nav').innerHTML = navHtml + datasetBadge + demoBtn;
@@ -3631,7 +3700,7 @@ function renderSKUProductClusters() {
 const _prevSKUWorkbench = renderWorkbenchPage;
 renderWorkbenchPage = function() {
   const html = _prevSKUWorkbench();
-  if (state.activeDataset === 'crm') return html;
+  if (state.activeDataset !== 'sku') return html;
   let result = html.replace('<div class="workbench-layout">', renderSKUProductClusters() + '<div class="workbench-layout">');
 
   // Replace JSON diff-grid with visual diff

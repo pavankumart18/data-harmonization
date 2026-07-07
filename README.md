@@ -4,7 +4,7 @@ A live interactive demo that shows how messy, fragmented source data from multip
 
 ## What It Does
 
-Two end-to-end demo scenarios walk through a 5-stage pipeline:
+Three end-to-end demo scenarios walk through a 5-stage pipeline:
 
 | Stage | Description |
 |-------|-------------|
@@ -25,6 +25,12 @@ Two end-to-end demo scenarios walk through a 5-stage pipeline:
 - **Problem:** 6 sales reps entered "Houston ISD" 8 different ways across Salesforce, NetSuite, and product telemetry — creating phantom duplicate accounts
 - **Result:** 35 source records → 8 golden district records, $463K in previously invisible ARR attributed
 - **Key issues resolved:** entity deduplication across 3 systems, ARR reconciliation, district name normalization
+
+### Scenario 3 · Beverage Distribution — Swire Repeat Order Intelligence
+- **Problem:** The same outlets and SKUs live under different IDs across ERP/CONA, CRM, TMS routing, inventory, POD logs, and the promo file — so no system can tell what an outlet normally reorders, and reps rebuild every order by hand
+- **Result:** 9 operational files (~250K source rows, 114 sampled) → 1 golden Outlet-SKU repeat-order dataset; 42% of pairs auto-prefill ready, 31% routed to sales review, 27% correctly held back
+- **Key issues resolved:** duplicate outlet merge (Walmart #1482 / Wal-Mart 1482 / WM Supercenter 1482), legacy-vs-new SKU merge (KOZ12PK → Coca-Cola Zero Sugar 12pk), UOM conversion to cases (EA / Pallet / CS), route ID normalization (SLC-27 / SaltLake_027 → R27), delivery window parsing, sales-rep inference from territory files, promo-spike suppression
+- **Data:** hand-authored synthetic dataset in `swire_data.js`, generated per the "Swire Repeat Order Intelligence — Synthetic Data Generation Context" brief (demo-only, no real Swire data)
 
 ## Running Locally
 
@@ -48,9 +54,11 @@ python -m http.server 8080
 ```
 ├── index.html       # App shell
 ├── app.js           # All application logic, page renders, demo overrides
-├── data.js          # Raw source data, harmonization issues, golden records
+├── data.js          # Scenario 1 + 2 source data, harmonization issues, golden records
+├── swire_data.js    # Scenario 3 synthetic dataset (9 source files, golden Outlet-SKU records)
+├── swire.js         # Scenario 3 page renderers (loaded after app.js, override-chain pattern)
 ├── icons.js         # Lucide-style SVG icon definitions
-└── styles.css       # Full design system (dark theme, components, utilities)
+└── styles.css       # Full design system (components, utilities)
 ```
 
 ## Tech Stack
