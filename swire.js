@@ -1,5 +1,5 @@
 // ============================================================
-//  Swire Repeat Order Intelligence — Scenario 3 Renderers
+//  Repeat Order Intelligence — Scenario 3 Renderers (Beverage Distribution)
 //  Loaded after app.js; overrides pages when activeDataset === 'swire'
 // ============================================================
 
@@ -125,7 +125,7 @@ renderRawPage = function() {
   return `<div class="page active">
     ${renderPageIntro()}
     <div class="page-header">
-      <div><h1>Raw Operational Data</h1><p class="page-subtitle">Nine files from the systems Swire already runs — every duplicate outlet, mixed unit, and stale flag exposed.</p></div>
+      <div><h1>Raw Operational Data</h1><p class="page-subtitle">Nine files from the systems the bottler already runs — every duplicate outlet, mixed unit, and stale flag exposed.</p></div>
       ${renderPageHeaderActions(`<button class="btn btn-primary" style="background:linear-gradient(135deg,${SWIRE_RED},#b91c1c)" onclick="navigateWithTransition('mapping','canonicalization')">Begin Canonicalization ${icon('arrowRight')}</button>`)}
     </div>
     ${renderStorylineCard()}
@@ -585,7 +585,7 @@ renderSearchPage = function() {
 
     <div style="margin-top:1.5rem;background:linear-gradient(135deg,rgba(220,38,38,0.06),rgba(220,38,38,0.02));border:1px solid rgba(220,38,38,0.2);border-radius:var(--radius-lg);padding:1.25rem 1.5rem">
       <div style="display:flex;align-items:center;gap:0.625rem;margin-bottom:0.5rem"><span style="color:${SWIRE_RED}">${icon('sparkles','icon-sm')}</span><span style="font-size:0.9375rem;font-weight:700;color:var(--text-primary)">The takeaway</span></div>
-      <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.65;margin:0">No WMS or platform transformation required. Connecting the customer, order, SKU, route, and inventory data Swire already has — and resolving the messy joins with human-approved matching — produces a golden Outlet-SKU dataset that automates repeat ordering where it is safe, targets sales attention where it is needed, and makes fill-rate and OTIF metrics explainable end to end.</p>
+      <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.65;margin:0">No WMS or platform transformation required. Connecting the customer, order, SKU, route, and inventory data the bottler already has — and resolving the messy joins with human-approved matching — produces a golden Outlet-SKU dataset that automates repeat ordering where it is safe, targets sales attention where it is needed, and makes fill-rate and OTIF metrics explainable end to end.</p>
     </div>
     ${renderPageHelpPanel()}
   </div>`;

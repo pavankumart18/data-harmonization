@@ -1995,7 +1995,7 @@ function renderLandingPage() {
           <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem">
             <div style="width:3.25rem;height:3.25rem;border-radius:0.875rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--emerald)">${icon('gitMerge','icon-xl')}</div>
             <div>
-              <h2 style="font-size:1.1875rem;font-weight:800;color:var(--text-primary);margin-bottom:0.2rem">Imagine Learning / CRM</h2>
+              <h2 style="font-size:1.1875rem;font-weight:800;color:var(--text-primary);margin-bottom:0.2rem">K-12 Education CRM</h2>
               <p style="color:var(--text-tertiary);font-size:0.8125rem">3 operational systems + district reference</p>
             </div>
           </div>
@@ -2028,7 +2028,7 @@ function renderLandingPage() {
           <div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem">
             <div style="width:3.25rem;height:3.25rem;border-radius:0.875rem;background:rgba(220,38,38,0.1);border:1px solid rgba(220,38,38,0.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#dc2626">${icon('activity','icon-xl')}</div>
             <div>
-              <h2 style="font-size:1.1875rem;font-weight:800;color:var(--text-primary);margin-bottom:0.2rem">Swire Repeat Order Intelligence</h2>
+              <h2 style="font-size:1.1875rem;font-weight:800;color:var(--text-primary);margin-bottom:0.2rem">Repeat Order Intelligence</h2>
               <p style="color:var(--text-tertiary);font-size:0.8125rem">9 operational files → 1 golden Outlet-SKU dataset</p>
             </div>
           </div>
@@ -2050,7 +2050,7 @@ function renderLandingPage() {
           </div>
         </div>
         <div style="padding:0.875rem 1.75rem;background:rgba(220,38,38,0.06);border-top:1px solid rgba(220,38,38,0.14);display:flex;align-items:center;justify-content:space-between">
-          <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.875rem;font-weight:700;color:#dc2626">${icon('zap','icon-xs')} Start Swire Demo</span>
+          <span style="display:inline-flex;align-items:center;gap:0.4rem;font-size:0.875rem;font-weight:700;color:#dc2626">${icon('zap','icon-xs')} Start Beverage Demo</span>
           <div style="display:flex;align-items:center;gap:0.25rem;color:#dc2626">${icon('arrowRight','icon-sm')}</div>
         </div>
       </div>
@@ -2068,7 +2068,7 @@ function renderUploadPage() {
   const isSwire = state.activeDataset === 'swire';
   const isLoading = state.uploadStageIndex >= 0 && !state.uploadDone;
   const isDone = state.uploadDone;
-  const datasetLabel = isCRM ? 'Salesforce / CRM' : isSwire ? 'Swire Outlet-SKU' : 'SKU / Product';
+  const datasetLabel = isCRM ? 'Salesforce / CRM' : isSwire ? 'Bottler Outlet-SKU' : 'SKU / Product';
   const accentColor = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : 'var(--accent)';
   const badgeCls = isCRM ? 'badge-emerald' : isSwire ? 'badge-red' : 'badge-accent';
 
@@ -2597,7 +2597,7 @@ renderNav = function() {
   ).join('');
 
   const isSwireNav = state.activeDataset === 'swire';
-  const datasetBadge = !isLandingOrUpload ? `<span class="badge ${isCRM?'badge-emerald':isSwireNav?'badge-red':'badge-accent'}" style="cursor:pointer;margin-left:0.5rem;font-size:0.5625rem" onclick="navigateTo('landing')">${isCRM?'CRM':isSwireNav?'SWIRE':'SKU'} Dataset ✕</span>` : '';
+  const datasetBadge = !isLandingOrUpload ? `<span class="badge ${isCRM?'badge-emerald':isSwireNav?'badge-red':'badge-accent'}" style="cursor:pointer;margin-left:0.5rem;font-size:0.5625rem" onclick="navigateTo('landing')">${isCRM?'CRM':isSwireNav?'BOTTLER':'SKU'} Dataset ✕</span>` : '';
   const demoBtn = !isLandingOrUpload ? `<button class="btn btn-demo" style="margin-left:auto" onclick="startDemo()">${demoRunning?icon('crosshair')+' Stop':icon('activity')+' &#9656; Run Demo'}</button>` : '';
 
   document.getElementById('header-nav').innerHTML = navHtml + datasetBadge + demoBtn;
@@ -2933,16 +2933,16 @@ if (!state.crmClusterApprovals) state.crmClusterApprovals = {};
 const CRM_ENTITY_CLUSTERS = [
   { id:'hous', canonical:'Houston ISD', confidence:97, arr:'$463K', segments:['Enterprise','Title I'],
     variants:['Houston ISD','Houston ISD - Supplemental','Houston Public Schools','Houston Federal Programs','HOUSTON MATH PROGRAM','HOUSTON CREDIT RECOVERY'],
-    sources:['Salesforce CRM','NetSuite','ProductTelemetry'], products:['Imagine Math','Imagine LL','Twig Science'] },
+    sources:['Salesforce CRM','NetSuite','ProductTelemetry'], products:['Lumen Math','Lumen LL','Terra Science'] },
   { id:'rive', canonical:'Riverview ISD', confidence:94, arr:'$436K', segments:['Mid-Market'],
     variants:['Riverview ISD','Riverview ISD - Credit Recovery','Riverview Public Schools','RIVERVIEW CREDIT RECOVERY','Riverview ISD Billing'],
-    sources:['Salesforce CRM','NetSuite','ProductTelemetry'], products:['Imagine Math','StudySync'] },
+    sources:['Salesforce CRM','NetSuite','ProductTelemetry'], products:['Lumen Math','ReadSync'] },
   { id:'oakv', canonical:'Oak Valley School District', confidence:91, arr:'$189K', segments:['SMB'],
     variants:['Oak Valley ISD','Oak Valley School District','OAK VALLEY CREDIT RECOVERY'],
-    sources:['Salesforce CRM','ProductTelemetry'], products:['Imagine LL'] },
+    sources:['Salesforce CRM','ProductTelemetry'], products:['Lumen LL'] },
   { id:'pine', canonical:'Pine Hills ISD', confidence:88, arr:'$124K', segments:['SMB'],
     variants:['Pine Hills ISD','PINE_HILLS_LITERACY_PILOT','Pine Hills'],
-    sources:['Salesforce CRM','NetSuite'], products:['Imagine LL PD'] },
+    sources:['Salesforce CRM','NetSuite'], products:['Lumen LL PD'] },
 ];
 
 function approveCRMCluster(id) {
@@ -3278,9 +3278,9 @@ const CRM_RAW_SEARCH_DATA = {
 };
 
 const CRM_GOLDEN_SEARCH_DATA = {
-  houston:      { id:'GC0001', name:'Houston ISD', arr:463000, pipeline:89000, products:['Imagine Math','Imagine Language & Literacy','Twig Science','Courseware','StudySync','Imagine PD'], variants:8, enrollment:195000, segment:'Enterprise', region:'South', renewal:'Oct 2026', health:78 },
-  riverview:    { id:'GC0002', name:'Riverview ISD', arr:218000, pipeline:45000, products:['Imagine Math','StudySync'], variants:5, enrollment:22000, segment:'Mid-Market', region:'Southwest', renewal:'Jul 2026', health:82 },
-  'oak valley': { id:'GC0003', name:'Oak Valley School District', arr:189000, pipeline:28000, products:['Imagine Language & Literacy'], variants:3, enrollment:14000, segment:'SMB', region:'West', renewal:'Mar 2027', health:71 },
+  houston:      { id:'GC0001', name:'Houston ISD', arr:463000, pipeline:89000, products:['Lumen Math','Lumen Language & Literacy','Terra Science','Courseware','ReadSync','Lumen PD'], variants:8, enrollment:195000, segment:'Enterprise', region:'South', renewal:'Oct 2026', health:78 },
+  riverview:    { id:'GC0002', name:'Riverview ISD', arr:218000, pipeline:45000, products:['Lumen Math','ReadSync'], variants:5, enrollment:22000, segment:'Mid-Market', region:'Southwest', renewal:'Jul 2026', health:82 },
+  'oak valley': { id:'GC0003', name:'Oak Valley School District', arr:189000, pipeline:28000, products:['Lumen Language & Literacy'], variants:3, enrollment:14000, segment:'SMB', region:'West', renewal:'Mar 2027', health:71 },
 };
 
 Object.keys(CRM_RAW_SEARCH_DATA).forEach(key => { delete CRM_RAW_SEARCH_DATA[key]; });

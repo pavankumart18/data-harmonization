@@ -1,7 +1,7 @@
 // ============================================================
-//  Swire Repeat Order Intelligence — Scenario 3 Dataset
+//  Repeat Order Intelligence — Scenario 3 Dataset (Beverage Distribution)
 //  Synthetic Outlet-SKU golden record data (demo only)
-//  Seeded per Swire synthetic data generation context (seed 20260703)
+//  Seeded per the repeat-order synthetic data generation brief (seed 20260703)
 // ============================================================
 
 const SWIRE_FILES = {
@@ -604,7 +604,7 @@ const SWIRE_SEARCH_DATA = {
 // ── Guided demo script ────────────────────────────────────
 const SWIRE_DEMO_SCRIPT = [
   { page: 'raw', highlight: '.stats-grid', action: null,
-    narration: 'Welcome to <strong>Swire Repeat Order Intelligence</strong>. Nine operational files — ERP outlets, CRM, orders, SKU master, routes, inventory, territories, deliveries, promos — about <em>250,000 source records</em>, sampled here for the walkthrough.', stepLabel: 'Step 1 of 12 — Source Landscape', duration: 5500 },
+    narration: 'Welcome to <strong>Repeat Order Intelligence</strong>. Nine operational files — ERP outlets, CRM, orders, SKU master, routes, inventory, territories, deliveries, promos — about <em>250,000 source records</em>, sampled here for the walkthrough.', stepLabel: 'Step 1 of 12 — Source Landscape', duration: 5500 },
   { page: 'raw', highlight: '.source-file-card:nth-child(1)', action: () => { selectFile('raw_erp_outlet_master.csv'); },
     narration: 'The <strong>ERP outlet master</strong>: Walmart Sandy exists twice — "Walmart #1482" and "Wal-Mart 1482" — under two customer IDs. Delivery windows read "Morning", "6-10", "06:00-10:00". A closed diner is still marked active.', stepLabel: 'Step 2 of 12 — Outlet Duplication', duration: 6000 },
   { page: 'raw', highlight: '.source-file-card:nth-child(3)', action: () => { selectFile('raw_order_history.csv'); },
@@ -626,7 +626,7 @@ const SWIRE_DEMO_SCRIPT = [
   { page: 'search', highlight: '.swire-impact-tiles', action: () => { state.searchQuery = 'sprite'; renderAll(); },
     narration: 'And the guardrail: <strong>Sprite 20oz at 7-Eleven</strong> is a promo spike on low stock — confidence 41%, recommendation <em>suppressed</em>. 42% auto-prefill, 31% sales review, 27% not suggested.', stepLabel: 'Step 11 of 12 — Smart Suppression', duration: 6500 },
   { page: 'search', highlight: '.swire-impact-tiles', action: () => { state.searchQuery = 'walmart'; renderAll(); },
-    narration: '<strong>The takeaway:</strong> no WMS required. Connect the data Swire already has, resolve the messy joins, and a golden Outlet-SKU dataset powers repeat-order automation reps can actually trust.', stepLabel: 'Step 12 of 12 — Business Impact', duration: 7000 },
+    narration: '<strong>The takeaway:</strong> no WMS required. Connect the data the bottler already has, resolve the messy joins, and a golden Outlet-SKU dataset powers repeat-order automation reps can actually trust.', stepLabel: 'Step 12 of 12 — Business Impact', duration: 7000 },
 ];
 
 // ── Stage intros / storyline / help copy ──────────────────
@@ -672,7 +672,7 @@ const SWIRE_STORYLINES = {
 };
 
 const SWIRE_PAGE_HELP = {
-  raw: { title: 'Raw Swire Source Data', summary: 'These are the nine operational files as they arrive from ERP, CRM, routing, inventory, sales ops, delivery logs, and trade promotion — nothing cleaned yet.',
+  raw: { title: 'Raw Bottler Source Data', summary: 'These are the nine operational files as they arrive from ERP, CRM, routing, inventory, sales ops, delivery logs, and trade promotion — nothing cleaned yet.',
     sections: [
       { title: 'What you can do here', items: [
         'See how many files, records, and data issues came in across the four source domains.',
