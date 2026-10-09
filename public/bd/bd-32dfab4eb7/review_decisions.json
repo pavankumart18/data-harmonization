@@ -1,0 +1,8 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "decisions": [],
+ "note": "Replayable reviewer decisions. Export from the UI and pass with --decisions to re-run."
+}

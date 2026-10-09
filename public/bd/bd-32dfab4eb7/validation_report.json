@@ -1,0 +1,69 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "passed": true,
+ "checks": [
+  {
+   "id": "A1",
+   "check": "Record counts 9/24/27/7/12/60/68/41/120/120",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "a",
+   "check": "Every file has sample rows and an issue register",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "c",
+   "check": "ER edges reference actual columns",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "d",
+   "check": "Every review item has original/proposed values and source rows",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "e",
+   "check": "Golden facilities keep original IDs",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "f",
+   "check": "AR reconciles to unique invoices",
+   "passed": true,
+   "detail": "open 198,250.00 vs raw 198,250.00"
+  },
+  {
+   "id": "f2",
+   "check": "Category split sums to total open AR (no double counting)",
+   "passed": true,
+   "detail": "198,250.00"
+  },
+  {
+   "id": "B",
+   "check": "All transformation SQL executed",
+   "passed": true,
+   "detail": "10 statements"
+  },
+  {
+   "id": "i",
+   "check": "Outputs labeled as illustrative",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "C",
+   "check": "Raw input unchanged by the run",
+   "passed": true,
+   "detail": ""
+  }
+ ]
+}

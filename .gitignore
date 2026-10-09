@@ -9,3 +9,5 @@ coverage/
 saved_from_chrome.pdf
 meeting.md
 tasks.md
+__pycache__/
+.pytest_cache/

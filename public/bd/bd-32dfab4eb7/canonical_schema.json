@@ -1,0 +1,353 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "entities": [
+  {
+   "entity": "party",
+   "label": "Party / Customer",
+   "grain": "One enterprise customer",
+   "native_keys": [
+    "Reltio_Record_ID",
+    "ERP_Customer_ID (PARENT)"
+   ],
+   "fields": [
+    {
+     "name": "party_id",
+     "type": "id",
+     "description": "Golden party ID"
+    },
+    {
+     "name": "legal_name",
+     "type": "text",
+     "description": "Survivor legal name"
+    },
+    {
+     "name": "dba_name",
+     "type": "text",
+     "description": "Doing-business-as"
+    },
+    {
+     "name": "hq_address",
+     "type": "address",
+     "description": "Headquarters address"
+    },
+    {
+     "name": "payment_terms",
+     "type": "category",
+     "description": "Default terms"
+    },
+    {
+     "name": "source_refs",
+     "type": "crosswalk",
+     "description": "Native IDs per system"
+    }
+   ]
+  },
+  {
+   "entity": "facility",
+   "label": "Facility / Site",
+   "grain": "One care site",
+   "native_keys": [
+    "Reltio_Record_ID",
+    "ERP_Customer_ID group",
+    "Salesforce_Account_ID"
+   ],
+   "fields": [
+    {
+     "name": "facility_id",
+     "type": "id",
+     "description": "Golden facility ID"
+    },
+    {
+     "name": "display_name",
+     "type": "text",
+     "description": "Standard display name"
+    },
+    {
+     "name": "address",
+     "type": "address",
+     "description": "Ranked address"
+    },
+    {
+     "name": "dhc_id",
+     "type": "id",
+     "description": "Definitive Healthcare ID"
+    },
+    {
+     "name": "parent_party_id",
+     "type": "id",
+     "description": "Enterprise roll-up"
+    },
+    {
+     "name": "source_refs",
+     "type": "crosswalk",
+     "description": "Native IDs per system"
+    }
+   ]
+  },
+  {
+   "entity": "account_role",
+   "label": "Account role",
+   "grain": "One ERP account playing a role for a facility",
+   "native_keys": [
+    "ERP_System + ERP_Customer_ID"
+   ],
+   "fields": [
+    {
+     "name": "role",
+     "type": "category",
+     "description": "SOLD_TO / SHIP_TO / BILL_TO / PAYER / PARENT"
+    },
+    {
+     "name": "erp_account",
+     "type": "id",
+     "description": "Native account"
+    },
+    {
+     "name": "facility_id",
+     "type": "id",
+     "description": "Facility"
+    }
+   ]
+  },
+  {
+   "entity": "contact",
+   "label": "Contact",
+   "grain": "One person in a role at a facility",
+   "native_keys": [
+    "Universal_Contact_ID"
+   ],
+   "fields": [
+    {
+     "name": "contact_id",
+     "type": "id",
+     "description": "Native contact ID"
+    },
+    {
+     "name": "contact_type",
+     "type": "category",
+     "description": "Role"
+    },
+    {
+     "name": "facility_id",
+     "type": "id",
+     "description": "Facility via account"
+    },
+    {
+     "name": "email",
+     "type": "text",
+     "description": "Validated email"
+    }
+   ]
+  },
+  {
+   "entity": "contract",
+   "label": "Contract",
+   "grain": "One transactional contract",
+   "native_keys": [
+    "Contract_ID"
+   ],
+   "fields": [
+    {
+     "name": "contract_id",
+     "type": "id",
+     "description": "Native ID"
+    },
+    {
+     "name": "facility_id",
+     "type": "id",
+     "description": "Facility via account"
+    },
+    {
+     "name": "covered_material",
+     "type": "id",
+     "description": "Material covered"
+    },
+    {
+     "name": "term",
+     "type": "date range",
+     "description": "Begin / end"
+    },
+    {
+     "name": "status",
+     "type": "category",
+     "description": "Status"
+    },
+    {
+     "name": "po_required",
+     "type": "flag",
+     "description": "PO required"
+    }
+   ]
+  },
+  {
+   "entity": "asset",
+   "label": "Equipment asset",
+   "grain": "One installed device",
+   "native_keys": [
+    "Electronic_Asset_ID",
+    "Serial_Number",
+    "Unique_Device_Identifier"
+   ],
+   "fields": [
+    {
+     "name": "asset_id",
+     "type": "id",
+     "description": "Electronic asset ID"
+    },
+    {
+     "name": "serial",
+     "type": "id",
+     "description": "Normalized serial"
+    },
+    {
+     "name": "current_site",
+     "type": "facility ref",
+     "description": "Time-aware proposed facility"
+    },
+    {
+     "name": "owner_account",
+     "type": "id",
+     "description": "Owner ERP account"
+    },
+    {
+     "name": "warranty_end",
+     "type": "date",
+     "description": "Warranty end"
+    }
+   ]
+  },
+  {
+   "entity": "movement",
+   "label": "Movement",
+   "grain": "One install or move event",
+   "native_keys": [
+    "Transfer_Event_No"
+   ],
+   "fields": [
+    {
+     "name": "event_id",
+     "type": "id",
+     "description": "Native ID"
+    },
+    {
+     "name": "asset_id",
+     "type": "id",
+     "description": "Resolved asset"
+    },
+    {
+     "name": "destination_facility",
+     "type": "facility ref",
+     "description": "Destination"
+    },
+    {
+     "name": "valid_from",
+     "type": "date",
+     "description": "Event date"
+    }
+   ]
+  },
+  {
+   "entity": "service_event",
+   "label": "Service event",
+   "grain": "One service visit",
+   "native_keys": [
+    "Service_Work_Order"
+   ],
+   "fields": [
+    {
+     "name": "work_order",
+     "type": "id",
+     "description": "Native ID"
+    },
+    {
+     "name": "asset_id",
+     "type": "id",
+     "description": "Resolved asset"
+    },
+    {
+     "name": "facility_id",
+     "type": "facility ref",
+     "description": "Visit site"
+    },
+    {
+     "name": "visit_date",
+     "type": "date",
+     "description": "Date"
+    }
+   ]
+  },
+  {
+   "entity": "sales_order",
+   "label": "Sales order",
+   "grain": "One order line",
+   "native_keys": [
+    "SAP_Sales_Order"
+   ],
+   "fields": [
+    {
+     "name": "order_id",
+     "type": "id",
+     "description": "Native ID"
+    },
+    {
+     "name": "facility_id",
+     "type": "facility ref",
+     "description": "Via sold-to"
+    },
+    {
+     "name": "asset_id",
+     "type": "id",
+     "description": "Via serial"
+    },
+    {
+     "name": "roles",
+     "type": "relationship",
+     "description": "Sold/ship/bill/payer"
+    },
+    {
+     "name": "net_value",
+     "type": "money",
+     "description": "USD"
+    }
+   ]
+  },
+  {
+   "entity": "invoice",
+   "label": "Invoice / receivable",
+   "grain": "One invoice",
+   "native_keys": [
+    "SAP_Billing_Document"
+   ],
+   "fields": [
+    {
+     "name": "invoice_id",
+     "type": "id",
+     "description": "Native ID"
+    },
+    {
+     "name": "order_id",
+     "type": "id",
+     "description": "Reference order"
+    },
+    {
+     "name": "payer",
+     "type": "id",
+     "description": "Resolved payer"
+    },
+    {
+     "name": "open_amount",
+     "type": "money",
+     "description": "Open USD"
+    },
+    {
+     "name": "aging_bucket",
+     "type": "category",
+     "description": "Aging"
+    }
+   ]
+  }
+ ]
+}

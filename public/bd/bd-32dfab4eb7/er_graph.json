@@ -1,0 +1,363 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "nodes": [
+  {
+   "id": "01",
+   "table": "reltio",
+   "label": "Reltio customer profiles",
+   "system": "Reltio MDM",
+   "grain": "One master profile per enterprise parent or facility",
+   "key": "Reltio_Record_ID",
+   "records": 9,
+   "x": 110,
+   "y": 90
+  },
+  {
+   "id": "02",
+   "table": "sap_accounts",
+   "label": "SAP customer accounts",
+   "system": "SAP Everest / JDE Legacy",
+   "grain": "One ERP account per customer role",
+   "key": "ERP_System + ERP_Customer_ID",
+   "records": 24,
+   "x": 420,
+   "y": 90
+  },
+  {
+   "id": "03",
+   "table": "sf_contacts",
+   "label": "Salesforce contacts",
+   "system": "Salesforce",
+   "grain": "One person in a contact role",
+   "key": "Universal_Contact_ID",
+   "records": 27,
+   "x": 1010,
+   "y": 40
+  },
+  {
+   "id": "04",
+   "table": "sf_accounts",
+   "label": "Salesforce accounts",
+   "system": "Salesforce",
+   "grain": "One CRM account (facility)",
+   "key": "Salesforce_Account_ID",
+   "records": 7,
+   "x": 730,
+   "y": 90
+  },
+  {
+   "id": "05",
+   "table": "sf_contracts",
+   "label": "Salesforce contracts",
+   "system": "Salesforce",
+   "grain": "One transactional contract under a master agreement",
+   "key": "Contract_ID",
+   "records": 12,
+   "x": 1010,
+   "y": 190
+  },
+  {
+   "id": "06",
+   "table": "equipment",
+   "label": "Installed equipment",
+   "system": "Install base",
+   "grain": "One installed device",
+   "key": "Electronic_Asset_ID",
+   "records": 60,
+   "x": 300,
+   "y": 330
+  },
+  {
+   "id": "07",
+   "table": "movements",
+   "label": "Equipment movements",
+   "system": "Install base events",
+   "grain": "One install or move event",
+   "key": "Transfer_Event_No",
+   "records": 68,
+   "x": 90,
+   "y": 470
+  },
+  {
+   "id": "08",
+   "table": "service",
+   "label": "Field service work orders",
+   "system": "Field service",
+   "grain": "One service visit",
+   "key": "Service_Work_Order",
+   "records": 41,
+   "x": 420,
+   "y": 520
+  },
+  {
+   "id": "09",
+   "table": "orders",
+   "label": "SAP sales orders",
+   "system": "SAP SD",
+   "grain": "One sales order line",
+   "key": "SAP_Sales_Order",
+   "records": 120,
+   "x": 730,
+   "y": 380
+  },
+  {
+   "id": "10",
+   "table": "billing",
+   "label": "SAP billing & receivables",
+   "system": "SAP FI-AR",
+   "grain": "One invoice",
+   "key": "SAP_Billing_Document",
+   "records": 120,
+   "x": 1010,
+   "y": 380
+  }
+ ],
+ "edges": [
+  {
+   "id": "E01",
+   "source": "01",
+   "target": "02",
+   "type": "inferred",
+   "label": "facility match",
+   "join": "name + address scoring -> ERP facility group",
+   "columns": [
+    "Legal_Name",
+    "DBA_Name",
+    "Hierarchy_Account_Address",
+    "Address"
+   ],
+   "matched": 6,
+   "review": 2,
+   "unresolved": 0,
+   "evidence": "6 Reltio facilities auto-matched, 2 same-entity candidates in review"
+  },
+  {
+   "id": "E02",
+   "source": "04",
+   "target": "02",
+   "type": "inferred",
+   "label": "facility match",
+   "join": "name + street/city scoring -> ERP facility group",
+   "columns": [
+    "Account_Name",
+    "Billing_Street",
+    "Billing_City",
+    "Address"
+   ],
+   "matched": 6,
+   "review": 1,
+   "unresolved": 0,
+   "evidence": "6 Salesforce accounts auto-matched, 1 in review"
+  },
+  {
+   "id": "E03",
+   "source": "03",
+   "target": "04",
+   "type": "native",
+   "label": "contact -> account",
+   "join": "\"Salesforce_Account_ID\"",
+   "columns": [
+    "Salesforce_Account_ID"
+   ],
+   "matched": 22,
+   "review": 0,
+   "unresolved": 5,
+   "evidence": "Exact native key; blanks and IDs outside the extract stay unresolved"
+  },
+  {
+   "id": "E04",
+   "source": "05",
+   "target": "04",
+   "type": "native",
+   "label": "contract -> account",
+   "join": "\"Salesforce_Account_ID\"",
+   "columns": [
+    "Salesforce_Account_ID"
+   ],
+   "matched": 10,
+   "review": 0,
+   "unresolved": 2,
+   "evidence": "Exact native key; 2 contracts carry no account"
+  },
+  {
+   "id": "E05",
+   "source": "10",
+   "target": "09",
+   "type": "native",
+   "label": "invoice -> order",
+   "join": "\"Reference_Sales_Order\" = \"SAP_Sales_Order\"",
+   "columns": [
+    "Reference_Sales_Order",
+    "SAP_Sales_Order"
+   ],
+   "matched": 120,
+   "review": 0,
+   "unresolved": 0,
+   "evidence": "Native transactional join"
+  },
+  {
+   "id": "E06",
+   "source": "09",
+   "target": "02",
+   "type": "native",
+   "label": "order roles -> ERP accounts",
+   "join": "\"Sold_To_No\" / \"Ship_To_No\" / \"Bill_To_No\" / \"Payer_No\" = \"ERP_Customer_ID\"",
+   "columns": [
+    "Sold_To_No",
+    "Ship_To_No",
+    "Bill_To_No",
+    "Payer_No",
+    "ERP_Customer_ID"
+   ],
+   "matched": 474,
+   "review": 0,
+   "unresolved": 6,
+   "evidence": "Each role is a separate relationship"
+  },
+  {
+   "id": "E07",
+   "source": "10",
+   "target": "02",
+   "type": "native",
+   "label": "invoice payer -> ERP payer",
+   "join": "\"Payer_Account_No\" = \"ERP_Customer_ID\"",
+   "columns": [
+    "Payer_Account_No",
+    "ERP_Customer_ID"
+   ],
+   "matched": 113,
+   "review": 0,
+   "unresolved": 7,
+   "evidence": "Blank payers resolved from the order in review"
+  },
+  {
+   "id": "E08",
+   "source": "07",
+   "target": "06",
+   "type": "native",
+   "label": "movement -> asset",
+   "join": "tag or normalized serial via identifier index",
+   "columns": [
+    "Asset_Tag",
+    "Scanned_Serial",
+    "Electronic_Asset_ID",
+    "Serial_Number"
+   ],
+   "matched": 68,
+   "review": 0,
+   "unresolved": 0,
+   "evidence": "Strong IDs only; one serial resolves only after normalization"
+  },
+  {
+   "id": "E09",
+   "source": "08",
+   "target": "06",
+   "type": "native",
+   "label": "service -> asset",
+   "join": "tag or normalized serial via identifier index",
+   "columns": [
+    "Equipment_Tag",
+    "Observed_Serial",
+    "Electronic_Asset_ID",
+    "Serial_Number"
+   ],
+   "matched": 35,
+   "review": 0,
+   "unresolved": 6,
+   "evidence": "6 visits name no device"
+  },
+  {
+   "id": "E10",
+   "source": "09",
+   "target": "06",
+   "type": "native",
+   "label": "order -> asset (serial)",
+   "join": "normalized \"Equipment_Serial\" = normalized \"Serial_Number\"",
+   "columns": [
+    "Equipment_Serial",
+    "Serial_Number"
+   ],
+   "matched": 90,
+   "review": 0,
+   "unresolved": 30,
+   "evidence": "Only where the serial is populated"
+  },
+  {
+   "id": "E11",
+   "source": "09",
+   "target": "06",
+   "type": "conflict",
+   "label": "order site vs asset site",
+   "join": "sold-to facility vs asset location at order date",
+   "columns": [
+    "Sold_To_No",
+    "Order_Created_On",
+    "Destination_Location",
+    "Movement_Date"
+   ],
+   "matched": 0,
+   "review": 12,
+   "unresolved": 0,
+   "evidence": "12 orders tied to a facility the asset has left"
+  },
+  {
+   "id": "E12",
+   "source": "06",
+   "target": "02",
+   "type": "native",
+   "label": "asset owner -> ERP",
+   "join": "\"Owning_ERP_Customer_No\" = \"ERP_Customer_ID\"",
+   "columns": [
+    "Owning_ERP_Customer_No",
+    "ERP_Customer_ID"
+   ],
+   "matched": 19,
+   "review": 0,
+   "unresolved": 41,
+   "evidence": "41 assets have no owner; inferred per facility in review"
+  },
+  {
+   "id": "E13",
+   "source": "06",
+   "target": "01",
+   "type": "inferred",
+   "label": "asset site -> facility",
+   "join": "site name similarity -> golden facility",
+   "columns": [
+    "Site_Name",
+    "Site_Address",
+    "Legal_Name",
+    "DBA_Name"
+   ],
+   "matched": 58,
+   "review": 0,
+   "unresolved": 2,
+   "evidence": "Name alone proposes; address or owner corroborates"
+  },
+  {
+   "id": "E14",
+   "source": "05",
+   "target": "09",
+   "type": "unresolved",
+   "label": "contract covers order",
+   "join": "facility + covered material",
+   "columns": [
+    "Pricing_Schedule_by_Transaction_Type",
+    "Material_Number"
+   ],
+   "matched": 90,
+   "review": 10,
+   "unresolved": 20,
+   "evidence": "Derived through the facility crosswalk; unlinked contracts leave orders uncovered"
+  }
+ ],
+ "legend": {
+  "native": "Native verified join",
+  "inferred": "Inferred candidate",
+  "conflict": "Conflict",
+  "unresolved": "Unresolved / derived"
+ }
+}

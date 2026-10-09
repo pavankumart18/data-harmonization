@@ -1,0 +1,2910 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "as_of": "2026-10-08",
+ "rag_thresholds": {
+  "red_fail_rate": 0.25,
+  "red_high_severity_rate": 0.1,
+  "link_green": 1.0,
+  "link_amber": 0.75,
+  "note": "Demo-configurable. Red = materially inconsistent/invalid, amber = incomplete or needs review, green = no material failures among applicable checks."
+ },
+ "sources": [
+  {
+   "code": "01",
+   "file": "01_reltio_customer_profiles.csv",
+   "label": "Reltio customer profiles",
+   "system": "Reltio MDM",
+   "native_key": "Reltio_Record_ID",
+   "grain": "One master profile per enterprise parent or facility",
+   "owner": "Reltio MDM data steward",
+   "record_count": 9,
+   "column_count": 14,
+   "refresh_field": "MDM_Last_Verified",
+   "refresh_date": "2026-06-14",
+   "fields": [
+    {
+     "field": "Reltio_Record_ID",
+     "type": "identifier",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 9,
+     "top_values": [
+      {
+       "value": "REL-ASC-0001",
+       "count": 1
+      },
+      {
+       "value": "REL-ASC-0002",
+       "count": 1
+      },
+      {
+       "value": "REL-ASC-0003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Legal_Name",
+     "type": "text",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 9,
+     "top_values": [
+      {
+       "value": "Health Alliance",
+       "count": 1
+      },
+      {
+       "value": "Ascension St. Vincent Indianapolis",
+       "count": 1
+      },
+      {
+       "value": "Ascension St. Vincent Carmel",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "DBA_Name",
+     "type": "text",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 9,
+     "top_values": [
+      {
+       "value": "Ascension",
+       "count": 1
+      },
+      {
+       "value": "Ascension St. Vincent Indianapolis - Main Campus",
+       "count": 1
+      },
+      {
+       "value": "Ascension St. Vincent Carmel",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Hierarchy_Parent_Reltio_ID",
+     "type": "identifier",
+     "populated": 7,
+     "eligible": 9,
+     "blank": 2,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "REL-ASC-0001",
+       "count": 6
+      },
+      {
+       "value": "REL-ASC-9999",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Hierarchy_Level",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Facility",
+       "count": 8
+      },
+      {
+       "value": "Enterprise Parent",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Hierarchy_Account_Address",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 8,
+     "top_values": [
+      {
+       "value": "1349 Health Center Dr, Fishers, IN 46037",
+       "count": 2
+      },
+      {
+       "value": "4600 Edmundson Rd, St. Louis, MO 63134",
+       "count": 1
+      },
+      {
+       "value": "3842 Health Center Dr, Indianapolis, IN 46260",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Definitive_Healthcare_ID",
+     "type": "identifier",
+     "populated": 6,
+     "eligible": 9,
+     "blank": 3,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "DHC-ASC-0001",
+       "count": 1
+      },
+      {
+       "value": "DHC-ASC-1001",
+       "count": 1
+      },
+      {
+       "value": "DHC-ASC-1002",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Customer_Classification",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Hospital Facility",
+       "count": 8
+      },
+      {
+       "value": "Strategic Health System",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Customer_Industry",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Acute Care Hospital",
+       "count": 8
+      },
+      {
+       "value": "Health System",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Billing_Requirements_and_Preferences",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 3,
+     "top_values": [
+      {
+       "value": "Site-level invoice; include PO and asset serial where available",
+       "count": 7
+      },
+      {
+       "value": "Consolidated electronic invoicing",
+       "count": 1
+      },
+      {
+       "value": "Site-level invoice",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Tax_Exemption",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Yes",
+       "count": 9
+      }
+     ]
+    },
+    {
+     "field": "Payment_Terms",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 3,
+     "top_values": [
+      {
+       "value": "Net 45",
+       "count": 4
+      },
+      {
+       "value": "Net 60",
+       "count": 3
+      },
+      {
+       "value": "Net 30",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Record_Status",
+     "type": "category",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Active",
+       "count": 8
+      },
+      {
+       "value": "Pending",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "MDM_Last_Verified",
+     "type": "date",
+     "populated": 9,
+     "eligible": 9,
+     "blank": 0,
+     "unique": 3,
+     "top_values": [
+      {
+       "value": "2026-06-14",
+       "count": 5
+      },
+      {
+       "value": "2024-12-11",
+       "count": 3
+      },
+      {
+       "value": "2023-08-09",
+       "count": 1
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "red",
+     "failing": 3,
+     "eligible": 9,
+     "rate": 0.333,
+     "rules": 2
+    },
+    "validity": {
+     "status": "n/a",
+     "failing": 0,
+     "eligible": 0,
+     "rate": null,
+     "rules": 0
+    },
+    "consistency": {
+     "status": "red",
+     "failing": 6,
+     "eligible": 9,
+     "rate": 0.667,
+     "rules": 4
+    },
+    "linkability": {
+     "status": "amber",
+     "linked": 7,
+     "eligible": 9,
+     "rate": 0.778,
+     "basis": "auto-matched to a golden facility (or is the enterprise parent)",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "red",
+   "rule_ids": [
+    "C-01-DHC",
+    "C-01-PARENT",
+    "F-01-VERIFIED",
+    "R-01-PARENT",
+    "S-ADDR",
+    "S-NAME",
+    "U-DUP-ENTITY"
+   ],
+   "finding_count": 15
+  },
+  {
+   "code": "02",
+   "file": "02_sap_customer_accounts.csv",
+   "label": "SAP customer accounts",
+   "system": "SAP Everest / JDE Legacy",
+   "native_key": "ERP_System + ERP_Customer_ID",
+   "grain": "One ERP account per customer role",
+   "owner": "ERP customer master team",
+   "record_count": 24,
+   "column_count": 10,
+   "refresh_field": "Last_Updated_Date",
+   "refresh_date": "2026-09-28",
+   "fields": [
+    {
+     "field": "ERP_System",
+     "type": "category",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "SAP_Everest",
+       "count": 15
+      },
+      {
+       "value": "JDE_Legacy",
+       "count": 9
+      }
+     ]
+    },
+    {
+     "field": "ERP_Customer_ID",
+     "type": "identifier",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 23,
+     "top_values": [
+      {
+       "value": "ERP-ENT-001",
+       "count": 2
+      },
+      {
+       "value": "ERP-001-A",
+       "count": 1
+      },
+      {
+       "value": "ERP-001-S",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Account_Role",
+     "type": "category",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "SHIP_TO",
+       "count": 6
+      },
+      {
+       "value": "PAYER",
+       "count": 6
+      },
+      {
+       "value": "SOLD_TO",
+       "count": 4
+      }
+     ]
+    },
+    {
+     "field": "Legal_Name",
+     "type": "text",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 10,
+     "top_values": [
+      {
+       "value": "Ascension St. Vincent Fishers",
+       "count": 4
+      },
+      {
+       "value": "Ascension St. Vincent Kokomo",
+       "count": 4
+      },
+      {
+       "value": "Ascension St. Vincent Indianapolis - Main Campus",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "field": "Address",
+     "type": "category",
+     "populated": 21,
+     "eligible": 24,
+     "blank": 3,
+     "unique": 7,
+     "top_values": [
+      {
+       "value": "1349 Health Center Dr, Fishers, IN 46037",
+       "count": 4
+      },
+      {
+       "value": "9343 Health Center Dr, Anderson, IN 46016",
+       "count": 4
+      },
+      {
+       "value": "3842 Health Center Dr, Indianapolis, IN 46260",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "field": "Parent_ERP_Customer_ID",
+     "type": "identifier",
+     "populated": 21,
+     "eligible": 24,
+     "blank": 3,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "ERP-ENT-001",
+       "count": 20
+      },
+      {
+       "value": "ERP-ENT-ALT",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Status",
+     "type": "category",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Active",
+       "count": 24
+      }
+     ]
+    },
+    {
+     "field": "Last_Updated_Date",
+     "type": "date",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "2026-09-28",
+       "count": 24
+      }
+     ]
+    },
+    {
+     "field": "Tax_Jurisdiction",
+     "type": "category",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "IN",
+       "count": 22
+      },
+      {
+       "value": "MO",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Payment_Block",
+     "type": "category",
+     "populated": 24,
+     "eligible": 24,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "N",
+       "count": 23
+      },
+      {
+       "value": "Y",
+       "count": 1
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "amber",
+     "failing": 4,
+     "eligible": 24,
+     "rate": 0.167,
+     "rules": 2
+    },
+    "validity": {
+     "status": "n/a",
+     "failing": 0,
+     "eligible": 0,
+     "rate": null,
+     "rules": 0
+    },
+    "consistency": {
+     "status": "amber",
+     "failing": 2,
+     "eligible": 24,
+     "rate": 0.083,
+     "rules": 3
+    },
+    "linkability": {
+     "status": "green",
+     "linked": 24,
+     "eligible": 24,
+     "rate": 1.0,
+     "basis": "grouped by ERP facility number",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "amber",
+   "rule_ids": [
+    "C-02-ADDR",
+    "C-02-PARENT",
+    "R-02-PARENT",
+    "S-ADDR",
+    "S-NAME",
+    "U-02-NATIVE"
+   ],
+   "finding_count": 7
+  },
+  {
+   "code": "03",
+   "file": "03_salesforce_contacts.csv",
+   "label": "Salesforce contacts",
+   "system": "Salesforce",
+   "native_key": "Universal_Contact_ID",
+   "grain": "One person in a contact role",
+   "owner": "Salesforce CRM admin",
+   "record_count": 27,
+   "column_count": 13,
+   "refresh_field": "Last_Activity_Date",
+   "refresh_date": "2026-08-17",
+   "fields": [
+    {
+     "field": "Universal_Contact_ID",
+     "type": "identifier",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 27,
+     "top_values": [
+      {
+       "value": "003240000000000000",
+       "count": 1
+      },
+      {
+       "value": "003240000000000001",
+       "count": 1
+      },
+      {
+       "value": "003240000000000002",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "First_Name",
+     "type": "text",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 19,
+     "top_values": [
+      {
+       "value": "Morgan",
+       "count": 2
+      },
+      {
+       "value": "Riley",
+       "count": 2
+      },
+      {
+       "value": "Avery",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Last_Name",
+     "type": "text",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 19,
+     "top_values": [
+      {
+       "value": "Kim",
+       "count": 2
+      },
+      {
+       "value": "Brown",
+       "count": 2
+      },
+      {
+       "value": "Davis",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Business_Email",
+     "type": "text",
+     "populated": 24,
+     "eligible": 27,
+     "blank": 3,
+     "unique": 24,
+     "top_values": [
+      {
+       "value": "morgan.kim@ascension-demo.org",
+       "count": 1
+      },
+      {
+       "value": "riley.brown@ascension-demo.org",
+       "count": 1
+      },
+      {
+       "value": "avery.davis@ascension-demo.org",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Phone_Number",
+     "type": "identifier",
+     "populated": 24,
+     "eligible": 27,
+     "blank": 3,
+     "unique": 24,
+     "top_values": [
+      {
+       "value": "+1-317-555-1010",
+       "count": 1
+      },
+      {
+       "value": "+1-317-555-1011",
+       "count": 1
+      },
+      {
+       "value": "+1-317-555-1012",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Job_Level_Category",
+     "type": "category",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 3,
+     "top_values": [
+      {
+       "value": "Manager",
+       "count": 12
+      },
+      {
+       "value": "Director",
+       "count": 12
+      },
+      {
+       "value": "Account Executive",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "field": "Department_Category",
+     "type": "category",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 5,
+     "top_values": [
+      {
+       "value": "Finance",
+       "count": 6
+      },
+      {
+       "value": "Operations",
+       "count": 6
+      },
+      {
+       "value": "Supply Chain",
+       "count": 6
+      }
+     ]
+    },
+    {
+     "field": "BD_Contact_Type",
+     "type": "category",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 5,
+     "top_values": [
+      {
+       "value": "Billing Contact",
+       "count": 6
+      },
+      {
+       "value": "Service Contact",
+       "count": 6
+      },
+      {
+       "value": "Procurement Contact",
+       "count": 6
+      }
+     ]
+    },
+    {
+     "field": "Preferred_Communication_Method",
+     "type": "category",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 3,
+     "top_values": [
+      {
+       "value": "Email",
+       "count": 12
+      },
+      {
+       "value": "Email + Phone",
+       "count": 10
+      },
+      {
+       "value": "Phone",
+       "count": 5
+      }
+     ]
+    },
+    {
+     "field": "Contact_Status",
+     "type": "category",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Active",
+       "count": 26
+      },
+      {
+       "value": "Inactive",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Salesforce_Account_ID",
+     "type": "identifier",
+     "populated": 25,
+     "eligible": 27,
+     "blank": 2,
+     "unique": 7,
+     "top_values": [
+      {
+       "value": "SF-ACC-ASC-001",
+       "count": 4
+      },
+      {
+       "value": "SF-ACC-ASC-002",
+       "count": 4
+      },
+      {
+       "value": "SF-ACC-ASC-004",
+       "count": 4
+      }
+     ]
+    },
+    {
+     "field": "Source_of_Contact_Initiation",
+     "type": "category",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 5,
+     "top_values": [
+      {
+       "value": "Salesforce Account",
+       "count": 9
+      },
+      {
+       "value": "Recall Workflow",
+       "count": 6
+      },
+      {
+       "value": "Contract",
+       "count": 5
+      }
+     ]
+    },
+    {
+     "field": "Last_Activity_Date",
+     "type": "date",
+     "populated": 27,
+     "eligible": 27,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "2026-08-17",
+       "count": 25
+      },
+      {
+       "value": "2024-02-12",
+       "count": 2
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "amber",
+     "failing": 8,
+     "eligible": 27,
+     "rate": 0.296,
+     "rules": 3
+    },
+    "validity": {
+     "status": "amber",
+     "failing": 2,
+     "eligible": 21,
+     "rate": 0.095,
+     "rules": 1
+    },
+    "consistency": {
+     "status": "amber",
+     "failing": 2,
+     "eligible": 27,
+     "rate": 0.074,
+     "rules": 1
+    },
+    "linkability": {
+     "status": "amber",
+     "linked": 22,
+     "eligible": 27,
+     "rate": 0.815,
+     "basis": "account resolves to a golden facility",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "amber",
+   "rule_ids": [
+    "C-03-ACCT",
+    "C-03-EMAIL",
+    "C-03-PHONE",
+    "F-03-ACTIVITY",
+    "R-03-ACCT",
+    "V-EMAIL"
+   ],
+   "finding_count": 15
+  },
+  {
+   "code": "04",
+   "file": "04_salesforce_accounts.csv",
+   "label": "Salesforce accounts",
+   "system": "Salesforce",
+   "native_key": "Salesforce_Account_ID",
+   "grain": "One CRM account (facility)",
+   "owner": "Salesforce CRM admin",
+   "record_count": 7,
+   "column_count": 8,
+   "refresh_field": "Last_Modified_Date",
+   "refresh_date": "2026-08-22",
+   "fields": [
+    {
+     "field": "Salesforce_Account_ID",
+     "type": "identifier",
+     "populated": 7,
+     "eligible": 7,
+     "blank": 0,
+     "unique": 7,
+     "top_values": [
+      {
+       "value": "SF-ACC-ASC-001",
+       "count": 1
+      },
+      {
+       "value": "SF-ACC-ASC-002",
+       "count": 1
+      },
+      {
+       "value": "SF-ACC-ASC-003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Account_Name",
+     "type": "category",
+     "populated": 7,
+     "eligible": 7,
+     "blank": 0,
+     "unique": 7,
+     "top_values": [
+      {
+       "value": "Ascension St. Vincent Indianapolis",
+       "count": 1
+      },
+      {
+       "value": "Ascension St. Vincent Carmel",
+       "count": 1
+      },
+      {
+       "value": "Ascension St. Vincent Fishers",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Billing_Street",
+     "type": "text",
+     "populated": 6,
+     "eligible": 7,
+     "blank": 1,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "3842 Health Center Dr",
+       "count": 1
+      },
+      {
+       "value": "5910 Health Center Dr",
+       "count": 1
+      },
+      {
+       "value": "1349 Health Center Dr",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Billing_City",
+     "type": "category",
+     "populated": 7,
+     "eligible": 7,
+     "blank": 0,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "Fishers",
+       "count": 2
+      },
+      {
+       "value": "Indianapolis",
+       "count": 1
+      },
+      {
+       "value": "Carmel",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Account_Type",
+     "type": "category",
+     "populated": 7,
+     "eligible": 7,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Health System Facility",
+       "count": 7
+      }
+     ]
+    },
+    {
+     "field": "Parent_Salesforce_Account_ID",
+     "type": "empty",
+     "populated": 0,
+     "eligible": 7,
+     "blank": 7,
+     "unique": 0,
+     "top_values": []
+    },
+    {
+     "field": "Account_Status",
+     "type": "category",
+     "populated": 7,
+     "eligible": 7,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Active",
+       "count": 7
+      }
+     ]
+    },
+    {
+     "field": "Last_Modified_Date",
+     "type": "date",
+     "populated": 7,
+     "eligible": 7,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "2026-08-22",
+       "count": 7
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "amber",
+     "failing": 7,
+     "eligible": 7,
+     "rate": 1.0,
+     "rules": 2
+    },
+    "validity": {
+     "status": "n/a",
+     "failing": 0,
+     "eligible": 0,
+     "rate": null,
+     "rules": 0
+    },
+    "consistency": {
+     "status": "red",
+     "failing": 3,
+     "eligible": 7,
+     "rate": 0.429,
+     "rules": 3
+    },
+    "linkability": {
+     "status": "amber",
+     "linked": 6,
+     "eligible": 7,
+     "rate": 0.857,
+     "basis": "auto-matched to a golden facility",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "red",
+   "rule_ids": [
+    "C-04-PARENT",
+    "C-04-STREET",
+    "S-ADDR",
+    "S-NAME",
+    "U-DUP-ENTITY"
+   ],
+   "finding_count": 13
+  },
+  {
+   "code": "05",
+   "file": "05_salesforce_contracts.csv",
+   "label": "Salesforce contracts",
+   "system": "Salesforce",
+   "native_key": "Contract_ID",
+   "grain": "One transactional contract under a master agreement",
+   "owner": "Contracts & pricing team",
+   "record_count": 12,
+   "column_count": 15,
+   "refresh_field": null,
+   "refresh_date": null,
+   "fields": [
+    {
+     "field": "Contract_ID",
+     "type": "identifier",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 12,
+     "top_values": [
+      {
+       "value": "CTR-ASC-001",
+       "count": 1
+      },
+      {
+       "value": "CTR-ASC-002",
+       "count": 1
+      },
+      {
+       "value": "CTR-ASC-003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Master_Agreement_ID",
+     "type": "identifier",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "MA-ASC-MMS-2025",
+       "count": 12
+      }
+     ]
+    },
+    {
+     "field": "Master_Amendment_ID",
+     "type": "identifier",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "MA-AM-001",
+       "count": 12
+      }
+     ]
+    },
+    {
+     "field": "Transactional_Contract_ID",
+     "type": "identifier",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 12,
+     "top_values": [
+      {
+       "value": "TC-ASC-001",
+       "count": 1
+      },
+      {
+       "value": "TC-ASC-002",
+       "count": 1
+      },
+      {
+       "value": "TC-ASC-003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Term_Begin_Date",
+     "type": "date",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 12,
+     "top_values": [
+      {
+       "value": "2025-01-31",
+       "count": 1
+      },
+      {
+       "value": "2025-03-02",
+       "count": 1
+      },
+      {
+       "value": "2025-04-01",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Term_End_Date",
+     "type": "date",
+     "populated": 11,
+     "eligible": 12,
+     "blank": 1,
+     "unique": 11,
+     "top_values": [
+      {
+       "value": "2027-01-31",
+       "count": 1
+      },
+      {
+       "value": "2027-03-02",
+       "count": 1
+      },
+      {
+       "value": "2027-04-01",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Pricing_Schedule_by_Transaction_Type",
+     "type": "category",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Dispensing lease + service schedule",
+       "count": 6
+      },
+      {
+       "value": "Infusion lease + service schedule",
+       "count": 6
+      }
+     ]
+    },
+    {
+     "field": "Entitlement_Categories",
+     "type": "category",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Equipment; Service; Software",
+       "count": 12
+      }
+     ]
+    },
+    {
+     "field": "Entitlement_Levels",
+     "type": "category",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 3,
+     "top_values": [
+      {
+       "value": "Standard",
+       "count": 7
+      },
+      {
+       "value": "Gold",
+       "count": 3
+      },
+      {
+       "value": "Premium",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Contract_Status",
+     "type": "category",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Active",
+       "count": 11
+      },
+      {
+       "value": "Expired",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Source_Document_Location",
+     "type": "identifier",
+     "populated": 10,
+     "eligible": 12,
+     "blank": 2,
+     "unique": 10,
+     "top_values": [
+      {
+       "value": "salesforce://contracts/CTR-ASC-001",
+       "count": 1
+      },
+      {
+       "value": "salesforce://contracts/CTR-ASC-002",
+       "count": 1
+      },
+      {
+       "value": "salesforce://contracts/CTR-ASC-004",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Deal_Type",
+     "type": "category",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Lease + Service",
+       "count": 12
+      }
+     ]
+    },
+    {
+     "field": "Reference_Quote_ID",
+     "type": "identifier",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 12,
+     "top_values": [
+      {
+       "value": "Q-ASC-8001",
+       "count": 1
+      },
+      {
+       "value": "Q-ASC-8002",
+       "count": 1
+      },
+      {
+       "value": "Q-ASC-8003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Salesforce_Account_ID",
+     "type": "identifier",
+     "populated": 10,
+     "eligible": 12,
+     "blank": 2,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "SF-ACC-ASC-001",
+       "count": 2
+      },
+      {
+       "value": "SF-ACC-ASC-003",
+       "count": 2
+      },
+      {
+       "value": "SF-ACC-ASC-004",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "PO_Required",
+     "type": "category",
+     "populated": 12,
+     "eligible": 12,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Y",
+       "count": 8
+      },
+      {
+       "value": "N",
+       "count": 4
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "red",
+     "failing": 5,
+     "eligible": 12,
+     "rate": 0.417,
+     "rules": 3
+    },
+    "validity": {
+     "status": "green",
+     "failing": 0,
+     "eligible": 11,
+     "rate": 0.0,
+     "rules": 1
+    },
+    "consistency": {
+     "status": "green",
+     "failing": 0,
+     "eligible": 0,
+     "rate": 0,
+     "rules": 2
+    },
+    "linkability": {
+     "status": "amber",
+     "linked": 10,
+     "eligible": 12,
+     "rate": 0.833,
+     "basis": "account resolves to a golden facility",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "red",
+   "rule_ids": [
+    "B-ENTITLE-01",
+    "B-PO-01",
+    "C-05-ACCT",
+    "C-05-DOC",
+    "C-05-END",
+    "R-05-ACCT",
+    "V-CHRONO"
+   ],
+   "finding_count": 5
+  },
+  {
+   "code": "06",
+   "file": "06_installed_equipment.csv",
+   "label": "Installed equipment",
+   "system": "Install base",
+   "native_key": "Electronic_Asset_ID",
+   "grain": "One installed device",
+   "owner": "Install base / service operations",
+   "record_count": 60,
+   "column_count": 15,
+   "refresh_field": "Equipment_Confirmation_Date",
+   "refresh_date": "2026-09-29",
+   "fields": [
+    {
+     "field": "Electronic_Asset_ID",
+     "type": "identifier",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 60,
+     "top_values": [
+      {
+       "value": "EA-00001",
+       "count": 1
+      },
+      {
+       "value": "EA-00002",
+       "count": 1
+      },
+      {
+       "value": "EA-00003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Serial_Number",
+     "type": "identifier",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 60,
+     "top_values": [
+      {
+       "value": "ADC-2021-100001",
+       "count": 1
+      },
+      {
+       "value": "INF-2022-100002",
+       "count": 1
+      },
+      {
+       "value": "ADC-2023-100003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Alternate_Asset_ID",
+     "type": "identifier",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 60,
+     "top_values": [
+      {
+       "value": "ALT-IN-000001",
+       "count": 1
+      },
+      {
+       "value": "ALT-IN-000002",
+       "count": 1
+      },
+      {
+       "value": "ALT-IN-000003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Unique_Device_Identifier",
+     "type": "identifier",
+     "populated": 55,
+     "eligible": 60,
+     "blank": 5,
+     "unique": 55,
+     "top_values": [
+      {
+       "value": "UDI-0088-00000001",
+       "count": 1
+      },
+      {
+       "value": "UDI-0088-00000002",
+       "count": 1
+      },
+      {
+       "value": "UDI-0088-00000003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Product_Family",
+     "type": "category",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Dispensing",
+       "count": 30
+      },
+      {
+       "value": "Infusion",
+       "count": 30
+      }
+     ]
+    },
+    {
+     "field": "Material_ID",
+     "type": "identifier",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "MMS-DISP-01",
+       "count": 30
+      },
+      {
+       "value": "MMS-INF-01",
+       "count": 30
+      }
+     ]
+    },
+    {
+     "field": "Install_Base_Status",
+     "type": "category",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Active",
+       "count": 60
+      }
+     ]
+    },
+    {
+     "field": "Software_Version",
+     "type": "category",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "SW-6.4",
+       "count": 30
+      },
+      {
+       "value": "SW-4.8",
+       "count": 30
+      }
+     ]
+    },
+    {
+     "field": "Equipment_Confirmation_Date",
+     "type": "date",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 46,
+     "top_values": [
+      {
+       "value": "2026-07-07",
+       "count": 3
+      },
+      {
+       "value": "2026-06-24",
+       "count": 3
+      },
+      {
+       "value": "2026-08-29",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Warranty_End_Date",
+     "type": "date",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 60,
+     "top_values": [
+      {
+       "value": "2027-01-10",
+       "count": 1
+      },
+      {
+       "value": "2026-11-19",
+       "count": 1
+      },
+      {
+       "value": "2028-07-08",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Equipment_Location",
+     "type": "category",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 5,
+     "top_values": [
+      {
+       "value": "Pharmacy Core",
+       "count": 14
+      },
+      {
+       "value": "Medication Room 2",
+       "count": 13
+      },
+      {
+       "value": "North Tower 3F",
+       "count": 13
+      }
+     ]
+    },
+    {
+     "field": "Site_Name",
+     "type": "text",
+     "populated": 58,
+     "eligible": 60,
+     "blank": 2,
+     "unique": 15,
+     "top_values": [
+      {
+       "value": "Ascension St. Vincent Anderson",
+       "count": 10
+      },
+      {
+       "value": "Ascension St. Vincent Kokomo",
+       "count": 9
+      },
+      {
+       "value": "Ascension St. Vincent Indianapolis - Main Campus",
+       "count": 8
+      }
+     ]
+    },
+    {
+     "field": "Site_Address",
+     "type": "category",
+     "populated": 51,
+     "eligible": 60,
+     "blank": 9,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "9343 Health Center Dr, Anderson, IN 46016",
+       "count": 10
+      },
+      {
+       "value": "5910 Health Center Dr, Carmel, IN 46032",
+       "count": 9
+      },
+      {
+       "value": "4872 Health Center Dr, Evansville, IN 47714",
+       "count": 9
+      }
+     ]
+    },
+    {
+     "field": "Owning_ERP_Customer_No",
+     "type": "identifier",
+     "populated": 19,
+     "eligible": 60,
+     "blank": 41,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "ERP-001-A",
+       "count": 10
+      },
+      {
+       "value": "ERP-002-A",
+       "count": 9
+      }
+     ]
+    },
+    {
+     "field": "Install_Date",
+     "type": "date",
+     "populated": 60,
+     "eligible": 60,
+     "blank": 0,
+     "unique": 60,
+     "top_values": [
+      {
+       "value": "2024-01-11",
+       "count": 1
+      },
+      {
+       "value": "2023-11-20",
+       "count": 1
+      },
+      {
+       "value": "2025-07-09",
+       "count": 1
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "red",
+     "failing": 46,
+     "eligible": 60,
+     "rate": 0.767,
+     "rules": 4
+    },
+    "validity": {
+     "status": "amber",
+     "failing": 3,
+     "eligible": 60,
+     "rate": 0.05,
+     "rules": 3
+    },
+    "consistency": {
+     "status": "amber",
+     "failing": 10,
+     "eligible": 60,
+     "rate": 0.167,
+     "rules": 5
+    },
+    "linkability": {
+     "status": "green",
+     "linked": 60,
+     "eligible": 60,
+     "rate": 1.0,
+     "basis": "site, address or owner identifies a facility",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "red",
+   "rule_ids": [
+    "B-ORDER-LOC",
+    "C-06-ADDR",
+    "C-06-OWNER",
+    "C-06-SITE",
+    "C-06-UDI",
+    "F-06-WARRANTY",
+    "F-ASSET-LOC",
+    "R-06-OWNER",
+    "S-ADDR",
+    "S-NAME",
+    "U-06-SERIAL",
+    "V-CHRONO",
+    "V-SERIAL",
+    "V-UDI"
+   ],
+   "finding_count": 95
+  },
+  {
+   "code": "07",
+   "file": "07_equipment_movements.csv",
+   "label": "Equipment movements",
+   "system": "Install base events",
+   "native_key": "Transfer_Event_No",
+   "grain": "One install or move event",
+   "owner": "Field service operations",
+   "record_count": 68,
+   "column_count": 9,
+   "refresh_field": "Movement_Date",
+   "refresh_date": "2026-08-17",
+   "fields": [
+    {
+     "field": "Transfer_Event_No",
+     "type": "identifier",
+     "populated": 68,
+     "eligible": 68,
+     "blank": 0,
+     "unique": 68,
+     "top_values": [
+      {
+       "value": "MOVE-00001-01",
+       "count": 1
+      },
+      {
+       "value": "MOVE-00002-01",
+       "count": 1
+      },
+      {
+       "value": "MOVE-00003-01",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Asset_Tag",
+     "type": "identifier",
+     "populated": 51,
+     "eligible": 68,
+     "blank": 17,
+     "unique": 47,
+     "top_values": [
+      {
+       "value": "EA-00003",
+       "count": 2
+      },
+      {
+       "value": "EA-00013",
+       "count": 2
+      },
+      {
+       "value": "EA-00023",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Scanned_Serial",
+     "type": "identifier",
+     "populated": 24,
+     "eligible": 68,
+     "blank": 44,
+     "unique": 23,
+     "top_values": [
+      {
+       "value": "INF-2020-100018",
+       "count": 2
+      },
+      {
+       "value": "ADC-2021-100001",
+       "count": 1
+      },
+      {
+       "value": "INF-2024-100004",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Movement_Type",
+     "type": "category",
+     "populated": 68,
+     "eligible": 68,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Install",
+       "count": 60
+      },
+      {
+       "value": "Asset Move",
+       "count": 8
+      }
+     ]
+    },
+    {
+     "field": "Movement_Date",
+     "type": "date",
+     "populated": 68,
+     "eligible": 68,
+     "blank": 0,
+     "unique": 68,
+     "top_values": [
+      {
+       "value": "2024-01-11",
+       "count": 1
+      },
+      {
+       "value": "2023-11-20",
+       "count": 1
+      },
+      {
+       "value": "2025-07-09",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Origin_Location",
+     "type": "category",
+     "populated": 8,
+     "eligible": 68,
+     "blank": 60,
+     "unique": 4,
+     "top_values": [
+      {
+       "value": "Ascension St. Vincent Indianapolis - Main Campus",
+       "count": 2
+      },
+      {
+       "value": "Ascension St. Vincent Carmel",
+       "count": 2
+      },
+      {
+       "value": "Ascension St. Vincent Fishers",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Destination_Location",
+     "type": "text",
+     "populated": 66,
+     "eligible": 68,
+     "blank": 2,
+     "unique": 15,
+     "top_values": [
+      {
+       "value": "Ascension St. Vincent Evansville",
+       "count": 11
+      },
+      {
+       "value": "Ascension St. Vincent Anderson",
+       "count": 11
+      },
+      {
+       "value": "Ascension St. Vincent Carmel",
+       "count": 9
+      }
+     ]
+    },
+    {
+     "field": "Recorded_By",
+     "type": "category",
+     "populated": 68,
+     "eligible": 68,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Implementation Team",
+       "count": 60
+      },
+      {
+       "value": "Field Service",
+       "count": 8
+      }
+     ]
+    },
+    {
+     "field": "Event_Source",
+     "type": "category",
+     "populated": 68,
+     "eligible": 68,
+     "blank": 0,
+     "unique": 4,
+     "top_values": [
+      {
+       "value": "Install Base",
+       "count": 60
+      },
+      {
+       "value": "Sales Rep Note",
+       "count": 4
+      },
+      {
+       "value": "Customer Notice",
+       "count": 3
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "amber",
+     "failing": 2,
+     "eligible": 68,
+     "rate": 0.029,
+     "rules": 2
+    },
+    "validity": {
+     "status": "green",
+     "failing": 0,
+     "eligible": 24,
+     "rate": 0.0,
+     "rules": 1
+    },
+    "consistency": {
+     "status": "amber",
+     "failing": 10,
+     "eligible": 66,
+     "rate": 0.152,
+     "rules": 3
+    },
+    "linkability": {
+     "status": "green",
+     "linked": 68,
+     "eligible": 68,
+     "rate": 1.0,
+     "basis": "identifier resolves to one asset",
+     "linked_without_normalization": 68
+    }
+   },
+   "overall_status": "amber",
+   "rule_ids": [
+    "B-ORDER-LOC",
+    "C-07-DEST",
+    "C-07-IDS",
+    "F-ASSET-LOC",
+    "R-07-ASSET",
+    "S-NAME",
+    "V-SERIAL"
+   ],
+   "finding_count": 12
+  },
+  {
+   "code": "08",
+   "file": "08_field_service_work_orders.csv",
+   "label": "Field service work orders",
+   "system": "Field service",
+   "native_key": "Service_Work_Order",
+   "grain": "One service visit",
+   "owner": "Field service operations",
+   "record_count": 41,
+   "column_count": 8,
+   "refresh_field": "Visit_Date",
+   "refresh_date": "2026-10-06",
+   "fields": [
+    {
+     "field": "Service_Work_Order",
+     "type": "identifier",
+     "populated": 41,
+     "eligible": 41,
+     "blank": 0,
+     "unique": 41,
+     "top_values": [
+      {
+       "value": "SVC-00001",
+       "count": 1
+      },
+      {
+       "value": "SVC-00002",
+       "count": 1
+      },
+      {
+       "value": "SVC-00003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Equipment_Tag",
+     "type": "identifier",
+     "populated": 32,
+     "eligible": 41,
+     "blank": 9,
+     "unique": 32,
+     "top_values": [
+      {
+       "value": "EA-00002",
+       "count": 1
+      },
+      {
+       "value": "EA-00003",
+       "count": 1
+      },
+      {
+       "value": "EA-00005",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Observed_Serial",
+     "type": "identifier",
+     "populated": 14,
+     "eligible": 41,
+     "blank": 27,
+     "unique": 14,
+     "top_values": [
+      {
+       "value": "ADC-2021-100001",
+       "count": 1
+      },
+      {
+       "value": "ADC-2025-100005",
+       "count": 1
+      },
+      {
+       "value": "ADC-2023-100009",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Visit_Date",
+     "type": "date",
+     "populated": 41,
+     "eligible": 41,
+     "blank": 0,
+     "unique": 31,
+     "top_values": [
+      {
+       "value": "2026-09-21",
+       "count": 3
+      },
+      {
+       "value": "2026-08-18",
+       "count": 2
+      },
+      {
+       "value": "2026-08-31",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Customer_Site_Entered",
+     "type": "text",
+     "populated": 39,
+     "eligible": 41,
+     "blank": 2,
+     "unique": 12,
+     "top_values": [
+      {
+       "value": "Ascension St. Vincent Anderson",
+       "count": 8
+      },
+      {
+       "value": "Ascension St. Vincent Carmel",
+       "count": 7
+      },
+      {
+       "value": "Ascension St. Vincent Fishers",
+       "count": 7
+      }
+     ]
+    },
+    {
+     "field": "Service_Type",
+     "type": "category",
+     "populated": 41,
+     "eligible": 41,
+     "blank": 0,
+     "unique": 4,
+     "top_values": [
+      {
+       "value": "Software Update",
+       "count": 11
+      },
+      {
+       "value": "Break/Fix",
+       "count": 10
+      },
+      {
+       "value": "Preventive Maintenance",
+       "count": 10
+      }
+     ]
+    },
+    {
+     "field": "Technician_Notes",
+     "type": "identifier",
+     "populated": 41,
+     "eligible": 41,
+     "blank": 0,
+     "unique": 14,
+     "top_values": [
+      {
+       "value": "Visited Ascension St. Vincent Anderson; Asset physically observed at service location",
+       "count": 6
+      },
+      {
+       "value": "Break/Fix completed; pump checked on site",
+       "count": 5
+      },
+      {
+       "value": "Visited Ascension St. Vincent Carmel; Asset physically observed at service location",
+       "count": 5
+      }
+     ]
+    },
+    {
+     "field": "Work_Order_Status",
+     "type": "identifier",
+     "populated": 41,
+     "eligible": 41,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Closed",
+       "count": 35
+      },
+      {
+       "value": "Pending review",
+       "count": 6
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "red",
+     "failing": 6,
+     "eligible": 41,
+     "rate": 0.146,
+     "rules": 2
+    },
+    "validity": {
+     "status": "green",
+     "failing": 0,
+     "eligible": 14,
+     "rate": 0.0,
+     "rules": 1
+    },
+    "consistency": {
+     "status": "amber",
+     "failing": 6,
+     "eligible": 39,
+     "rate": 0.154,
+     "rules": 2
+    },
+    "linkability": {
+     "status": "amber",
+     "linked": 35,
+     "eligible": 41,
+     "rate": 0.854,
+     "basis": "identifier resolves to one asset",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "red",
+   "rule_ids": [
+    "C-08-IDS",
+    "C-08-SITE",
+    "F-ASSET-LOC",
+    "R-08-ASSET",
+    "S-NAME",
+    "V-SERIAL"
+   ],
+   "finding_count": 14
+  },
+  {
+   "code": "09",
+   "file": "09_sap_sales_orders.csv",
+   "label": "SAP sales orders",
+   "system": "SAP SD",
+   "native_key": "SAP_Sales_Order",
+   "grain": "One sales order line",
+   "owner": "Order management (SAP SD)",
+   "record_count": 120,
+   "column_count": 13,
+   "refresh_field": "Order_Created_On",
+   "refresh_date": "2026-09-07",
+   "fields": [
+    {
+     "field": "SAP_Sales_Order",
+     "type": "identifier",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 120,
+     "top_values": [
+      {
+       "value": "SO-MMS-00001",
+       "count": 1
+      },
+      {
+       "value": "SO-MMS-00002",
+       "count": 1
+      },
+      {
+       "value": "SO-MMS-00003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Order_Created_On",
+     "type": "date",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 85,
+     "top_values": [
+      {
+       "value": "2026-07-18",
+       "count": 3
+      },
+      {
+       "value": "2026-07-24",
+       "count": 3
+      },
+      {
+       "value": "2026-08-08",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "field": "SAP_Client",
+     "type": "category",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "SAP_Everest",
+       "count": 76
+      },
+      {
+       "value": "JDE_Legacy",
+       "count": 44
+      }
+     ]
+    },
+    {
+     "field": "Sold_To_No",
+     "type": "identifier",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "ERP-001-A",
+       "count": 20
+      },
+      {
+       "value": "ERP-002-A",
+       "count": 20
+      },
+      {
+       "value": "ERP-003-O",
+       "count": 20
+      }
+     ]
+    },
+    {
+     "field": "Ship_To_No",
+     "type": "identifier",
+     "populated": 118,
+     "eligible": 120,
+     "blank": 2,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "ERP-002-S",
+       "count": 20
+      },
+      {
+       "value": "ERP-003-S",
+       "count": 20
+      },
+      {
+       "value": "ERP-004-S",
+       "count": 20
+      }
+     ]
+    },
+    {
+     "field": "Bill_To_No",
+     "type": "identifier",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "ERP-001-A",
+       "count": 20
+      },
+      {
+       "value": "ERP-002-A",
+       "count": 20
+      },
+      {
+       "value": "ERP-003-B",
+       "count": 20
+      }
+     ]
+    },
+    {
+     "field": "Payer_No",
+     "type": "identifier",
+     "populated": 116,
+     "eligible": 120,
+     "blank": 4,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "ERP-001-P",
+       "count": 20
+      },
+      {
+       "value": "ERP-003-P",
+       "count": 20
+      },
+      {
+       "value": "ERP-005-P",
+       "count": 20
+      }
+     ]
+    },
+    {
+     "field": "Material_Number",
+     "type": "identifier",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "MMS-INF-01",
+       "count": 60
+      },
+      {
+       "value": "MMS-DISP-01",
+       "count": 60
+      }
+     ]
+    },
+    {
+     "field": "Equipment_Serial",
+     "type": "identifier",
+     "populated": 90,
+     "eligible": 120,
+     "blank": 30,
+     "unique": 46,
+     "top_values": [
+      {
+       "value": "ADC-2023-100015",
+       "count": 2
+      },
+      {
+       "value": "INF-2024-100022",
+       "count": 2
+      },
+      {
+       "value": "ADC-2025-100029",
+       "count": 2
+      }
+     ]
+    },
+    {
+     "field": "Customer_PO_Number",
+     "type": "identifier",
+     "populated": 96,
+     "eligible": 120,
+     "blank": 24,
+     "unique": 20,
+     "top_values": [
+      {
+       "value": "PO-ASC-72001",
+       "count": 5
+      },
+      {
+       "value": "PO-ASC-72002",
+       "count": 5
+      },
+      {
+       "value": "PO-ASC-72003",
+       "count": 5
+      }
+     ]
+    },
+    {
+     "field": "Order_Type",
+     "type": "category",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 4,
+     "top_values": [
+      {
+       "value": "Software Support",
+       "count": 41
+      },
+      {
+       "value": "Consumables",
+       "count": 29
+      },
+      {
+       "value": "Monthly Lease",
+       "count": 26
+      }
+     ]
+    },
+    {
+     "field": "Net_Value_USD",
+     "type": "number",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "2400",
+       "count": 27
+      },
+      {
+       "value": "7800",
+       "count": 22
+      },
+      {
+       "value": "12500",
+       "count": 21
+      }
+     ]
+    },
+    {
+     "field": "Order_Status",
+     "type": "category",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "Completed",
+       "count": 120
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "amber",
+     "failing": 27,
+     "eligible": 120,
+     "rate": 0.225,
+     "rules": 3
+    },
+    "validity": {
+     "status": "amber",
+     "failing": 1,
+     "eligible": 90,
+     "rate": 0.011,
+     "rules": 2
+    },
+    "consistency": {
+     "status": "red",
+     "failing": 30,
+     "eligible": 120,
+     "rate": 0.25,
+     "rules": 6
+    },
+    "linkability": {
+     "status": "green",
+     "linked": 120,
+     "eligible": 120,
+     "rate": 1.0,
+     "basis": "sold-to resolves to a golden facility",
+     "linked_without_normalization": 120
+    }
+   },
+   "overall_status": "red",
+   "rule_ids": [
+    "B-ENTITLE-01",
+    "B-ORDER-LOC",
+    "B-PAYER-01",
+    "B-PO-01",
+    "C-09-PAYER",
+    "C-09-PO",
+    "C-09-SERIAL",
+    "C-09-SHIPTO",
+    "R-09-ASSET",
+    "S-ORDER-ROLE",
+    "S-ORDER-SYS",
+    "V-ORDER-INV",
+    "V-SERIAL"
+   ],
+   "finding_count": 99
+  },
+  {
+   "code": "10",
+   "file": "10_sap_billing_and_receivables.csv",
+   "label": "SAP billing & receivables",
+   "system": "SAP FI-AR",
+   "native_key": "SAP_Billing_Document",
+   "grain": "One invoice",
+   "owner": "Accounts receivable / collections",
+   "record_count": 120,
+   "column_count": 10,
+   "refresh_field": "Billing_Date",
+   "refresh_date": "2026-09-09",
+   "fields": [
+    {
+     "field": "SAP_Billing_Document",
+     "type": "identifier",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 120,
+     "top_values": [
+      {
+       "value": "INV-MMS-00001",
+       "count": 1
+      },
+      {
+       "value": "INV-MMS-00002",
+       "count": 1
+      },
+      {
+       "value": "INV-MMS-00003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Reference_Sales_Order",
+     "type": "identifier",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 120,
+     "top_values": [
+      {
+       "value": "SO-MMS-00001",
+       "count": 1
+      },
+      {
+       "value": "SO-MMS-00002",
+       "count": 1
+      },
+      {
+       "value": "SO-MMS-00003",
+       "count": 1
+      }
+     ]
+    },
+    {
+     "field": "Billing_Date",
+     "type": "date",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 85,
+     "top_values": [
+      {
+       "value": "2026-07-20",
+       "count": 3
+      },
+      {
+       "value": "2026-07-26",
+       "count": 3
+      },
+      {
+       "value": "2026-08-10",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "field": "Net_Due_Date",
+     "type": "date",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 85,
+     "top_values": [
+      {
+       "value": "2026-09-01",
+       "count": 3
+      },
+      {
+       "value": "2026-09-07",
+       "count": 3
+      },
+      {
+       "value": "2026-09-22",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "field": "Payer_Account_No",
+     "type": "identifier",
+     "populated": 113,
+     "eligible": 120,
+     "blank": 7,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "ERP-001-P",
+       "count": 20
+      },
+      {
+       "value": "ERP-005-P",
+       "count": 20
+      },
+      {
+       "value": "ERP-002-P",
+       "count": 19
+      }
+     ]
+    },
+    {
+     "field": "Billing_Amount_USD",
+     "type": "number",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 6,
+     "top_values": [
+      {
+       "value": "2400",
+       "count": 27
+      },
+      {
+       "value": "7800",
+       "count": 22
+      },
+      {
+       "value": "12500",
+       "count": 21
+      }
+     ]
+    },
+    {
+     "field": "Open_Amount_USD",
+     "type": "number",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 7,
+     "top_values": [
+      {
+       "value": "0.0",
+       "count": 96
+      },
+      {
+       "value": "7800",
+       "count": 7
+      },
+      {
+       "value": "2400",
+       "count": 5
+      }
+     ]
+    },
+    {
+     "field": "Clearing_Status",
+     "type": "category",
+     "populated": 120,
+     "eligible": 120,
+     "blank": 0,
+     "unique": 2,
+     "top_values": [
+      {
+       "value": "Paid",
+       "count": 94
+      },
+      {
+       "value": "Open",
+       "count": 26
+      }
+     ]
+    },
+    {
+     "field": "Collection_Note",
+     "type": "identifier",
+     "populated": 24,
+     "eligible": 120,
+     "blank": 96,
+     "unique": 4,
+     "top_values": [
+      {
+       "value": "Contract expired / entitlement requires review",
+       "count": 10
+      },
+      {
+       "value": "Asset moved; invoice still tied to prior facility/customer relationship",
+       "count": 8
+      },
+      {
+       "value": "Payer relationship conflict",
+       "count": 3
+      }
+     ]
+    },
+    {
+     "field": "Last_Collection_Action",
+     "type": "date",
+     "populated": 80,
+     "eligible": 120,
+     "blank": 40,
+     "unique": 1,
+     "top_values": [
+      {
+       "value": "2026-09-24",
+       "count": 80
+      }
+     ]
+    }
+   ],
+   "quality": {
+    "completeness": {
+     "status": "amber",
+     "failing": 7,
+     "eligible": 120,
+     "rate": 0.058,
+     "rules": 1
+    },
+    "validity": {
+     "status": "amber",
+     "failing": 2,
+     "eligible": 120,
+     "rate": 0.017,
+     "rules": 3
+    },
+    "consistency": {
+     "status": "green",
+     "failing": 0,
+     "eligible": 113,
+     "rate": 0.0,
+     "rules": 1
+    },
+    "linkability": {
+     "status": "green",
+     "linked": 120,
+     "eligible": 120,
+     "rate": 1.0,
+     "basis": "order reference resolves",
+     "linked_without_normalization": null
+    }
+   },
+   "overall_status": "amber",
+   "rule_ids": [
+    "B-PAYER-01",
+    "C-10-NOTE",
+    "C-10-PAYER",
+    "V-AR-STATUS",
+    "V-CHRONO",
+    "V-ORDER-INV"
+   ],
+   "finding_count": 11
+  }
+ ]
+}

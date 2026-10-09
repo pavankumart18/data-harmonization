@@ -1,0 +1,223 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "as_of": "2026-10-08",
+ "input": "282_BD_MMS_Rebuilt_Raw_Source_Data.zip",
+ "sources": [
+  {
+   "code": "01",
+   "file": "01_reltio_customer_profiles.csv",
+   "sha256": "ec3425bff9e8cc13ee38fa5b8f84e6cc295d1e3dfc6b53f9fa307b190dda8da5",
+   "records": 9,
+   "grain": "One master profile per enterprise parent or facility",
+   "native_key": "Reltio_Record_ID"
+  },
+  {
+   "code": "02",
+   "file": "02_sap_customer_accounts.csv",
+   "sha256": "3b97a1d960c5a34df6206a759ffcad45a6dfbbe698b47ede6aa3c53d4b98d0e0",
+   "records": 24,
+   "grain": "One ERP account per customer role",
+   "native_key": "ERP_System + ERP_Customer_ID"
+  },
+  {
+   "code": "03",
+   "file": "03_salesforce_contacts.csv",
+   "sha256": "3d262ecdb238822bb8ed2e7f5e23d1f1ea679da6dbeeb6247028d9f40e173607",
+   "records": 27,
+   "grain": "One person in a contact role",
+   "native_key": "Universal_Contact_ID"
+  },
+  {
+   "code": "04",
+   "file": "04_salesforce_accounts.csv",
+   "sha256": "1839a3ece1aa7775031c69f6a138460e1d389358a89361972d677c8b22331f21",
+   "records": 7,
+   "grain": "One CRM account (facility)",
+   "native_key": "Salesforce_Account_ID"
+  },
+  {
+   "code": "05",
+   "file": "05_salesforce_contracts.csv",
+   "sha256": "696762bb19d947fa001fcf6d6964ddb17aa5de0956def342fa0c9c580a7f10c2",
+   "records": 12,
+   "grain": "One transactional contract under a master agreement",
+   "native_key": "Contract_ID"
+  },
+  {
+   "code": "06",
+   "file": "06_installed_equipment.csv",
+   "sha256": "f38b45750816f9c82289867810c9e083bb37f8f5e64e6f0d3e3da40545d8aea3",
+   "records": 60,
+   "grain": "One installed device",
+   "native_key": "Electronic_Asset_ID"
+  },
+  {
+   "code": "07",
+   "file": "07_equipment_movements.csv",
+   "sha256": "4b07f21820a61f52f4e3a4943f62fb08ba0369e4f2be88c42025dc5c3841a70c",
+   "records": 68,
+   "grain": "One install or move event",
+   "native_key": "Transfer_Event_No"
+  },
+  {
+   "code": "08",
+   "file": "08_field_service_work_orders.csv",
+   "sha256": "537cd8268d18c507e2271a5cafedf0728a794e55a71e9eaf814dd218f0506c48",
+   "records": 41,
+   "grain": "One service visit",
+   "native_key": "Service_Work_Order"
+  },
+  {
+   "code": "09",
+   "file": "09_sap_sales_orders.csv",
+   "sha256": "65016ee303719fd59567123458b91d4a53b8bd87cfbd477957783a0b2ba7aa1e",
+   "records": 120,
+   "grain": "One sales order line",
+   "native_key": "SAP_Sales_Order"
+  },
+  {
+   "code": "10",
+   "file": "10_sap_billing_and_receivables.csv",
+   "sha256": "689e09d694ddd2d3cf5d68a1510a47a26506c3ea1d5c9c05e616a55f07467181",
+   "records": 120,
+   "grain": "One invoice",
+   "native_key": "SAP_Billing_Document"
+  }
+ ],
+ "outputs": [
+  {
+   "name": "source_profiles.json",
+   "content_sha256": "d03a3db66de9a9c9107b8c22bac2e268f3641889bfedddbea9e433c73add4884"
+  },
+  {
+   "name": "source_rows.json",
+   "content_sha256": "5330a9002cff9c804bcd9b16e50df105957d9224947643c6400f8ef0f2ff1877"
+  },
+  {
+   "name": "dq_rules.json",
+   "content_sha256": "b488a1d0dde125c31238ccc524be01510081f04b4ebfd005b44f1f13038fc19b"
+  },
+  {
+   "name": "dq_findings.json",
+   "content_sha256": "5b5cf166de09f133827dd36e67d8a327bc4efc7486f4d4f6a011572ffefe183e"
+  },
+  {
+   "name": "canonical_schema.json",
+   "content_sha256": "caeb61b69226af08931a1a193b14e8e5512017279e368de0a68eedbac6238952"
+  },
+  {
+   "name": "mapping_proposals.json",
+   "content_sha256": "119d1d6e2a43391a8a9096c65ddb2dbc0b6d903afa4bc8c0c35df55027390162"
+  },
+  {
+   "name": "match_candidates.json",
+   "content_sha256": "3a14f6b2122688a6bb215ebfca294bee2b5cffad31d7fd52418ba98cccb039b4"
+  },
+  {
+   "name": "relationships.json",
+   "content_sha256": "960444756ff36e109d979b5ddb66ed8ad737bd950bec3f4948d7f3dcb823088a"
+  },
+  {
+   "name": "er_graph.json",
+   "content_sha256": "02b4e4b657d37784d7c43b954a4098f6fad25949866c7f09592da6145983cc20"
+  },
+  {
+   "name": "execution_log.json",
+   "content_sha256": "bc1199d679418140d143bb837ef1e3f4ace925fb3762e3f19df96733e814bdfe"
+  },
+  {
+   "name": "review_queue.json",
+   "content_sha256": "47774f7c9baa82ff62c74f99881b82144161924cd1c067acfc84512632685369"
+  },
+  {
+   "name": "review_decisions.json",
+   "content_sha256": "de2d587627e463035c417e22000e364101b5da9dedf72e82521c9bc22126de47"
+  },
+  {
+   "name": "golden_entities.json",
+   "content_sha256": "10f9fee81f58b60df543c52b6752977dc00fea3fbe002e34e33eb6f6a7bf1584"
+  },
+  {
+   "name": "golden_lineage.json",
+   "content_sha256": "15128f28241016399340403e75b127e50f004c1efa5b20bb73a5dbdec0785fc2"
+  },
+  {
+   "name": "ar_exposure.json",
+   "content_sha256": "3d2ec0eab0fc18e53debdb1d74e3541418429c50935d3d231cd3828bdcc92229"
+  },
+  {
+   "name": "executive_summary.json",
+   "content_sha256": "b08ff747f263e0d324055a4c72369b0e717a3097a8e3ab83d0a6eff8b304f6b6"
+  }
+ ],
+ "validation": {
+  "passed": true,
+  "checks": [
+   {
+    "id": "A1",
+    "check": "Record counts 9/24/27/7/12/60/68/41/120/120",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "id": "a",
+    "check": "Every file has sample rows and an issue register",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "id": "c",
+    "check": "ER edges reference actual columns",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "id": "d",
+    "check": "Every review item has original/proposed values and source rows",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "id": "e",
+    "check": "Golden facilities keep original IDs",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "id": "f",
+    "check": "AR reconciles to unique invoices",
+    "passed": true,
+    "detail": "open 198,250.00 vs raw 198,250.00"
+   },
+   {
+    "id": "f2",
+    "check": "Category split sums to total open AR (no double counting)",
+    "passed": true,
+    "detail": "198,250.00"
+   },
+   {
+    "id": "B",
+    "check": "All transformation SQL executed",
+    "passed": true,
+    "detail": "10 statements"
+   },
+   {
+    "id": "i",
+    "check": "Outputs labeled as illustrative",
+    "passed": true,
+    "detail": ""
+   },
+   {
+    "id": "C",
+    "check": "Raw input unchanged by the run",
+    "passed": true,
+    "detail": ""
+   }
+  ]
+ },
+ "label": "Illustrative BD-style demo data",
+ "command": "uv run pipeline/bd_pipeline.py generate --input 282_BD_MMS_Rebuilt_Raw_Source_Data.zip --output public/bd"
+}

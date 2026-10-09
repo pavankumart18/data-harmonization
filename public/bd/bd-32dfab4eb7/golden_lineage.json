@@ -1,0 +1,626 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "facilities": {
+  "GF-001": {
+   "display_name": {
+    "selected": "Ascension St. Vincent Indianapolis - Main Campus",
+    "rule": "Reltio DBA of the auto-matched profile, else most frequent ERP name",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:002",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Indianapolis",
+      "rank": 1
+     },
+     {
+      "source": "02",
+      "rid": "02:001",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Indianapolis - Main Campus",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:002",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Indianapolis - Main Campus",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:003",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Indianapolis - Main Campus",
+      "rank": 2
+     },
+     {
+      "source": "04",
+      "rid": "04:001",
+      "column": "Account_Name",
+      "value": "Ascension St. Vincent Indianapolis",
+      "rank": 3
+     }
+    ]
+   },
+   "address": {
+    "selected": "3842 Health Center Dr, Indianapolis, IN 46260",
+    "rule": "Rank Reltio > ERP > Salesforce; competing values retained",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:002",
+      "column": "Hierarchy_Account_Address",
+      "value": "3842 Health Center Dr, Indianapolis, IN 46260",
+      "rank": 1
+     },
+     {
+      "source": "04",
+      "rid": "04:001",
+      "column": "Billing_Street + Billing_City",
+      "value": "3842 Health Center Dr, Indianapolis",
+      "rank": 3
+     }
+    ]
+   },
+   "dhc_id": {
+    "selected": "DHC-ASC-1001",
+    "rule": "Reltio survivor; duplicates contribute only after an approved merge",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:002",
+      "column": "Definitive_Healthcare_ID",
+      "value": "DHC-ASC-1001",
+      "rank": 1
+     }
+    ]
+   },
+   "payment_terms": {
+    "selected": "Net 45",
+    "rule": "Reltio survivor billing policy",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:002",
+      "column": "Payment_Terms",
+      "value": "Net 45",
+      "rank": 1
+     }
+    ]
+   }
+  },
+  "GF-002": {
+   "display_name": {
+    "selected": "Ascension St. Vincent Carmel",
+    "rule": "Reltio DBA of the auto-matched profile, else most frequent ERP name",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:003",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Carmel",
+      "rank": 1
+     },
+     {
+      "source": "02",
+      "rid": "02:004",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Carmel",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:005",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Carmel",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:006",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Carmel",
+      "rank": 2
+     },
+     {
+      "source": "04",
+      "rid": "04:002",
+      "column": "Account_Name",
+      "value": "Ascension St. Vincent Carmel",
+      "rank": 3
+     }
+    ]
+   },
+   "address": {
+    "selected": "5910 Health Center Dr, Carmel, IN 46032",
+    "rule": "Rank Reltio > ERP > Salesforce; competing values retained",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:003",
+      "column": "Hierarchy_Account_Address",
+      "value": "5910 Health Center Dr, Carmel, IN 46032",
+      "rank": 1
+     },
+     {
+      "source": "04",
+      "rid": "04:002",
+      "column": "Billing_Street + Billing_City",
+      "value": "5910 Health Center Dr, Carmel",
+      "rank": 3
+     }
+    ]
+   },
+   "dhc_id": {
+    "selected": "DHC-ASC-1002",
+    "rule": "Reltio survivor; duplicates contribute only after an approved merge",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:003",
+      "column": "Definitive_Healthcare_ID",
+      "value": "DHC-ASC-1002",
+      "rank": 1
+     }
+    ]
+   },
+   "payment_terms": {
+    "selected": "Net 60",
+    "rule": "Reltio survivor billing policy",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:003",
+      "column": "Payment_Terms",
+      "value": "Net 60",
+      "rank": 1
+     }
+    ]
+   }
+  },
+  "GF-003": {
+   "display_name": {
+    "selected": "Ascension St. Vincent Fishers",
+    "rule": "Reltio DBA of the auto-matched profile, else most frequent ERP name",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:004",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Fishers",
+      "rank": 1
+     },
+     {
+      "source": "01",
+      "rid": "01:008",
+      "column": "Legal_Name",
+      "value": "St Vincent Fishers Hospital",
+      "rank": 1
+     },
+     {
+      "source": "01",
+      "rid": "01:009",
+      "column": "Legal_Name",
+      "value": "St Vincent Fishers Hosp",
+      "rank": 1
+     },
+     {
+      "source": "02",
+      "rid": "02:007",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Fishers",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:008",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Fishers",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:009",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Fishers",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:010",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Fishers",
+      "rank": 2
+     },
+     {
+      "source": "04",
+      "rid": "04:003",
+      "column": "Account_Name",
+      "value": "Ascension St. Vincent Fishers",
+      "rank": 3
+     },
+     {
+      "source": "04",
+      "rid": "04:007",
+      "column": "Account_Name",
+      "value": "St Vincent Fishers Hospital",
+      "rank": 3
+     }
+    ]
+   },
+   "address": {
+    "selected": "1349 Health Center Dr, Fishers, IN 46037",
+    "rule": "Rank Reltio > ERP > Salesforce; competing values retained",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:004",
+      "column": "Hierarchy_Account_Address",
+      "value": "1349 Health Center Dr, Fishers, IN 46037",
+      "rank": 1
+     },
+     {
+      "source": "04",
+      "rid": "04:003",
+      "column": "Billing_Street + Billing_City",
+      "value": "1349 Health Center Dr, Fishers",
+      "rank": 3
+     },
+     {
+      "source": "04",
+      "rid": "04:007",
+      "column": "Billing_Street + Billing_City",
+      "value": "1349 Healthcare Dr, Fishers",
+      "rank": 3
+     }
+    ]
+   },
+   "dhc_id": {
+    "selected": null,
+    "rule": "Reltio survivor; duplicates contribute only after an approved merge",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:004",
+      "column": "Definitive_Healthcare_ID",
+      "value": "",
+      "rank": 1
+     },
+     {
+      "source": "01",
+      "rid": "01:009",
+      "column": "Definitive_Healthcare_ID",
+      "value": "",
+      "rank": 2
+     },
+     {
+      "source": "01",
+      "rid": "01:008",
+      "column": "Definitive_Healthcare_ID",
+      "value": "DHC-ASC-1003",
+      "rank": 2
+     }
+    ]
+   },
+   "payment_terms": {
+    "selected": "Net 30",
+    "rule": "Reltio survivor billing policy",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:004",
+      "column": "Payment_Terms",
+      "value": "Net 30",
+      "rank": 1
+     },
+     {
+      "source": "01",
+      "rid": "01:009",
+      "column": "Payment_Terms",
+      "value": "Net 30",
+      "rank": 2
+     },
+     {
+      "source": "01",
+      "rid": "01:008",
+      "column": "Payment_Terms",
+      "value": "Net 45",
+      "rank": 2
+     }
+    ]
+   }
+  },
+  "GF-004": {
+   "display_name": {
+    "selected": "Ascension St. Vincent Evansville",
+    "rule": "Reltio DBA of the auto-matched profile, else most frequent ERP name",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:005",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Evansville",
+      "rank": 1
+     },
+     {
+      "source": "02",
+      "rid": "02:011",
+      "column": "Legal_Name",
+      "value": "St Vincent Evansville",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:012",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Evansville",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:013",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Evansville",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:014",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Evansville",
+      "rank": 2
+     },
+     {
+      "source": "04",
+      "rid": "04:004",
+      "column": "Account_Name",
+      "value": "Ascension St. Vincent Evansville",
+      "rank": 3
+     }
+    ]
+   },
+   "address": {
+    "selected": "4872 Health Center Dr, Evansville, IN 47714",
+    "rule": "Rank Reltio > ERP > Salesforce; competing values retained",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:005",
+      "column": "Hierarchy_Account_Address",
+      "value": "4872 Health Center Dr, Evansville, IN 47714",
+      "rank": 1
+     },
+     {
+      "source": "04",
+      "rid": "04:004",
+      "column": "Billing_Street + Billing_City",
+      "value": "4872 Health Center Dr, Evansville",
+      "rank": 3
+     }
+    ]
+   },
+   "dhc_id": {
+    "selected": "DHC-ASC-1004",
+    "rule": "Reltio survivor; duplicates contribute only after an approved merge",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:005",
+      "column": "Definitive_Healthcare_ID",
+      "value": "DHC-ASC-1004",
+      "rank": 1
+     }
+    ]
+   },
+   "payment_terms": {
+    "selected": "Net 45",
+    "rule": "Reltio survivor billing policy",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:005",
+      "column": "Payment_Terms",
+      "value": "Net 45",
+      "rank": 1
+     }
+    ]
+   }
+  },
+  "GF-005": {
+   "display_name": {
+    "selected": "Ascension St. Vincent Anderson",
+    "rule": "Reltio DBA of the auto-matched profile, else most frequent ERP name",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:006",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Anderson",
+      "rank": 1
+     },
+     {
+      "source": "02",
+      "rid": "02:015",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincnt Anderson",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:016",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Anderson",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:017",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Anderson",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:018",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Anderson",
+      "rank": 2
+     },
+     {
+      "source": "04",
+      "rid": "04:005",
+      "column": "Account_Name",
+      "value": "Ascension St. Vincent Anderson",
+      "rank": 3
+     }
+    ]
+   },
+   "address": {
+    "selected": "9343 Health Center Dr, Anderson, IN 46016",
+    "rule": "Rank Reltio > ERP > Salesforce; competing values retained",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:006",
+      "column": "Hierarchy_Account_Address",
+      "value": "9343 Health Center Dr, Anderson, IN 46016",
+      "rank": 1
+     },
+     {
+      "source": "04",
+      "rid": "04:005",
+      "column": "Billing_Street + Billing_City",
+      "value": "Anderson",
+      "rank": 3
+     }
+    ]
+   },
+   "dhc_id": {
+    "selected": "DHC-ASC-1005",
+    "rule": "Reltio survivor; duplicates contribute only after an approved merge",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:006",
+      "column": "Definitive_Healthcare_ID",
+      "value": "DHC-ASC-1005",
+      "rank": 1
+     }
+    ]
+   },
+   "payment_terms": {
+    "selected": "Net 60",
+    "rule": "Reltio survivor billing policy",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:006",
+      "column": "Payment_Terms",
+      "value": "Net 60",
+      "rank": 1
+     }
+    ]
+   }
+  },
+  "GF-006": {
+   "display_name": {
+    "selected": "Ascension St. Vincent Kokomo",
+    "rule": "Reltio DBA of the auto-matched profile, else most frequent ERP name",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:007",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Kokomo",
+      "rank": 1
+     },
+     {
+      "source": "02",
+      "rid": "02:019",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Kokomo",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:020",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Kokomo",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:021",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Kokomo",
+      "rank": 2
+     },
+     {
+      "source": "02",
+      "rid": "02:022",
+      "column": "Legal_Name",
+      "value": "Ascension St. Vincent Kokomo",
+      "rank": 2
+     },
+     {
+      "source": "04",
+      "rid": "04:006",
+      "column": "Account_Name",
+      "value": "St Vincent Kokomo",
+      "rank": 3
+     }
+    ]
+   },
+   "address": {
+    "selected": "1760 Health Center Dr, Kokomo, IN 46901",
+    "rule": "Rank Reltio > ERP > Salesforce; competing values retained",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:007",
+      "column": "Hierarchy_Account_Address",
+      "value": "1760 Health Center Dr, Kokomo, IN 46901",
+      "rank": 1
+     },
+     {
+      "source": "04",
+      "rid": "04:006",
+      "column": "Billing_Street + Billing_City",
+      "value": "1760 Health Center Dr, Kokomo",
+      "rank": 3
+     }
+    ]
+   },
+   "dhc_id": {
+    "selected": null,
+    "rule": "Reltio survivor; duplicates contribute only after an approved merge",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:007",
+      "column": "Definitive_Healthcare_ID",
+      "value": "",
+      "rank": 1
+     }
+    ]
+   },
+   "payment_terms": {
+    "selected": "Net 60",
+    "rule": "Reltio survivor billing policy",
+    "values": [
+     {
+      "source": "01",
+      "rid": "01:007",
+      "column": "Payment_Terms",
+      "value": "Net 60",
+      "rank": 1
+     }
+    ]
+   }
+  }
+ }
+}

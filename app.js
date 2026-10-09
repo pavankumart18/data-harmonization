@@ -1955,7 +1955,7 @@ function renderLandingPage() {
     </div>
 
     <!-- Dataset Cards -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;margin-bottom:2rem">
+    <div class="dataset-grid">
 
       <!-- SKU Card -->
       <div onclick="selectDataset('sku')" style="cursor:pointer;border:1px solid rgba(79,70,229,0.22);background:linear-gradient(145deg,rgba(79,70,229,0.08) 0%,rgba(255,255,255,0.98) 72%);border-radius:var(--radius-lg);overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;box-shadow:var(--shadow-md)" onmouseenter="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 50px rgba(79,70,229,0.14)'" onmouseleave="this.style.transform='';this.style.boxShadow='var(--shadow-md)'">
@@ -2055,6 +2055,9 @@ function renderLandingPage() {
         </div>
       </div>
 
+      <!-- Installed Base & Receivables Card (bd.js) -->
+      ${typeof renderBDLandingCard === 'function' ? renderBDLandingCard() : ''}
+
     </div>
   </div>`;
 }
@@ -2066,11 +2069,12 @@ function renderUploadPage() {
   const stages = UPLOAD_STAGES[state.activeDataset];
   const isCRM = state.activeDataset === 'crm';
   const isSwire = state.activeDataset === 'swire';
+  const isBD = state.activeDataset === 'bd';
   const isLoading = state.uploadStageIndex >= 0 && !state.uploadDone;
   const isDone = state.uploadDone;
-  const datasetLabel = isCRM ? 'Salesforce / CRM' : isSwire ? 'Bottler Outlet-SKU' : 'SKU / Product';
-  const accentColor = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : 'var(--accent)';
-  const badgeCls = isCRM ? 'badge-emerald' : isSwire ? 'badge-red' : 'badge-accent';
+  const datasetLabel = isCRM ? 'Salesforce / CRM' : isSwire ? 'Bottler Outlet-SKU' : isBD ? 'Installed Base & Receivables' : 'SKU / Product';
+  const accentColor = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : isBD ? '#0f766e' : 'var(--accent)';
+  const badgeCls = isCRM ? 'badge-emerald' : isSwire ? 'badge-red' : isBD ? 'badge-cyan' : 'badge-accent';
 
   return `<div class="page active" style="max-width:52rem;margin:0 auto;padding-top:1.5rem">
     <button onclick="navigateTo('landing')" style="display:inline-flex;align-items:center;gap:0.375rem;font-size:0.8125rem;color:var(--text-tertiary);background:none;border:none;cursor:pointer;margin-bottom:1.5rem;padding:0.25rem 0">${icon('arrowLeft','icon-sm')} Back to dataset selection</button>
@@ -2089,7 +2093,7 @@ function renderUploadPage() {
             ${icon('upload')} Upload Files
           </button>
           <button class="btn btn-primary" onclick="startSampleLoad()" ${isLoading||isDone?'disabled':''}
-            style="${isCRM?'background:linear-gradient(135deg,var(--emerald),#059669);box-shadow:0 0 20px rgba(16,185,129,0.2)':isSwire?'background:linear-gradient(135deg,#dc2626,#b91c1c);box-shadow:0 0 20px rgba(220,38,38,0.2)':''}">
+            style="${isCRM?'background:linear-gradient(135deg,var(--emerald),#059669);box-shadow:0 0 20px rgba(16,185,129,0.2)':isSwire?'background:linear-gradient(135deg,#dc2626,#b91c1c);box-shadow:0 0 20px rgba(220,38,38,0.2)':isBD?'background:#0f766e;box-shadow:none':''}">
             ${icon('database')} Use Sample Data
           </button>
         </div>
@@ -2113,8 +2117,8 @@ function renderUploadPage() {
         ${stages.slice(0, Math.min(state.uploadStageIndex+1, stages.length)).map((s,i) => {
           const done = i < state.uploadStageIndex || isDone;
           const active = i === state.uploadStageIndex && !isDone;
-          const ac = isCRM ? '#10b981' : isSwire ? '#dc2626' : '#6366f1';
-          const acVar = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : 'var(--accent)';
+          const ac = isCRM ? '#10b981' : isSwire ? '#dc2626' : isBD ? '#0f766e' : '#6366f1';
+          const acVar = isCRM ? 'var(--emerald)' : isSwire ? '#dc2626' : isBD ? '#0f766e' : 'var(--accent)';
           const circle = done
             ? `background:${ac};color:#fff;font-size:0.6875rem;font-weight:800`
             : active

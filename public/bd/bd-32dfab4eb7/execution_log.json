@@ -1,0 +1,875 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "as_of": "2026-10-08",
+ "statements": [
+  {
+   "sql_file": "01_invoice_order_join.sql",
+   "output_table": "q_invoice_order_join",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "billing",
+    "orders"
+   ],
+   "exception_rules": [
+    "C-10-PAYER",
+    "V-AR-STATUS"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "J-INV-ORD"
+   ],
+   "status": "ok",
+   "row_count": 120,
+   "output_columns": [
+    "invoice_rid",
+    "SAP_Billing_Document",
+    "Reference_Sales_Order",
+    "order_rid",
+    "Sold_To_No",
+    "order_payer",
+    "invoice_payer",
+    "billing_amount_usd",
+    "open_amount_usd",
+    "Clearing_Status",
+    "order_found"
+   ],
+   "checksum": "18ae60c96e487e12",
+   "sample": [
+    {
+     "invoice_rid": "10:001",
+     "SAP_Billing_Document": "INV-MMS-00001",
+     "Reference_Sales_Order": "SO-MMS-00001",
+     "order_rid": "09:001",
+     "Sold_To_No": "ERP-001-A",
+     "order_payer": "ERP-001-P",
+     "invoice_payer": "ERP-001-P",
+     "billing_amount_usd": 1250,
+     "open_amount_usd": 1250,
+     "Clearing_Status": "Open",
+     "order_found": true
+    },
+    {
+     "invoice_rid": "10:002",
+     "SAP_Billing_Document": "INV-MMS-00002",
+     "Reference_Sales_Order": "SO-MMS-00002",
+     "order_rid": "09:002",
+     "Sold_To_No": "ERP-002-A",
+     "order_payer": "ERP-002-P",
+     "invoice_payer": "ERP-002-P",
+     "billing_amount_usd": 1250,
+     "open_amount_usd": 0,
+     "Clearing_Status": "Paid",
+     "order_found": true
+    },
+    {
+     "invoice_rid": "10:003",
+     "SAP_Billing_Document": "INV-MMS-00003",
+     "Reference_Sales_Order": "SO-MMS-00003",
+     "order_rid": "09:003",
+     "Sold_To_No": "ERP-003-O",
+     "order_payer": "ERP-003-P",
+     "invoice_payer": "ERP-003-P",
+     "billing_amount_usd": 2400,
+     "open_amount_usd": 0,
+     "Clearing_Status": "Paid",
+     "order_found": true
+    },
+    {
+     "invoice_rid": "10:004",
+     "SAP_Billing_Document": "INV-MMS-00004",
+     "Reference_Sales_Order": "SO-MMS-00004",
+     "order_rid": "09:004",
+     "Sold_To_No": "ERP-003-O",
+     "order_payer": "ERP-003-P",
+     "invoice_payer": "ERP-003-P",
+     "billing_amount_usd": 2400,
+     "open_amount_usd": 0,
+     "Clearing_Status": "Paid",
+     "order_found": true
+    },
+    {
+     "invoice_rid": "10:005",
+     "SAP_Billing_Document": "INV-MMS-00005",
+     "Reference_Sales_Order": "SO-MMS-00005",
+     "order_rid": "09:005",
+     "Sold_To_No": "ERP-004-O",
+     "order_payer": "ERP-004-P",
+     "invoice_payer": "ERP-004-P",
+     "billing_amount_usd": 2400,
+     "open_amount_usd": 2400,
+     "Clearing_Status": "Open",
+     "order_found": true
+    }
+   ]
+  },
+  {
+   "sql_file": "02_identifier_index.sql",
+   "output_table": "identifier_index",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "equipment",
+    "movements",
+    "service",
+    "orders"
+   ],
+   "exception_rules": [
+    "V-SERIAL"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "N-SERIAL-01"
+   ],
+   "status": "ok",
+   "row_count": 446,
+   "output_columns": [
+    "source",
+    "source_row_id",
+    "id_type",
+    "raw_value",
+    "normalized_value"
+   ],
+   "checksum": "29f8728dc21c3ed3",
+   "sample": [
+    {
+     "source": "06",
+     "source_row_id": "06:001",
+     "id_type": "alternate_asset_id",
+     "raw_value": "ALT-IN-000001",
+     "normalized_value": "ALT-IN-000001"
+    },
+    {
+     "source": "06",
+     "source_row_id": "06:001",
+     "id_type": "electronic_asset_id",
+     "raw_value": "EA-00001",
+     "normalized_value": "EA-00001"
+    },
+    {
+     "source": "06",
+     "source_row_id": "06:001",
+     "id_type": "serial_number",
+     "raw_value": "ADC-2021-100001",
+     "normalized_value": "ADC-2021-100001"
+    },
+    {
+     "source": "06",
+     "source_row_id": "06:001",
+     "id_type": "udi",
+     "raw_value": "UDI-0088-00000001",
+     "normalized_value": "UDI-0088-00000001"
+    },
+    {
+     "source": "06",
+     "source_row_id": "06:002",
+     "id_type": "alternate_asset_id",
+     "raw_value": "ALT-IN-000002",
+     "normalized_value": "ALT-IN-000002"
+    }
+   ]
+  },
+  {
+   "sql_file": "03_asset_resolution.sql",
+   "output_table": "q_asset_resolution",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "identifier_index",
+    "equipment"
+   ],
+   "exception_rules": [
+    "V-SERIAL",
+    "R-09-ASSET",
+    "C-08-IDS"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "J-ASSET-ID"
+   ],
+   "status": "ok",
+   "row_count": 193,
+   "output_columns": [
+    "source",
+    "source_row_id",
+    "candidate_assets",
+    "asset_id",
+    "matched_without_normalization",
+    "matched_on"
+   ],
+   "checksum": "be6f9f4d6e25cf90",
+   "sample": [
+    {
+     "source": "07",
+     "source_row_id": "07:001",
+     "candidate_assets": 1,
+     "asset_id": "EA-00001",
+     "matched_without_normalization": true,
+     "matched_on": "serial_number"
+    },
+    {
+     "source": "07",
+     "source_row_id": "07:002",
+     "candidate_assets": 1,
+     "asset_id": "EA-00002",
+     "matched_without_normalization": true,
+     "matched_on": "electronic_asset_id"
+    },
+    {
+     "source": "07",
+     "source_row_id": "07:003",
+     "candidate_assets": 1,
+     "asset_id": "EA-00003",
+     "matched_without_normalization": true,
+     "matched_on": "electronic_asset_id"
+    },
+    {
+     "source": "07",
+     "source_row_id": "07:004",
+     "candidate_assets": 1,
+     "asset_id": "EA-00003",
+     "matched_without_normalization": true,
+     "matched_on": "electronic_asset_id"
+    },
+    {
+     "source": "07",
+     "source_row_id": "07:005",
+     "candidate_assets": 1,
+     "asset_id": "EA-00004",
+     "matched_without_normalization": true,
+     "matched_on": "serial_number"
+    }
+   ]
+  },
+  {
+   "sql_file": "04_order_account_roles.sql",
+   "output_table": "q_order_account_roles",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "orders",
+    "sap_accounts"
+   ],
+   "exception_rules": [
+    "S-ORDER-SYS",
+    "S-ORDER-ROLE",
+    "C-09-PAYER"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "J-ORD-ROLE"
+   ],
+   "status": "ok",
+   "row_count": 480,
+   "output_columns": [
+    "order_rid",
+    "SAP_Sales_Order",
+    "role",
+    "account_no",
+    "SAP_Client",
+    "account_system",
+    "account_found",
+    "role_matches",
+    "system_matches"
+   ],
+   "checksum": "4d77d6aecfad8681",
+   "sample": [
+    {
+     "order_rid": "09:001",
+     "SAP_Sales_Order": "SO-MMS-00001",
+     "role": "BILL_TO",
+     "account_no": "ERP-001-A",
+     "SAP_Client": "SAP_Everest",
+     "account_system": "SAP_Everest",
+     "account_found": true,
+     "role_matches": true,
+     "system_matches": true
+    },
+    {
+     "order_rid": "09:001",
+     "SAP_Sales_Order": "SO-MMS-00001",
+     "role": "PAYER",
+     "account_no": "ERP-001-P",
+     "SAP_Client": "SAP_Everest",
+     "account_system": "SAP_Everest",
+     "account_found": true,
+     "role_matches": true,
+     "system_matches": true
+    },
+    {
+     "order_rid": "09:001",
+     "SAP_Sales_Order": "SO-MMS-00001",
+     "role": "SHIP_TO",
+     "account_no": "ERP-001-S",
+     "SAP_Client": "SAP_Everest",
+     "account_system": "SAP_Everest",
+     "account_found": true,
+     "role_matches": true,
+     "system_matches": true
+    },
+    {
+     "order_rid": "09:001",
+     "SAP_Sales_Order": "SO-MMS-00001",
+     "role": "SOLD_TO",
+     "account_no": "ERP-001-A",
+     "SAP_Client": "SAP_Everest",
+     "account_system": "SAP_Everest",
+     "account_found": true,
+     "role_matches": true,
+     "system_matches": true
+    },
+    {
+     "order_rid": "09:002",
+     "SAP_Sales_Order": "SO-MMS-00002",
+     "role": "BILL_TO",
+     "account_no": "ERP-002-A",
+     "SAP_Client": "SAP_Everest",
+     "account_system": "SAP_Everest",
+     "account_found": true,
+     "role_matches": true,
+     "system_matches": true
+    }
+   ]
+  },
+  {
+   "sql_file": "05_invoice_payer_consistency.sql",
+   "output_table": "q_invoice_payer_consistency",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "q_invoice_order_join",
+    "sap_accounts"
+   ],
+   "exception_rules": [
+    "C-10-PAYER",
+    "B-PAYER-01"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "B-PAYER-01"
+   ],
+   "status": "ok",
+   "row_count": 120,
+   "output_columns": [
+    "invoice_rid",
+    "SAP_Billing_Document",
+    "Reference_Sales_Order",
+    "invoice_payer",
+    "order_payer",
+    "payer_status",
+    "resolved_payer",
+    "payer_payment_block",
+    "open_amount_usd"
+   ],
+   "checksum": "9ec09184446d548c",
+   "sample": [
+    {
+     "invoice_rid": "10:001",
+     "SAP_Billing_Document": "INV-MMS-00001",
+     "Reference_Sales_Order": "SO-MMS-00001",
+     "invoice_payer": "ERP-001-P",
+     "order_payer": "ERP-001-P",
+     "payer_status": "consistent",
+     "resolved_payer": "ERP-001-P",
+     "payer_payment_block": "N",
+     "open_amount_usd": 1250
+    },
+    {
+     "invoice_rid": "10:002",
+     "SAP_Billing_Document": "INV-MMS-00002",
+     "Reference_Sales_Order": "SO-MMS-00002",
+     "invoice_payer": "ERP-002-P",
+     "order_payer": "ERP-002-P",
+     "payer_status": "consistent",
+     "resolved_payer": "ERP-002-P",
+     "payer_payment_block": "N",
+     "open_amount_usd": 0
+    },
+    {
+     "invoice_rid": "10:003",
+     "SAP_Billing_Document": "INV-MMS-00003",
+     "Reference_Sales_Order": "SO-MMS-00003",
+     "invoice_payer": "ERP-003-P",
+     "order_payer": "ERP-003-P",
+     "payer_status": "consistent",
+     "resolved_payer": "ERP-003-P",
+     "payer_payment_block": "Y",
+     "open_amount_usd": 0
+    },
+    {
+     "invoice_rid": "10:004",
+     "SAP_Billing_Document": "INV-MMS-00004",
+     "Reference_Sales_Order": "SO-MMS-00004",
+     "invoice_payer": "ERP-003-P",
+     "order_payer": "ERP-003-P",
+     "payer_status": "consistent",
+     "resolved_payer": "ERP-003-P",
+     "payer_payment_block": "Y",
+     "open_amount_usd": 0
+    },
+    {
+     "invoice_rid": "10:005",
+     "SAP_Billing_Document": "INV-MMS-00005",
+     "Reference_Sales_Order": "SO-MMS-00005",
+     "invoice_payer": "ERP-004-P",
+     "order_payer": "ERP-004-P",
+     "payer_status": "consistent",
+     "resolved_payer": "ERP-004-P",
+     "payer_payment_block": "N",
+     "open_amount_usd": 2400
+    }
+   ]
+  },
+  {
+   "sql_file": "06_contract_account.sql",
+   "output_table": "q_contract_account",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "sf_contracts",
+    "sf_accounts"
+   ],
+   "exception_rules": [
+    "C-05-ACCT"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "J-CTR-ACC"
+   ],
+   "status": "ok",
+   "row_count": 12,
+   "output_columns": [
+    "contract_rid",
+    "Contract_ID",
+    "Salesforce_Account_ID",
+    "Account_Name",
+    "Pricing_Schedule_by_Transaction_Type",
+    "covered_material",
+    "Contract_Status",
+    "term_begin",
+    "term_end",
+    "PO_Required",
+    "join_status"
+   ],
+   "checksum": "0704b932be473ce2",
+   "sample": [
+    {
+     "contract_rid": "05:001",
+     "Contract_ID": "CTR-ASC-001",
+     "Salesforce_Account_ID": "SF-ACC-ASC-001",
+     "Account_Name": "Ascension St. Vincent Indianapolis",
+     "Pricing_Schedule_by_Transaction_Type": "Dispensing lease + service schedule",
+     "covered_material": "MMS-DISP-01",
+     "Contract_Status": "Active",
+     "term_begin": "2025-01-31",
+     "term_end": "2027-01-31",
+     "PO_Required": "N",
+     "join_status": "native_match"
+    },
+    {
+     "contract_rid": "05:002",
+     "Contract_ID": "CTR-ASC-002",
+     "Salesforce_Account_ID": "SF-ACC-ASC-001",
+     "Account_Name": "Ascension St. Vincent Indianapolis",
+     "Pricing_Schedule_by_Transaction_Type": "Infusion lease + service schedule",
+     "covered_material": "MMS-INF-01",
+     "Contract_Status": "Active",
+     "term_begin": "2025-03-02",
+     "term_end": "2027-03-02",
+     "PO_Required": "Y",
+     "join_status": "native_match"
+    },
+    {
+     "contract_rid": "05:003",
+     "Contract_ID": "CTR-ASC-003",
+     "Salesforce_Account_ID": "SF-ACC-ASC-002",
+     "Account_Name": "Ascension St. Vincent Carmel",
+     "Pricing_Schedule_by_Transaction_Type": "Dispensing lease + service schedule",
+     "covered_material": "MMS-DISP-01",
+     "Contract_Status": "Active",
+     "term_begin": "2025-04-01",
+     "term_end": "2027-04-01",
+     "PO_Required": "Y",
+     "join_status": "native_match"
+    },
+    {
+     "contract_rid": "05:004",
+     "Contract_ID": "CTR-ASC-004",
+     "Salesforce_Account_ID": null,
+     "Account_Name": null,
+     "Pricing_Schedule_by_Transaction_Type": "Infusion lease + service schedule",
+     "covered_material": "MMS-INF-01",
+     "Contract_Status": "Active",
+     "term_begin": "2025-05-01",
+     "term_end": "2027-05-01",
+     "PO_Required": "N",
+     "join_status": "unresolved_missing_key"
+    },
+    {
+     "contract_rid": "05:005",
+     "Contract_ID": "CTR-ASC-005",
+     "Salesforce_Account_ID": "SF-ACC-ASC-003",
+     "Account_Name": "Ascension St. Vincent Fishers",
+     "Pricing_Schedule_by_Transaction_Type": "Dispensing lease + service schedule",
+     "covered_material": "MMS-DISP-01",
+     "Contract_Status": "Active",
+     "term_begin": "2025-05-31",
+     "term_end": "2027-05-31",
+     "PO_Required": "Y",
+     "join_status": "native_match"
+    }
+   ]
+  },
+  {
+   "sql_file": "07_asset_event_timeline.sql",
+   "output_table": "q_asset_event_timeline",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "equipment",
+    "movements",
+    "service",
+    "q_asset_resolution"
+   ],
+   "exception_rules": [
+    "F-ASSET-LOC",
+    "B-ORDER-LOC"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "T-ASSET-LOC"
+   ],
+   "status": "ok",
+   "row_count": 163,
+   "output_columns": [
+    "asset_id",
+    "event_type",
+    "source_row_id",
+    "event_date",
+    "location_text",
+    "evidence_source"
+   ],
+   "checksum": "307782a5bc7cb00f",
+   "sample": [
+    {
+     "asset_id": "EA-00001",
+     "event_type": "movement_install",
+     "source_row_id": "07:001",
+     "event_date": "2024-01-11",
+     "location_text": "Ascension St. Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install Base"
+    },
+    {
+     "asset_id": "EA-00001",
+     "event_type": "install_base",
+     "source_row_id": "06:001",
+     "event_date": "2026-07-23",
+     "location_text": "Ascension St. Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install base confirmation"
+    },
+    {
+     "asset_id": "EA-00001",
+     "event_type": "service_visit",
+     "source_row_id": "08:001",
+     "event_date": "2026-09-09",
+     "location_text": "Ascension St. Vincent Indianapolis",
+     "evidence_source": "Field service Break/Fix"
+    },
+    {
+     "asset_id": "EA-00002",
+     "event_type": "movement_install",
+     "source_row_id": "07:002",
+     "event_date": "2023-11-20",
+     "location_text": "Ascension St. Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install Base"
+    },
+    {
+     "asset_id": "EA-00002",
+     "event_type": "install_base",
+     "source_row_id": "06:002",
+     "event_date": "2026-07-11",
+     "location_text": "Ascension St. Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install base confirmation"
+    }
+   ]
+  },
+  {
+   "sql_file": "08_contact_account.sql",
+   "output_table": "q_contact_account",
+   "dialect": "DuckDB",
+   "stage": "A",
+   "input_tables": [
+    "sf_contacts",
+    "sf_accounts"
+   ],
+   "exception_rules": [
+    "C-03-ACCT",
+    "R-03-ACCT"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "J-CON-ACC"
+   ],
+   "status": "ok",
+   "row_count": 27,
+   "output_columns": [
+    "contact_rid",
+    "Universal_Contact_ID",
+    "BD_Contact_Type",
+    "Salesforce_Account_ID",
+    "Account_Name",
+    "join_status"
+   ],
+   "checksum": "bd0e2c969a540ab0",
+   "sample": [
+    {
+     "contact_rid": "03:001",
+     "Universal_Contact_ID": "003240000000000000",
+     "BD_Contact_Type": "Billing Contact",
+     "Salesforce_Account_ID": "SF-ACC-ASC-001",
+     "Account_Name": "Ascension St. Vincent Indianapolis",
+     "join_status": "native_match"
+    },
+    {
+     "contact_rid": "03:002",
+     "Universal_Contact_ID": "003240000000000001",
+     "BD_Contact_Type": "Service Contact",
+     "Salesforce_Account_ID": "SF-ACC-ASC-001",
+     "Account_Name": "Ascension St. Vincent Indianapolis",
+     "join_status": "native_match"
+    },
+    {
+     "contact_rid": "03:003",
+     "Universal_Contact_ID": "003240000000000002",
+     "BD_Contact_Type": "Procurement Contact",
+     "Salesforce_Account_ID": "SF-ACC-ASC-001",
+     "Account_Name": "Ascension St. Vincent Indianapolis",
+     "join_status": "native_match"
+    },
+    {
+     "contact_rid": "03:004",
+     "Universal_Contact_ID": "003240000000000003",
+     "BD_Contact_Type": "Recall Contact",
+     "Salesforce_Account_ID": "SF-ACC-ASC-001",
+     "Account_Name": "Ascension St. Vincent Indianapolis",
+     "join_status": "native_match"
+    },
+    {
+     "contact_rid": "03:005",
+     "Universal_Contact_ID": "003240000000000004",
+     "BD_Contact_Type": "Billing Contact",
+     "Salesforce_Account_ID": "SF-ACC-ASC-002",
+     "Account_Name": "Ascension St. Vincent Carmel",
+     "join_status": "native_match"
+    }
+   ]
+  },
+  {
+   "sql_file": "09_order_entitlement.sql",
+   "output_table": "q_order_entitlement",
+   "dialect": "DuckDB",
+   "stage": "B",
+   "input_tables": [
+    "orders",
+    "sf_contracts",
+    "xwalk"
+   ],
+   "exception_rules": [
+    "B-ENTITLE-01",
+    "B-PO-01"
+   ],
+   "parameters": {},
+   "rule_ids": [
+    "B-ENTITLE-01",
+    "B-PO-01"
+   ],
+   "status": "ok",
+   "row_count": 120,
+   "output_columns": [
+    "order_rid",
+    "SAP_Sales_Order",
+    "golden_facility_id",
+    "Material_Number",
+    "order_date",
+    "Contract_ID",
+    "Contract_Status",
+    "term_begin",
+    "term_end",
+    "PO_Required",
+    "po_missing",
+    "entitlement_status"
+   ],
+   "checksum": "48fb8c87cee2355f",
+   "sample": [
+    {
+     "order_rid": "09:001",
+     "SAP_Sales_Order": "SO-MMS-00001",
+     "golden_facility_id": "GF-001",
+     "Material_Number": "MMS-INF-01",
+     "order_date": "2026-08-30",
+     "Contract_ID": "CTR-ASC-002",
+     "Contract_Status": "Active",
+     "term_begin": "2025-03-02",
+     "term_end": "2027-03-02",
+     "PO_Required": "Y",
+     "po_missing": true,
+     "entitlement_status": "covered"
+    },
+    {
+     "order_rid": "09:002",
+     "SAP_Sales_Order": "SO-MMS-00002",
+     "golden_facility_id": "GF-002",
+     "Material_Number": "MMS-DISP-01",
+     "order_date": "2026-09-07",
+     "Contract_ID": "CTR-ASC-003",
+     "Contract_Status": "Active",
+     "term_begin": "2025-04-01",
+     "term_end": "2027-04-01",
+     "PO_Required": "Y",
+     "po_missing": false,
+     "entitlement_status": "covered"
+    },
+    {
+     "order_rid": "09:003",
+     "SAP_Sales_Order": "SO-MMS-00003",
+     "golden_facility_id": "GF-003",
+     "Material_Number": "MMS-INF-01",
+     "order_date": "2026-04-05",
+     "Contract_ID": "CTR-ASC-006",
+     "Contract_Status": "Active",
+     "term_begin": "2025-06-30",
+     "term_end": "2027-06-30",
+     "PO_Required": "Y",
+     "po_missing": false,
+     "entitlement_status": "covered"
+    },
+    {
+     "order_rid": "09:004",
+     "SAP_Sales_Order": "SO-MMS-00004",
+     "golden_facility_id": "GF-003",
+     "Material_Number": "MMS-DISP-01",
+     "order_date": "2026-07-18",
+     "Contract_ID": "CTR-ASC-005",
+     "Contract_Status": "Active",
+     "term_begin": "2025-05-31",
+     "term_end": "2027-05-31",
+     "PO_Required": "Y",
+     "po_missing": false,
+     "entitlement_status": "covered"
+    },
+    {
+     "order_rid": "09:005",
+     "SAP_Sales_Order": "SO-MMS-00005",
+     "golden_facility_id": "GF-004",
+     "Material_Number": "MMS-INF-01",
+     "order_date": "2026-07-24",
+     "Contract_ID": "CTR-ASC-008",
+     "Contract_Status": "Expired",
+     "term_begin": "2025-08-29",
+     "term_end": null,
+     "PO_Required": "Y",
+     "po_missing": false,
+     "entitlement_status": "contract_not_active"
+    }
+   ]
+  },
+  {
+   "sql_file": "10_open_ar_aging.sql",
+   "output_table": "q_open_ar_aging",
+   "dialect": "DuckDB",
+   "stage": "B",
+   "input_tables": [
+    "billing"
+   ],
+   "exception_rules": [
+    "V-AR-STATUS"
+   ],
+   "parameters": {
+    "as_of": "run as_of date"
+   },
+   "rule_ids": [
+    "AR-AGE-01"
+   ],
+   "status": "ok",
+   "row_count": 24,
+   "output_columns": [
+    "invoice_rid",
+    "SAP_Billing_Document",
+    "Reference_Sales_Order",
+    "open_amount_usd",
+    "net_due_date",
+    "days_past_due",
+    "aging_bucket",
+    "Collection_Note"
+   ],
+   "checksum": "35b465fd5e92224e",
+   "sample": [
+    {
+     "invoice_rid": "10:001",
+     "SAP_Billing_Document": "INV-MMS-00001",
+     "Reference_Sales_Order": "SO-MMS-00001",
+     "open_amount_usd": 1250,
+     "net_due_date": "2026-10-14",
+     "days_past_due": -6,
+     "aging_bucket": "Current",
+     "Collection_Note": "Asset moved; invoice still tied to prior facility/customer relationship"
+    },
+    {
+     "invoice_rid": "10:005",
+     "SAP_Billing_Document": "INV-MMS-00005",
+     "Reference_Sales_Order": "SO-MMS-00005",
+     "open_amount_usd": 2400,
+     "net_due_date": "2026-09-07",
+     "days_past_due": 31,
+     "aging_bucket": "31-60",
+     "Collection_Note": "Contract expired / entitlement requires review"
+    },
+    {
+     "invoice_rid": "10:011",
+     "SAP_Billing_Document": "INV-MMS-00011",
+     "Reference_Sales_Order": "SO-MMS-00011",
+     "open_amount_usd": 7800,
+     "net_due_date": "2026-06-10",
+     "days_past_due": 120,
+     "aging_bucket": "90+",
+     "Collection_Note": "Asset moved; invoice still tied to prior facility/customer relationship"
+    },
+    {
+     "invoice_rid": "10:013",
+     "SAP_Billing_Document": "INV-MMS-00013",
+     "Reference_Sales_Order": "SO-MMS-00013",
+     "open_amount_usd": 1250,
+     "net_due_date": "2026-08-31",
+     "days_past_due": 38,
+     "aging_bucket": "31-60",
+     "Collection_Note": "Contract expired / entitlement requires review"
+    },
+    {
+     "invoice_rid": "10:026",
+     "SAP_Billing_Document": "INV-MMS-00026",
+     "Reference_Sales_Order": "SO-MMS-00026",
+     "open_amount_usd": 2400,
+     "net_due_date": "2026-07-05",
+     "days_past_due": 95,
+     "aging_bucket": "90+",
+     "Collection_Note": "Asset moved; invoice still tied to prior facility/customer relationship"
+    }
+   ]
+  }
+ ],
+ "sql": {
+  "01_invoice_order_join.sql": "-- rule: J-INV-ORD | native transactional join, invoice -> sales order\n-- inputs: billing, orders | grain: one row per invoice\nSELECT\n  b.\"_rid\"                                   AS invoice_rid,\n  b.\"SAP_Billing_Document\",\n  b.\"Reference_Sales_Order\",\n  o.\"_rid\"                                   AS order_rid,\n  o.\"Sold_To_No\",\n  o.\"Payer_No\"                               AS order_payer,\n  b.\"Payer_Account_No\"                       AS invoice_payer,\n  TRY_CAST(b.\"Billing_Amount_USD\" AS DOUBLE) AS billing_amount_usd,\n  TRY_CAST(b.\"Open_Amount_USD\" AS DOUBLE)    AS open_amount_usd,\n  b.\"Clearing_Status\",\n  o.\"SAP_Sales_Order\" IS NOT NULL            AS order_found\nFROM billing b\nLEFT JOIN orders o\n  ON b.\"Reference_Sales_Order\" = o.\"SAP_Sales_Order\"\nORDER BY b.\"SAP_Billing_Document\";\n",
+  "02_identifier_index.sql": "-- rule: N-SERIAL-01 | staged asset identifier index (never OR-join nullable serials)\n-- one row per (source, source_row_id, id_type) with a non-blank value.\n-- serial normalization: upper-case, trim, letter O -> digit 0 after the product prefix.\nWITH ids AS (\n  SELECT '06' AS source, \"_rid\" AS source_row_id, 'electronic_asset_id' AS id_type, \"Electronic_Asset_ID\" AS raw_value FROM equipment\n  UNION ALL SELECT '06', \"_rid\", 'serial_number',       \"Serial_Number\"            FROM equipment\n  UNION ALL SELECT '06', \"_rid\", 'alternate_asset_id',  \"Alternate_Asset_ID\"       FROM equipment\n  UNION ALL SELECT '06', \"_rid\", 'udi',                 \"Unique_Device_Identifier\" FROM equipment\n  UNION ALL SELECT '07', \"_rid\", 'electronic_asset_id', \"Asset_Tag\"                FROM movements\n  UNION ALL SELECT '07', \"_rid\", 'serial_number',       \"Scanned_Serial\"           FROM movements\n  UNION ALL SELECT '08', \"_rid\", 'electronic_asset_id', \"Equipment_Tag\"            FROM service\n  UNION ALL SELECT '08', \"_rid\", 'serial_number',       \"Observed_Serial\"          FROM service\n  UNION ALL SELECT '09', \"_rid\", 'serial_number',       \"Equipment_Serial\"         FROM orders\n)\nSELECT\n  source,\n  source_row_id,\n  id_type,\n  raw_value,\n  CASE WHEN id_type = 'serial_number'\n       THEN split_part(upper(trim(raw_value)), '-', 1) || '-' ||\n            replace(substr(upper(trim(raw_value)), strpos(upper(trim(raw_value)), '-') + 1), 'O', '0')\n       ELSE upper(trim(raw_value)) END AS normalized_value\nFROM ids\nWHERE raw_value IS NOT NULL AND trim(raw_value) <> ''\nORDER BY source, source_row_id, id_type;\n",
+  "03_asset_resolution.sql": "-- rule: J-ASSET-ID | resolve movement / service / order identifiers to one installed asset\n-- strong IDs only (asset tag, serial). >1 candidate asset = conflict, 0 = unresolved.\nWITH eq AS (\n  SELECT i.id_type, i.normalized_value, i.raw_value AS asset_raw, e.\"Electronic_Asset_ID\" AS asset_id\n  FROM identifier_index i\n  JOIN equipment e ON i.source_row_id = e.\"_rid\"\n  WHERE i.source = '06' AND i.id_type IN ('electronic_asset_id', 'serial_number')\n),\nrefs AS (\n  SELECT * FROM identifier_index WHERE source <> '06'\n),\nm AS (\n  SELECT r.source, r.source_row_id, r.id_type, r.raw_value, eq.asset_id,\n         (upper(trim(r.raw_value)) = upper(trim(eq.asset_raw))) AS raw_exact\n  FROM refs r\n  LEFT JOIN eq ON r.id_type = eq.id_type AND r.normalized_value = eq.normalized_value\n)\nSELECT\n  source,\n  source_row_id,\n  count(DISTINCT asset_id)                                              AS candidate_assets,\n  min(asset_id)                                                         AS asset_id,\n  coalesce(bool_or(raw_exact), false)                                   AS matched_without_normalization,\n  string_agg(DISTINCT CASE WHEN asset_id IS NOT NULL THEN id_type END, '+' ORDER BY CASE WHEN asset_id IS NOT NULL THEN id_type END) AS matched_on\nFROM m\nGROUP BY source, source_row_id\nORDER BY source, source_row_id;\n",
+  "04_order_account_roles.sql": "-- rule: J-ORD-ROLE | account roles are relationships: each order role must point at an\n-- ERP account that carries that role (sold-to, ship-to, bill-to, payer).\nWITH roles AS (\n  SELECT \"_rid\" AS order_rid, \"SAP_Sales_Order\", \"SAP_Client\", 'SOLD_TO' AS role, \"Sold_To_No\" AS account_no FROM orders\n  UNION ALL SELECT \"_rid\", \"SAP_Sales_Order\", \"SAP_Client\", 'SHIP_TO', \"Ship_To_No\" FROM orders\n  UNION ALL SELECT \"_rid\", \"SAP_Sales_Order\", \"SAP_Client\", 'BILL_TO', \"Bill_To_No\" FROM orders\n  UNION ALL SELECT \"_rid\", \"SAP_Sales_Order\", \"SAP_Client\", 'PAYER',   \"Payer_No\"   FROM orders\n),\nacct AS (\n  SELECT \"ERP_Customer_ID\", min(\"ERP_System\") AS \"ERP_System\", string_agg(\"Account_Role\", '|' ORDER BY \"Account_Role\") AS roles\n  FROM sap_accounts GROUP BY \"ERP_Customer_ID\"\n)\nSELECT\n  r.order_rid, r.\"SAP_Sales_Order\", r.role, r.account_no, r.\"SAP_Client\",\n  a.\"ERP_System\"                                  AS account_system,\n  a.\"ERP_Customer_ID\" IS NOT NULL                 AS account_found,\n  coalesce(strpos(a.roles, r.role) > 0, false)    AS role_matches,\n  coalesce(a.\"ERP_System\" = r.\"SAP_Client\", false) AS system_matches\nFROM roles r\nLEFT JOIN acct a ON r.account_no = a.\"ERP_Customer_ID\"\nORDER BY r.\"SAP_Sales_Order\", r.role;\n",
+  "05_invoice_payer_consistency.sql": "-- rule: B-PAYER-01 | compare invoice payer with the order payer, then resolve to an ERP payer account\nSELECT\n  q.invoice_rid,\n  q.\"SAP_Billing_Document\",\n  q.\"Reference_Sales_Order\",\n  q.invoice_payer,\n  q.order_payer,\n  CASE\n    WHEN q.invoice_payer IS NULL AND q.order_payer IS NULL THEN 'both_missing'\n    WHEN q.invoice_payer IS NULL THEN 'invoice_missing'\n    WHEN q.order_payer IS NULL THEN 'order_missing'\n    WHEN q.invoice_payer = q.order_payer THEN 'consistent'\n    ELSE 'conflict'\n  END AS payer_status,\n  coalesce(q.invoice_payer, q.order_payer) AS resolved_payer,\n  p.\"Payment_Block\"                        AS payer_payment_block,\n  q.open_amount_usd\nFROM q_invoice_order_join q\nLEFT JOIN (SELECT DISTINCT \"ERP_Customer_ID\", \"Payment_Block\" FROM sap_accounts) p\n  ON coalesce(q.invoice_payer, q.order_payer) = p.\"ERP_Customer_ID\"\nORDER BY q.\"SAP_Billing_Document\";\n",
+  "06_contract_account.sql": "-- rule: J-CTR-ACC | native exact join, contract -> Salesforce account. Missing account stays unresolved.\nSELECT\n  c.\"_rid\" AS contract_rid,\n  c.\"Contract_ID\",\n  c.\"Salesforce_Account_ID\",\n  a.\"Account_Name\",\n  c.\"Pricing_Schedule_by_Transaction_Type\",\n  CASE WHEN c.\"Pricing_Schedule_by_Transaction_Type\" ILIKE 'Infusion%'   THEN 'MMS-INF-01'\n       WHEN c.\"Pricing_Schedule_by_Transaction_Type\" ILIKE 'Dispensing%' THEN 'MMS-DISP-01' END AS covered_material,\n  c.\"Contract_Status\",\n  TRY_CAST(c.\"Term_Begin_Date\" AS DATE) AS term_begin,\n  TRY_CAST(c.\"Term_End_Date\" AS DATE)   AS term_end,\n  c.\"PO_Required\",\n  CASE WHEN c.\"Salesforce_Account_ID\" IS NULL THEN 'unresolved_missing_key'\n       WHEN a.\"Salesforce_Account_ID\" IS NULL THEN 'unresolved_not_in_extract'\n       ELSE 'native_match' END AS join_status\nFROM sf_contracts c\nLEFT JOIN sf_accounts a ON c.\"Salesforce_Account_ID\" = a.\"Salesforce_Account_ID\"\nORDER BY c.\"Contract_ID\";\n",
+  "07_asset_event_timeline.sql": "-- rule: T-ASSET-LOC | evidence timeline per asset: install-base observation, movements, service visits.\n-- the latest event is evidence, not truth; conflicts are resolved in review.\nSELECT e.\"Electronic_Asset_ID\" AS asset_id, 'install_base' AS event_type, e.\"_rid\" AS source_row_id,\n       TRY_CAST(e.\"Equipment_Confirmation_Date\" AS DATE) AS event_date,\n       e.\"Site_Name\" AS location_text, 'Install base confirmation' AS evidence_source\nFROM equipment e\nUNION ALL\nSELECT r.asset_id, 'movement_' || lower(replace(m.\"Movement_Type\", ' ', '_')), m.\"_rid\",\n       TRY_CAST(m.\"Movement_Date\" AS DATE), m.\"Destination_Location\", m.\"Event_Source\"\nFROM movements m\nJOIN q_asset_resolution r ON r.source = '07' AND r.source_row_id = m.\"_rid\" AND r.candidate_assets = 1\nUNION ALL\nSELECT r.asset_id, 'service_visit', s.\"_rid\",\n       TRY_CAST(s.\"Visit_Date\" AS DATE), s.\"Customer_Site_Entered\", 'Field service ' || s.\"Service_Type\"\nFROM service s\nJOIN q_asset_resolution r ON r.source = '08' AND r.source_row_id = s.\"_rid\" AND r.candidate_assets = 1\nORDER BY asset_id, event_date, event_type;\n",
+  "08_contact_account.sql": "-- rule: J-CON-ACC | native exact join, contact -> Salesforce account\nSELECT\n  c.\"_rid\" AS contact_rid,\n  c.\"Universal_Contact_ID\",\n  c.\"BD_Contact_Type\",\n  c.\"Salesforce_Account_ID\",\n  a.\"Account_Name\",\n  CASE WHEN c.\"Salesforce_Account_ID\" IS NULL THEN 'unresolved_missing_key'\n       WHEN a.\"Salesforce_Account_ID\" IS NULL THEN 'unresolved_not_in_extract'\n       ELSE 'native_match' END AS join_status\nFROM sf_contacts c\nLEFT JOIN sf_accounts a ON c.\"Salesforce_Account_ID\" = a.\"Salesforce_Account_ID\"\nORDER BY c.\"Universal_Contact_ID\";\n",
+  "09_order_entitlement.sql": "-- rule: B-ENTITLE-01 / B-PO-01 | order -> golden facility (via sold-to crosswalk) -> contract covering the\n-- ordered material. Uses the facility crosswalk produced by the matching stage (xwalk), so only\n-- crosswalk rows at or above the publish threshold are used.\nWITH ord AS (\n  SELECT o.\"_rid\" AS order_rid, o.\"SAP_Sales_Order\", o.\"Material_Number\", o.\"Customer_PO_Number\",\n         TRY_CAST(o.\"Order_Created_On\" AS DATE) AS order_date, x.golden_facility_id\n  FROM orders o\n  LEFT JOIN xwalk x ON x.source_table = 'sap_accounts' AND x.native_id = o.\"Sold_To_No\"\n),\nctr AS (\n  SELECT c.\"Contract_ID\", c.\"Contract_Status\", c.\"PO_Required\",\n         TRY_CAST(c.\"Term_Begin_Date\" AS DATE) AS term_begin, TRY_CAST(c.\"Term_End_Date\" AS DATE) AS term_end,\n         CASE WHEN c.\"Pricing_Schedule_by_Transaction_Type\" ILIKE 'Infusion%' THEN 'MMS-INF-01' ELSE 'MMS-DISP-01' END AS covered_material,\n         x.golden_facility_id\n  FROM sf_contracts c\n  JOIN xwalk x ON x.source_table = 'sf_accounts' AND x.native_id = c.\"Salesforce_Account_ID\"\n)\nSELECT\n  ord.order_rid, ord.\"SAP_Sales_Order\", ord.golden_facility_id, ord.\"Material_Number\", ord.order_date,\n  ctr.\"Contract_ID\", ctr.\"Contract_Status\", ctr.term_begin, ctr.term_end, ctr.\"PO_Required\",\n  ord.\"Customer_PO_Number\" IS NULL AS po_missing,\n  CASE WHEN ctr.\"Contract_ID\" IS NULL THEN 'no_linked_contract'\n       WHEN ctr.\"Contract_Status\" <> 'Active' THEN 'contract_not_active'\n       WHEN ctr.term_end IS NULL THEN 'term_end_missing'\n       WHEN ord.order_date NOT BETWEEN ctr.term_begin AND ctr.term_end THEN 'outside_term'\n       ELSE 'covered' END AS entitlement_status\nFROM ord\nLEFT JOIN ctr ON ctr.golden_facility_id = ord.golden_facility_id AND ctr.covered_material = ord.\"Material_Number\"\nORDER BY ord.\"SAP_Sales_Order\";\n",
+  "10_open_ar_aging.sql": "-- rule: AR-AGE-01 | invoice-level open receivables with aged buckets as of the run date.\n-- one row per invoice; amounts are never summed across exception rows.\nSELECT\n  b.\"_rid\" AS invoice_rid,\n  b.\"SAP_Billing_Document\",\n  b.\"Reference_Sales_Order\",\n  TRY_CAST(b.\"Open_Amount_USD\" AS DOUBLE) AS open_amount_usd,\n  TRY_CAST(b.\"Net_Due_Date\" AS DATE)      AS net_due_date,\n  date_diff('day', TRY_CAST(b.\"Net_Due_Date\" AS DATE), getvariable('as_of')) AS days_past_due,\n  CASE\n    WHEN date_diff('day', TRY_CAST(b.\"Net_Due_Date\" AS DATE), getvariable('as_of')) <= 0  THEN 'Current'\n    WHEN date_diff('day', TRY_CAST(b.\"Net_Due_Date\" AS DATE), getvariable('as_of')) <= 30 THEN '1-30'\n    WHEN date_diff('day', TRY_CAST(b.\"Net_Due_Date\" AS DATE), getvariable('as_of')) <= 60 THEN '31-60'\n    WHEN date_diff('day', TRY_CAST(b.\"Net_Due_Date\" AS DATE), getvariable('as_of')) <= 90 THEN '61-90'\n    ELSE '90+'\n  END AS aging_bucket,\n  b.\"Collection_Note\"\nFROM billing b\nWHERE TRY_CAST(b.\"Open_Amount_USD\" AS DOUBLE) > 0\nORDER BY b.\"SAP_Billing_Document\";\n"
+ }
+}

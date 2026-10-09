@@ -1,0 +1,1661 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "ruleset_version": "dq-rules-1.0",
+ "rules": [
+  {
+   "rule_id": "C-01-DHC",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "01"
+   ],
+   "fields": [
+    "Definitive_Healthcare_ID"
+   ],
+   "title": "Definitive_Healthcare_ID is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Market-data ID used for enrichment; a gap blocks third-party enrichment, not transactions.",
+   "class": "Completeness",
+   "eligible": 9,
+   "affected": 3,
+   "example_rows": [
+    "01:004",
+    "01:007",
+    "01:009"
+   ],
+   "eligible_by_file": {
+    "01": 9
+   },
+   "affected_by_file": {
+    "01": 3
+   }
+  },
+  {
+   "rule_id": "C-01-PARENT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "01"
+   ],
+   "fields": [
+    "Hierarchy_Parent_Reltio_ID"
+   ],
+   "title": "Hierarchy_Parent_Reltio_ID is populated",
+   "severity": "high",
+   "applicability": "Hierarchy_Level is not 'Enterprise Parent'",
+   "expected": "Non-blank value",
+   "interpretation": "Facilities need a parent to roll up to the enterprise; enterprise parents are exempt.",
+   "class": "Completeness",
+   "eligible": 8,
+   "affected": 1,
+   "example_rows": [
+    "01:009"
+   ],
+   "eligible_by_file": {
+    "01": 8
+   },
+   "affected_by_file": {
+    "01": 1
+   }
+  },
+  {
+   "rule_id": "C-02-ADDR",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "02"
+   ],
+   "fields": [
+    "Address"
+   ],
+   "title": "Address is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Ship-to gaps affect delivery; payer gaps mostly affect correspondence.",
+   "class": "Completeness",
+   "eligible": 24,
+   "affected": 3,
+   "example_rows": [
+    "02:006",
+    "02:014",
+    "02:020"
+   ],
+   "eligible_by_file": {
+    "02": 24
+   },
+   "affected_by_file": {
+    "02": 3
+   }
+  },
+  {
+   "rule_id": "C-02-PARENT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "02"
+   ],
+   "fields": [
+    "Parent_ERP_Customer_ID"
+   ],
+   "title": "Parent_ERP_Customer_ID is populated",
+   "severity": "high",
+   "applicability": "Account_Role is not PARENT",
+   "expected": "Non-blank value",
+   "interpretation": "Every non-parent ERP role should roll up to the enterprise account.",
+   "class": "Completeness",
+   "eligible": 22,
+   "affected": 1,
+   "example_rows": [
+    "02:009"
+   ],
+   "eligible_by_file": {
+    "02": 22
+   },
+   "affected_by_file": {
+    "02": 1
+   }
+  },
+  {
+   "rule_id": "C-03-EMAIL",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "03"
+   ],
+   "fields": [
+    "Business_Email"
+   ],
+   "title": "Business_Email is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Missing email limits recall and billing notices.",
+   "class": "Completeness",
+   "eligible": 27,
+   "affected": 3,
+   "example_rows": [
+    "03:004",
+    "03:013",
+    "03:023"
+   ],
+   "eligible_by_file": {
+    "03": 27
+   },
+   "affected_by_file": {
+    "03": 3
+   }
+  },
+  {
+   "rule_id": "C-03-PHONE",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "03"
+   ],
+   "fields": [
+    "Phone_Number"
+   ],
+   "title": "Phone_Number is populated",
+   "severity": "low",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Phone is a secondary channel.",
+   "class": "Completeness",
+   "eligible": 27,
+   "affected": 3,
+   "example_rows": [
+    "03:005",
+    "03:019",
+    "03:025"
+   ],
+   "eligible_by_file": {
+    "03": 27
+   },
+   "affected_by_file": {
+    "03": 3
+   }
+  },
+  {
+   "rule_id": "C-03-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "03"
+   ],
+   "fields": [
+    "Salesforce_Account_ID"
+   ],
+   "title": "Salesforce_Account_ID is populated",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "A contact without an account cannot be routed to a facility.",
+   "class": "Completeness",
+   "eligible": 27,
+   "affected": 2,
+   "example_rows": [
+    "03:011",
+    "03:024"
+   ],
+   "eligible_by_file": {
+    "03": 27
+   },
+   "affected_by_file": {
+    "03": 2
+   }
+  },
+  {
+   "rule_id": "C-04-STREET",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "04"
+   ],
+   "fields": [
+    "Billing_Street"
+   ],
+   "title": "Billing_Street is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Street is needed to corroborate CRM-to-ERP facility matches.",
+   "class": "Completeness",
+   "eligible": 7,
+   "affected": 1,
+   "example_rows": [
+    "04:005"
+   ],
+   "eligible_by_file": {
+    "04": 7
+   },
+   "affected_by_file": {
+    "04": 1
+   }
+  },
+  {
+   "rule_id": "C-04-PARENT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "04"
+   ],
+   "fields": [
+    "Parent_Salesforce_Account_ID"
+   ],
+   "title": "Parent_Salesforce_Account_ID is populated",
+   "severity": "low",
+   "applicability": "Account_Type is a facility",
+   "expected": "Non-blank value",
+   "interpretation": "Facility accounts have no CRM parent: the hierarchy lives only in Reltio and ERP. Check account type before treating as an error.",
+   "class": "Completeness",
+   "eligible": 7,
+   "affected": 7,
+   "example_rows": [
+    "04:001",
+    "04:002",
+    "04:003",
+    "04:004",
+    "04:005"
+   ],
+   "eligible_by_file": {
+    "04": 7
+   },
+   "affected_by_file": {
+    "04": 7
+   }
+  },
+  {
+   "rule_id": "C-05-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "05"
+   ],
+   "fields": [
+    "Salesforce_Account_ID"
+   ],
+   "title": "Salesforce_Account_ID is populated",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Contract cannot be tied to a facility or its orders.",
+   "class": "Completeness",
+   "eligible": 12,
+   "affected": 2,
+   "example_rows": [
+    "05:004",
+    "05:010"
+   ],
+   "eligible_by_file": {
+    "05": 12
+   },
+   "affected_by_file": {
+    "05": 2
+   }
+  },
+  {
+   "rule_id": "C-05-DOC",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "05"
+   ],
+   "fields": [
+    "Source_Document_Location"
+   ],
+   "title": "Source_Document_Location is populated",
+   "severity": "low",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Signed document link missing; audit trail only.",
+   "class": "Completeness",
+   "eligible": 12,
+   "affected": 2,
+   "example_rows": [
+    "05:003",
+    "05:009"
+   ],
+   "eligible_by_file": {
+    "05": 12
+   },
+   "affected_by_file": {
+    "05": 2
+   }
+  },
+  {
+   "rule_id": "C-05-END",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "05"
+   ],
+   "fields": [
+    "Term_End_Date"
+   ],
+   "title": "Term_End_Date is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Entitlement window cannot be evaluated without an end date.",
+   "class": "Completeness",
+   "eligible": 12,
+   "affected": 1,
+   "example_rows": [
+    "05:008"
+   ],
+   "eligible_by_file": {
+    "05": 12
+   },
+   "affected_by_file": {
+    "05": 1
+   }
+  },
+  {
+   "rule_id": "C-06-OWNER",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Owning_ERP_Customer_No"
+   ],
+   "title": "Owning_ERP_Customer_No is populated",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Asset cannot be tied to the billing account without an owner ERP number.",
+   "class": "Completeness",
+   "eligible": 60,
+   "affected": 41,
+   "example_rows": [
+    "06:013",
+    "06:021",
+    "06:022",
+    "06:023",
+    "06:024"
+   ],
+   "eligible_by_file": {
+    "06": 60
+   },
+   "affected_by_file": {
+    "06": 41
+   }
+  },
+  {
+   "rule_id": "C-06-SITE",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Site_Name"
+   ],
+   "title": "Site_Name is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Site name is the main location evidence for an asset.",
+   "class": "Completeness",
+   "eligible": 60,
+   "affected": 2,
+   "example_rows": [
+    "06:015",
+    "06:031"
+   ],
+   "eligible_by_file": {
+    "06": 60
+   },
+   "affected_by_file": {
+    "06": 2
+   }
+  },
+  {
+   "rule_id": "C-06-ADDR",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Site_Address"
+   ],
+   "title": "Site_Address is populated",
+   "severity": "low",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Site name usually suffices; address corroborates.",
+   "class": "Completeness",
+   "eligible": 60,
+   "affected": 9,
+   "example_rows": [
+    "06:001",
+    "06:008",
+    "06:015",
+    "06:022",
+    "06:029"
+   ],
+   "eligible_by_file": {
+    "06": 60
+   },
+   "affected_by_file": {
+    "06": 9
+   }
+  },
+  {
+   "rule_id": "C-06-UDI",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Unique_Device_Identifier"
+   ],
+   "title": "Unique_Device_Identifier is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "UDI supports recall traceability.",
+   "class": "Completeness",
+   "eligible": 60,
+   "affected": 5,
+   "example_rows": [
+    "06:006",
+    "06:017",
+    "06:028",
+    "06:039",
+    "06:050"
+   ],
+   "eligible_by_file": {
+    "06": 60
+   },
+   "affected_by_file": {
+    "06": 5
+   }
+  },
+  {
+   "rule_id": "C-07-DEST",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "07"
+   ],
+   "fields": [
+    "Destination_Location"
+   ],
+   "title": "Destination_Location is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "A movement without a destination cannot place the asset.",
+   "class": "Completeness",
+   "eligible": 68,
+   "affected": 2,
+   "example_rows": [
+    "07:012",
+    "07:030"
+   ],
+   "eligible_by_file": {
+    "07": 68
+   },
+   "affected_by_file": {
+    "07": 2
+   }
+  },
+  {
+   "rule_id": "C-08-SITE",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "08"
+   ],
+   "fields": [
+    "Customer_Site_Entered"
+   ],
+   "title": "Customer_Site_Entered is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Visit site is location evidence.",
+   "class": "Completeness",
+   "eligible": 41,
+   "affected": 2,
+   "example_rows": [
+    "08:011",
+    "08:026"
+   ],
+   "eligible_by_file": {
+    "08": 41
+   },
+   "affected_by_file": {
+    "08": 2
+   }
+  },
+  {
+   "rule_id": "C-09-SERIAL",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "09"
+   ],
+   "fields": [
+    "Equipment_Serial"
+   ],
+   "title": "Equipment_Serial is populated",
+   "severity": "medium",
+   "applicability": "Order_Type is not Consumables",
+   "expected": "Non-blank value",
+   "interpretation": "Device-specific orders need a serial to reach the asset; consumables do not.",
+   "class": "Completeness",
+   "eligible": 91,
+   "affected": 21,
+   "example_rows": [
+    "09:001",
+    "09:009",
+    "09:017",
+    "09:025",
+    "09:029"
+   ],
+   "eligible_by_file": {
+    "09": 91
+   },
+   "affected_by_file": {
+    "09": 21
+   }
+  },
+  {
+   "rule_id": "C-09-PAYER",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "09"
+   ],
+   "fields": [
+    "Payer_No"
+   ],
+   "title": "Payer_No is populated",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Payer role missing on the order.",
+   "class": "Completeness",
+   "eligible": 120,
+   "affected": 4,
+   "example_rows": [
+    "09:013",
+    "09:034",
+    "09:062",
+    "09:099"
+   ],
+   "eligible_by_file": {
+    "09": 120
+   },
+   "affected_by_file": {
+    "09": 4
+   }
+  },
+  {
+   "rule_id": "C-09-SHIPTO",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "09"
+   ],
+   "fields": [
+    "Ship_To_No"
+   ],
+   "title": "Ship_To_No is populated",
+   "severity": "medium",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Ship-to role missing on the order.",
+   "class": "Completeness",
+   "eligible": 120,
+   "affected": 2,
+   "example_rows": [
+    "09:018",
+    "09:068"
+   ],
+   "eligible_by_file": {
+    "09": 120
+   },
+   "affected_by_file": {
+    "09": 2
+   }
+  },
+  {
+   "rule_id": "C-09-PO",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "09"
+   ],
+   "fields": [
+    "Customer_PO_Number"
+   ],
+   "title": "Customer_PO_Number is populated",
+   "severity": "info",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Only a defect when the covering contract requires a PO (see B-PO-01).",
+   "class": "Completeness",
+   "eligible": 120,
+   "affected": 24,
+   "example_rows": [
+    "09:001",
+    "09:006",
+    "09:011",
+    "09:016",
+    "09:021"
+   ],
+   "eligible_by_file": {
+    "09": 120
+   },
+   "affected_by_file": {
+    "09": 24
+   }
+  },
+  {
+   "rule_id": "C-10-PAYER",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "10"
+   ],
+   "fields": [
+    "Payer_Account_No"
+   ],
+   "title": "Payer_Account_No is populated",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "Non-blank value",
+   "interpretation": "Invoice payer missing; collection routing depends on it.",
+   "class": "Completeness",
+   "eligible": 120,
+   "affected": 7,
+   "example_rows": [
+    "10:008",
+    "10:013",
+    "10:029",
+    "10:034",
+    "10:062"
+   ],
+   "eligible_by_file": {
+    "10": 120
+   },
+   "affected_by_file": {
+    "10": 7
+   }
+  },
+  {
+   "rule_id": "C-10-NOTE",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "10"
+   ],
+   "fields": [
+    "Collection_Note"
+   ],
+   "title": "Collection_Note is populated",
+   "severity": "info",
+   "applicability": "Clearing_Status is Open",
+   "expected": "Non-blank value",
+   "interpretation": "Blank notes are normal on paid invoices; observed on open invoices only.",
+   "class": "Completeness",
+   "eligible": 26,
+   "affected": 2,
+   "example_rows": [
+    "10:045",
+    "10:092"
+   ],
+   "eligible_by_file": {
+    "10": 26
+   },
+   "affected_by_file": {
+    "10": 2
+   }
+  },
+  {
+   "rule_id": "C-07-IDS",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "07"
+   ],
+   "fields": [
+    "Asset_Tag",
+    "Scanned_Serial"
+   ],
+   "title": "Asset_Tag or Scanned_Serial is populated",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "At least one strong device identifier",
+   "interpretation": "Either identifier is sufficient; rows with neither cannot be linked to an asset.",
+   "class": "Completeness",
+   "eligible": 68,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "07": 68
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "C-08-IDS",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "completeness",
+   "files": [
+    "08"
+   ],
+   "fields": [
+    "Equipment_Tag",
+    "Observed_Serial"
+   ],
+   "title": "Equipment_Tag or Observed_Serial is populated",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "At least one strong device identifier",
+   "interpretation": "Either identifier is sufficient; rows with neither cannot be linked to an asset.",
+   "class": "Completeness",
+   "eligible": 41,
+   "affected": 6,
+   "example_rows": [
+    "08:006",
+    "08:011",
+    "08:021",
+    "08:026",
+    "08:036"
+   ],
+   "eligible_by_file": {
+    "08": 41
+   },
+   "affected_by_file": {
+    "08": 6
+   }
+  },
+  {
+   "rule_id": "V-SERIAL",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "validity",
+   "files": [
+    "06",
+    "07",
+    "08",
+    "09"
+   ],
+   "fields": [
+    "Serial_Number",
+    "Scanned_Serial",
+    "Observed_Serial",
+    "Equipment_Serial"
+   ],
+   "title": "Serial matches PREFIX-YYYY-NNNNNN",
+   "severity": "high",
+   "applicability": "Populated serial values",
+   "expected": "(ADC|INF)-YYYY-NNNNNN, digits only after the prefix",
+   "interpretation": "Letter O typed for zero breaks exact joins to the install base; normalization proposes the digit.",
+   "class": "Validity",
+   "eligible": 188,
+   "affected": 4,
+   "example_rows": [
+    "06:007",
+    "06:020",
+    "06:043",
+    "09:022"
+   ],
+   "eligible_by_file": {
+    "06": 60,
+    "07": 24,
+    "08": 14,
+    "09": 90
+   },
+   "affected_by_file": {
+    "06": 3,
+    "09": 1
+   }
+  },
+  {
+   "rule_id": "V-UDI",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "validity",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Unique_Device_Identifier"
+   ],
+   "title": "UDI matches UDI-NNNN-NNNNNNNN",
+   "severity": "medium",
+   "applicability": "Populated UDI values",
+   "expected": "UDI-NNNN-NNNNNNNN",
+   "interpretation": "Format check only.",
+   "class": "Validity",
+   "eligible": 55,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "06": 55
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "V-EMAIL",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "validity",
+   "files": [
+    "03"
+   ],
+   "fields": [
+    "Business_Email"
+   ],
+   "title": "Email domain matches the customer domain",
+   "severity": "medium",
+   "applicability": "Populated customer contact emails",
+   "expected": "name@ascension-demo.org",
+   "interpretation": "19 of 21 customer emails use ascension-demo.org; a different host is likely a typo.",
+   "class": "Validity",
+   "eligible": 21,
+   "affected": 2,
+   "example_rows": [
+    "03:008",
+    "03:018"
+   ],
+   "eligible_by_file": {
+    "03": 21
+   },
+   "affected_by_file": {
+    "03": 2
+   }
+  },
+  {
+   "rule_id": "V-CHRONO",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "validity",
+   "files": [
+    "05",
+    "06",
+    "10"
+   ],
+   "fields": [
+    "Install_Date <= Equipment_Confirmation_Date",
+    "Term_Begin_Date <= Term_End_Date",
+    "Billing_Date <= Net_Due_Date"
+   ],
+   "title": "Dates are in a possible order",
+   "severity": "high",
+   "applicability": "Rows where both dates parse",
+   "expected": "earlier date <= later date",
+   "interpretation": "Impossible sequences indicate keying or load errors.",
+   "class": "Validity",
+   "eligible": 191,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "05": 11,
+    "06": 60,
+    "10": 120
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "V-AR-STATUS",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "validity",
+   "files": [
+    "10"
+   ],
+   "fields": [
+    "Clearing_Status",
+    "Open_Amount_USD"
+   ],
+   "title": "Clearing status agrees with open amount",
+   "severity": "medium",
+   "applicability": "All invoices",
+   "expected": "Open => open amount > 0; Paid => open amount = 0; 0 <= open <= billed",
+   "interpretation": "Status/amount disagreement makes aging unreliable; amount is used for exposure, status is flagged.",
+   "class": "Validity",
+   "eligible": 120,
+   "affected": 2,
+   "example_rows": [
+    "10:045",
+    "10:092"
+   ],
+   "eligible_by_file": {
+    "10": 120
+   },
+   "affected_by_file": {
+    "10": 2
+   }
+  },
+  {
+   "rule_id": "V-ORDER-INV",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "validity",
+   "files": [
+    "09",
+    "10"
+   ],
+   "fields": [
+    "Order_Created_On",
+    "Billing_Date"
+   ],
+   "title": "Invoice is billed on or after its order",
+   "severity": "medium",
+   "applicability": "Invoices with a resolvable order",
+   "expected": "Order_Created_On <= Billing_Date",
+   "interpretation": "Billing before ordering suggests a wrong reference.",
+   "class": "Validity",
+   "eligible": 120,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "10": 120
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "U-02-NATIVE",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "02"
+   ],
+   "fields": [
+    "ERP_Customer_ID"
+   ],
+   "title": "ERP_Customer_ID is unique in the extract",
+   "severity": "high",
+   "applicability": "All rows",
+   "expected": "One row per ERP_Customer_ID",
+   "interpretation": "The same native ID in two ERP systems means the key is (ERP_System, ERP_Customer_ID); names must still agree.",
+   "class": "Uniqueness",
+   "eligible": 24,
+   "affected": 2,
+   "example_rows": [
+    "02:023",
+    "02:024"
+   ],
+   "eligible_by_file": {
+    "02": 24
+   },
+   "affected_by_file": {
+    "02": 2
+   }
+  },
+  {
+   "rule_id": "U-06-SERIAL",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Serial_Number"
+   ],
+   "title": "Normalized serial is unique in the install base",
+   "severity": "high",
+   "applicability": "Populated serials",
+   "expected": "One asset per serial",
+   "interpretation": "Duplicate serials would make asset resolution ambiguous.",
+   "class": "Uniqueness",
+   "eligible": 60,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "06": 60
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "R-01-PARENT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "01"
+   ],
+   "fields": [
+    "Hierarchy_Parent_Reltio_ID"
+   ],
+   "title": "Parent Reltio ID exists in the extract",
+   "severity": "high",
+   "applicability": "Populated parent IDs",
+   "expected": "Existing Reltio_Record_ID",
+   "interpretation": "An orphan parent breaks the enterprise roll-up.",
+   "class": "Referential integrity",
+   "eligible": 7,
+   "affected": 1,
+   "example_rows": [
+    "01:006"
+   ],
+   "eligible_by_file": {
+    "01": 7
+   },
+   "affected_by_file": {
+    "01": 1
+   }
+  },
+  {
+   "rule_id": "R-02-PARENT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "02"
+   ],
+   "fields": [
+    "Parent_ERP_Customer_ID"
+   ],
+   "title": "Parent ERP account exists",
+   "severity": "high",
+   "applicability": "Populated parent IDs",
+   "expected": "Existing ERP_Customer_ID",
+   "interpretation": "An orphan parent splits the enterprise in ERP reporting.",
+   "class": "Referential integrity",
+   "eligible": 21,
+   "affected": 1,
+   "example_rows": [
+    "02:015"
+   ],
+   "eligible_by_file": {
+    "02": 21
+   },
+   "affected_by_file": {
+    "02": 1
+   }
+  },
+  {
+   "rule_id": "R-06-OWNER",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Owning_ERP_Customer_No"
+   ],
+   "title": "Owner ERP number exists in SAP accounts",
+   "severity": "high",
+   "applicability": "Populated owner numbers",
+   "expected": "Existing ERP_Customer_ID",
+   "interpretation": "Unknown owners cannot be billed.",
+   "class": "Referential integrity",
+   "eligible": 19,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "06": 19
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "F-01-VERIFIED",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "01"
+   ],
+   "fields": [
+    "MDM_Last_Verified"
+   ],
+   "title": "MDM verification within 12 months of the run date",
+   "severity": "low",
+   "applicability": "Rows with a MDM_Last_Verified",
+   "expected": ">= 2025-10-08",
+   "interpretation": "Stale records are evidence of lower trust, not errors on their own.",
+   "class": "Freshness / conflict",
+   "eligible": 9,
+   "affected": 4,
+   "example_rows": [
+    "01:001",
+    "01:004",
+    "01:007",
+    "01:009"
+   ],
+   "eligible_by_file": {
+    "01": 9
+   },
+   "affected_by_file": {
+    "01": 4
+   }
+  },
+  {
+   "rule_id": "F-03-ACTIVITY",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "03"
+   ],
+   "fields": [
+    "Last_Activity_Date"
+   ],
+   "title": "contact activity within 12 months of the run date",
+   "severity": "low",
+   "applicability": "Rows with a Last_Activity_Date",
+   "expected": ">= 2025-10-08",
+   "interpretation": "Stale records are evidence of lower trust, not errors on their own.",
+   "class": "Freshness / conflict",
+   "eligible": 27,
+   "affected": 2,
+   "example_rows": [
+    "03:006",
+    "03:021"
+   ],
+   "eligible_by_file": {
+    "03": 27
+   },
+   "affected_by_file": {
+    "03": 2
+   }
+  },
+  {
+   "rule_id": "F-06-WARRANTY",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "06"
+   ],
+   "fields": [
+    "Warranty_End_Date"
+   ],
+   "title": "Active asset warranty not yet ended",
+   "severity": "info",
+   "applicability": "Active assets with a warranty date",
+   "expected": "Warranty_End_Date >= 2026-10-08",
+   "interpretation": "Service entitlement shifts to contract once warranty ends.",
+   "class": "Freshness / conflict",
+   "eligible": 60,
+   "affected": 24,
+   "example_rows": [
+    "06:004",
+    "06:008",
+    "06:009",
+    "06:016",
+    "06:022"
+   ],
+   "eligible_by_file": {
+    "06": 60
+   },
+   "affected_by_file": {
+    "06": 24
+   }
+  },
+  {
+   "rule_id": "S-NAME",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "01",
+    "02",
+    "04",
+    "06",
+    "07",
+    "08"
+   ],
+   "fields": [
+    "facility name fields"
+   ],
+   "title": "Facility name matches the golden display name",
+   "severity": "medium",
+   "applicability": "Populated facility-name values",
+   "expected": "Golden display name (Reltio DBA where matched)",
+   "interpretation": "Name alone never creates a confirmed join; standardization keeps originals and proposes the display form.",
+   "class": "Consistency",
+   "eligible": 200,
+   "affected": 29,
+   "example_rows": [
+    "01:002",
+    "01:008",
+    "01:009",
+    "04:001",
+    "04:006"
+   ],
+   "eligible_by_file": {
+    "01": 8,
+    "02": 22,
+    "04": 7,
+    "06": 58,
+    "07": 66,
+    "08": 39
+   },
+   "affected_by_file": {
+    "01": 3,
+    "04": 3,
+    "06": 7,
+    "07": 10,
+    "08": 6
+   }
+  },
+  {
+   "rule_id": "U-DUP-ENTITY",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "01",
+    "04"
+   ],
+   "fields": [
+    "record identity"
+   ],
+   "title": "One record per facility within a source",
+   "severity": "high",
+   "applicability": "Facility-level Reltio profiles and Salesforce accounts",
+   "expected": "One survivor per golden facility per source",
+   "interpretation": "Separate same-entity candidates from true duplicate rows; merges are proposed, never forced.",
+   "class": "Uniqueness",
+   "eligible": 15,
+   "affected": 3,
+   "example_rows": [
+    "01:009",
+    "01:008",
+    "04:007"
+   ],
+   "eligible_by_file": {
+    "01": 8,
+    "04": 7
+   },
+   "affected_by_file": {
+    "01": 2,
+    "04": 1
+   }
+  },
+  {
+   "rule_id": "S-ADDR",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "01",
+    "02",
+    "04",
+    "06"
+   ],
+   "fields": [
+    "address fields"
+   ],
+   "title": "Street matches the facility's ERP address",
+   "severity": "low",
+   "applicability": "Addresses that parse to the same number and city",
+   "expected": "Same street text",
+   "interpretation": "Street variants corroborate a match but need standardizing.",
+   "class": "Consistency",
+   "eligible": 14,
+   "affected": 2,
+   "example_rows": [
+    "01:008",
+    "04:007"
+   ],
+   "eligible_by_file": {
+    "01": 8,
+    "04": 6
+   },
+   "affected_by_file": {
+    "01": 1,
+    "04": 1
+   }
+  },
+  {
+   "rule_id": "R-07-ASSET",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "07"
+   ],
+   "fields": [
+    "asset identifiers"
+   ],
+   "title": "movement identifiers resolve to exactly one installed asset",
+   "severity": "high",
+   "applicability": "Rows with at least one identifier",
+   "expected": "Exactly one asset after serial normalization",
+   "interpretation": "Rows resolving only after normalization are flagged so the source can be corrected.",
+   "class": "Referential integrity",
+   "eligible": 68,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "07": 68
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "R-08-ASSET",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "08"
+   ],
+   "fields": [
+    "asset identifiers"
+   ],
+   "title": "service visit identifiers resolve to exactly one installed asset",
+   "severity": "high",
+   "applicability": "Rows with at least one identifier",
+   "expected": "Exactly one asset after serial normalization",
+   "interpretation": "Rows resolving only after normalization are flagged so the source can be corrected.",
+   "class": "Referential integrity",
+   "eligible": 35,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "08": 35
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "R-09-ASSET",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "09"
+   ],
+   "fields": [
+    "asset identifiers"
+   ],
+   "title": "order serial identifiers resolve to exactly one installed asset",
+   "severity": "high",
+   "applicability": "Rows with at least one identifier",
+   "expected": "Exactly one asset after serial normalization",
+   "interpretation": "Rows resolving only after normalization are flagged so the source can be corrected.",
+   "class": "Referential integrity",
+   "eligible": 90,
+   "affected": 5,
+   "example_rows": [
+    "09:006",
+    "09:018",
+    "09:022",
+    "09:066",
+    "09:078"
+   ],
+   "eligible_by_file": {
+    "09": 90
+   },
+   "affected_by_file": {
+    "09": 5
+   }
+  },
+  {
+   "rule_id": "R-03-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "03"
+   ],
+   "fields": [
+    "Salesforce_Account_ID"
+   ],
+   "title": "Salesforce account exists in the accounts extract",
+   "severity": "medium",
+   "applicability": "Populated account IDs",
+   "expected": "Existing Salesforce_Account_ID",
+   "interpretation": "References outside the extract may be valid (e.g. internal users); flagged, not deleted.",
+   "class": "Referential integrity",
+   "eligible": 25,
+   "affected": 3,
+   "example_rows": [
+    "03:025",
+    "03:026",
+    "03:027"
+   ],
+   "eligible_by_file": {
+    "03": 25
+   },
+   "affected_by_file": {
+    "03": 3
+   }
+  },
+  {
+   "rule_id": "R-05-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "linkability",
+   "files": [
+    "05"
+   ],
+   "fields": [
+    "Salesforce_Account_ID"
+   ],
+   "title": "Salesforce account exists in the accounts extract",
+   "severity": "medium",
+   "applicability": "Populated account IDs",
+   "expected": "Existing Salesforce_Account_ID",
+   "interpretation": "References outside the extract may be valid (e.g. internal users); flagged, not deleted.",
+   "class": "Referential integrity",
+   "eligible": 10,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "05": 10
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "S-ORDER-SYS",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "09"
+   ],
+   "fields": [
+    "SAP_Client"
+   ],
+   "title": "Order system matches the account master system",
+   "severity": "medium",
+   "applicability": "Orders with a resolvable sold-to",
+   "expected": "SAP_Client = ERP_System of Sold_To_No",
+   "interpretation": "An order booked in a different ERP than its account suggests a migration leftover.",
+   "class": "Consistency",
+   "eligible": 120,
+   "affected": 4,
+   "example_rows": [
+    "09:031",
+    "09:056",
+    "09:091",
+    "09:116"
+   ],
+   "eligible_by_file": {
+    "09": 120
+   },
+   "affected_by_file": {
+    "09": 4
+   }
+  },
+  {
+   "rule_id": "S-ORDER-ROLE",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "09"
+   ],
+   "fields": [
+    "Sold_To_No",
+    "Ship_To_No",
+    "Bill_To_No",
+    "Payer_No"
+   ],
+   "title": "Each order role points to an account with that role",
+   "severity": "medium",
+   "applicability": "Populated order roles",
+   "expected": "Account_Role contains the role",
+   "interpretation": "Roles are relationships, not interchangeable customer fields.",
+   "class": "Consistency",
+   "eligible": 120,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "09": 120
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "B-PAYER-01",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "10",
+    "09"
+   ],
+   "fields": [
+    "Payer_Account_No",
+    "Payer_No"
+   ],
+   "title": "Invoice payer agrees with the order payer",
+   "severity": "high",
+   "applicability": "Invoices where both payers are present",
+   "expected": "Equal payer accounts",
+   "interpretation": "Disagreement would route collections to the wrong party.",
+   "class": "Business rule",
+   "eligible": 113,
+   "affected": 0,
+   "example_rows": [],
+   "eligible_by_file": {
+    "10": 113
+   },
+   "affected_by_file": {}
+  },
+  {
+   "rule_id": "B-ENTITLE-01",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "09",
+    "05"
+   ],
+   "fields": [
+    "Material_Number",
+    "Contract_Status",
+    "Term_End_Date"
+   ],
+   "title": "Ordered material is covered by an active contract term",
+   "severity": "high",
+   "applicability": "Orders whose facility has a linked contract for the material",
+   "expected": "Active contract with order date inside the term",
+   "interpretation": "Billing on an expired or open-ended entitlement needs contract review before claiming an error.",
+   "class": "Business rule",
+   "eligible": 100,
+   "affected": 10,
+   "example_rows": [
+    "09:005",
+    "09:013",
+    "09:031",
+    "09:039",
+    "09:057"
+   ],
+   "eligible_by_file": {
+    "09": 100
+   },
+   "affected_by_file": {
+    "09": 10
+   }
+  },
+  {
+   "rule_id": "B-PO-01",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "09",
+    "05"
+   ],
+   "fields": [
+    "Customer_PO_Number",
+    "PO_Required"
+   ],
+   "title": "PO present when the covering contract requires one",
+   "severity": "medium",
+   "applicability": "Orders covered by a contract with PO_Required = Y",
+   "expected": "Customer_PO_Number populated",
+   "interpretation": "Missing PO on PO-required contracts commonly delays payment.",
+   "class": "Business rule",
+   "eligible": 80,
+   "affected": 16,
+   "example_rows": [
+    "09:001",
+    "09:006",
+    "09:016",
+    "09:021",
+    "09:031"
+   ],
+   "eligible_by_file": {
+    "09": 80
+   },
+   "affected_by_file": {
+    "09": 16
+   }
+  },
+  {
+   "rule_id": "B-ORDER-LOC",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "09",
+    "06",
+    "07"
+   ],
+   "fields": [
+    "Sold_To_No",
+    "Equipment_Serial"
+   ],
+   "title": "Order sold-to facility matches the asset's location",
+   "severity": "high",
+   "applicability": "Orders whose serial resolves to one asset",
+   "expected": "Sold-to facility = asset facility at order date, and no later move away from it",
+   "interpretation": "Moves after billing leave invoices tied to the prior facility; evidence timeline decides, not the latest note.",
+   "class": "Business rule",
+   "eligible": 90,
+   "affected": 12,
+   "example_rows": [
+    "09:011",
+    "09:026",
+    "09:031",
+    "09:036",
+    "09:046"
+   ],
+   "eligible_by_file": {
+    "09": 90
+   },
+   "affected_by_file": {
+    "09": 12
+   }
+  },
+  {
+   "rule_id": "F-ASSET-LOC",
+   "rule_version": "dq-rules-1.0",
+   "dimension": "consistency",
+   "files": [
+    "06",
+    "07",
+    "08"
+   ],
+   "fields": [
+    "Site_Name",
+    "Destination_Location",
+    "Customer_Site_Entered"
+   ],
+   "title": "Install base site agrees with movement and service evidence",
+   "severity": "high",
+   "applicability": "Assets with at least one relocation event",
+   "expected": "Install base site = post-move site",
+   "interpretation": "The latest note is evidence, not truth; confidence is scored from the timeline.",
+   "class": "Freshness / conflict",
+   "eligible": 8,
+   "affected": 4,
+   "example_rows": [
+    "06:003",
+    "06:008",
+    "06:013",
+    "06:018"
+   ],
+   "eligible_by_file": {
+    "06": 8
+   },
+   "affected_by_file": {
+    "06": 4
+   }
+  }
+ ]
+}

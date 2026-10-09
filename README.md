@@ -4,7 +4,7 @@ A live interactive demo that shows how messy, fragmented source data from multip
 
 ## What It Does
 
-Three end-to-end demo scenarios walk through a 5-stage pipeline:
+Four end-to-end demo scenarios walk through a 5-stage pipeline:
 
 | Stage | Description |
 |-------|-------------|
@@ -32,6 +32,22 @@ Three end-to-end demo scenarios walk through a 5-stage pipeline:
 - **Key issues resolved:** duplicate outlet merge (Walmart #1482 / Wal-Mart 1482 / WM Supercenter 1482), legacy-vs-new SKU merge (KOZ12PK → Coca-Cola Zero Sugar 12pk), UOM conversion to cases (EA / Pallet / CS), route ID normalization (SLC-27 / SaltLake_027 → R27), delivery window parsing, sales-rep inference from territory files, promo-spike suppression
 - **Data:** hand-authored synthetic dataset in `swire_data.js`, generated per a repeat-order intelligence data-generation brief (demo-only, no real customer data)
 
+### Scenario 4 · Medical Technology — Installed Base & Receivables
+- **Problem:** ten independent extracts (Reltio MDM, SAP/JDE accounts, Salesforce accounts/contacts/contracts, install base, movements, field service, SAP orders, billing & AR) describe the same hospitals and devices with different IDs, names and locations
+- **Built from data, not scripted:** an offline Python + DuckDB pipeline profiles the raw zip, runs 10 versioned SQL transformations, scores facility matches, builds an asset identifier index and an evidence timeline per device, groups findings into a review queue, and computes invoice-level AR exposure
+- **Screens:** Sources (RAG by completeness / validity / consistency / linkability, raw rows, issue register) → Map (field map, relationship diagram with pan/zoom, SQL drawer, apply run) → Review (normalization / identity / relationship / unresolved queues with reversible, exportable decisions) → Golden (connected facility view with crosswalk and lineage) → Impact (what changed, where problems concentrate, open AR associated with an issue, owners and next actions)
+- **Data:** `282_BD_MMS_Rebuilt_Raw_Source_Data.zip` (illustrative BD-style demo data); requirements in `283_BD_Data_Harmonization_PRD_Revised.docx`
+
+```bash
+# regenerate the run (writes public/bd/<run_id>/*.json, public/bd/latest.json and bd_data.js)
+uv run pipeline/bd_pipeline.py generate --input 282_BD_MMS_Rebuilt_Raw_Source_Data.zip --output public/bd
+# acceptance tests (counts, SQL execution, determinism, AR reconciliation, decision replay)
+uv run --with duckdb --with pytest pytest pipeline/tests -q
+# replay exported reviewer decisions
+uv run pipeline/bd_pipeline.py generate --input 282_BD_MMS_Rebuilt_Raw_Source_Data.zip --output public/bd --decisions review_decisions.json
+```
+Served over HTTP the page fetches and validates the run folder (a manifest blocks mismatched generations); opened from disk, or if the run is unavailable, it falls back to the bundled copy in `bd_data.js` and says so on screen.
+
 ## Running Locally
 
 No build step required. This is a pure vanilla JS single-page app.
@@ -57,6 +73,10 @@ python -m http.server 8080
 ├── data.js          # Scenario 1 + 2 source data, harmonization issues, golden records
 ├── swire_data.js    # Scenario 3 synthetic dataset (9 source files, golden Outlet-SKU records)
 ├── swire.js         # Scenario 3 page renderers (loaded after app.js, override-chain pattern)
+├── bd.js / bd.css   # Scenario 4 renderers, loader, review state
+├── bd_data.js       # Scenario 4 bundled run (generated)
+├── pipeline/        # Scenario 4 pipeline: bd_pipeline.py, sql/*.sql, tests/
+├── public/bd/       # Scenario 4 versioned run outputs (generated)
 ├── icons.js         # Lucide-style SVG icon definitions
 └── styles.css       # Full design system (components, utilities)
 ```

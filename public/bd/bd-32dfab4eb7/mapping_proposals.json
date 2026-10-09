@@ -1,0 +1,447 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "mappings": [
+  {
+   "field": "facility.display_name",
+   "entity": "facility",
+   "method": "fuzzy + survivorship",
+   "sources": [
+    "01.Legal_Name",
+    "01.DBA_Name",
+    "04.Account_Name",
+    "02.Legal_Name",
+    "08.Customer_Site_Entered",
+    "06.Site_Name",
+    "07.Destination_Location"
+   ],
+   "transform": [
+    "Lower-case, strip punctuation, 'St.' -> 'St'",
+    "Drop tokens shared by most facility names (brand, saint, hospital words)",
+    "Jaro-Winkler on remaining distinctive tokens; near-miss common tokens ('Vincnt') ignored",
+    "Display form = Reltio DBA of the auto-matched profile, else most frequent ERP name"
+   ],
+   "join": "name similarity >= 0.95 (auto) / 0.75-0.95 (review); name alone never confirms a cross-system join",
+   "confidence": 0.995,
+   "coverage": "199 / 200 typed names auto-standardized",
+   "exceptions": 29,
+   "exception_rule": "S-NAME",
+   "sql_file": null,
+   "samples": [
+    {
+     "before": "Ascension St. Vincnt Indpls - Main Campus",
+     "after": "Ascension St. Vincent Indianapolis - Main Campus",
+     "source": "08:007",
+     "score": 0.825
+    },
+    {
+     "before": "Ascension St. Vincent Indianapolis",
+     "after": "Ascension St. Vincent Indianapolis - Main Campus",
+     "source": "01:002",
+     "score": 1.0
+    },
+    {
+     "before": "St Vincent Fishers Hospital",
+     "after": "Ascension St. Vincent Fishers",
+     "source": "01:008",
+     "score": 1.0
+    },
+    {
+     "before": "St Vincent Fishers Hosp",
+     "after": "Ascension St. Vincent Fishers",
+     "source": "01:009",
+     "score": 1.0
+    }
+   ],
+   "rationale": "Names vary by brand prefix, abbreviations and typos; standardize for display and propose linkage while preserving originals.",
+   "mapping_id": "MAP-01",
+   "status": "proposed"
+  },
+  {
+   "field": "facility.address",
+   "entity": "facility",
+   "method": "ranked evidence",
+   "sources": [
+    "01.Hierarchy_Account_Address",
+    "02.Address",
+    "04.Billing_Street + Billing_City",
+    "06.Site_Address"
+   ],
+   "transform": [
+    "Parse number / street / city / state / zip",
+    "Standardize street suffixes (Drive -> Dr)",
+    "Rank: Reltio > ERP > Salesforce > install base; keep competing values"
+   ],
+   "join": "number + (zip or city) equal; street similarity scored",
+   "confidence": 0.857,
+   "coverage": "14 matched records carried a comparable address",
+   "exceptions": 2,
+   "exception_rule": "S-ADDR",
+   "sql_file": null,
+   "samples": [
+    {
+     "before": "1349 Healthcare Dr, Fishers, IN 46037",
+     "after": "1349 Health Center Dr",
+     "source": "01:008"
+    },
+    {
+     "before": "1349 Healthcare Dr, Fishers",
+     "after": "1349 Health Center Dr",
+     "source": "04:007"
+    }
+   ],
+   "rationale": "Address corroborates a facility match; competing values are retained with rank, not overwritten.",
+   "mapping_id": "MAP-02",
+   "status": "proposed"
+  },
+  {
+   "field": "customer.source_refs",
+   "entity": "facility",
+   "method": "generated crosswalk",
+   "sources": [
+    "01.Reltio_Record_ID",
+    "02.ERP_Customer_ID",
+    "04.Salesforce_Account_ID"
+   ],
+   "transform": [
+    "ERP roles grouped by native structure ERP-<facility>-<role>",
+    "Reltio facilities and Salesforce accounts scored against each ERP facility",
+    "Same-source duplicates always go to review; one survivor per source"
+   ],
+   "join": "score >= 0.95 auto-publish, 0.75-0.95 review",
+   "confidence": 1.0,
+   "coverage": "12 auto, 3 in review of 15 candidates",
+   "exceptions": 3,
+   "exception_rule": "U-DUP-ENTITY",
+   "sql_file": null,
+   "samples": [
+    {
+     "before": "REL-ASC-0002 (Ascension St. Vincent Indianapolis)",
+     "after": "GF-001 Ascension St. Vincent Indianapolis - Main Campus",
+     "source": "01:002",
+     "score": 1.0
+    },
+    {
+     "before": "REL-ASC-0003 (Ascension St. Vincent Carmel)",
+     "after": "GF-002 Ascension St. Vincent Carmel",
+     "source": "01:003",
+     "score": 1.0
+    },
+    {
+     "before": "REL-ASC-0004 (Ascension St. Vincent Fishers)",
+     "after": "GF-003 Ascension St. Vincent Fishers",
+     "source": "01:004",
+     "score": 1.0
+    },
+    {
+     "before": "REL-LEG-09213 (St Vincent Fishers Hosp)",
+     "after": "GF-003 Ascension St. Vincent Fishers",
+     "source": "01:009",
+     "score": 1.0
+    }
+   ],
+   "rationale": "The crosswalk is generated from evidence, not assumed to pre-exist.",
+   "mapping_id": "MAP-03",
+   "status": "proposed"
+  },
+  {
+   "field": "account_role.relationship",
+   "entity": "account_role",
+   "method": "native exact",
+   "sources": [
+    "09.Sold_To_No",
+    "09.Ship_To_No",
+    "09.Bill_To_No",
+    "09.Payer_No",
+    "02.ERP_Customer_ID",
+    "02.Account_Role"
+   ],
+   "transform": [
+    "Unpivot order roles",
+    "Join to ERP accounts on ERP_Customer_ID",
+    "Check the account carries the role and the order's ERP matches"
+   ],
+   "join": "orders.\"Sold_To_No\" = sap_accounts.\"ERP_Customer_ID\" (per role)",
+   "confidence": 1.0,
+   "coverage": "474 / 480 role references resolve",
+   "exceptions": 10,
+   "exception_rule": "S-ORDER-SYS",
+   "sql_file": "04_order_account_roles.sql",
+   "samples": [],
+   "rationale": "Roles are modeled as relationships, never interchangeable customer fields.",
+   "mapping_id": "MAP-04",
+   "status": "proposed"
+  },
+  {
+   "field": "asset.identity",
+   "entity": "asset",
+   "method": "staged identifier index",
+   "sources": [
+    "06.Electronic_Asset_ID",
+    "06.Serial_Number",
+    "06.Alternate_Asset_ID",
+    "06.Unique_Device_Identifier",
+    "07.Asset_Tag",
+    "07.Scanned_Serial",
+    "08.Equipment_Tag",
+    "08.Observed_Serial",
+    "09.Equipment_Serial"
+   ],
+   "transform": [
+    "Build (source, row, id_type, normalized_value), excluding blanks",
+    "Serial: upper-case, letter O -> 0 after the prefix",
+    "Match strong IDs only; >1 asset returned = conflict"
+   ],
+   "join": "identifier_index.normalized_value = install-base normalized_value per id_type",
+   "confidence": 1.0,
+   "coverage": "movements 68/68, service 35/41, order serials 90/90",
+   "exceptions": 11,
+   "exception_rule": "V-SERIAL",
+   "sql_file": "03_asset_resolution.sql",
+   "samples": [
+    {
+     "before": "ADC-2021-1O0007",
+     "after": "ADC-2021-100007",
+     "source": "06:007"
+    },
+    {
+     "before": "INF-2022-1O0020",
+     "after": "INF-2022-100020",
+     "source": "06:020"
+    },
+    {
+     "before": "ADC-2021-1O0043",
+     "after": "ADC-2021-100043",
+     "source": "06:043"
+    }
+   ],
+   "rationale": "Without normalization 153 of 158 movement/order references resolve; never join all-null identifiers.",
+   "mapping_id": "MAP-05",
+   "status": "proposed"
+  },
+  {
+   "field": "asset.current_site",
+   "entity": "asset",
+   "method": "time-aware evidence",
+   "sources": [
+    "06.Site_Name",
+    "06.Site_Address",
+    "06.Equipment_Confirmation_Date",
+    "07.Destination_Location",
+    "07.Movement_Date",
+    "07.Event_Source",
+    "08.Customer_Site_Entered",
+    "08.Visit_Date"
+   ],
+   "transform": [
+    "Order evidence by date",
+    "Last relocation proposes the site; base confidence by source (customer notice / service call 0.75, sales note 0.55)",
+    "+0.15 later service at new site, -0.20 install base re-confirmed old site after the move"
+   ],
+   "join": "asset timeline (07_asset_event_timeline.sql) + facility name linking",
+   "confidence": 0.933,
+   "coverage": "56 / 60 assets have consistent location evidence",
+   "exceptions": 4,
+   "exception_rule": "F-ASSET-LOC",
+   "sql_file": "07_asset_event_timeline.sql",
+   "samples": [
+    {
+     "before": "Ascension St. Vincent Indianapolis - Main Campus",
+     "after": "Ascension St. Vincent Carmel",
+     "source": "06:003",
+     "score": 0.7
+    },
+    {
+     "before": "St Vincent Indianapolis - Main Campus",
+     "after": "Ascension St. Vincent Indianapolis - Main Campus",
+     "source": "06:008",
+     "score": 0.35
+    },
+    {
+     "before": "Ascension St. Vincent Carmel",
+     "after": "Ascension St. Vincent Fishers",
+     "source": "06:013",
+     "score": 0.55
+    }
+   ],
+   "rationale": "The latest service note is evidence, not truth.",
+   "mapping_id": "MAP-06",
+   "status": "proposed"
+  },
+  {
+   "field": "asset.owner_account",
+   "entity": "asset",
+   "method": "native + inferred",
+   "sources": [
+    "06.Owning_ERP_Customer_No",
+    "06.Site_Name",
+    "09.Sold_To_No"
+   ],
+   "transform": [
+    "Keep native owner where present",
+    "Else infer the facility's SOLD_TO account from site evidence",
+    "Corroborate with orders that reference the serial"
+   ],
+   "join": "facility crosswalk -> ERP SOLD_TO role",
+   "confidence": 0.317,
+   "coverage": "19 / 60 assets carry an owner; 41 proposed for review",
+   "exceptions": 41,
+   "exception_rule": "C-06-OWNER",
+   "sql_file": null,
+   "samples": [],
+   "rationale": "Inference is proposed per facility group and needs confirmation.",
+   "mapping_id": "MAP-07",
+   "status": "proposed"
+  },
+  {
+   "field": "contract.account",
+   "entity": "contract",
+   "method": "native exact",
+   "sources": [
+    "05.Salesforce_Account_ID",
+    "04.Salesforce_Account_ID"
+   ],
+   "transform": [
+    "Exact join",
+    "Missing account stays unresolved; candidates proposed in review"
+   ],
+   "join": "sf_contracts.\"Salesforce_Account_ID\" = sf_accounts.\"Salesforce_Account_ID\"",
+   "confidence": 0.833,
+   "coverage": "10 / 12 contracts join",
+   "exceptions": 2,
+   "exception_rule": "C-05-ACCT",
+   "sql_file": "06_contract_account.sql",
+   "samples": [],
+   "rationale": "Native exact join where present.",
+   "mapping_id": "MAP-08",
+   "status": "proposed"
+  },
+  {
+   "field": "contact.account",
+   "entity": "contact",
+   "method": "native exact",
+   "sources": [
+    "03.Salesforce_Account_ID",
+    "04.Salesforce_Account_ID"
+   ],
+   "transform": [
+    "Exact join",
+    "IDs outside the extract are flagged (internal users)"
+   ],
+   "join": "sf_contacts.\"Salesforce_Account_ID\" = sf_accounts.\"Salesforce_Account_ID\"",
+   "confidence": 0.815,
+   "coverage": "22 / 27 contacts join",
+   "exceptions": 5,
+   "exception_rule": "C-03-ACCT",
+   "sql_file": "08_contact_account.sql",
+   "samples": [],
+   "rationale": "Native exact join where present.",
+   "mapping_id": "MAP-09",
+   "status": "proposed"
+  },
+  {
+   "field": "order.entitlement",
+   "entity": "sales_order",
+   "method": "crosswalk join",
+   "sources": [
+    "09.Sold_To_No",
+    "09.Material_Number",
+    "05.Pricing_Schedule_by_Transaction_Type",
+    "05.Contract_Status",
+    "05.Term_End_Date"
+   ],
+   "transform": [
+    "Sold-to -> golden facility via published crosswalk",
+    "Contract -> golden facility via Salesforce account",
+    "Match on covered material; test status and term"
+   ],
+   "join": "xwalk(sold_to).facility = xwalk(contract account).facility AND covered_material = Material_Number",
+   "confidence": 0.75,
+   "coverage": "100 / 120 orders reach a contract",
+   "exceptions": 10,
+   "exception_rule": "B-ENTITLE-01",
+   "sql_file": "09_order_entitlement.sql",
+   "samples": [],
+   "rationale": "Only published crosswalk rows are used; unresolved contracts leave orders without entitlement.",
+   "mapping_id": "MAP-10",
+   "status": "proposed"
+  },
+  {
+   "field": "invoice.order",
+   "entity": "invoice",
+   "method": "native exact",
+   "sources": [
+    "10.Reference_Sales_Order",
+    "09.SAP_Sales_Order"
+   ],
+   "transform": [
+    "Exact join on the order number"
+   ],
+   "join": "billing.\"Reference_Sales_Order\" = orders.\"SAP_Sales_Order\"",
+   "confidence": 1.0,
+   "coverage": "120 / 120 invoices join",
+   "exceptions": 0,
+   "exception_rule": "J-INV-ORD",
+   "sql_file": "01_invoice_order_join.sql",
+   "samples": [],
+   "rationale": "High-confidence native transactional join; payer roles are not merged.",
+   "mapping_id": "MAP-11",
+   "status": "proposed"
+  },
+  {
+   "field": "invoice.payer",
+   "entity": "invoice",
+   "method": "native compare + resolve",
+   "sources": [
+    "10.Payer_Account_No",
+    "09.Payer_No",
+    "02.ERP_Customer_ID"
+   ],
+   "transform": [
+    "Compare invoice and order payer",
+    "Resolve to the ERP payer account",
+    "Flag payment blocks"
+   ],
+   "join": "coalesce(billing.\"Payer_Account_No\", orders.\"Payer_No\") = sap_accounts.\"ERP_Customer_ID\"",
+   "confidence": 1.0,
+   "coverage": "113 / 113 comparable invoices agree; 7 have a blank payer",
+   "exceptions": 7,
+   "exception_rule": "C-10-PAYER",
+   "sql_file": "05_invoice_payer_consistency.sql",
+   "samples": [],
+   "rationale": "Payer consistency is checked before resolving to an enterprise party.",
+   "mapping_id": "MAP-12",
+   "status": "proposed"
+  },
+  {
+   "field": "invoice.aging",
+   "entity": "invoice",
+   "method": "derived",
+   "sources": [
+    "10.Open_Amount_USD",
+    "10.Net_Due_Date"
+   ],
+   "transform": [
+    "Open amount > 0",
+    "Days past due vs run as-of date",
+    "Buckets Current / 1-30 / 31-60 / 61-90 / 90+"
+   ],
+   "join": "n/a (invoice grain)",
+   "confidence": 1.0,
+   "coverage": "24 open invoices",
+   "exceptions": 2,
+   "exception_rule": "V-AR-STATUS",
+   "sql_file": "10_open_ar_aging.sql",
+   "samples": [],
+   "rationale": "Invoice-level measures only; never summed across exception rows.",
+   "mapping_id": "MAP-13",
+   "status": "proposed"
+  }
+ ],
+ "thresholds": {
+  "auto": 0.95,
+  "review": 0.75
+ }
+}

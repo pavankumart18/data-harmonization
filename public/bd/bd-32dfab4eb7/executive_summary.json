@@ -1,0 +1,197 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "change_metrics": [
+  {
+   "id": "asset_refs",
+   "label": "Movement, service and order identifiers resolved to one asset",
+   "total": 193,
+   "before": 188,
+   "after": 193,
+   "basis": "raw exact match vs normalized identifier index"
+  },
+  {
+   "id": "crm_mdm_links",
+   "label": "Reltio / Salesforce records tied to a facility",
+   "total": 15,
+   "before": 0,
+   "after": 12,
+   "basis": "no crosswalk existed in the extracts; reviewer approvals add to 'after'"
+  },
+  {
+   "id": "order_contract",
+   "label": "Orders that reach a covering contract",
+   "total": 120,
+   "before": 0,
+   "after": 100,
+   "basis": "order -> facility -> contract only exists through the crosswalk"
+  },
+  {
+   "id": "asset_owner",
+   "label": "Assets with an owner ERP account",
+   "total": 60,
+   "before": 19,
+   "after": 19,
+   "basis": "inferred owners count once a reviewer confirms them"
+  }
+ ],
+ "headline": "$127,400 of $198,250 open AR is tied to relationships the data shows are broken or unverified.",
+ "claims": [
+  {
+   "id": "CL-1",
+   "text": "10 extracts, 488 records profiled; 286 findings under 55 documented rules.",
+   "measures": [
+    "source_profiles.record_count",
+    "dq_findings.count"
+   ]
+  },
+  {
+   "id": "CL-2",
+   "text": "6 facilities and 1 enterprise party connect 12 auto-matched CRM/MDM records; 4 same-entity questions wait for a reviewer.",
+   "measures": [
+    "match_candidates.status",
+    "review_queue.identity"
+   ]
+  },
+  {
+   "id": "CL-3",
+   "text": "Asset identifiers: movements 68/68, service 35/41, order serials 90/90.",
+   "measures": [
+    "mapping_proposals.MAP asset.identity"
+   ]
+  },
+  {
+   "id": "CL-4",
+   "text": "Open AR is $198,250 on 24 invoices; $127,400 on 17 invoices is associated with an identified data issue (largest: asset moved / billed to prior facility, $61,000).",
+   "measures": [
+    "ar_exposure.totals",
+    "ar_exposure.by_category"
+   ]
+  },
+  {
+   "id": "CL-5",
+   "text": "A further $70,850 carries collection notes the extracts cannot corroborate; it is reported separately, not as exposure.",
+   "measures": [
+    "ar_exposure.totals.note_only_usd",
+    "ar_exposure.totals.missing_link_usd"
+   ]
+  }
+ ],
+ "concentration": [
+  {
+   "code": "09",
+   "label": "SAP sales orders",
+   "findings": 99,
+   "status": "red"
+  },
+  {
+   "code": "06",
+   "label": "Installed equipment",
+   "findings": 95,
+   "status": "red"
+  },
+  {
+   "code": "01",
+   "label": "Reltio customer profiles",
+   "findings": 15,
+   "status": "red"
+  }
+ ],
+ "review_counts": {
+  "identity": 4,
+  "normalization": 9,
+  "relationship": 9,
+  "unresolved": 13
+ },
+ "next_actions": [
+  {
+   "owner": "Contracts & pricing team",
+   "items": 3,
+   "open_ar_usd": 103100.0,
+   "examples": [
+    "10 orders billed against CTR-ASC-008 (Expired, no end date)",
+    "CTR-ASC-004 (Infusion lease + service schedule) has no account",
+    "CTR-ASC-010 (Infusion lease + service schedule) has no account"
+   ]
+  },
+  {
+   "owner": "Install base / service operations",
+   "items": 10,
+   "open_ar_usd": 48500.0,
+   "examples": [
+    "4 serials use the letter O for zero",
+    "EA-00003 (ADC-2023-100003): Ascension St. Vincent Indianapolis - Main Campus or Ascension St. Vincent Carmel?",
+    "EA-00008 (INF-2022-100008): Ascension St. Vincent Indianapolis - Main Campus or Ascension St. Vincent Carmel?"
+   ]
+  },
+  {
+   "owner": "Accounts receivable / collections",
+   "items": 3,
+   "open_ar_usd": 33850.0,
+   "examples": [
+    "2 invoices are 'Open' with nothing open",
+    "3 open invoices noted as payer conflicts",
+    "7 invoices have no payer account"
+   ]
+  },
+  {
+   "owner": "Order management (SAP SD)",
+   "items": 1,
+   "open_ar_usd": 20300.0,
+   "examples": [
+    "4 orders booked in JDE for an SAP-mastered account"
+   ]
+  },
+  {
+   "owner": "Data governance (facility naming)",
+   "items": 6,
+   "open_ar_usd": 0.0,
+   "examples": [
+    "3 non-standard spellings of Ascension St. Vincent Indianapolis - Main Campus",
+    "2 non-standard spellings of Ascension St. Vincent Carmel",
+    "4 non-standard spellings of Ascension St. Vincent Fishers"
+   ]
+  },
+  {
+   "owner": "Reltio MDM data steward",
+   "items": 4,
+   "open_ar_usd": 0.0,
+   "examples": [
+    "REL-LEG-09213 looks like REL-ASC-0004",
+    "REL-ASC-0099 looks like REL-ASC-0004",
+    "REL-ASC-0006 points at missing parent REL-ASC-9999"
+   ]
+  },
+  {
+   "owner": "Salesforce CRM admin",
+   "items": 4,
+   "open_ar_usd": 0.0,
+   "examples": [
+    "00149000000000006 looks like SF-ACC-ASC-003",
+    "2 contact emails use a misspelled domain",
+    "Contact 0010 (Procurement Contact) has no account"
+   ]
+  },
+  {
+   "owner": "ERP customer master team",
+   "items": 2,
+   "open_ar_usd": 0.0,
+   "examples": [
+    "ERP-ENT-001 exists in SAP_Everest and JDE_Legacy",
+    "2 ERP roles do not roll up to ERP-ENT-001"
+   ]
+  },
+  {
+   "owner": "Field service operations",
+   "items": 2,
+   "open_ar_usd": 0.0,
+   "examples": [
+    "2 install events have no destination",
+    "6 service visits name no device"
+   ]
+  }
+ ],
+ "label": "Illustrative BD-style demo data"
+}

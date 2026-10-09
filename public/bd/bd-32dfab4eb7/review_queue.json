@@ -1,0 +1,2293 @@
+{
+ "run_id": "bd-32dfab4eb7",
+ "schema_version": "1.0.0",
+ "input_hash": "32dfab4eb79408091eeb1eb942ea7441d63762d8c5a58e7cb4bc6564a4a48a4e",
+ "generated_at": "2026-10-09T09:22:35+00:00",
+ "items": [
+  {
+   "review_id": "RV-IDM-001",
+   "queue": "identity",
+   "entity_type": "facility",
+   "issue_type": "same-entity candidate",
+   "title": "REL-LEG-09213 looks like REL-ASC-0004",
+   "why_flagged": "Two records in Reltio customer profiles point at Ascension St. Vincent Fishers; a merge must be confirmed by a person.",
+   "source_row_ids": [
+    "01:009",
+    "01:004"
+   ],
+   "old_value": {
+    "record": "REL-LEG-09213",
+    "name": "St Vincent Fishers Hosp",
+    "address": "1349 Health Center Dr, Fishers, IN 46037"
+   },
+   "proposed_value": {
+    "merge_into": "REL-ASC-0004",
+    "golden_facility_id": "GF-003",
+    "display_name": "Ascension St. Vincent Fishers"
+   },
+   "evidence": [
+    "Name similarity 1.00 (distinctive tokens)",
+    "Address similarity 1.0",
+    "Match score 1.00, margin over next facility 0.74",
+    "Contradiction: record status Pending"
+   ],
+   "rule_id": "MC-FACILITY",
+   "rule_version": "match-1.0",
+   "confidence": 0.95,
+   "severity": "high",
+   "owner": "Reltio MDM data steward",
+   "status": "pending",
+   "decisions": [
+    "Same entity",
+    "Different entities",
+    "Defer"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "match_candidate_id": "MC-REL-LEG-09213",
+   "golden_facility_id": "GF-003"
+  },
+  {
+   "review_id": "RV-IDM-002",
+   "queue": "identity",
+   "entity_type": "facility",
+   "issue_type": "same-entity candidate",
+   "title": "REL-ASC-0099 looks like REL-ASC-0004",
+   "why_flagged": "Two records in Reltio customer profiles point at Ascension St. Vincent Fishers; a merge must be confirmed by a person.",
+   "source_row_ids": [
+    "01:008",
+    "01:004"
+   ],
+   "old_value": {
+    "record": "REL-ASC-0099",
+    "name": "St Vincent Fishers Hospital",
+    "address": "1349 Healthcare Dr, Fishers, IN 46037"
+   },
+   "proposed_value": {
+    "merge_into": "REL-ASC-0004",
+    "golden_facility_id": "GF-003",
+    "display_name": "Ascension St. Vincent Fishers"
+   },
+   "evidence": [
+    "Name similarity 1.00 (distinctive tokens)",
+    "Address similarity 0.9548",
+    "Match score 0.98, margin over next facility 0.74",
+    "Contradiction: street differs: '1349 Healthcare Dr, Fishers, IN 46037' vs '1349 Health Center Dr, Fishers, IN 46037'"
+   ],
+   "rule_id": "MC-FACILITY",
+   "rule_version": "match-1.0",
+   "confidence": 0.93,
+   "severity": "high",
+   "owner": "Reltio MDM data steward",
+   "status": "pending",
+   "decisions": [
+    "Same entity",
+    "Different entities",
+    "Defer"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "match_candidate_id": "MC-REL-ASC-0099",
+   "golden_facility_id": "GF-003"
+  },
+  {
+   "review_id": "RV-IDM-003",
+   "queue": "identity",
+   "entity_type": "facility",
+   "issue_type": "same-entity candidate",
+   "title": "00149000000000006 looks like SF-ACC-ASC-003",
+   "why_flagged": "Two records in Salesforce accounts point at Ascension St. Vincent Fishers; a merge must be confirmed by a person.",
+   "source_row_ids": [
+    "04:007",
+    "04:003"
+   ],
+   "old_value": {
+    "record": "00149000000000006",
+    "name": "St Vincent Fishers Hospital",
+    "address": "1349 Healthcare Dr, Fishers"
+   },
+   "proposed_value": {
+    "merge_into": "SF-ACC-ASC-003",
+    "golden_facility_id": "GF-003",
+    "display_name": "Ascension St. Vincent Fishers"
+   },
+   "evidence": [
+    "Name similarity 1.00 (distinctive tokens)",
+    "Address similarity 0.9548",
+    "Match score 0.98, margin over next facility 0.74",
+    "Contradiction: street differs: '1349 Healthcare Dr, Fishers' vs '1349 Health Center Dr, Fishers'"
+   ],
+   "rule_id": "MC-FACILITY",
+   "rule_version": "match-1.0",
+   "confidence": 0.93,
+   "severity": "high",
+   "owner": "Salesforce CRM admin",
+   "status": "pending",
+   "decisions": [
+    "Same entity",
+    "Different entities",
+    "Defer"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "match_candidate_id": "MC-00149000000000006",
+   "golden_facility_id": "GF-003"
+  },
+  {
+   "review_id": "RV-IDM-004",
+   "queue": "identity",
+   "entity_type": "enterprise party",
+   "issue_type": "same native ID in two ERPs",
+   "title": "ERP-ENT-001 exists in SAP_Everest and JDE_Legacy",
+   "why_flagged": "The same customer number appears in two ERP systems with different names; confirm one enterprise party.",
+   "source_row_ids": [
+    "02:023",
+    "02:024"
+   ],
+   "old_value": {
+    "SAP_Everest": "Ascension Health Alliance",
+    "JDE_Legacy": "Health Alliance"
+   },
+   "proposed_value": {
+    "golden_party": "GP-001",
+    "display_name": "Ascension (Health Alliance)"
+   },
+   "evidence": [
+    "Identical address: 4600 Edmundson Rd, St. Louis, MO 63134",
+    "Reltio enterprise parent REL-ASC-0001 has the same address",
+    "Names differ only by the brand prefix 'Ascension'"
+   ],
+   "rule_id": "U-02-NATIVE",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.93,
+   "severity": "medium",
+   "owner": "ERP customer master team",
+   "status": "pending",
+   "decisions": [
+    "Same entity",
+    "Different entities",
+    "Defer"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2
+  },
+  {
+   "review_id": "RV-NRM-001",
+   "queue": "normalization",
+   "entity_type": "asset",
+   "issue_type": "serial format",
+   "title": "4 serials use the letter O for zero",
+   "why_flagged": "Serials that fail the PREFIX-YYYY-NNNNNN pattern break exact joins between orders, scans and the install base.",
+   "source_row_ids": [
+    "06:007",
+    "06:020",
+    "06:043",
+    "09:022"
+   ],
+   "old_value": [
+    "ADC-2021-1O0007",
+    "INF-2022-1O0020",
+    "ADC-2021-1O0043",
+    "ADC-2O25-100035"
+   ],
+   "proposed_value": [
+    "ADC-2021-100007",
+    "INF-2022-100020",
+    "ADC-2021-100043",
+    "ADC-2025-100035"
+   ],
+   "evidence": [
+    "EA-00007: ADC-2021-1O0007 -> ADC-2021-100007",
+    "EA-00020: INF-2022-1O0020 -> INF-2022-100020",
+    "EA-00043: ADC-2021-1O0043 -> ADC-2021-100043",
+    "SO-MMS-00022: ADC-2O25-100035 -> ADC-2025-100035"
+   ],
+   "rule_id": "V-SERIAL",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.97,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00006",
+     "SO-MMS-00018",
+     "SO-MMS-00022",
+     "SO-MMS-00066",
+     "SO-MMS-00078"
+    ],
+    "invoices": [
+     "INV-MMS-00006",
+     "INV-MMS-00018",
+     "INV-MMS-00022",
+     "INV-MMS-00066",
+     "INV-MMS-00078"
+    ],
+    "open_invoices": [
+     "INV-MMS-00078"
+    ],
+    "open_ar_usd": 7800.0
+   },
+   "affected_count": 4,
+   "pairs": [
+    {
+     "rid": "06:007",
+     "key": "EA-00007",
+     "field": "Serial_Number",
+     "old": "ADC-2021-1O0007",
+     "new": "ADC-2021-100007"
+    },
+    {
+     "rid": "06:020",
+     "key": "EA-00020",
+     "field": "Serial_Number",
+     "old": "INF-2022-1O0020",
+     "new": "INF-2022-100020"
+    },
+    {
+     "rid": "06:043",
+     "key": "EA-00043",
+     "field": "Serial_Number",
+     "old": "ADC-2021-1O0043",
+     "new": "ADC-2021-100043"
+    },
+    {
+     "rid": "09:022",
+     "key": "SO-MMS-00022",
+     "field": "Equipment_Serial",
+     "old": "ADC-2O25-100035",
+     "new": "ADC-2025-100035"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-002",
+   "queue": "normalization",
+   "entity_type": "facility",
+   "issue_type": "name variants",
+   "title": "3 non-standard spellings of Ascension St. Vincent Indianapolis - Main Campus",
+   "why_flagged": "Operational systems type the facility name freely; the standard display form is proposed and originals are kept.",
+   "source_row_ids": [
+    "01:002",
+    "04:001",
+    "06:006",
+    "06:008",
+    "07:008",
+    "08:001",
+    "08:007"
+   ],
+   "old_value": [
+    "Ascension St. Vincent Indianapolis",
+    "Ascension St. Vincnt Indpls - Main Campus",
+    "St Vincent Indianapolis - Main Campus"
+   ],
+   "proposed_value": "Ascension St. Vincent Indianapolis - Main Campus",
+   "evidence": [
+    "'Ascension St. Vincent Indianapolis' x5 - similarity 1.00",
+    "'St Vincent Indianapolis - Main Campus' x1 - similarity 1.00",
+    "'Ascension St. Vincnt Indpls - Main Campus' x1 - similarity 0.82"
+   ],
+   "rule_id": "S-NAME",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.82,
+   "severity": "medium",
+   "owner": "Data governance (facility naming)",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 7,
+   "golden_facility_id": "GF-001",
+   "pairs": [
+    {
+     "rid": "01:002",
+     "key": "REL-ASC-0002",
+     "field": "Legal_Name",
+     "old": "Ascension St. Vincent Indianapolis",
+     "new": "Ascension St. Vincent Indianapolis - Main Campus",
+     "score": 1.0
+    },
+    {
+     "rid": "04:001",
+     "key": "SF-ACC-ASC-001",
+     "field": "Account_Name",
+     "old": "Ascension St. Vincent Indianapolis",
+     "new": "Ascension St. Vincent Indianapolis - Main Campus",
+     "score": 1.0
+    },
+    {
+     "rid": "06:006",
+     "key": "EA-00006",
+     "field": "Site_Name",
+     "old": "Ascension St. Vincent Indianapolis",
+     "new": "Ascension St. Vincent Indianapolis - Main Campus",
+     "score": 1.0
+    },
+    {
+     "rid": "06:008",
+     "key": "EA-00008",
+     "field": "Site_Name",
+     "old": "St Vincent Indianapolis - Main Campus",
+     "new": "Ascension St. Vincent Indianapolis - Main Campus",
+     "score": 1.0
+    },
+    {
+     "rid": "07:008",
+     "key": "MOVE-00007-01",
+     "field": "Destination_Location",
+     "old": "Ascension St. Vincent Indianapolis",
+     "new": "Ascension St. Vincent Indianapolis - Main Campus",
+     "score": 1.0
+    },
+    {
+     "rid": "08:001",
+     "key": "SVC-00001",
+     "field": "Customer_Site_Entered",
+     "old": "Ascension St. Vincent Indianapolis",
+     "new": "Ascension St. Vincent Indianapolis - Main Campus",
+     "score": 1.0
+    },
+    {
+     "rid": "08:007",
+     "key": "SVC-00007",
+     "field": "Customer_Site_Entered",
+     "old": "Ascension St. Vincnt Indpls - Main Campus",
+     "new": "Ascension St. Vincent Indianapolis - Main Campus",
+     "score": 0.825
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-003",
+   "queue": "normalization",
+   "entity_type": "facility",
+   "issue_type": "name variants",
+   "title": "2 non-standard spellings of Ascension St. Vincent Carmel",
+   "why_flagged": "Operational systems type the facility name freely; the standard display form is proposed and originals are kept.",
+   "source_row_ids": [
+    "06:012",
+    "07:010",
+    "07:014",
+    "07:023",
+    "08:003",
+    "08:016"
+   ],
+   "old_value": [
+    "Ascension St. Vincnt Carmel",
+    "St Vincent Carmel"
+   ],
+   "proposed_value": "Ascension St. Vincent Carmel",
+   "evidence": [
+    "'St Vincent Carmel' x4 - similarity 1.00",
+    "'Ascension St. Vincnt Carmel' x2 - similarity 1.00"
+   ],
+   "rule_id": "S-NAME",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 1.0,
+   "severity": "low",
+   "owner": "Data governance (facility naming)",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 6,
+   "golden_facility_id": "GF-002",
+   "pairs": [
+    {
+     "rid": "06:012",
+     "key": "EA-00012",
+     "field": "Site_Name",
+     "old": "Ascension St. Vincnt Carmel",
+     "new": "Ascension St. Vincent Carmel",
+     "score": 1.0
+    },
+    {
+     "rid": "07:010",
+     "key": "MOVE-00008-02",
+     "field": "Destination_Location",
+     "old": "St Vincent Carmel",
+     "new": "Ascension St. Vincent Carmel",
+     "score": 1.0
+    },
+    {
+     "rid": "07:014",
+     "key": "MOVE-00012-01",
+     "field": "Destination_Location",
+     "old": "Ascension St. Vincnt Carmel",
+     "new": "Ascension St. Vincent Carmel",
+     "score": 1.0
+    },
+    {
+     "rid": "07:023",
+     "key": "MOVE-00019-01",
+     "field": "Destination_Location",
+     "old": "St Vincent Carmel",
+     "new": "Ascension St. Vincent Carmel",
+     "score": 1.0
+    },
+    {
+     "rid": "08:003",
+     "key": "SVC-00003",
+     "field": "Customer_Site_Entered",
+     "old": "St Vincent Carmel",
+     "new": "Ascension St. Vincent Carmel",
+     "score": 1.0
+    },
+    {
+     "rid": "08:016",
+     "key": "SVC-00016",
+     "field": "Customer_Site_Entered",
+     "old": "St Vincent Carmel",
+     "new": "Ascension St. Vincent Carmel",
+     "score": 1.0
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-004",
+   "queue": "normalization",
+   "entity_type": "facility",
+   "issue_type": "name variants",
+   "title": "4 non-standard spellings of Ascension St. Vincent Fishers",
+   "why_flagged": "Operational systems type the facility name freely; the standard display form is proposed and originals are kept.",
+   "source_row_ids": [
+    "01:008",
+    "01:009",
+    "04:007",
+    "06:021",
+    "06:029",
+    "07:031",
+    "07:036"
+   ],
+   "old_value": [
+    "Ascension St. Vincnt Fishers",
+    "St Vincent Fishers",
+    "St Vincent Fishers Hosp",
+    "St Vincent Fishers Hospital"
+   ],
+   "proposed_value": "Ascension St. Vincent Fishers",
+   "evidence": [
+    "'St Vincent Fishers Hospital' x2 - similarity 1.00",
+    "'St Vincent Fishers' x2 - similarity 1.00",
+    "'Ascension St. Vincnt Fishers' x2 - similarity 1.00",
+    "'St Vincent Fishers Hosp' x1 - similarity 1.00"
+   ],
+   "rule_id": "S-NAME",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 1.0,
+   "severity": "low",
+   "owner": "Data governance (facility naming)",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 7,
+   "golden_facility_id": "GF-003",
+   "pairs": [
+    {
+     "rid": "01:008",
+     "key": "REL-ASC-0099",
+     "field": "Legal_Name",
+     "old": "St Vincent Fishers Hospital",
+     "new": "Ascension St. Vincent Fishers",
+     "score": 1.0
+    },
+    {
+     "rid": "01:009",
+     "key": "REL-LEG-09213",
+     "field": "Legal_Name",
+     "old": "St Vincent Fishers Hosp",
+     "new": "Ascension St. Vincent Fishers",
+     "score": 1.0
+    },
+    {
+     "rid": "04:007",
+     "key": "00149000000000006",
+     "field": "Account_Name",
+     "old": "St Vincent Fishers Hospital",
+     "new": "Ascension St. Vincent Fishers",
+     "score": 1.0
+    },
+    {
+     "rid": "06:021",
+     "key": "EA-00021",
+     "field": "Site_Name",
+     "old": "St Vincent Fishers",
+     "new": "Ascension St. Vincent Fishers",
+     "score": 1.0
+    },
+    {
+     "rid": "06:029",
+     "key": "EA-00029",
+     "field": "Site_Name",
+     "old": "Ascension St. Vincnt Fishers",
+     "new": "Ascension St. Vincent Fishers",
+     "score": 1.0
+    },
+    {
+     "rid": "07:031",
+     "key": "MOVE-00026-01",
+     "field": "Destination_Location",
+     "old": "Ascension St. Vincnt Fishers",
+     "new": "Ascension St. Vincent Fishers",
+     "score": 1.0
+    },
+    {
+     "rid": "07:036",
+     "key": "MOVE-00030-01",
+     "field": "Destination_Location",
+     "old": "St Vincent Fishers",
+     "new": "Ascension St. Vincent Fishers",
+     "score": 1.0
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-005",
+   "queue": "normalization",
+   "entity_type": "facility",
+   "issue_type": "name variants",
+   "title": "1 non-standard spelling of Ascension St. Vincent Evansville",
+   "why_flagged": "Operational systems type the facility name freely; the standard display form is proposed and originals are kept.",
+   "source_row_ids": [
+    "07:048",
+    "08:024"
+   ],
+   "old_value": [
+    "Ascension St. Vincnt Evansville"
+   ],
+   "proposed_value": "Ascension St. Vincent Evansville",
+   "evidence": [
+    "'Ascension St. Vincnt Evansville' x2 - similarity 1.00"
+   ],
+   "rule_id": "S-NAME",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 1.0,
+   "severity": "low",
+   "owner": "Data governance (facility naming)",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "golden_facility_id": "GF-004",
+   "pairs": [
+    {
+     "rid": "07:048",
+     "key": "MOVE-00040-01",
+     "field": "Destination_Location",
+     "old": "Ascension St. Vincnt Evansville",
+     "new": "Ascension St. Vincent Evansville",
+     "score": 1.0
+    },
+    {
+     "rid": "08:024",
+     "key": "SVC-00024",
+     "field": "Customer_Site_Entered",
+     "old": "Ascension St. Vincnt Evansville",
+     "new": "Ascension St. Vincent Evansville",
+     "score": 1.0
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-006",
+   "queue": "normalization",
+   "entity_type": "facility",
+   "issue_type": "name variants",
+   "title": "1 non-standard spelling of Ascension St. Vincent Anderson",
+   "why_flagged": "Operational systems type the facility name freely; the standard display form is proposed and originals are kept.",
+   "source_row_ids": [
+    "06:047",
+    "07:049"
+   ],
+   "old_value": [
+    "St Vincent Anderson"
+   ],
+   "proposed_value": "Ascension St. Vincent Anderson",
+   "evidence": [
+    "'St Vincent Anderson' x2 - similarity 1.00"
+   ],
+   "rule_id": "S-NAME",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 1.0,
+   "severity": "low",
+   "owner": "Data governance (facility naming)",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "golden_facility_id": "GF-005",
+   "pairs": [
+    {
+     "rid": "06:047",
+     "key": "EA-00047",
+     "field": "Site_Name",
+     "old": "St Vincent Anderson",
+     "new": "Ascension St. Vincent Anderson",
+     "score": 1.0
+    },
+    {
+     "rid": "07:049",
+     "key": "MOVE-00041-01",
+     "field": "Destination_Location",
+     "old": "St Vincent Anderson",
+     "new": "Ascension St. Vincent Anderson",
+     "score": 1.0
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-007",
+   "queue": "normalization",
+   "entity_type": "facility",
+   "issue_type": "name variants",
+   "title": "2 non-standard spellings of Ascension St. Vincent Kokomo",
+   "why_flagged": "Operational systems type the facility name freely; the standard display form is proposed and originals are kept.",
+   "source_row_ids": [
+    "04:006",
+    "06:060",
+    "07:062",
+    "07:065",
+    "08:041"
+   ],
+   "old_value": [
+    "Ascension St. Vincnt Kokomo",
+    "St Vincent Kokomo"
+   ],
+   "proposed_value": "Ascension St. Vincent Kokomo",
+   "evidence": [
+    "'St Vincent Kokomo' x3 - similarity 1.00",
+    "'Ascension St. Vincnt Kokomo' x2 - similarity 1.00"
+   ],
+   "rule_id": "S-NAME",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 1.0,
+   "severity": "low",
+   "owner": "Data governance (facility naming)",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 5,
+   "golden_facility_id": "GF-006",
+   "pairs": [
+    {
+     "rid": "04:006",
+     "key": "SF-ACC-ASC-006",
+     "field": "Account_Name",
+     "old": "St Vincent Kokomo",
+     "new": "Ascension St. Vincent Kokomo",
+     "score": 1.0
+    },
+    {
+     "rid": "06:060",
+     "key": "EA-00060",
+     "field": "Site_Name",
+     "old": "St Vincent Kokomo",
+     "new": "Ascension St. Vincent Kokomo",
+     "score": 1.0
+    },
+    {
+     "rid": "07:062",
+     "key": "MOVE-00054-01",
+     "field": "Destination_Location",
+     "old": "St Vincent Kokomo",
+     "new": "Ascension St. Vincent Kokomo",
+     "score": 1.0
+    },
+    {
+     "rid": "07:065",
+     "key": "MOVE-00057-01",
+     "field": "Destination_Location",
+     "old": "Ascension St. Vincnt Kokomo",
+     "new": "Ascension St. Vincent Kokomo",
+     "score": 1.0
+    },
+    {
+     "rid": "08:041",
+     "key": "SVC-00041",
+     "field": "Customer_Site_Entered",
+     "old": "Ascension St. Vincnt Kokomo",
+     "new": "Ascension St. Vincent Kokomo",
+     "score": 1.0
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-008",
+   "queue": "normalization",
+   "entity_type": "contact",
+   "issue_type": "email domain",
+   "title": "2 contact emails use a misspelled domain",
+   "why_flagged": "The host differs from the domain used by every other customer contact.",
+   "source_row_ids": [
+    "03:008",
+    "03:018"
+   ],
+   "old_value": [
+    "parker.young@gmial.ascension-demo.org",
+    "jordan.brown@gmial.ascension-demo.org"
+   ],
+   "proposed_value": [
+    "parker.young@ascension-demo.org",
+    "jordan.brown@ascension-demo.org"
+   ],
+   "evidence": [
+    "domain 'gmial.ascension-demo.org' differs from ascension-demo.org (typo-like prefix)",
+    "domain 'gmial.ascension-demo.org' differs from ascension-demo.org (typo-like prefix)"
+   ],
+   "rule_id": "V-EMAIL",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.9,
+   "severity": "medium",
+   "owner": "Salesforce CRM admin",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "pairs": [
+    {
+     "rid": "03:008",
+     "key": "003240000000000007",
+     "field": "Business_Email",
+     "old": "parker.young@gmial.ascension-demo.org",
+     "new": "parker.young@ascension-demo.org"
+    },
+    {
+     "rid": "03:018",
+     "key": "003240000000000017",
+     "field": "Business_Email",
+     "old": "jordan.brown@gmial.ascension-demo.org",
+     "new": "jordan.brown@ascension-demo.org"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-NRM-009",
+   "queue": "normalization",
+   "entity_type": "invoice",
+   "issue_type": "status / amount disagreement",
+   "title": "2 invoices are 'Open' with nothing open",
+   "why_flagged": "Clearing status says Open while the open amount is zero; exposure uses the amount and the status is flagged.",
+   "source_row_ids": [
+    "10:045",
+    "10:092"
+   ],
+   "old_value": [
+    "Open / open 0.0",
+    "Open / open 0.0"
+   ],
+   "proposed_value": "Cleared (confirm with AR)",
+   "evidence": [
+    "status 'Open' with open amount 0.0 of 7800",
+    "status 'Open' with open amount 0.0 of 18500"
+   ],
+   "rule_id": "V-AR-STATUS",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.8,
+   "severity": "low",
+   "owner": "Accounts receivable / collections",
+   "status": "pending",
+   "decisions": [
+    "Accept standard form",
+    "Edit",
+    "Reject"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [],
+    "invoices": [
+     "INV-MMS-00045",
+     "INV-MMS-00092"
+    ],
+    "open_invoices": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "pairs": [
+    {
+     "rid": "10:045",
+     "key": "INV-MMS-00045",
+     "field": "Clearing_Status",
+     "old": "Open",
+     "new": "Cleared"
+    },
+    {
+     "rid": "10:092",
+     "key": "INV-MMS-00092",
+     "field": "Clearing_Status",
+     "old": "Open",
+     "new": "Cleared"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-REL-001",
+   "queue": "relationship",
+   "entity_type": "asset",
+   "issue_type": "asset location",
+   "title": "EA-00003 (ADC-2023-100003): Ascension St. Vincent Indianapolis - Main Campus or Ascension St. Vincent Carmel?",
+   "why_flagged": "Movement and service evidence disagree with the install base site.",
+   "source_row_ids": [
+    "06:003",
+    "07:003",
+    "07:004",
+    "08:003"
+   ],
+   "old_value": {
+    "install_base_site": "Ascension St. Vincent Indianapolis - Main Campus",
+    "confirmed": "2026-09-26"
+   },
+   "proposed_value": {
+    "proposed_site": "Ascension St. Vincent Carmel",
+    "golden_facility_id": "GF-002",
+    "recommendation": "move"
+   },
+   "evidence": [
+    "Customer Notice on 2026-08-06 moves the asset to Ascension St. Vincent Carmel (base 0.75)",
+    "A later service visit was recorded at the new site (+0.15)",
+    "Install base was confirmed at the old site on 2026-09-26, after the move (-0.20)",
+    "2 order(s) reference this serial: SO-MMS-00026, SO-MMS-00086"
+   ],
+   "rule_id": "F-ASSET-LOC",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.7,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Approve edge",
+    "Pick alternative",
+    "Request investigation"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00026",
+     "SO-MMS-00086"
+    ],
+    "invoices": [
+     "INV-MMS-00026",
+     "INV-MMS-00086"
+    ],
+    "open_invoices": [
+     "INV-MMS-00026",
+     "INV-MMS-00086"
+    ],
+    "open_ar_usd": 10200.0
+   },
+   "affected_count": 4,
+   "asset_id": "EA-00003",
+   "alternatives": [
+    {
+     "golden_facility_id": "GF-002",
+     "label": "Move to Ascension St. Vincent Carmel"
+    },
+    {
+     "golden_facility_id": "GF-001",
+     "label": "Keep install base site: Ascension St. Vincent Indianapolis - Main Campus"
+    }
+   ],
+   "timeline": [
+    {
+     "date": "2025-07-09",
+     "type": "movement_install",
+     "rid": "07:003",
+     "text": "Ascension St. Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install Base",
+     "facility": "GF-001",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-08-06",
+     "type": "movement_asset_move",
+     "rid": "07:004",
+     "text": "Ascension St. Vincent Carmel",
+     "evidence_source": "Customer Notice",
+     "facility": "GF-002",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-08-18",
+     "type": "service_visit",
+     "rid": "08:003",
+     "text": "St Vincent Carmel",
+     "evidence_source": "Field service Software Update",
+     "facility": "GF-002",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-09-26",
+     "type": "install_base",
+     "rid": "06:003",
+     "text": "Ascension St. Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install base confirmation",
+     "facility": "GF-001",
+     "link_score": 1.0,
+     "link_band": "auto"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-REL-002",
+   "queue": "relationship",
+   "entity_type": "asset",
+   "issue_type": "asset location",
+   "title": "EA-00008 (INF-2022-100008): Ascension St. Vincent Indianapolis - Main Campus or Ascension St. Vincent Carmel?",
+   "why_flagged": "Movement and service evidence disagree with the install base site.",
+   "source_row_ids": [
+    "06:008",
+    "07:009",
+    "07:010"
+   ],
+   "old_value": {
+    "install_base_site": "Ascension St. Vincent Indianapolis - Main Campus",
+    "confirmed": "2026-08-17"
+   },
+   "proposed_value": {
+    "proposed_site": "Ascension St. Vincent Carmel",
+    "golden_facility_id": "GF-002",
+    "recommendation": "investigate before moving"
+   },
+   "evidence": [
+    "Sales Rep Note on 2026-07-15 moves the asset to Ascension St. Vincent Carmel (base 0.55)",
+    "Install base was confirmed at the old site on 2026-08-17, after the move (-0.20)",
+    "0 order(s) reference this serial: none"
+   ],
+   "rule_id": "F-ASSET-LOC",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.35,
+   "severity": "medium",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Request investigation",
+    "Approve edge",
+    "Pick alternative"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [],
+    "invoices": [],
+    "open_invoices": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 3,
+   "asset_id": "EA-00008",
+   "alternatives": [
+    {
+     "golden_facility_id": "GF-002",
+     "label": "Move to Ascension St. Vincent Carmel"
+    },
+    {
+     "golden_facility_id": "GF-001",
+     "label": "Keep install base site: Ascension St. Vincent Indianapolis - Main Campus"
+    }
+   ],
+   "timeline": [
+    {
+     "date": "2022-09-17",
+     "type": "movement_install",
+     "rid": "07:009",
+     "text": "Ascension St. Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install Base",
+     "facility": "GF-001",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-07-15",
+     "type": "movement_asset_move",
+     "rid": "07:010",
+     "text": "St Vincent Carmel",
+     "evidence_source": "Sales Rep Note",
+     "facility": "GF-002",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-08-17",
+     "type": "install_base",
+     "rid": "06:008",
+     "text": "St Vincent Indianapolis - Main Campus",
+     "evidence_source": "Install base confirmation",
+     "facility": "GF-001",
+     "link_score": 1.0,
+     "link_band": "auto"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-REL-003",
+   "queue": "relationship",
+   "entity_type": "asset",
+   "issue_type": "asset location",
+   "title": "EA-00013 (ADC-2021-100013): Ascension St. Vincent Carmel or Ascension St. Vincent Fishers?",
+   "why_flagged": "Movement and service evidence disagree with the install base site.",
+   "source_row_ids": [
+    "06:013",
+    "07:015",
+    "07:016"
+   ],
+   "old_value": {
+    "install_base_site": "Ascension St. Vincent Carmel",
+    "confirmed": "2026-07-15"
+   },
+   "proposed_value": {
+    "proposed_site": "Ascension St. Vincent Fishers",
+    "golden_facility_id": "GF-003",
+    "recommendation": "move"
+   },
+   "evidence": [
+    "Sales Rep Note on 2026-07-23 moves the asset to Ascension St. Vincent Fishers (base 0.55)",
+    "2 order(s) reference this serial: SO-MMS-00036, SO-MMS-00096"
+   ],
+   "rule_id": "F-ASSET-LOC",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.55,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Approve edge",
+    "Pick alternative",
+    "Request investigation"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00036",
+     "SO-MMS-00096"
+    ],
+    "invoices": [
+     "INV-MMS-00036",
+     "INV-MMS-00096"
+    ],
+    "open_invoices": [
+     "INV-MMS-00036",
+     "INV-MMS-00096"
+    ],
+    "open_ar_usd": 10200.0
+   },
+   "affected_count": 3,
+   "asset_id": "EA-00013",
+   "alternatives": [
+    {
+     "golden_facility_id": "GF-003",
+     "label": "Move to Ascension St. Vincent Fishers"
+    },
+    {
+     "golden_facility_id": "GF-002",
+     "label": "Keep install base site: Ascension St. Vincent Carmel"
+    }
+   ],
+   "timeline": [
+    {
+     "date": "2024-08-16",
+     "type": "movement_install",
+     "rid": "07:015",
+     "text": "Ascension St. Vincent Carmel",
+     "evidence_source": "Install Base",
+     "facility": "GF-002",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-07-15",
+     "type": "install_base",
+     "rid": "06:013",
+     "text": "Ascension St. Vincent Carmel",
+     "evidence_source": "Install base confirmation",
+     "facility": "GF-002",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-07-23",
+     "type": "movement_asset_move",
+     "rid": "07:016",
+     "text": "Ascension St. Vincent Fishers",
+     "evidence_source": "Sales Rep Note",
+     "facility": "GF-003",
+     "link_score": 1.0,
+     "link_band": "auto"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-REL-004",
+   "queue": "relationship",
+   "entity_type": "asset",
+   "issue_type": "asset location",
+   "title": "EA-00018 (INF-2020-100018): Ascension St. Vincent Carmel or Ascension St. Vincent Fishers?",
+   "why_flagged": "Movement and service evidence disagree with the install base site.",
+   "source_row_ids": [
+    "06:018",
+    "07:021",
+    "07:022",
+    "08:015"
+   ],
+   "old_value": {
+    "install_base_site": "Ascension St. Vincent Carmel",
+    "confirmed": "2026-09-05"
+   },
+   "proposed_value": {
+    "proposed_site": "Ascension St. Vincent Fishers",
+    "golden_facility_id": "GF-003",
+    "recommendation": "move"
+   },
+   "evidence": [
+    "Service Call on 2026-07-21 moves the asset to Ascension St. Vincent Fishers (base 0.75)",
+    "A later service visit was recorded at the new site (+0.15)",
+    "Install base was confirmed at the old site on 2026-09-05, after the move (-0.20)",
+    "2 order(s) reference this serial: SO-MMS-00011, SO-MMS-00071"
+   ],
+   "rule_id": "F-ASSET-LOC",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.7,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Approve edge",
+    "Pick alternative",
+    "Request investigation"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00011",
+     "SO-MMS-00071"
+    ],
+    "invoices": [
+     "INV-MMS-00011",
+     "INV-MMS-00071"
+    ],
+    "open_invoices": [
+     "INV-MMS-00011",
+     "INV-MMS-00071"
+    ],
+    "open_ar_usd": 20300.0
+   },
+   "affected_count": 4,
+   "asset_id": "EA-00018",
+   "alternatives": [
+    {
+     "golden_facility_id": "GF-003",
+     "label": "Move to Ascension St. Vincent Fishers"
+    },
+    {
+     "golden_facility_id": "GF-002",
+     "label": "Keep install base site: Ascension St. Vincent Carmel"
+    }
+   ],
+   "timeline": [
+    {
+     "date": "2026-01-22",
+     "type": "movement_install",
+     "rid": "07:021",
+     "text": "Ascension St. Vincent Carmel",
+     "evidence_source": "Install Base",
+     "facility": "GF-002",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-07-21",
+     "type": "movement_asset_move",
+     "rid": "07:022",
+     "text": "Ascension St. Vincent Fishers",
+     "evidence_source": "Service Call",
+     "facility": "GF-003",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-09-05",
+     "type": "install_base",
+     "rid": "06:018",
+     "text": "Ascension St. Vincent Carmel",
+     "evidence_source": "Install base confirmation",
+     "facility": "GF-002",
+     "link_score": 1.0,
+     "link_band": "auto"
+    },
+    {
+     "date": "2026-09-16",
+     "type": "service_visit",
+     "rid": "08:015",
+     "text": "Ascension St. Vincent Fishers",
+     "evidence_source": "Field service Software Update",
+     "facility": "GF-003",
+     "link_score": 1.0,
+     "link_band": "auto"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-REL-005",
+   "queue": "relationship",
+   "entity_type": "contract",
+   "issue_type": "entitlement",
+   "title": "10 orders billed against CTR-ASC-008 (Expired, no end date)",
+   "why_flagged": "Orders for MMS-INF-01 at Ascension St. Vincent Evansville map to a contract that is Expired with term end 'missing'.",
+   "source_row_ids": [
+    "05:008",
+    "09:005",
+    "09:013",
+    "09:031",
+    "09:039",
+    "09:057",
+    "09:065",
+    "09:073",
+    "09:091",
+    "09:099",
+    "09:117"
+   ],
+   "old_value": {
+    "contract": "CTR-ASC-008",
+    "status": "Expired",
+    "term_end": null
+   },
+   "proposed_value": "Confirm renewal / successor contract or stop billing",
+   "evidence": [
+    "10 orders: SO-MMS-00005, SO-MMS-00013, SO-MMS-00031, SO-MMS-00039, SO-MMS-00057, SO-MMS-00065, SO-MMS-00073, SO-MMS-00091, SO-MMS-00099, SO-MMS-00117",
+    "Contract term began 2025-08-29; status Expired",
+    "Facility crosswalk: SF-ACC-ASC-004 -> GF-004"
+   ],
+   "rule_id": "B-ENTITLE-01",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.9,
+   "severity": "high",
+   "owner": "Contracts & pricing team",
+   "status": "pending",
+   "decisions": [
+    "Approve edge",
+    "Pick alternative",
+    "Request investigation"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00005",
+     "SO-MMS-00013",
+     "SO-MMS-00031",
+     "SO-MMS-00039",
+     "SO-MMS-00057",
+     "SO-MMS-00065",
+     "SO-MMS-00073",
+     "SO-MMS-00091",
+     "SO-MMS-00099",
+     "SO-MMS-00117"
+    ],
+    "invoices": [
+     "INV-MMS-00005",
+     "INV-MMS-00013",
+     "INV-MMS-00031",
+     "INV-MMS-00039",
+     "INV-MMS-00057",
+     "INV-MMS-00065",
+     "INV-MMS-00073",
+     "INV-MMS-00091",
+     "INV-MMS-00099",
+     "INV-MMS-00117"
+    ],
+    "open_invoices": [
+     "INV-MMS-00005",
+     "INV-MMS-00013",
+     "INV-MMS-00031",
+     "INV-MMS-00039",
+     "INV-MMS-00057",
+     "INV-MMS-00065",
+     "INV-MMS-00073",
+     "INV-MMS-00091",
+     "INV-MMS-00099",
+     "INV-MMS-00117"
+    ],
+    "open_ar_usd": 78900.0
+   },
+   "affected_count": 11,
+   "contract_id": "CTR-ASC-008"
+  },
+  {
+   "review_id": "RV-REL-006",
+   "queue": "relationship",
+   "entity_type": "order",
+   "issue_type": "order system",
+   "title": "4 orders booked in JDE for an SAP-mastered account",
+   "why_flagged": "The order's ERP client differs from the system that masters the sold-to account.",
+   "source_row_ids": [
+    "09:031",
+    "09:056",
+    "09:091",
+    "09:116"
+   ],
+   "old_value": [
+    "JDE_Legacy"
+   ],
+   "proposed_value": "Re-point to the account's master ERP or confirm dual booking",
+   "evidence": [
+    "SO-MMS-00031: ERP-004-O is mastered in SAP_Everest",
+    "SO-MMS-00056: ERP-004-O is mastered in SAP_Everest",
+    "SO-MMS-00091: ERP-004-O is mastered in SAP_Everest",
+    "SO-MMS-00116: ERP-004-O is mastered in SAP_Everest"
+   ],
+   "rule_id": "S-ORDER-SYS",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.85,
+   "severity": "medium",
+   "owner": "Order management (SAP SD)",
+   "status": "pending",
+   "decisions": [
+    "Approve edge",
+    "Pick alternative",
+    "Request investigation"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00031",
+     "SO-MMS-00056",
+     "SO-MMS-00091",
+     "SO-MMS-00116"
+    ],
+    "invoices": [
+     "INV-MMS-00031",
+     "INV-MMS-00056",
+     "INV-MMS-00091",
+     "INV-MMS-00116"
+    ],
+    "open_invoices": [
+     "INV-MMS-00031",
+     "INV-MMS-00091"
+    ],
+    "open_ar_usd": 20300.0
+   },
+   "affected_count": 4
+  },
+  {
+   "review_id": "RV-REL-007",
+   "queue": "relationship",
+   "entity_type": "facility",
+   "issue_type": "hierarchy parent",
+   "title": "REL-ASC-0006 points at missing parent REL-ASC-9999",
+   "why_flagged": "The parent ID does not exist, so the facility drops out of the enterprise roll-up.",
+   "source_row_ids": [
+    "01:006"
+   ],
+   "old_value": "REL-ASC-9999",
+   "proposed_value": "REL-ASC-0001",
+   "evidence": [
+    "6 of 6 sibling facilities use REL-ASC-0001",
+    "REL-ASC-0001 is the enterprise parent (Health Alliance)"
+   ],
+   "rule_id": "R-01-PARENT",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.9,
+   "severity": "high",
+   "owner": "Reltio MDM data steward",
+   "status": "pending",
+   "decisions": [
+    "Approve edge",
+    "Pick alternative",
+    "Request investigation"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 1
+  },
+  {
+   "review_id": "RV-REL-008",
+   "queue": "relationship",
+   "entity_type": "account",
+   "issue_type": "hierarchy parent",
+   "title": "2 ERP roles do not roll up to ERP-ENT-001",
+   "why_flagged": "One role points at a parent that is not in the extract and one has no parent at all.",
+   "source_row_ids": [
+    "02:009",
+    "02:015"
+   ],
+   "old_value": [
+    "ERP-003-B: blank",
+    "ERP-005-O: ERP-ENT-ALT"
+   ],
+   "proposed_value": "ERP-ENT-001",
+   "evidence": [
+    "All other roles in the same facility groups roll up to ERP-ENT-001"
+   ],
+   "rule_id": "R-02-PARENT",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.92,
+   "severity": "medium",
+   "owner": "ERP customer master team",
+   "status": "pending",
+   "decisions": [
+    "Approve edge",
+    "Pick alternative",
+    "Request investigation"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2
+  },
+  {
+   "review_id": "RV-REL-009",
+   "queue": "relationship",
+   "entity_type": "invoice",
+   "issue_type": "payer conflict (note only)",
+   "title": "3 open invoices noted as payer conflicts",
+   "why_flagged": "Collections noted a payer conflict, but invoice and order payers agree in the extracts; the conflict cannot be corroborated here.",
+   "source_row_ids": [
+    "10:037",
+    "10:074",
+    "10:111"
+   ],
+   "old_value": "Payer relationship conflict (collection note)",
+   "proposed_value": "Request investigation with AR",
+   "evidence": [
+    "INV-MMS-00037: invoice payer ERP-002-P, order payer ERP-002-P (consistent)",
+    "INV-MMS-00074: invoice payer ERP-004-P, order payer ERP-004-P (consistent)",
+    "INV-MMS-00111: invoice payer ERP-006-P, order payer ERP-006-P (consistent)"
+   ],
+   "rule_id": "B-PAYER-01",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.4,
+   "severity": "medium",
+   "owner": "Accounts receivable / collections",
+   "status": "pending",
+   "decisions": [
+    "Request investigation",
+    "Approve edge",
+    "Pick alternative"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00037",
+     "SO-MMS-00074",
+     "SO-MMS-00111"
+    ],
+    "invoices": [
+     "INV-MMS-00037",
+     "INV-MMS-00074",
+     "INV-MMS-00111"
+    ],
+    "open_invoices": [
+     "INV-MMS-00037",
+     "INV-MMS-00074",
+     "INV-MMS-00111"
+    ],
+    "open_ar_usd": 30200.0
+   },
+   "affected_count": 3
+  },
+  {
+   "review_id": "RV-UNR-001",
+   "queue": "unresolved",
+   "entity_type": "asset",
+   "issue_type": "owner ERP number",
+   "title": "Assign ERP-002-A as owner of 1 asset at Ascension St. Vincent Carmel",
+   "why_flagged": "Owner ERP number is blank; the facility's sold-to account is inferred from site evidence.",
+   "source_row_ids": [
+    "06:013"
+   ],
+   "old_value": "",
+   "proposed_value": "ERP-002-A",
+   "evidence": [
+    "Site evidence links all 1 assets to Ascension St. Vincent Carmel (site name)",
+    "1 of 1 also have orders sold to ERP-002-A",
+    "ERP-002-A carries the SOLD_TO role for this facility in SAP_Everest",
+    "1 asset(s) have an open location question: EA-00013"
+   ],
+   "rule_id": "C-06-OWNER",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.8,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 1,
+   "golden_facility_id": "GF-002",
+   "assets": [
+    "EA-00013"
+   ]
+  },
+  {
+   "review_id": "RV-UNR-002",
+   "queue": "unresolved",
+   "entity_type": "asset",
+   "issue_type": "owner ERP number",
+   "title": "Assign ERP-003-O as owner of 8 assets at Ascension St. Vincent Fishers",
+   "why_flagged": "Owner ERP number is blank; the facility's sold-to account is inferred from site evidence.",
+   "source_row_ids": [
+    "06:021",
+    "06:022",
+    "06:024",
+    "06:025",
+    "06:026",
+    "06:027",
+    "06:029",
+    "06:030"
+   ],
+   "old_value": "",
+   "proposed_value": "ERP-003-O",
+   "evidence": [
+    "Site evidence links all 8 assets to Ascension St. Vincent Fishers (site name)",
+    "7 of 8 also have orders sold to ERP-003-O",
+    "ERP-003-O carries the SOLD_TO role for this facility in SAP_Everest"
+   ],
+   "rule_id": "C-06-OWNER",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.94,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 8,
+   "golden_facility_id": "GF-003",
+   "assets": [
+    "EA-00021",
+    "EA-00022",
+    "EA-00024",
+    "EA-00025",
+    "EA-00026",
+    "EA-00027",
+    "EA-00029",
+    "EA-00030"
+   ]
+  },
+  {
+   "review_id": "RV-UNR-003",
+   "queue": "unresolved",
+   "entity_type": "asset",
+   "issue_type": "owner ERP number",
+   "title": "Assign ERP-004-O as owner of 10 assets at Ascension St. Vincent Evansville",
+   "why_flagged": "Owner ERP number is blank; the facility's sold-to account is inferred from site evidence.",
+   "source_row_ids": [
+    "06:023",
+    "06:028",
+    "06:031",
+    "06:032",
+    "06:034",
+    "06:035",
+    "06:036",
+    "06:037",
+    "06:039",
+    "06:040"
+   ],
+   "old_value": "",
+   "proposed_value": "ERP-004-O",
+   "evidence": [
+    "Site evidence links all 10 assets to Ascension St. Vincent Evansville (site address, site name)",
+    "5 of 10 also have orders sold to ERP-004-O",
+    "ERP-004-O carries the SOLD_TO role for this facility in SAP_Everest"
+   ],
+   "rule_id": "C-06-OWNER",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.9,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 10,
+   "golden_facility_id": "GF-004",
+   "assets": [
+    "EA-00023",
+    "EA-00028",
+    "EA-00031",
+    "EA-00032",
+    "EA-00034",
+    "EA-00035",
+    "EA-00036",
+    "EA-00037",
+    "EA-00039",
+    "EA-00040"
+   ]
+  },
+  {
+   "review_id": "RV-UNR-004",
+   "queue": "unresolved",
+   "entity_type": "asset",
+   "issue_type": "owner ERP number",
+   "title": "Assign ERP-005-O as owner of 12 assets at Ascension St. Vincent Anderson",
+   "why_flagged": "Owner ERP number is blank; the facility's sold-to account is inferred from site evidence.",
+   "source_row_ids": [
+    "06:033",
+    "06:038",
+    "06:041",
+    "06:042",
+    "06:043",
+    "06:044",
+    "06:045",
+    "06:046",
+    "06:047",
+    "06:048",
+    "06:049",
+    "06:050"
+   ],
+   "old_value": "",
+   "proposed_value": "ERP-005-O",
+   "evidence": [
+    "Site evidence links all 12 assets to Ascension St. Vincent Anderson (site name)",
+    "8 of 12 also have orders sold to ERP-005-O",
+    "ERP-005-O carries the SOLD_TO role for this facility in JDE_Legacy"
+   ],
+   "rule_id": "C-06-OWNER",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.92,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 12,
+   "golden_facility_id": "GF-005",
+   "assets": [
+    "EA-00033",
+    "EA-00038",
+    "EA-00041",
+    "EA-00042",
+    "EA-00043",
+    "EA-00044",
+    "EA-00045",
+    "EA-00046",
+    "EA-00047",
+    "EA-00048",
+    "EA-00049",
+    "EA-00050"
+   ]
+  },
+  {
+   "review_id": "RV-UNR-005",
+   "queue": "unresolved",
+   "entity_type": "asset",
+   "issue_type": "owner ERP number",
+   "title": "Assign ERP-006-O as owner of 10 assets at Ascension St. Vincent Kokomo",
+   "why_flagged": "Owner ERP number is blank; the facility's sold-to account is inferred from site evidence.",
+   "source_row_ids": [
+    "06:051",
+    "06:052",
+    "06:053",
+    "06:054",
+    "06:055",
+    "06:056",
+    "06:057",
+    "06:058",
+    "06:059",
+    "06:060"
+   ],
+   "old_value": "",
+   "proposed_value": "ERP-006-O",
+   "evidence": [
+    "Site evidence links all 10 assets to Ascension St. Vincent Kokomo (site name)",
+    "7 of 10 also have orders sold to ERP-006-O",
+    "ERP-006-O carries the SOLD_TO role for this facility in JDE_Legacy"
+   ],
+   "rule_id": "C-06-OWNER",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.92,
+   "severity": "high",
+   "owner": "Install base / service operations",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 10,
+   "golden_facility_id": "GF-006",
+   "assets": [
+    "EA-00051",
+    "EA-00052",
+    "EA-00053",
+    "EA-00054",
+    "EA-00055",
+    "EA-00056",
+    "EA-00057",
+    "EA-00058",
+    "EA-00059",
+    "EA-00060"
+   ]
+  },
+  {
+   "review_id": "RV-UNR-006",
+   "queue": "unresolved",
+   "entity_type": "contract",
+   "issue_type": "contract account",
+   "title": "CTR-ASC-004 (Infusion lease + service schedule) has no account",
+   "why_flagged": "The contract cannot be tied to a facility, so its orders show no entitlement.",
+   "source_row_ids": [
+    "05:004"
+   ],
+   "old_value": "",
+   "proposed_value": "SF-ACC-ASC-002",
+   "evidence": [
+    "Facilities with MMS-INF-01 orders but no linked MMS-INF-01 contract: Ascension St. Vincent Carmel, Ascension St. Vincent Anderson",
+    "Adjacent contract IDs belong to: CTR-ASC-003 -> Ascension St. Vincent Carmel, CTR-ASC-005 -> Ascension St. Vincent Fishers"
+   ],
+   "rule_id": "C-05-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.72,
+   "severity": "high",
+   "owner": "Contracts & pricing team",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00011",
+     "SO-MMS-00019",
+     "SO-MMS-00037",
+     "SO-MMS-00045",
+     "SO-MMS-00053",
+     "SO-MMS-00071",
+     "SO-MMS-00079",
+     "SO-MMS-00097",
+     "SO-MMS-00105",
+     "SO-MMS-00113"
+    ],
+    "invoices": [
+     "INV-MMS-00011",
+     "INV-MMS-00019",
+     "INV-MMS-00037",
+     "INV-MMS-00045",
+     "INV-MMS-00053",
+     "INV-MMS-00071",
+     "INV-MMS-00079",
+     "INV-MMS-00097",
+     "INV-MMS-00105",
+     "INV-MMS-00113"
+    ],
+    "open_invoices": [
+     "INV-MMS-00011",
+     "INV-MMS-00037",
+     "INV-MMS-00071"
+    ],
+    "open_ar_usd": 24200.0
+   },
+   "affected_count": 1,
+   "contract_id": "CTR-ASC-004",
+   "golden_facility_id": "GF-002"
+  },
+  {
+   "review_id": "RV-UNR-007",
+   "queue": "unresolved",
+   "entity_type": "contract",
+   "issue_type": "contract account",
+   "title": "CTR-ASC-010 (Infusion lease + service schedule) has no account",
+   "why_flagged": "The contract cannot be tied to a facility, so its orders show no entitlement.",
+   "source_row_ids": [
+    "05:010"
+   ],
+   "old_value": "",
+   "proposed_value": "SF-ACC-ASC-005",
+   "evidence": [
+    "Facilities with MMS-INF-01 orders but no linked MMS-INF-01 contract: Ascension St. Vincent Carmel, Ascension St. Vincent Anderson",
+    "Adjacent contract IDs belong to: CTR-ASC-009 -> Ascension St. Vincent Anderson, CTR-ASC-011 -> Ascension St. Vincent Kokomo"
+   ],
+   "rule_id": "C-05-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.72,
+   "severity": "high",
+   "owner": "Contracts & pricing team",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00007",
+     "SO-MMS-00015",
+     "SO-MMS-00023",
+     "SO-MMS-00041",
+     "SO-MMS-00049",
+     "SO-MMS-00067",
+     "SO-MMS-00075",
+     "SO-MMS-00083",
+     "SO-MMS-00101",
+     "SO-MMS-00109"
+    ],
+    "invoices": [
+     "INV-MMS-00007",
+     "INV-MMS-00015",
+     "INV-MMS-00023",
+     "INV-MMS-00041",
+     "INV-MMS-00049",
+     "INV-MMS-00067",
+     "INV-MMS-00075",
+     "INV-MMS-00083",
+     "INV-MMS-00101",
+     "INV-MMS-00109"
+    ],
+    "open_invoices": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 1,
+   "contract_id": "CTR-ASC-010",
+   "golden_facility_id": "GF-005"
+  },
+  {
+   "review_id": "RV-UNR-008",
+   "queue": "unresolved",
+   "entity_type": "contact",
+   "issue_type": "contact account",
+   "title": "Contact 0010 (Procurement Contact) has no account",
+   "why_flagged": "A contact without an account cannot be routed to a facility.",
+   "source_row_ids": [
+    "03:011"
+   ],
+   "old_value": "",
+   "proposed_value": "SF-ACC-ASC-003",
+   "evidence": [
+    "Phone +1-317-555-1032 shares the block +1-317-555-103x with 3 contacts, all on SF-ACC-ASC-003",
+    "Email domain ascension-demo.org"
+   ],
+   "rule_id": "C-03-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.75,
+   "severity": "medium",
+   "owner": "Salesforce CRM admin",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 1
+  },
+  {
+   "review_id": "RV-UNR-009",
+   "queue": "unresolved",
+   "entity_type": "contact",
+   "issue_type": "contact account",
+   "title": "Contact 0023 (Recall Contact) has no account",
+   "why_flagged": "A contact without an account cannot be routed to a facility.",
+   "source_row_ids": [
+    "03:024"
+   ],
+   "old_value": "",
+   "proposed_value": "SF-ACC-ASC-006",
+   "evidence": [
+    "Phone +1-317-555-1063 shares the block +1-317-555-106x with 3 contacts, all on SF-ACC-ASC-006",
+    "Email domain ascension-demo.org"
+   ],
+   "rule_id": "C-03-ACCT",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.75,
+   "severity": "medium",
+   "owner": "Salesforce CRM admin",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 1
+  },
+  {
+   "review_id": "RV-UNR-010",
+   "queue": "unresolved",
+   "entity_type": "invoice",
+   "issue_type": "invoice payer",
+   "title": "7 invoices have no payer account",
+   "why_flagged": "Collections cannot be routed without a payer; the order or the facility's payer role is proposed.",
+   "source_row_ids": [
+    "10:008",
+    "10:013",
+    "10:029",
+    "10:034",
+    "10:062",
+    "10:076",
+    "10:099"
+   ],
+   "old_value": "",
+   "proposed_value": [
+    "ERP-006-P",
+    "ERP-004-P",
+    "ERP-003-P",
+    "ERP-006-P",
+    "ERP-002-P",
+    "ERP-006-P",
+    "ERP-004-P"
+   ],
+   "evidence": [
+    "INV-MMS-00008: take order payer ERP-006-P",
+    "INV-MMS-00013: order payer also blank; facility PAYER role ERP-004-P",
+    "INV-MMS-00029: take order payer ERP-003-P",
+    "INV-MMS-00034: order payer also blank; facility PAYER role ERP-006-P",
+    "INV-MMS-00062: order payer also blank; facility PAYER role ERP-002-P",
+    "INV-MMS-00076: take order payer ERP-006-P",
+    "INV-MMS-00099: order payer also blank; facility PAYER role ERP-004-P"
+   ],
+   "rule_id": "C-10-PAYER",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.88,
+   "severity": "high",
+   "owner": "Accounts receivable / collections",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "orders": [
+     "SO-MMS-00008",
+     "SO-MMS-00013",
+     "SO-MMS-00029",
+     "SO-MMS-00034",
+     "SO-MMS-00062",
+     "SO-MMS-00076",
+     "SO-MMS-00099"
+    ],
+    "invoices": [
+     "INV-MMS-00008",
+     "INV-MMS-00013",
+     "INV-MMS-00029",
+     "INV-MMS-00034",
+     "INV-MMS-00062",
+     "INV-MMS-00076",
+     "INV-MMS-00099"
+    ],
+    "open_invoices": [
+     "INV-MMS-00013",
+     "INV-MMS-00099"
+    ],
+    "open_ar_usd": 3650.0
+   },
+   "affected_count": 7,
+   "pairs": [
+    {
+     "rid": "10:008",
+     "key": "INV-MMS-00008",
+     "field": "Payer_Account_No",
+     "old": "",
+     "new": "ERP-006-P"
+    },
+    {
+     "rid": "10:013",
+     "key": "INV-MMS-00013",
+     "field": "Payer_Account_No",
+     "old": "",
+     "new": "ERP-004-P"
+    },
+    {
+     "rid": "10:029",
+     "key": "INV-MMS-00029",
+     "field": "Payer_Account_No",
+     "old": "",
+     "new": "ERP-003-P"
+    },
+    {
+     "rid": "10:034",
+     "key": "INV-MMS-00034",
+     "field": "Payer_Account_No",
+     "old": "",
+     "new": "ERP-006-P"
+    },
+    {
+     "rid": "10:062",
+     "key": "INV-MMS-00062",
+     "field": "Payer_Account_No",
+     "old": "",
+     "new": "ERP-002-P"
+    },
+    {
+     "rid": "10:076",
+     "key": "INV-MMS-00076",
+     "field": "Payer_Account_No",
+     "old": "",
+     "new": "ERP-006-P"
+    },
+    {
+     "rid": "10:099",
+     "key": "INV-MMS-00099",
+     "field": "Payer_Account_No",
+     "old": "",
+     "new": "ERP-004-P"
+    }
+   ]
+  },
+  {
+   "review_id": "RV-UNR-011",
+   "queue": "unresolved",
+   "entity_type": "movement",
+   "issue_type": "movement destination",
+   "title": "2 install events have no destination",
+   "why_flagged": "An install with no destination cannot place the asset; the install base site is proposed.",
+   "source_row_ids": [
+    "07:012",
+    "07:030"
+   ],
+   "old_value": "",
+   "proposed_value": [
+    "Ascension St. Vincent Indianapolis - Main Campus",
+    "Ascension St. Vincent Fishers"
+   ],
+   "evidence": [
+    "MOVE-00010-01 -> Ascension St. Vincent Indianapolis - Main Campus",
+    "MOVE-00025-01 -> Ascension St. Vincent Fishers"
+   ],
+   "rule_id": "C-07-DEST",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.85,
+   "severity": "low",
+   "owner": "Field service operations",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2
+  },
+  {
+   "review_id": "RV-UNR-012",
+   "queue": "unresolved",
+   "entity_type": "service event",
+   "issue_type": "service device",
+   "title": "6 service visits name no device",
+   "why_flagged": "No asset tag or serial was captured; the visit cannot be tied to an asset. Inference is not attempted.",
+   "source_row_ids": [
+    "08:006",
+    "08:011",
+    "08:021",
+    "08:026",
+    "08:036",
+    "08:041"
+   ],
+   "old_value": "",
+   "proposed_value": null,
+   "evidence": [
+    "SVC-00006 at Ascension St. Vincent Carmel",
+    "SVC-00011 at unknown site",
+    "SVC-00021 at Ascension St. Vincent Fishers",
+    "SVC-00026 at unknown site",
+    "SVC-00036 at Ascension St. Vincent Anderson",
+    "SVC-00041 at Ascension St. Vincnt Kokomo"
+   ],
+   "rule_id": "C-08-IDS",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.0,
+   "severity": "medium",
+   "owner": "Field service operations",
+   "status": "pending",
+   "decisions": [
+    "Assign follow-up",
+    "Leave unknown",
+    "Confirm value"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 6
+  },
+  {
+   "review_id": "RV-UNR-013",
+   "queue": "unresolved",
+   "entity_type": "facility",
+   "issue_type": "healthcare ID",
+   "title": "REL-ASC-0004 is missing its Definitive Healthcare ID",
+   "why_flagged": "The duplicate candidate REL-ASC-0099 carries one; it applies only if the merge is approved.",
+   "source_row_ids": [
+    "01:004",
+    "01:008"
+   ],
+   "old_value": "",
+   "proposed_value": "DHC-ASC-1003",
+   "evidence": [
+    "REL-ASC-0099 has DHC-ASC-1003",
+    "Depends on RV-IDM-002"
+   ],
+   "rule_id": "C-01-DHC",
+   "rule_version": "dq-rules-1.0",
+   "confidence": 0.7,
+   "severity": "medium",
+   "owner": "Reltio MDM data steward",
+   "status": "pending",
+   "decisions": [
+    "Confirm value",
+    "Leave unknown",
+    "Assign follow-up"
+   ],
+   "reviewer_decision": null,
+   "downstream": {
+    "invoices": [],
+    "orders": [],
+    "open_ar_usd": 0
+   },
+   "affected_count": 2,
+   "depends_on": "RV-IDM-002"
+  }
+ ]
+}
