@@ -48,6 +48,41 @@ uv run pipeline/bd_pipeline.py generate --input 282_BD_MMS_Rebuilt_Raw_Source_Da
 ```
 Served over HTTP the page fetches and validates the run folder (a manifest blocks mismatched generations); opened from disk, or if the run is unavailable, it falls back to the bundled copy in `bd_data.js` and says so on screen.
 
+#### Scenario 4 default story (simplification PRD)
+Each screen answers one question; the full technical views stay one click away (Back to summary returns).
+
+| Page | Question | Default view | Secondary view |
+|------|----------|--------------|----------------|
+| raw | Where are the data breaks? | 3 problem areas (ownership, orders & contracts, billing & payer), compact source list, top issues | All findings: 4-dimension quality bars, thresholds, profiles, raw rows, issue register |
+| mapping | What relationships break? | Customer → Facility → Asset → Order → Contract → Invoice with joined / review / unresolved counts; 3 biggest breaks | Inspect mapping: field map, canonical model, ER diagram, SQL drawer; Apply mappings |
+| workbench | Where is judgment needed? | 3 cases picked deterministically (facility identity, asset move, contract entitlement; next highest priority if missing) with decide / undo | Full review queue, filters, export / import / reset |
+| golden | What does a trusted view show? | One asset (EA-00003 when present) on a dated timeline; disputed site and proposed next correction; confirmed vs candidate links | Facility browser, crosswalk, lineage, orders & contracts |
+| search | What should BD act on? | Receivables to investigate (associated open AR, ≤3 buckets, uncorroborated notes kept separate), then the ranked CDE backlog | Explore AR (aging, facilities, invoice paths); Supporting analysis (before/after metrics, concentration, owner corrections) |
+
+**CDE backlog** (`bdCdeBacklog()` in `bd.js`, recomputed from the run and the current review state):
+
+| CDE | Rules | Review item types | Linked AR categories |
+|-----|-------|-------------------|----------------------|
+| CDE-01 Owning ERP customer / account | C-06-OWNER, R-06-OWNER | owner ERP number | none |
+| CDE-02 Asset → current facility | F-ASSET-LOC, C-06-SITE, C-07-DEST | asset location, movement destination | asset_relationship |
+| CDE-03 Order → facility (sold-to) | B-ORDER-LOC, S-ORDER-SYS, S-ORDER-ROLE, C-09-SHIPTO | order system | asset_relationship, system_mismatch |
+| CDE-04 Contract / entitlement | B-ENTITLE-01, B-PO-01, C-05-ACCT, C-05-END, R-05-ACCT | entitlement, contract account | entitlement |
+| CDE-05 Invoice payer / customer | C-10-PAYER, C-09-PAYER, B-PAYER-01, V-AR-STATUS | invoice payer, payer conflict, status / amount | payer_gap |
+| CDE-06 Canonical facility identity / name | U-DUP-ENTITY, S-NAME, S-ADDR, U-02-NATIVE, R-01/R-02/C-01/C-02 parent, C-01-DHC, C-04-STREET | identity matches, name variants, hierarchy, healthcare ID | none |
+| CDE-07 Asset serial & UDI | V-SERIAL, C-06-UDI, R-07/R-08/R-09-ASSET, C-07-IDS, C-08-IDS, C-09-SERIAL | serial format, service device | identifier_defect |
+
+- affected_count = distinct source rows with a non-informational finding; a denominator is shown only when all findings come from one extract.
+- linked_open_ar_usd = distinct open invoices whose evidence categories match the CDE. Rows are not additive: one invoice can touch several CDEs.
+- Ranking (v1, no weighted score): linked open AR desc → open high-severity review items → relationships with review/unresolved rows → open review items → CDE id. The reason label states which key placed the row.
+- Proposed owner = the most common steward on the CDE's review items, labeled "suggested steward"; "Owner to assign" when none.
+
+**Change log (simplification)**
+- `bd.js`: new default renderers `bdRenderSources`, `bdRenderMap`, `bdRenderReview`, `bdRenderGolden`, `bdRenderImpact`; previous renderers kept as `bd*Full` behind `bdSetFull()`; added `bdProblemAreas`, `bdChain`, `bdCuratedCases`, `bdStoryFacts`, `bdAssetEvents`, `bdCdeBacklog`, `bdExploreAr`; source drill-down now carries the 4-dimension bars; 11-step demo replaced by a 7-stop `bdDemoScript()` whose narration is built from the active run, with Pause / Resume.
+- `bd.css`: story-view layout (problem cards, relationship chain, case cards, horizontal timeline, AR hero, CDE table).
+- Pipeline, generated data and the other three scenarios are unchanged. Screenshots: `docs/screenshots/before/` and `docs/screenshots/after/`.
+
+**Data limitations in this snapshot:** payer-conflict and "relationship under review" collection notes are not corroborated by the extracts and are reported separately; CDE-01 (owner) and CDE-06 (facility identity) have no evidence-linked AR; contract inference for CTR-ASC-004 / CTR-ASC-010 stays a review proposal, so their orders show no entitlement until approved.
+
 ## Running Locally
 
 No build step required. This is a pure vanilla JS single-page app.

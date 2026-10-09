@@ -39,6 +39,7 @@ function bdResetUi() {
     queue: 'identity', reviewSel: null, reviewQuery: '', reviewSev: 'all', reviewStatus: 'all', reviewRules: null, editValue: null, showAllRowsReview: false,
     goldenSel: 'GF-001', goldenTab: 'crosswalk', goldenAsset: null,
     impactCat: null, impactFac: null, impactInv: null,
+    full: {}, chainSel: null, caseOpen: null, storyAsset: null, storyEvent: null, exploreAr: false, cdeSel: null, cdeAll: false, cdeHow: false, support: false,
   });
 }
 bdResetUi();
@@ -275,7 +276,8 @@ function bdRunBar() {
   const src = bd.source === 'http'
     ? `<span class="bd-chip ok" title="All ${BD_OUTPUTS.length} outputs carry run ${m.run_id} and input hash ${m.input_hash.slice(0, 12)}">Live run ${bdEsc(bd.sourceNote)} &middot; validated</span>`
     : `<span class="bd-chip warn" title="${bdEsc(bd.sourceNote)}">Bundled copy of the run (${bdEsc(bd.sourceNote)})</span>`;
-  return `<div class="bd-runbar"><span class="bd-label">${BD_LABEL}</span><span class="bd-chip">Run ${bdEsc(m.run_id)}</span><span class="bd-chip">As of ${bdEsc(m.as_of)}</span>${src}<span class="bd-chip">Pipeline validation: ${m.validation.passed ? 'all ' + m.validation.checks.length + ' checks passed' : 'FAILED'}</span></div>`;
+  const back = bd.full[state.currentPage] ? `<button class="btn btn-bd-outline btn-sm" onclick="bdSetFull('${state.currentPage}', false)">&larr; Back to summary</button>` : '';
+  return `<div class="bd-runbar">${back}<span class="bd-label">${BD_LABEL}</span><span class="bd-chip">Run ${bdEsc(m.run_id)}</span><span class="bd-chip">As of ${bdEsc(m.as_of)}</span>${src}<span class="bd-chip">Pipeline validation: ${m.validation.passed ? 'all ' + m.validation.checks.length + ' checks passed' : 'FAILED'}</span></div>`;
 }
 function bdHead(title, sub, actions = '') {
   return `<div class="bd-head"><div><h1 class="bd-title">${title}</h1><div class="bd-sub">${sub}</div></div><div class="bd-head-actions">${actions}${renderPageHelpButton()}</div></div>`;
@@ -325,7 +327,7 @@ function bdSetRowQuery(v) {
   if (body) { body.innerHTML = bdRowsTable(bd.srcSel); const el = document.getElementById('bd-row-q'); if (el) { el.focus(); el.setSelectionRange(v.length, v.length); } }
 }
 
-function bdRenderSources() {
+function bdRenderSourcesFull() {
   const D = bd.data;
   const P = D.source_profiles.sources;
   const T = D.source_profiles.rag_thresholds;
@@ -414,6 +416,8 @@ function bdRenderSourceDetail(code) {
   return `<div class="bd-panel" id="bd-src-detail">
     <div class="bd-panel-h"><h2>${p.code} ${bdEsc(p.label)} <span class="rag ${p.overall_status}" style="margin-left:0.5rem">${p.overall_status}</span></h2>
       <button class="btn btn-ghost btn-sm" onclick="bdSelectSource('${code}')">Close &#10005;</button></div>
+    <div class="bd-panel-b" style="border-bottom:1px solid var(--border-subtle)"><div class="rag-bars">${bdRagBar('Completeness', p.quality.completeness)}${bdRagBar('Validity', p.quality.validity)}${bdRagBar('Consistency', p.quality.consistency)}${bdRagBar('Linkability', p.quality.linkability)}</div>
+      <div class="bd-note" style="margin-top:0.5rem">Passing rows over rows each rule applies to. Red: a high-severity rule fails on &ge;${D.source_profiles.rag_thresholds.red_high_severity_rate * 100}% of applicable rows, or medium/high rules on &ge;${D.source_profiles.rag_thresholds.red_fail_rate * 100}%. Optional blanks are not counted as defects.</div></div>
     <div class="bd-tabs" role="tablist">${tabs.map(([k, l, n]) => `<button class="bd-tab ${bd.srcTab === k ? 'on' : ''}" role="tab" aria-selected="${bd.srcTab === k}" onclick="bdSrcTab('${k}')">${l}${n != null ? `<span class="n">${n}</span>` : ''}</button>`).join('')}</div>
     ${body}</div>`;
 }
@@ -465,7 +469,7 @@ function bdOpenSql(file) { bd.sqlOpen = true; bd.sqlSel = file || bd.sqlSel || b
 function bdCloseOverlay() { bd.sqlOpen = false; bd.erOpen = false; renderAll(); }
 function bdOpenEr() { bd.erOpen = true; bd.erView = { x: 0, y: 0, k: 1 }; renderAll(); setTimeout(() => { const c = document.getElementById('bd-er-canvas'); if (c) c.focus(); }, 50); }
 
-function bdRenderMap() {
+function bdRenderMapFull() {
   const D = bd.data;
   const M = D.mapping_proposals.mappings;
   const ents = D.canonical_schema.entities;
@@ -761,7 +765,7 @@ function bdSetQueue(q) { bd.queue = q; const first = bdQueueItems(q)[0]; bd.revi
 function bdSelectItem(id) { bd.reviewSel = id; bd.editValue = null; bd.showAllRowsReview = false; renderAll(); }
 function bdSetReviewQuery(v) { bd.reviewQuery = v; const el = document.getElementById('bd-q-list'); if (el) el.innerHTML = bdQueueList(); }
 
-function bdRenderReview() {
+function bdRenderReviewFull() {
   const D = bd.data;
   const all = D.review_queue.items;
   if (!bd.applied) {
@@ -916,7 +920,7 @@ function bdSelectFac(gid) { bd.goldenSel = gid; bd.goldenAsset = null; renderAll
 function bdGoldenTab(t) { bd.goldenTab = t; renderAll(); }
 function bdSelectAsset(id) { bd.goldenAsset = bd.goldenAsset === id ? null : id; bd.goldenTab = 'assets'; renderAll(); setTimeout(() => { const el = document.getElementById('bd-asset-detail'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 60); }
 
-function bdRenderGolden() {
+function bdRenderGoldenFull() {
   const G = bd.data.golden_entities;
   const P = G.party;
   const facs = G.facilities;
@@ -1058,6 +1062,7 @@ function bdGoReview(id) {
   if (!it) return;
   bd.applied = true; bdPersist();
   bd.queue = it.queue; bd.reviewSel = id; bd.reviewRules = null; bd.reviewSev = 'all'; bd.reviewStatus = 'all'; bd.reviewQuery = '';
+  bd.full.workbench = true;
   navigateTo('workbench'); window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1069,7 +1074,7 @@ function bdSetImpactCat(c) { bd.impactCat = bd.impactCat === c ? null : c; bd.im
 function bdSetImpactFac(g) { bd.impactFac = bd.impactFac === g ? null : g; bd.impactInv = null; renderAll(); }
 function bdSelectInv(id) { bd.impactInv = bd.impactInv === id ? null : id; renderAll(); }
 
-function bdRenderImpact() {
+function bdRenderImpactFull() {
   const D = bd.data;
   const A = D.ar_exposure, T = A.totals, E = D.executive_summary;
   const items = D.review_queue.items;
@@ -1190,12 +1195,13 @@ function bdInvoicePath(i) {
 function bdPage() {
   if (bd.status === 'error') return `<div class="page active bd-page"><div class="bd-panel"><div class="bd-empty">${icon('alertTriangle', 'icon-xl')}<div style="margin-top:0.5rem;font-weight:700;color:var(--text-primary)">The run could not be loaded</div><div class="bd-note" style="max-width:36rem;margin:0.4rem auto">${bdEsc(bd.error)}</div><div class="bd-note">Regenerate with: <span class="bd-mono">uv run pipeline/bd_pipeline.py generate --input 282_BD_MMS_Rebuilt_Raw_Source_Data.zip --output public/bd</span></div><button class="btn btn-bd" onclick="bd.status='idle';bdLoad()">Try again</button></div></div></div>`;
   if (!bd.data) { if (bd.status === 'idle') setTimeout(bdLoad, 0); return `<div class="bd-loading"><div class="bd-spin"></div><div>Loading run and validating the manifest...</div></div>`; }
+  const full = bd.full[state.currentPage];
   switch (state.currentPage) {
-    case 'raw': return bdRenderSources();
-    case 'mapping': return bdRenderMap();
-    case 'workbench': return bdRenderReview();
-    case 'golden': return bdRenderGolden();
-    case 'search': return bdRenderImpact();
+    case 'raw': return full ? bdRenderSourcesFull() : bdRenderSources();
+    case 'mapping': return full ? bdRenderMapFull() : bdRenderMap();
+    case 'workbench': return full ? bdRenderReviewFull() : bdRenderReview();
+    case 'golden': return full ? bdRenderGoldenFull() : bdRenderGolden();
+    case 'search': return full ? bdRenderImpactFull() : bdRenderImpact();
     default: return bdRenderSources();
   }
 }
@@ -1279,30 +1285,6 @@ function renderBDLandingCard() {
   </div>`;
 }
 
-const BD_DEMO_SCRIPT = [
-  { page: 'raw', highlight: '#bd-src-kpis', action: () => { bd.srcSel = null; renderAll(); },
-    narration: 'Ten operational extracts - Reltio, SAP and JDE, Salesforce, install base, movements, field service, orders and billing - <strong>profiled exactly as delivered</strong>. Every rate is passing rows over the rows a rule applies to.', stepLabel: 'Step 1 of 11 - What did we receive?', duration: 6500 },
-  { page: 'raw', highlight: '#bd-src-detail', action: () => { bd.srcSel = '06'; bd.srcTab = 'issues'; bd.ruleFilter = null; renderAll(); },
-    narration: 'The <strong>install base</strong>: 41 of 60 assets have no owner ERP number, five have no UDI, and three serials use the letter O for zero. Each rule shows affected rows over applicable rows - and its interpretation.', stepLabel: 'Step 2 of 11 - Issue register', duration: 7000 },
-  { page: 'raw', highlight: '#bd-src-detail', action: () => { bdSeeRows('V-SERIAL'); },
-    narration: '"See affected rows" filters to the rows a rule flagged and highlights the field. <em>Originals are never edited</em> - fixes are proposals.', stepLabel: 'Step 3 of 11 - Evidence, not ratings', duration: 6000 },
-  { page: 'mapping', highlight: '#bd-map-table', action: () => { bd.mapSel = 'MAP-05'; renderAll(); },
-    narration: '<strong>Asset identity</strong> uses a staged identifier index - never an OR-join of nullable serials. Every mapping shows its join, measured confidence and samples.', stepLabel: 'Step 4 of 11 - How the systems connect', duration: 7000 },
-  { page: 'mapping', highlight: '.bd-modal', action: () => { bd.mapSel = null; bdOpenEr(); bd.erSel = 'E11'; bdRenderOverlay(); },
-    narration: 'The relationship diagram: <strong>solid</strong> native joins, <em>dashed</em> inferred matches, red dotted conflicts. This edge: orders still tied to a facility the asset has left.', stepLabel: 'Step 5 of 11 - Relationship diagram', duration: 7500 },
-  { page: 'mapping', highlight: '#bd-apply-panel', action: () => { bd.erOpen = false; bd.erSel = null; renderAll(); bdApply(); },
-    narration: '<strong>Apply mappings</strong> replays the versioned DuckDB run over the unchanged snapshot - ten statements, row counts and checksums - and creates the review proposals.', stepLabel: 'Step 6 of 11 - Apply', duration: 6000 },
-  { page: 'workbench', highlight: '#bd-review-detail', action: () => { bd.applied = true; bd.queue = 'identity'; bd.reviewSel = 'RV-IDM-002'; renderAll(); },
-    narration: 'Fishers exists <strong>three times in Reltio</strong>. The reviewer sees both rows side by side, the differing address, the score and the contradiction before deciding.', stepLabel: 'Step 7 of 11 - Identity review', duration: 7000 },
-  { page: 'workbench', highlight: '#bd-review-detail', action: () => { bd.queue = 'relationship'; bd.reviewSel = 'RV-REL-005'; renderAll(); },
-    narration: 'Ten infusion orders at Evansville bill against <strong>CTR-ASC-008 - expired, with no end date</strong>. The item shows the downstream invoices and open AR it touches.', stepLabel: 'Step 8 of 11 - Relationship review', duration: 7000 },
-  { page: 'golden', highlight: '#bd-fac-view', action: () => { bd.goldenSel = 'GF-001'; bd.goldenTab = 'assets'; bd.goldenAsset = 'EA-00003'; renderAll(); },
-    narration: 'The golden view: EA-00003 moved to Carmel by customer notice and a later service visit, yet <strong>Indianapolis is still billed</strong>. Candidates stay dashed until approved.', stepLabel: 'Step 9 of 11 - Connected view', duration: 7500 },
-  { page: 'search', highlight: '#bd-impact-ar', action: () => { bd.impactCat = null; bd.impactInv = null; renderAll(); },
-    narration: `Open AR associated with an identified issue - <strong>counted once per invoice</strong>, never called recoverable. Uncorroborated collection notes are shown separately.`, stepLabel: 'Step 10 of 11 - Receivables impact', duration: 7500 },
-  { page: 'search', highlight: '#bd-impact-next', action: () => { setTimeout(() => { const el = document.getElementById('bd-impact-next'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 200); },
-    narration: '<strong>What to do next</strong>: each source owner, the corrections waiting on them and the open AR behind them - updating live as reviewers decide.', stepLabel: 'Step 11 of 11 - Next actions', duration: 7000 },
-];
 const _bdPrevScript = getActiveDemoScript;
 getActiveDemoScript = function () { return state.activeDataset === 'bd' ? BD_DEMO_SCRIPT : _bdPrevScript(); };
 const _bdPrevStartDemo = startDemo;
@@ -1310,3 +1292,496 @@ startDemo = function () {
   if (state.activeDataset === 'bd' && !demoRunning) { bd.erOpen = false; bd.sqlOpen = false; bd.srcSel = null; bd.mapSel = null; }
   _bdPrevStartDemo();
 };
+
+// ════════════════════════════════════════════════════════════
+//  STORY VIEWS (default) - Simplification PRD
+//  Each page answers one question; the technical views above stay
+//  reachable through "Inspect mapping", "See evidence", "Explore AR"...
+// ════════════════════════════════════════════════════════════
+function bdSetFull(page, on) { bd.full[page] = on; renderAll(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function bdStoryHead(title, sub, actions) {
+  return `<div class="bd-head"><div><h1 class="bd-title">${title}</h1><div class="bd-sub">${sub}</div></div><div class="bd-head-actions">${actions || ''}${renderPageHelpButton()}</div></div>`;
+}
+function bdPlural(n, one, many) { return `${n} ${n === 1 ? one : (many || one + 's')}`; }
+const BD_RULE_PLAIN = {
+  'C-06-OWNER': 'Assets with no owner ERP account', 'F-ASSET-LOC': 'Assets whose location evidence conflicts',
+  'B-ORDER-LOC': 'Orders tied to a facility the asset has left', 'B-ENTITLE-01': 'Orders billed on an expired or open-ended contract',
+  'C-10-PAYER': 'Invoices with no payer account', 'C-09-PAYER': 'Orders with no payer', 'V-SERIAL': 'Serials typed with the letter O for zero',
+  'U-DUP-ENTITY': 'Duplicate facility records', 'C-05-ACCT': 'Contracts with no customer account', 'B-PO-01': 'Orders missing a PO their contract requires',
+  'S-NAME': 'Facility names typed inconsistently', 'C-09-SERIAL': 'Device orders with no serial', 'C-08-IDS': 'Service visits that name no device',
+  'S-ORDER-SYS': 'Orders booked in a different ERP than the account', 'C-06-UDI': 'Assets with no UDI', 'C-03-ACCT': 'Contacts with no account',
+  'R-01-PARENT': 'Facility points at a missing parent', 'R-02-PARENT': 'ERP role points at a missing parent', 'C-02-PARENT': 'ERP roles with no parent',
+  'U-02-NATIVE': 'Same ERP customer number in two systems', 'R-09-ASSET': 'Order serials that match only after cleanup', 'C-01-PARENT': 'Facility profiles with no parent',
+};
+function bdPlain(ruleId) { return BD_RULE_PLAIN[ruleId] || (bd.ruleIndex[ruleId] || {}).title || ruleId; }
+
+// ── 1 · Sources: "Where are the data breaks?" ─────────────
+function bdProblemAreas() {
+  const R = bd.ruleIndex, A = bd.data.ar_exposure.totals;
+  const aff = id => (R[id] || {}).affected || 0, elig = id => (R[id] || {}).eligible || 0;
+  return [
+    { id: 'ib', title: 'Installed base & ownership', n: aff('C-06-OWNER'), of: elig('C-06-OWNER'), what: 'assets have no owner account',
+      so: `They can't be tied to the account that is billed; ${bdPlural(aff('F-ASSET-LOC'), 'more asset has', 'more assets have')} conflicting location evidence.`, src: '06', rule: 'C-06-OWNER' },
+    { id: 'oc', title: 'Orders & contracts', n: aff('B-ENTITLE-01'), of: elig('B-ENTITLE-01'), what: 'covered orders bill on an expired or open-ended contract',
+      so: `${bdPlural(aff('C-05-ACCT'), 'contract has', 'contracts have')} no customer account, so their orders show no entitlement at all.`, src: '09', rule: 'B-ENTITLE-01' },
+    { id: 'bp', title: 'Billing & payer', n: A.associated_invoices, of: A.open_invoices, what: 'open invoices sit on a broken relationship',
+      so: `${bdPlural(aff('C-10-PAYER'), 'invoice has', 'invoices have')} no payer account, so collections can't be routed.`, src: '10', rule: 'C-10-PAYER' },
+  ];
+}
+function bdOpenArea(src, rule) { bd.srcSel = src; bd.srcTab = 'rows'; bd.ruleFilter = rule; bd.showAllRows = true; renderAll(); setTimeout(() => { const el = document.getElementById('bd-src-detail'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); }
+
+function bdRenderSources() {
+  const D = bd.data;
+  const P = D.source_profiles.sources;
+  const F = D.dq_findings.findings;
+  const att = { red: ['Needs attention', 'red'], amber: ['Review', 'amber'], green: ['OK', 'green'] };
+  const top = D.dq_rules.rules.filter(r => r.affected && (r.severity === 'high' || r.severity === 'medium'))
+    .sort((a, b) => (a.severity === 'high' ? 0 : 1) - (b.severity === 'high' ? 0 : 1) || b.affected - a.affected || a.rule_id.localeCompare(b.rule_id)).slice(0, 6);
+  return `<div class="page active bd-page">
+    ${bdRunBar()}
+    ${bdStoryHead('Where are the data breaks?', 'Ten source extracts; start with issues that affect relationships and receivables.',
+      `<button class="btn btn-bd-outline" onclick="bdSetFull('raw', true)">All findings</button>`)}
+    <div class="bd-story-cards" id="bd-areas">
+      ${bdProblemAreas().map(a => `<button class="bd-area" onclick="bdOpenArea('${a.src}','${a.rule}')">
+        <div class="k">${a.title}</div>
+        <div class="v">${a.n}<span> of ${a.of}</span></div>
+        <div class="w">${a.what}</div>
+        <div class="c">${a.so}</div>
+        <div class="go">See evidence ${icon('arrowRight')}</div></button>`).join('')}
+    </div>
+    <div class="bd-grid2 bd-story-split">
+      <div class="bd-panel" style="margin:0"><div class="bd-panel-h"><h2>Sources</h2><span class="bd-hint">click for profile, rows and issues</span></div>
+        <table class="bd-table"><thead><tr><th>Extract</th><th class="num">Records</th><th>Attention</th><th class="num">Material findings</th></tr></thead><tbody>
+        ${P.map(p => { const n = F.filter(f => f.source === p.code && (f.severity === 'high' || f.severity === 'medium')).length; const [l, c] = att[p.overall_status] || ['-', 'na'];
+          return `<tr class="clickable ${bd.srcSel === p.code ? 'sel' : ''}" tabindex="0" onclick="bdSelectSource('${p.code}')" onkeydown="if(event.key==='Enter')bdSelectSource('${p.code}')"><td><b style="color:var(--text-primary)">${bdEsc(p.label)}</b><div class="bd-note">${bdEsc(p.system)}</div></td><td class="num">${p.record_count}</td><td><span class="rag ${c}">${l}</span></td><td class="num">${n}</td></tr>`; }).join('')}
+        </tbody></table></div>
+      <div class="bd-panel" style="margin:0" id="bd-top-issues"><div class="bd-panel-h"><h2>Top issues</h2><span class="bd-hint">high severity first</span></div>
+        <div class="bd-panel-b">${top.map((r, i) => { const code = Object.keys(r.affected_by_file)[0];
+          return `<button class="bd-issue-row" onclick="bdOpenArea('${code}','${r.rule_id}')"><span class="rk">${i + 1}</span><span class="t">${bdEsc(bdPlain(r.rule_id))}<span class="bd-note"> &middot; ${bdEsc(bdSrc(code).label)}</span></span>${bdSev(r.severity)}<span class="n">${r.affected}</span></button>`; }).join('')}</div></div>
+    </div>
+    ${bd.srcSel ? bdRenderSourceDetail(bd.srcSel) : ''}
+    ${bdNext('Profiling only observes; nothing has been changed. Next: which relationships these gaps break.', 'mapping', 'What relationships break?')}
+    ${renderPageHelpPanel()}
+  </div>`;
+}
+
+// ── 2 · Connections: "What relationships break?" ──────────
+function bdChain() {
+  const D = bd.data, R = bd.ruleIndex;
+  const E = id => D.er_graph.edges.find(e => e.id === id) || { matched: 0, review: 0, unresolved: 0 };
+  const aff = id => (R[id] || {}).affected || 0;
+  const inv = D.ar_exposure.invoices.filter(i => i.open_usd > 0);
+  const ar = cats => { const xs = inv.filter(i => i.categories.some(c => cats.includes(c))); return { usd: xs.reduce((s, i) => s + i.open_usd, 0), n: xs.length }; };
+  return [
+    { id: 'cf', from: 'Customer', to: 'Facility', ok: E('E01').matched + E('E02').matched, okL: 'MDM / CRM records tied to a facility',
+      review: E('E01').review + E('E02').review, reviewL: 'duplicate facility records', unresolved: aff('R-01-PARENT') + aff('R-02-PARENT') + aff('C-02-PARENT'), unresolvedL: 'broken parent links',
+      edges: ['E01', 'E02'], ar: ar([]), headline: 'Facility recorded more than once' },
+    { id: 'fa', from: 'Facility', to: 'Asset', ok: E('E12').matched, okL: 'assets with an owner account',
+      review: aff('F-ASSET-LOC'), reviewL: 'assets with conflicting location', unresolved: E('E12').unresolved, unresolvedL: 'assets with no owner account',
+      edges: ['E12', 'E13'], ar: ar([]), headline: 'Assets with no owner account' },
+    { id: 'ao', from: 'Asset', to: 'Order', ok: Math.max(E('E10').matched - E('E11').review, 0), okL: 'orders consistent with the asset site',
+      review: E('E11').review, reviewL: 'orders tied to a site the asset left', unresolved: aff('C-09-SERIAL'), unresolvedL: 'device orders with no serial',
+      edges: ['E10', 'E11'], ar: ar(['asset_relationship', 'identifier_defect']), headline: 'Orders tied to a site the asset has left' },
+    { id: 'oc', from: 'Order', to: 'Contract', ok: E('E14').matched, okL: 'orders covered by an active contract',
+      review: E('E14').review, reviewL: 'orders on an expired / open-ended contract', unresolved: E('E14').unresolved, unresolvedL: 'orders with no linked contract',
+      edges: ['E14', 'E04'], ar: ar(['entitlement']), headline: 'Orders billed on an expired or open-ended contract' },
+    { id: 'ci', from: 'Contract', to: 'Invoice', ok: E('E05').matched - E('E07').unresolved, okL: 'invoices with order and payer',
+      review: aff('S-ORDER-SYS'), reviewL: 'orders booked in the wrong ERP', unresolved: E('E07').unresolved, unresolvedL: 'invoices with no payer',
+      edges: ['E05', 'E07', 'E06'], ar: ar(['payer_gap', 'system_mismatch']), headline: 'Invoices with no payer, or booked in the wrong ERP' },
+  ];
+}
+function bdSelectLink(id) { bd.chainSel = bd.chainSel === id ? null : id; renderAll(); }
+function bdRenderMap() {
+  const D = bd.data;
+  const chain = bdChain();
+  const breaks = chain.filter(l => l.review + l.unresolved > 0)
+    .sort((a, b) => b.ar.usd - a.ar.usd || (b.review + b.unresolved) - (a.review + a.unresolved) || a.id.localeCompare(b.id)).slice(0, 3);
+  const sel = chain.find(l => l.id === bd.chainSel);
+  const pill = (n, cls, l) => `<span class="bd-pill ${cls}" title="${bdEsc(l)}">${n}</span>`;
+  return `<div class="page active bd-page">
+    ${bdRunBar()}
+    ${bdStoryHead('What relationships break?', 'Customer to invoice, one chain. Each link shows what joins cleanly, what needs review and what cannot be resolved.',
+      `<button class="btn btn-bd-outline" onclick="bdOpenEr()">${icon('gitMerge')} Relationship diagram</button>
+       <button class="btn btn-bd-outline" onclick="bdSetFull('mapping', true)">Inspect mapping</button>
+       <button class="btn btn-bd" id="bd-apply-btn" onclick="bdApply()" ${bd.applying ? 'disabled' : ''}>${icon('zap')} ${bd.applied ? 'Re-apply mappings' : 'Apply mappings'}</button>`)}
+    ${bd.applying || bd.applyStep >= 0 ? bdApplyPanel() : ''}
+    <div class="bd-panel" id="bd-chain"><div class="bd-panel-b">
+      <div class="bd-chain">${chain.map(l => `<button class="bd-link ${bd.chainSel === l.id ? 'sel' : ''}" onclick="bdSelectLink('${l.id}')" aria-pressed="${bd.chainSel === l.id}">
+        <div class="ends"><span>${l.from}</span>${icon('arrowRight')}<span>${l.to}</span></div>
+        <div class="pills">${pill(l.ok, 'ok', l.okL)}${pill(l.review, 'rev', l.reviewL)}${pill(l.unresolved, 'unr', l.unresolvedL)}</div>
+        <div class="bd-note">${l.review + l.unresolved ? bdEsc(l.review ? l.reviewL : l.unresolvedL) : 'joins cleanly'}</div></button>`).join('')}</div>
+      <div class="bd-legend" style="margin-top:0.75rem"><span style="--c:#0f766e">joins on a native key or approved match</span><span style="--c:#d97706">needs review / conflicting</span><span style="--c:#94a3b8">unresolved</span></div>
+      ${sel ? bdLinkDetail(sel) : ''}
+    </div></div>
+    <div class="bd-panel" id="bd-breaks"><div class="bd-panel-h"><h2>Biggest breaks</h2><span class="bd-hint">ranked by open AR on the affected invoices, then volume</span></div>
+      <div class="bd-panel-b">${breaks.map((l, i) => `<button class="bd-issue-row" onclick="bdSelectLink('${l.id}')"><span class="rk">${i + 1}</span><span class="t">${bdEsc(l.headline)}<span class="bd-note"> &middot; ${l.from} &rarr; ${l.to}</span></span>
+        <span class="bd-note">${l.review ? `${l.review} ${bdEsc(l.reviewL)}` : ''}${l.review && l.unresolved ? ' &middot; ' : ''}${l.unresolved ? `${l.unresolved} ${bdEsc(l.unresolvedL)}` : ''}</span>
+        <span class="n">${l.ar.usd ? bdUsdK(l.ar.usd) + ' AR' : '&nbsp;'}</span></button>`).join('')}</div></div>
+    ${bdNext(bd.applied ? `${bdPlural(D.review_queue.items.length, 'proposal is', 'proposals are')} ready for review.` : 'Apply the mappings to turn these breaks into review proposals. Nothing is written back to the source systems.',
+      bd.applied ? 'workbench' : null, 'Where is judgment needed?')}
+    ${!bd.applied ? `<div style="display:flex;justify-content:flex-end;margin-top:-0.5rem"><button class="btn btn-bd" onclick="bdApply()" ${bd.applying ? 'disabled' : ''}>${icon('zap')} Apply mappings</button></div>` : ''}
+    ${renderPageHelpPanel()}
+  </div>`;
+}
+function bdLinkDetail(l) {
+  const E = bd.data.er_graph.edges;
+  return `<div class="bd-link-detail">
+    <div class="bd-meta"><div><span>Joins</span>${l.ok} ${bdEsc(l.okL)}</div><div><span>Needs review</span>${l.review} ${bdEsc(l.reviewL)}</div><div><span>Unresolved</span>${l.unresolved} ${bdEsc(l.unresolvedL)}</div><div><span>Open AR on affected invoices</span>${l.ar.usd ? `${bdUsd(l.ar.usd)} (${bdPlural(l.ar.n, 'invoice')})` : 'No linked AR in this snapshot'}</div></div>
+    <div class="bd-h3">Source joins behind this link</div>
+    ${l.edges.map(id => { const e = E.find(x => x.id === id); if (!e) return ''; const st = BD_ER_STYLE[e.type];
+      return `<div class="bd-edge-row"><svg width="28" height="8" aria-hidden="true"><line x1="0" y1="4" x2="28" y2="4" stroke="${st.stroke}" stroke-width="${st.w}" stroke-dasharray="${st.dash}"/></svg><b>${bdEsc(e.label)}</b><span class="bd-note">${bdEsc(e.evidence)}</span><button class="btn btn-ghost btn-sm" onclick="bdOpenEr();bd.erSel='${e.id}';bdRenderOverlay()">Show in diagram</button></div>`; }).join('')}
+  </div>`;
+}
+
+// ── 3 · Review: "Where is judgment needed?" ───────────────
+function bdCuratedCases() {
+  const items = bd.data.review_queue.items;
+  const sev = x => ({ high: 0, medium: 1, low: 2 }[x.severity] ?? 3);
+  const order = (a, b) => (b.downstream.open_ar_usd || 0) - (a.downstream.open_ar_usd || 0) || sev(a) - sev(b) || b.confidence - a.confidence || a.review_id.localeCompare(b.review_id);
+  const want = [
+    { label: 'Facility identity', test: x => x.queue === 'identity' && x.entity_type === 'facility' },
+    { label: 'Asset moved / facility mismatch', test: x => x.issue_type === 'asset location' },
+    { label: 'Contract entitlement conflict', test: x => x.issue_type === 'entitlement' },
+  ];
+  const picked = [];
+  want.forEach(w => { const c = items.filter(w.test).filter(x => !picked.some(p => p.item === x)).sort(order)[0]; if (c) picked.push({ label: w.label, item: c }); });
+  items.slice().sort((a, b) => sev(a) - sev(b) || order(a, b)).forEach(x => { if (picked.length < 3 && !picked.some(p => p.item === x)) picked.push({ label: 'Next highest priority', item: x }); });
+  return picked;
+}
+function bdToggleCase(id) { bd.caseOpen = bd.caseOpen === id ? null : id; renderAll(); if (bd.caseOpen) setTimeout(() => { const el = document.getElementById('bd-case-detail'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); }
+function bdProposedText(x) {
+  const v = x.proposed_value;
+  if (v == null || v === '') return x.decisions[0];
+  if (typeof v === 'string') return `${x.decisions[0]}: ${v}`;
+  if (Array.isArray(v)) return `${x.decisions[0]} (${v.length} values)`;
+  if (v.merge_into) return `Merge into ${v.merge_into} (${bdShort(v.display_name)})`;
+  if (v.proposed_site) return `${v.recommendation === 'move' ? 'Move to' : 'Investigate before moving to'} ${bdShort(v.proposed_site)}`;
+  if (v.golden_party) return `One enterprise party ${v.golden_party}`;
+  return x.decisions[0];
+}
+function bdRenderReview() {
+  const D = bd.data;
+  const all = D.review_queue.items;
+  if (!bd.applied) {
+    return `<div class="page active bd-page">${bdRunBar()}${bdStoryHead('Where is judgment needed?', 'Proposals appear once the mappings have been applied to the raw snapshot.')}
+      <div class="bd-panel"><div class="bd-empty">${icon('layers', 'icon-xl')}<div style="margin-top:0.5rem">The mapping run has not been applied in this session.</div>
+      <button class="btn btn-bd" onclick="navigateTo('mapping');setTimeout(bdApply,150)">${icon('zap')} Apply mappings</button></div></div>${renderPageHelpPanel()}</div>`;
+  }
+  const open = all.filter(bdIsOpen).length;
+  const cases = bdCuratedCases();
+  const sel = cases.find(c => c.item.review_id === bd.caseOpen);
+  return `<div class="page active bd-page">
+    ${bdRunBar()}
+    ${bdStoryHead('Where is judgment needed?', 'Three representative cases. Each fix stays a proposal until a reviewer decides; every decision can be undone.',
+      `<span class="bd-counter" id="bd-review-counter"><b>${open}</b> open &middot; <b>${all.length - open}</b> decided</span>
+       <button class="btn btn-bd-outline" onclick="bdSetFull('workbench', true)">Open full review queue</button>`)}
+    <div class="bd-story-cards" id="bd-cases">
+      ${cases.map(({ label, item: x }) => { const d = bdDec(x.review_id); const ds = x.downstream || {};
+        return `<div class="bd-case ${bd.caseOpen === x.review_id ? 'sel' : ''}">
+          <div class="k">${bdEsc(label)}</div>
+          <div class="t">${bdEsc(x.title)}</div>
+          <div class="p">${bdEsc(x.why_flagged)}</div>
+          <div class="e">${icon('info')} ${bdEsc(x.evidence[0] || '')}</div>
+          <div class="bd-meta" style="margin:0.6rem 0"><div><span>Affected</span>${bdEsc(x.entity_type)} &middot; ${bdPlural(x.source_row_ids.length, 'source row')}</div><div><span>Impact</span>${ds.open_ar_usd ? `${bdUsd(ds.open_ar_usd)} open on ${bdPlural((ds.open_invoices || []).length, 'invoice')}` : (ds.orders || []).length ? bdPlural(ds.orders.length, 'order') : 'No linked AR in this snapshot'}</div></div>
+          <div class="pr"><span class="bd-note">Proposed:</span> ${bdEsc(bdProposedText(x))}</div>
+          <div class="ft"><span class="bd-status ${bdDecClass(d)}">${d ? bdEsc(d.decision) : 'Open'}</span>
+            ${d ? `<button class="btn btn-ghost btn-sm" onclick="bdUndo('${x.review_id}')">Undo</button>`
+              : x.decisions.filter(o => o !== 'Edit' && o !== 'Pick alternative').map((o, i) => `<button class="btn ${i === 0 ? 'btn-bd' : 'btn-outline'} btn-sm" onclick="bdDecide('${x.review_id}','${bdJs(o)}')">${bdEsc(o)}</button>`).join('')}
+            <button class="btn btn-ghost btn-sm" style="margin-left:auto" onclick="bdToggleCase('${x.review_id}')" aria-expanded="${bd.caseOpen === x.review_id}">${bd.caseOpen === x.review_id ? 'Hide evidence' : 'See evidence'}</button></div>
+        </div>`; }).join('')}
+    </div>
+    ${sel ? `<div class="bd-panel" id="bd-case-detail"><div class="bd-panel-b">${bdReviewDetail(sel.item)}</div></div>` : ''}
+    ${bdNext(`${all.length - cases.length > 0 ? `${all.length - cases.length} more proposals sit in the full queue (normalization, identity, relationships, unresolved fields).` : ''} Decisions persist for this run and export as review_decisions.json.`, 'golden', 'What does a trusted view show?')}
+    ${renderPageHelpPanel()}
+  </div>`;
+}
+
+// ── 4 · Connected view: one asset, dated evidence ─────────
+function bdStoryAssets() {
+  return bd.data.golden_entities.assets.filter(a => a.location_status === 'conflict' || a.moved_on)
+    .sort((a, b) => (b.location_status === 'conflict') - (a.location_status === 'conflict') || a.asset_id.localeCompare(b.asset_id));
+}
+function bdDefaultStoryAsset() {
+  const A = bd.data.golden_entities.assets;
+  if (A.some(a => a.asset_id === 'EA-00003')) return 'EA-00003';
+  const inv = bd.data.ar_exposure.invoices;
+  const arOf = id => inv.filter(i => i.asset_id === id).reduce((s, i) => s + i.open_usd, 0);
+  const c = A.filter(a => a.location_status === 'conflict').sort((a, b) => arOf(b.asset_id) - arOf(a.asset_id) || a.asset_id.localeCompare(b.asset_id))[0];
+  return (c || A[0]).asset_id;
+}
+function bdAssetEvents(a) {
+  const kind = { install_base: 'Install base confirmed', movement_install: 'Installed', movement_asset_move: 'Moved', service_visit: 'Field service' };
+  const ev = a.timeline.map(t => ({ date: t.date, kind: kind[t.type] || t.type, fac: t.facility, source: t.evidence_source, rid: t.rid, text: t.text || 'no location given' }));
+  const G = bd.data.golden_entities;
+  a.orders.forEach(so => {
+    const o = G.orders.find(x => x.order_id === so); if (!o) return;
+    ev.push({ date: o.date, kind: 'Order', fac: o.facility, source: `SAP sales order ${so} (sold-to ${o.sold_to})`, rid: o.rid, text: `${o.type} - ${bdUsd(o.value_usd)}` });
+    const i = bd.data.ar_exposure.invoices.find(x => x.order === so);
+    if (i) ev.push({ date: i.billing_date, kind: i.open_usd ? 'Invoice open' : 'Invoice paid', fac: i.facility, source: `SAP billing ${i.invoice}`, rid: i.rid, text: i.open_usd ? `${bdUsd(i.open_usd)} open, ${i.aging_bucket} days` : 'paid', open: i.open_usd });
+  });
+  return ev.sort((x, y) => (x.date || '').localeCompare(y.date || '') || x.kind.localeCompare(y.kind));
+}
+function bdStoryFacts(a) {
+  const p = bdAssetPlacement(a);
+  const tl = a.timeline;
+  const ib = tl.find(t => t.type === 'install_base');
+  const move = tl.filter(t => t.type === 'movement_asset_move').slice(-1)[0];
+  const cand = p.candidate || (p.item && p.item.proposed_value.golden_facility_id) || a.proposed_facility;
+  const svc = move ? tl.filter(t => t.type === 'service_visit' && t.date >= move.date && t.facility === cand) : [];
+  const inv = bd.data.ar_exposure.invoices.filter(i => i.asset_id === a.asset_id && i.open_usd > 0);
+  const priorInv = inv.filter(i => i.facility === a.ib_facility);
+  const d = p.item ? bdDec(p.item.review_id) : null;
+  const invTxt = priorInv.length ? `${bdPlural(priorInv.length, 'open invoice')} (${bdUsd(priorInv.reduce((s, i) => s + i.open_usd, 0))}: ${priorInv.map(i => i.invoice).join(', ')})` : null;
+  let disputed, next;
+  if (!move) {
+    disputed = `No relocation recorded; ${a.asset_id} stays at ${bdShort(bdFacName(p.facility))}.`;
+    next = 'No location correction needed for this asset.';
+  } else if (!p.item) {
+    disputed = `Moved to ${bdShort(bdFacName(move.facility))} on ${move.date}; the install base already agrees.`;
+    next = inv.length ? `Proposed next correction: investigate whether ${bdPlural(inv.length, 'open invoice')} billed before the move should follow the asset.` : 'No open invoices on this asset in this snapshot.';
+  } else if (!d) {
+    disputed = `Disputed: the install base places ${a.asset_id} at ${bdShort(bdFacName(a.ib_facility))}${ib ? ` (confirmed ${ib.date})` : ''}, while a ${move.evidence_source.toLowerCase()} on ${move.date}${svc.length ? ` and ${bdPlural(svc.length, 'later service visit')}` : ''} place it at ${bdShort(bdFacName(cand))}. The current site is unresolved.`;
+    next = `Proposed next correction: review ${p.item.review_id} to confirm the location${invTxt ? `; until then investigate ${invTxt} still billed to ${bdShort(bdFacName(a.ib_facility))}` : ''}.`;
+  } else if (p.status === 'approved') {
+    disputed = `A reviewer approved ${a.asset_id} at ${bdShort(bdFacName(p.facility))} on ${new Date(d.at).toLocaleDateString()}; the install base record itself is unchanged until its owner corrects it.`;
+    next = invTxt && p.facility !== a.ib_facility ? `Proposed next correction: ask AR to investigate ${invTxt} still tied to ${bdShort(bdFacName(a.ib_facility))}.` : 'Proposed next correction: update the install base site in the source system.';
+  } else {
+    disputed = `Location under investigation (${d.decision.toLowerCase()}); the install base site ${bdShort(bdFacName(a.ib_facility))} remains the published value.`;
+    next = 'Proposed next correction: field service to verify the device on site before any billing change.';
+  }
+  return { p, cand, move, d, disputed, next, inv };
+}
+function bdSetStoryAsset(id) { bd.storyAsset = id; bd.storyEvent = null; renderAll(); }
+function bdRenderGolden() {
+  const G = bd.data.golden_entities;
+  const id = bd.storyAsset || bdDefaultStoryAsset();
+  const a = G.assets.find(x => x.asset_id === id);
+  const f = bdStoryFacts(a);
+  const ev = bdAssetEvents(a);
+  const evSel = bd.storyEvent != null ? ev[bd.storyEvent] : null;
+  const confirmed = f.p.status === 'approved';
+  const facCls = fac => fac && fac === f.cand && f.cand !== a.ib_facility ? 'cand' : '';
+  const edgeRow = (from, to, kind, note) => `<div class="bd-edge-row"><svg width="28" height="8" aria-hidden="true"><line x1="0" y1="4" x2="28" y2="4" stroke="${kind === 'candidate' ? '#d97706' : kind === 'superseded' ? '#94a3b8' : '#0f766e'}" stroke-width="2" stroke-dasharray="${kind === 'candidate' ? '6 4' : kind === 'superseded' ? '2 4' : ''}"/></svg><b>${bdEsc(from)} &rarr; ${bdEsc(to)}</b><span class="bd-status ${kind === 'confirmed' ? 'done' : kind === 'native' ? '' : 'defer'}">${kind}</span><span class="bd-note">${bdEsc(note)}</span></div>`;
+  const orders = a.orders.map(so => G.orders.find(o => o.order_id === so)).filter(Boolean);
+  const stat = confirmed ? ['done', 'location approved'] : f.p.status === 'conflict' ? ['defer', 'location disputed'] : f.p.status === 'investigating' ? ['defer', 'under investigation'] : ['', 'location consistent'];
+  return `<div class="page active bd-page">
+    ${bdRunBar()}
+    ${bdStoryHead('What does a trusted view show?', 'One device, every dated piece of evidence, and only approved relationships shown as confirmed.',
+      `<label class="bd-note" for="bd-asset-pick">Asset</label><select id="bd-asset-pick" class="bd-input" onchange="bdSetStoryAsset(this.value)">${bdStoryAssets().map(x => `<option value="${x.asset_id}" ${x.asset_id === id ? 'selected' : ''}>${x.asset_id} ${x.location_status === 'conflict' ? '(disputed)' : '(moved)'}</option>`).join('')}</select>
+       <button class="btn btn-bd-outline" onclick="bdSetFull('golden', true)">Browse facilities & master records</button>`)}
+    <div class="bd-panel" id="bd-story">
+      <div class="bd-panel-h"><h2>${a.asset_id} &middot; ${bdEsc(a.product_family)} &middot; <span class="bd-mono">${bdEsc(a.serial_normalized)}</span></h2>
+        <span class="bd-status ${stat[0]}">${stat[1]}</span></div>
+      <div class="bd-panel-b">
+        <div class="bd-hline" role="list">${ev.map((e, i) => `<button role="listitem" class="bd-hstep ${facCls(e.fac)} ${e.open ? 'open' : ''} ${bd.storyEvent === i ? 'sel' : ''}" onclick="bd.storyEvent=${bd.storyEvent === i ? 'null' : i};renderAll()" title="${bdEsc(e.source)} - ${e.rid}" aria-pressed="${bd.storyEvent === i}">
+          <span class="dot"></span><span class="d">${e.date || 'undated'}</span><span class="k">${bdEsc(e.kind)}</span><span class="f">${bdEsc(bdShort(bdFacName(e.fac)))}</span></button>`).join('')}</div>
+        ${evSel ? `<div class="bd-callout" style="margin-top:0.6rem"><b>${bdEsc(evSel.kind)}</b> &middot; ${evSel.date} &middot; ${bdEsc(evSel.source)} &middot; <span class="bd-mono">${evSel.rid}</span><div>${bdEsc(evSel.text)} &rarr; ${bdEsc(bdFacName(evSel.fac))}</div></div>` : '<div class="bd-note" style="margin-top:0.4rem">Select a step for its source record. Amber steps point at the candidate site.</div>'}
+        <div class="bd-callout warn" style="margin-top:1rem">${bdEsc(f.disputed)}</div>
+        <div class="bd-next-fix">${icon('arrowRight')} <span>${bdEsc(f.next)}</span>${f.p.item ? ` <button class="btn btn-ghost btn-sm" onclick="bdGoReview('${f.p.item.review_id}')">Open ${f.p.item.review_id}</button>` : ''}</div>
+        <div class="bd-h3">Relationships</div>
+        ${edgeRow(a.asset_id, bdShort(bdFacName(a.ib_facility)), confirmed && f.p.facility !== a.ib_facility ? 'superseded' : 'native', `install base (${a.ib_basis || 'no basis'})`)}
+        ${f.cand && f.cand !== a.ib_facility ? edgeRow(a.asset_id, bdShort(bdFacName(f.cand)), confirmed && f.p.facility === f.cand ? 'confirmed' : 'candidate', confirmed && f.p.facility === f.cand ? 'approved by reviewer' : `${Math.round(a.location_confidence * 100)}% from movement and service evidence - not approved`) : ''}
+        ${orders.map(o => edgeRow(o.order_id, bdShort(bdFacName(o.facility)), 'native', `sold-to ${o.sold_to}${o.invoice ? ' / ' + o.invoice : ''}`)).join('')}
+      </div></div>
+    ${bdNext('Only native joins and reviewer-approved links are shown as confirmed; candidates stay dashed. Next: what BD should act on.', 'search', 'What should BD act on?')}
+    ${renderPageHelpPanel()}
+  </div>`;
+}
+
+// ── 5 · Impact: AR first, CDE backlog second ──────────────
+// Rule-to-CDE mapping (documented in README). Ranking: linked open AR desc, open high-severity
+// review items desc, broken relationships desc, open items desc, CDE id.
+const BD_CDE_CONFIG = [
+  { cde_id: 'CDE-01', label: 'Owning ERP customer / account', rules: ['C-06-OWNER', 'R-06-OWNER'], review_types: ['owner ERP number'], edges: ['E12'], ar_categories: [],
+    consequence: 'Asset cannot be tied to the account that is billed' },
+  { cde_id: 'CDE-02', label: 'Asset → current facility', rules: ['F-ASSET-LOC', 'C-06-SITE', 'C-07-DEST'], review_types: ['asset location', 'movement destination'], edges: ['E13', 'E11'], ar_categories: ['asset_relationship'],
+    consequence: 'Billing and service follow a site the asset may have left' },
+  { cde_id: 'CDE-03', label: 'Order → facility (sold-to)', rules: ['B-ORDER-LOC', 'S-ORDER-SYS', 'S-ORDER-ROLE', 'C-09-SHIPTO'], review_types: ['order system'], edges: ['E06', 'E11'], ar_categories: ['asset_relationship', 'system_mismatch'],
+    consequence: 'Orders billed to the wrong facility or ERP' },
+  { cde_id: 'CDE-04', label: 'Contract / entitlement', rules: ['B-ENTITLE-01', 'B-PO-01', 'C-05-ACCT', 'C-05-END', 'R-05-ACCT'], review_types: ['entitlement', 'contract account'], edges: ['E04', 'E14'], ar_categories: ['entitlement'],
+    consequence: 'Billing runs on expired, open-ended or unlinked contracts' },
+  { cde_id: 'CDE-05', label: 'Invoice payer / customer', rules: ['C-10-PAYER', 'C-09-PAYER', 'B-PAYER-01', 'V-AR-STATUS'], review_types: ['invoice payer', 'payer conflict (note only)', 'status / amount disagreement'], edges: ['E07'], ar_categories: ['payer_gap'],
+    consequence: 'Collections cannot be routed to a payer' },
+  { cde_id: 'CDE-06', label: 'Canonical facility identity / name', rules: ['U-DUP-ENTITY', 'S-NAME', 'S-ADDR', 'U-02-NATIVE', 'R-01-PARENT', 'R-02-PARENT', 'C-01-PARENT', 'C-02-PARENT', 'C-01-DHC', 'C-04-STREET'],
+    review_types: ['same-entity candidate', 'facility match', 'same native ID in two ERPs', 'name variants', 'hierarchy parent', 'healthcare ID'], edges: ['E01', 'E02'], ar_categories: [],
+    consequence: 'The same hospital counted as several customers' },
+  { cde_id: 'CDE-07', label: 'Asset serial & UDI', rules: ['V-SERIAL', 'C-06-UDI', 'R-07-ASSET', 'R-08-ASSET', 'R-09-ASSET', 'C-07-IDS', 'C-08-IDS', 'C-09-SERIAL'], review_types: ['serial format', 'service device'], edges: ['E08', 'E09', 'E10'], ar_categories: ['identifier_defect'],
+    consequence: 'Orders, scans and service cannot find the device' },
+];
+const BD_CDE_RANKING = 'Order: (1) distinct evidence-supported linked open AR, descending; (2) open high-severity review items; (3) relationships with review or unresolved rows; (4) open review items; (5) CDE id. A triage order, not a claim of recoverability. No weighted score is used.';
+function bdCdeBacklog() {
+  const D = bd.data;
+  const F = D.dq_findings.findings, items = D.review_queue.items;
+  const inv = D.ar_exposure.invoices.filter(i => i.open_usd > 0);
+  const rows = BD_CDE_CONFIG.map(c => {
+    const fs = F.filter(f => c.rules.includes(f.rule_id) && f.severity !== 'info');
+    const rids = [...new Set(fs.map(f => f.source_row_id))];
+    const files = [...new Set(fs.map(f => f.source))];
+    const denominator = files.length === 1 ? D.source_profiles.sources.find(p => p.code === files[0]).record_count : null;
+    const revs = items.filter(x => c.review_types.includes(x.issue_type));
+    const open = revs.filter(bdIsOpen);
+    const arInv = inv.filter(i => i.categories.some(k => c.ar_categories.includes(k)));
+    const edges = c.edges.map(id => D.er_graph.edges.find(e => e.id === id)).filter(Boolean);
+    const owners = {}; revs.forEach(x => { owners[x.owner] = (owners[x.owner] || 0) + 1; });
+    const owner = Object.entries(owners).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+    return Object.assign({}, c, {
+      related_rules: [...new Set(fs.map(f => f.rule_id))], reviews: revs.map(x => x.review_id), affected_count: rids.length, denominator, files, rids,
+      linked_open_ar_usd: arInv.reduce((s, i) => s + i.open_usd, 0), linked_invoices: arInv.map(i => i.invoice),
+      unresolved_high_count: open.filter(x => x.severity === 'high').length, unresolved_total: open.length,
+      critical_relationships: edges.filter(e => e.review + e.unresolved > 0).length, edge_list: edges,
+      proposed_owner: owner ? owner[0] : null,
+      status: !revs.length ? 'No review items' : !open.length ? 'Decided' : open.length < revs.length ? 'In review' : 'Open',
+    });
+  }).filter(r => r.affected_count || r.reviews.length);
+  rows.sort((a, b) => b.linked_open_ar_usd - a.linked_open_ar_usd || b.unresolved_high_count - a.unresolved_high_count
+    || b.critical_relationships - a.critical_relationships || b.unresolved_total - a.unresolved_total || a.cde_id.localeCompare(b.cde_id));
+  rows.forEach((r, i) => {
+    r.priority_rank = i + 1;
+    r.reasons = r.linked_open_ar_usd ? (i === 0 ? 'Highest linked open AR' : `Linked open AR ${bdUsdK(r.linked_open_ar_usd)}`)
+      : r.unresolved_high_count ? `${bdPlural(r.unresolved_high_count, 'high-severity item')} open`
+      : r.critical_relationships ? `Breaks ${bdPlural(r.critical_relationships, 'relationship')}`
+      : r.unresolved_total ? `${bdPlural(r.unresolved_total, 'item')} open` : 'All review items decided';
+  });
+  return rows;
+}
+function bdPickBucket(cat) { bd.impactCat = bd.impactCat === cat ? null : cat; bd.exploreAr = true; bd.impactInv = null; renderAll(); setTimeout(() => { const el = document.getElementById('bd-explore-ar'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60); }
+function bdRenderImpact() {
+  const D = bd.data, A = D.ar_exposure, T = A.totals;
+  const struct = A.by_category.filter(c => c.structural && c.open_usd_primary > 0).sort((a, b) => b.open_usd_primary - a.open_usd_primary);
+  const buckets = struct.slice(0, 3), rest = struct.slice(3);
+  const restUsd = rest.reduce((s, c) => s + c.open_usd_primary, 0);
+  const assoc = A.invoices.filter(i => i.open_usd > 0 && i.association === 'structural');
+  const assocDecided = assoc.filter(i => { const r = i.review_items.map(bdItem).filter(Boolean); return r.length && r.every(x => !bdIsOpen(x)); }).length;
+  const uncorr = T.note_only_usd + T.missing_link_usd;
+  const uncorrN = A.invoices.filter(i => i.open_usd > 0 && (i.association === 'note_only' || i.association === 'missing_link')).length;
+  const cdes = bdCdeBacklog();
+  const shown = bd.cdeAll ? cdes : cdes.slice(0, 5);
+  return `<div class="page active bd-page">
+    ${bdRunBar()}
+    ${bdStoryHead('What should BD act on?', 'Receivables to investigate first, then where MDM should focus.',
+      `<button class="btn btn-bd-outline" onclick="bdSetFull('search', true)">Supporting analysis</button>`)}
+    <div class="bd-panel" id="bd-ar-hero"><div class="bd-panel-h"><h2>Receivables to investigate</h2><span class="bd-hint">as of ${A.as_of}</span></div>
+      <div class="bd-panel-b bd-ar-grid">
+        <div class="bd-hero">
+          <div class="l">Open AR associated with a data issue</div>
+          <div class="v">${bdUsd(T.associated_usd)}</div>
+          <div class="s">of ${bdUsd(T.open_usd)} open AR &middot; ${bdPlural(T.associated_invoices, 'invoice')} &middot; ${bdPct(T.associated_usd / T.open_usd)}</div>
+          <div class="bd-note" style="margin-top:0.6rem">Associated with a data issue; not a proven loss or recoverable amount. Each invoice counted once.</div>
+          <div class="bd-note" style="margin-top:0.35rem">${assocDecided} of ${assoc.length} of these invoices have every linked review item decided.</div>
+        </div>
+        <div>
+          ${buckets.map(c => `<button class="bd-bucket ${bd.impactCat === c.category ? 'on' : ''}" onclick="bdPickBucket('${c.category}')">
+            <span class="sw" style="background:${BD_CAT_COLOR[c.category]}"></span><span class="t">${bdEsc(c.label)}<span class="bd-note"> &middot; ${bdPlural(c.invoices_primary, 'invoice')}</span></span>
+            <span class="trk"><i style="width:${c.open_usd_primary / T.associated_usd * 100}%;background:${BD_CAT_COLOR[c.category]}"></i></span><span class="v">${bdUsd(c.open_usd_primary)}</span></button>`).join('')}
+          ${rest.length ? `<div class="bd-note" style="padding:0.3rem 0.5rem">+ ${bdUsd(restUsd)} in ${bdPlural(rest.length, 'other category', 'other categories')} (${rest.map(c => bdEsc(c.label.toLowerCase())).join(', ')})</div>` : ''}
+          <div class="bd-uncorr"><b>${bdUsd(uncorr)}</b> on ${bdPlural(uncorrN, 'invoice')} is flagged only by collection notes the extracts cannot corroborate - kept separate, not counted above.</div>
+          <button class="btn btn-bd-outline btn-sm" style="margin-top:0.6rem" onclick="bd.exploreAr=!bd.exploreAr;renderAll()" aria-expanded="${bd.exploreAr}">${bd.exploreAr ? 'Hide AR detail' : 'Explore AR'}</button>
+        </div>
+      </div>
+      ${bd.exploreAr ? bdExploreAr() : ''}
+    </div>
+    <div class="bd-panel" id="bd-cde"><div class="bd-panel-h"><h2>Where MDM should focus next</h2>
+      <button class="btn btn-ghost btn-sm" onclick="bd.cdeHow=!bd.cdeHow;renderAll()" aria-expanded="${bd.cdeHow}" title="${bdEsc(BD_CDE_RANKING)}">How ranked</button></div>
+      ${bd.cdeHow ? `<div class="bd-panel-b bd-note" style="border-bottom:1px solid var(--border-subtle)">${bdEsc(BD_CDE_RANKING)} Owners are initial steward suggestions from the review items, not confirmed accountability. Linked AR per row counts distinct invoices; rows are not additive because one invoice can touch several CDEs.</div>` : ''}
+      <div class="table-wrapper"><table class="bd-table bd-cde-table"><thead><tr><th>#</th><th>CDE / relationship</th><th>Issue &amp; affected scope</th><th>Business consequence</th><th>Proposed owner</th><th>Status</th><th></th></tr></thead><tbody>
+      ${shown.map(r => `<tr class="clickable ${bd.cdeSel === r.cde_id ? 'sel' : ''}" onclick="bd.cdeSel=bd.cdeSel==='${r.cde_id}'?null:'${r.cde_id}';renderAll()">
+        <td class="num" style="font-weight:800;color:var(--text-primary)">${r.priority_rank}</td>
+        <td><b style="color:var(--text-primary)">${bdEsc(r.label)}</b><div class="bd-note">${bdEsc(r.reasons)}</div></td>
+        <td>${r.denominator ? `${r.affected_count} of ${r.denominator} records` : `${bdPlural(r.affected_count, 'record')} across ${bdPlural(r.files.length, 'extract')}`}<div class="bd-note">${bdPlural(r.related_rules.length, 'rule')} &middot; ${bdPlural(r.unresolved_total, 'open item')}${r.unresolved_high_count ? ` (${r.unresolved_high_count} high)` : ''}</div></td>
+        <td>${r.linked_open_ar_usd ? `<b style="color:var(--rag-red)">${bdUsd(r.linked_open_ar_usd)}</b> open AR on ${bdPlural(r.linked_invoices.length, 'invoice')}` : '<span class="bd-note">No linked AR in this snapshot</span>'}<div class="bd-note">${bdEsc(r.consequence)}</div></td>
+        <td>${r.proposed_owner ? `${bdEsc(r.proposed_owner)}<div class="bd-note">suggested steward</div>` : '<span style="color:var(--rag-amber)">Owner to assign</span>'}</td>
+        <td><span class="bd-status ${r.status === 'Decided' ? 'done' : r.status === 'In review' ? 'defer' : ''}">${r.status}</span></td>
+        <td><button class="btn btn-bd-outline btn-sm" onclick="event.stopPropagation();bd.cdeSel='${r.cde_id}';renderAll()">Review</button></td></tr>
+        ${bd.cdeSel === r.cde_id ? `<tr><td colspan="7" style="background:var(--surface-subtle);padding:0.9rem 1rem">${bdCdeDetail(r)}</td></tr>` : ''}`).join('')}
+      </tbody></table></div>
+      ${cdes.length > 5 ? `<div class="bd-panel-b"><button class="btn btn-ghost btn-sm" onclick="bd.cdeAll=!bd.cdeAll;renderAll()">${bd.cdeAll ? 'Show top 5' : `View all CDEs (${cdes.length})`}</button></div>` : ''}
+    </div>
+    ${bdNext(`${BD_LABEL}. Figures come from run ${D.manifest.run_id} and the current review state; review decisions never collect cash on their own.`, null, '')}
+    ${renderPageHelpPanel()}
+  </div>`;
+}
+function bdCdeDetail(r) {
+  const R = bd.ruleIndex;
+  const items = r.reviews.map(bdItem).filter(Boolean);
+  const inv = bd.data.ar_exposure.invoices.filter(i => r.linked_invoices.includes(i.invoice));
+  return `<div class="bd-grid2">
+    <div><div class="bd-h3">Rules</div>${r.related_rules.map(id => `<div style="font-size:0.8125rem;margin-bottom:0.2rem"><span class="bd-mono">${id}</span> ${bdEsc(bdPlain(id))} <span class="bd-note">&middot; ${(R[id] || {}).affected || 0} rows</span></div>`).join('')}
+      <div class="bd-h3">Review items</div>${items.length ? items.map(x => { const d = bdDec(x.review_id); return `<div style="display:flex;gap:0.4rem;align-items:center;margin-bottom:0.3rem;flex-wrap:wrap"><span class="bd-status ${bdDecClass(d)}">${d ? bdEsc(d.decision) : 'open'}</span><button class="btn btn-ghost btn-sm" onclick="bdGoReview('${x.review_id}')">${x.review_id}</button><span class="bd-note">${bdEsc(x.title)}</span></div>`; }).join('') : '<div class="bd-note">No review items for this CDE.</div>'}
+      <div class="bd-h3">Source rows</div><div class="bd-mono bd-note">${r.rids.slice(0, 12).join(', ')}${r.rids.length > 12 ? ` +${r.rids.length - 12} more` : ''}</div></div>
+    <div><div class="bd-h3">Relationship evidence</div>${r.edge_list.map(e => `<div style="font-size:0.8125rem;margin-bottom:0.3rem"><b>${bdEsc(e.label)}</b> <span class="bd-note">${e.matched} joined &middot; ${e.review} review &middot; ${e.unresolved} unresolved &middot; ${bdEsc(e.evidence)}</span></div>`).join('')}
+      <div class="bd-h3">Scoped open AR (distinct invoices)</div>${inv.length ? inv.map(i => `<div style="font-size:0.8125rem">${i.invoice} &middot; ${bdUsd(i.open_usd)} &middot; ${bdEsc(bdShort(i.facility_name))} &middot; ${i.aging_bucket}</div>`).join('') + `<div style="font-weight:700;margin-top:0.3rem">${bdUsd(r.linked_open_ar_usd)}</div>` : '<div class="bd-note">No linked AR in this snapshot.</div>'}</div></div>`;
+}
+function bdExploreAr() {
+  const A = bd.data.ar_exposure;
+  const maxAging = Math.max(...A.aging.map(a => a.open_usd), 1);
+  let inv = A.invoices.filter(i => i.open_usd > 0);
+  if (bd.impactCat) inv = inv.filter(i => i.primary_category === bd.impactCat);
+  if (bd.impactFac) inv = inv.filter(i => i.facility === bd.impactFac);
+  inv.sort((a, b) => b.open_usd - a.open_usd);
+  return `<div class="bd-panel-b" id="bd-explore-ar" style="border-top:1px solid var(--border)">
+    <div class="bd-grid2">
+      <div><div class="bd-h3">Aging (associated vs other open AR)</div>
+        ${A.aging.map(a => `<div class="bd-hbar" title="${bdPlural(a.invoices, 'invoice')}"><span class="lab">${a.bucket} days</span><span class="trk"><i style="width:${a.associated_usd / maxAging * 100}%;background:#dc2626"></i><i style="width:${(a.open_usd - a.associated_usd) / maxAging * 100}%;background:#cbd5e1"></i></span><span class="val">${bdUsdK(a.open_usd)}</span></div>`).join('')}
+        <div class="bd-legend" style="margin-top:0.4rem"><span style="--c:#dc2626">associated with an issue</span><span style="--c:#cbd5e1">other open AR</span></div></div>
+      <div><div class="bd-h3">By facility (click to filter)</div>
+        ${A.by_facility.filter(x => x.open_usd).map(x => `<div class="bd-hbar clickable ${bd.impactFac === x.golden_facility_id ? 'on' : ''}" onclick="bdSetImpactFac('${x.golden_facility_id}')"><span class="lab">${bdEsc(bdShort(x.name))}</span><span class="trk"><i style="width:${x.associated_usd / maxAging * 100}%;background:#dc2626"></i><i style="width:${(x.open_usd - x.associated_usd) / maxAging * 100}%;background:#cbd5e1"></i></span><span class="val">${bdUsdK(x.open_usd)}</span></div>`).join('')}</div>
+    </div>
+    <div class="bd-h3" style="margin-top:1rem">Invoices ${bd.impactCat ? `&middot; ${bdEsc(A.category_labels[bd.impactCat])}` : ''} ${bd.impactCat || bd.impactFac ? `<button class="btn btn-ghost btn-sm" onclick="bd.impactCat=null;bd.impactFac=null;renderAll()">Clear filters &#10005;</button>` : ''}</div>
+    <div class="bd-scroll"><table class="bd-table"><thead><tr><th>Invoice</th><th>Facility</th><th>Order</th><th>Asset</th><th class="num">Open</th><th>Aging</th><th>Primary issue</th><th>Review</th></tr></thead><tbody>
+      ${inv.map(i => { const ri = i.review_items.map(bdItem).filter(Boolean); const done = ri.filter(x => !bdIsOpen(x)).length; const sel = bd.impactInv === i.invoice;
+        return `<tr class="clickable ${sel ? 'sel' : ''}" onclick="bdSelectInv('${i.invoice}')"><td class="bd-mono" style="color:var(--text-primary)">${i.invoice}</td><td>${bdEsc(bdShort(i.facility_name))}</td><td class="bd-mono">${i.order}</td><td class="bd-mono">${i.asset_id || '-'}</td>
+          <td class="num" style="font-weight:700;color:var(--text-primary)">${bdUsd(i.open_usd)}</td><td>${i.aging_bucket}</td>
+          <td><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:${BD_CAT_COLOR[i.primary_category] || '#e2e8f0'};margin-right:0.35rem"></span>${bdEsc(A.category_labels[i.primary_category] || 'No issue identified')}${i.categories.length > 1 ? `<div class="bd-note">also: ${i.categories.slice(1).map(c => bdEsc(A.category_labels[c])).join('; ')}</div>` : ''}</td>
+          <td>${ri.length ? `<span class="bd-status ${done === ri.length ? 'done' : ''}">${done}/${ri.length} decided</span>` : '<span class="bd-note">note only</span>'}</td></tr>
+          ${sel ? `<tr><td colspan="8" style="background:var(--surface-subtle);padding:0.85rem 1rem">${bdInvoicePath(i)}</td></tr>` : ''}`; }).join('')}</tbody>
+      <tfoot><tr><td colspan="4" style="font-weight:700">${bdPlural(inv.length, 'invoice')}</td><td class="num" style="font-weight:800">${bdUsd(inv.reduce((s, i) => s + i.open_usd, 0))}</td><td colspan="3"></td></tr></tfoot></table></div>
+  </div>`;
+}
+
+// ── guided demo: 7 stops, narration built from the active run ──
+function bdDemoScript() {
+  if (!bd.data) return [];
+  const R = bd.ruleIndex, T = bd.data.ar_exposure.totals;
+  const aff = id => (R[id] || {}).affected || 0, elig = id => (R[id] || {}).eligible || 0;
+  const cases = bdCuratedCases();
+  const idCase = cases.find(c => c.item.queue === 'identity') || cases[0];
+  const asset = bdDefaultStoryAsset();
+  const top = bdChain().filter(l => l.review + l.unresolved).sort((a, b) => b.ar.usd - a.ar.usd)[0];
+  const cde = bdCdeBacklog()[0];
+  const prep = () => { bd.full = {}; bd.srcSel = null; bd.chainSel = null; bd.caseOpen = null; bd.exploreAr = false; bd.cdeSel = null; bd.erOpen = false; bd.sqlOpen = false; bd.storyEvent = null; };
+  return [
+    { page: 'raw', highlight: '#bd-areas', action: () => { prep(); renderAll(); },
+      narration: `Ten source extracts, ${bd.data.source_profiles.sources.reduce((s, p) => s + p.record_count, 0)} records. Three problem areas are worth investigating: <strong>installed-base ownership, orders and contracts, billing and payer</strong>.`, stepLabel: 'Stop 1 of 7 - Where are the data breaks?', duration: 14000 },
+    { page: 'raw', highlight: '#bd-src-detail', action: () => { prep(); bdOpenArea('06', 'C-06-OWNER'); },
+      narration: `<strong>${aff('C-06-OWNER')} of ${elig('C-06-OWNER')} installed assets</strong> carry no owner account. That breaks the link from device to billed customer - not just an empty cell.`, stepLabel: 'Stop 2 of 7 - A relationship defect', duration: 14000 },
+    { page: 'mapping', highlight: '#bd-chain', action: () => { prep(); bd.chainSel = top ? top.id : null; renderAll(); if (!bd.applied) bdApply(); },
+      narration: `Customer to invoice, one chain. The biggest break: <strong>${bdEsc(top ? top.headline.toLowerCase() : 'none')}</strong>${top && top.ar.usd ? `, touching ${bdUsd(top.ar.usd)} of open AR` : ''}. Candidates and conflicts are never shown as joins.`, stepLabel: 'Stop 3 of 7 - What relationships break?', duration: 15000 },
+    { page: 'workbench', highlight: '#bd-cases', action: () => { prep(); bd.applied = true; bdPersist(); bd.caseOpen = idCase ? idCase.item.review_id : null; renderAll(); },
+      narration: `A reviewer decides each uncertain link. Here: <strong>${bdEsc(idCase ? idCase.item.title : '')}</strong> - both records side by side, with the contradiction. Nothing is approved until a person approves it.`, stepLabel: 'Stop 4 of 7 - Where is judgment needed?', duration: 15000 },
+    { page: 'golden', highlight: '#bd-story', action: () => { prep(); bd.storyAsset = asset; renderAll(); },
+      narration: `One device, dated evidence: <strong>${asset}</strong> installed, moved, serviced, ordered and billed. The disputed location stays a candidate until reviewed.`, stepLabel: 'Stop 5 of 7 - What does a trusted view show?', duration: 15000 },
+    { page: 'search', highlight: '#bd-ar-hero', action: () => { prep(); renderAll(); },
+      narration: `<strong>${bdUsd(T.associated_usd)} of ${bdUsd(T.open_usd)}</strong> open AR is associated with a data issue - each invoice counted once. Not a proven loss or a recoverable amount; uncorroborated notes are kept apart.`, stepLabel: 'Stop 6 of 7 - Receivables to investigate', duration: 15000 },
+    { page: 'search', highlight: '#bd-cde', action: () => { prep(); renderAll(); setTimeout(() => { const el = document.getElementById('bd-cde'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 200); },
+      narration: `Where MDM should focus next: <strong>${bdEsc(cde ? cde.label : '')}</strong> ranks first (${bdEsc(cde ? cde.reasons.toLowerCase() : '')}). Owners are suggested stewards until accountability is assigned.`, stepLabel: 'Stop 7 of 7 - Where MDM should focus', duration: 15000 },
+  ];
+}
+let BD_DEMO_SCRIPT = [];
+getActiveDemoScript = function () { if (state.activeDataset === 'bd') { BD_DEMO_SCRIPT = bdDemoScript(); return BD_DEMO_SCRIPT; } return _bdPrevScript(); };
+function bdPauseDemo() {
+  if (!demoRunning) return;
+  const btn = document.getElementById('bd-pause');
+  if (bd.demoPaused) { bd.demoPaused = false; if (btn) btn.textContent = 'Pause'; demoTimer = setTimeout(() => advanceDemo(), 4000); }
+  else { bd.demoPaused = true; clearTimeout(demoTimer); if (btn) btn.textContent = 'Resume'; }
+}
+const _bdPrevShowNarrator = showNarrator;
+showNarrator = function () {
+  _bdPrevShowNarrator();
+  const ctl = document.querySelector('#narrator-bar .narrator-controls');
+  if (ctl && state.activeDataset === 'bd' && !document.getElementById('bd-pause')) {
+    const b = document.createElement('button'); b.id = 'bd-pause'; b.className = 'btn btn-outline'; b.style.fontSize = '0.75rem'; b.textContent = bd.demoPaused ? 'Resume' : 'Pause'; b.onclick = bdPauseDemo;
+    ctl.insertBefore(b, ctl.firstChild);
+  }
+};
+const _bdPrevAdvance = advanceDemo;
+advanceDemo = function () { bd.demoPaused = false; const b = document.getElementById('bd-pause'); if (b) b.textContent = 'Pause'; _bdPrevAdvance(); };
